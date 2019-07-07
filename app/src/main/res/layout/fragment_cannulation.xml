@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@mipmap/back"
+    tools:context=".Cannulation">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/imageView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:src="@drawable/logo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/chkNA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Not Applicable"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView18"
+                    tools:layout_editor_absoluteX="74dp"
+                    tools:layout_editor_absoluteY="52dp" />
+                <Button
+                    android:id="@+id/btnCan1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="35dp"
+                    android:background="#ba1f04"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:paddingRight="10dp"
+                    android:text="Cannulation"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chkNA" />
+
+                <ScrollView
+                    android:id="@+id/canscrl1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnCan1"
+                    tools:layout_editor_absoluteX="-16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/canLay1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#90ba1f04"
+                            android:isScrollContainer="true"
+                            android:padding="15dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="false"
+                            app:ael_interpolator="accelerateDecelerate"
+                            app:ael_orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/lblTim1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Time"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtTim1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="115dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTime1"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="hh:mm"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblSize1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblTim1"
+                                android:layout_marginTop="10dp"
+                                android:text="Size"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtSize1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/edtTim1"
+                                android:layout_alignLeft="@+id/edtTim1"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTim1"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="size"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblAtt1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblSize1"
+                                android:layout_marginTop="10dp"
+                                android:text="Attempts"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtAtt1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/edtSize1"
+                                android:layout_alignLeft="@+id/edtTim1"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTim1"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="e.g 1"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblSite1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblAtt1"
+                                android:layout_marginTop="10dp"
+                                android:text="Site"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtSite1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/edtAtt1"
+                                android:layout_alignLeft="@+id/edtTim1"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTim1"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter site here"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblRate1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblSite1"
+                                android:layout_marginTop="10dp"
+                                android:text="Rate"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtRate1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/edtSite1"
+                                android:layout_alignLeft="@+id/edtTim1"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTim1"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter rate here"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblVol1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblRate1"
+                                android:layout_marginTop="10dp"
+                                android:text="Volume Infused"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtVol1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/edtRate1"
+                                android:layout_alignLeft="@+id/edtTim1"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTim1"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter volume here"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblFluid1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblVol1"
+                                android:layout_marginTop="10dp"
+                                android:text="Fluid Type Used"
+                                android:textColor="@color/white" />
+
+                            <Spinner
+                                android:id="@+id/canSpin1"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtVol1"
+                                android:layout_alignLeft="@id/edtTim1"
+                                android:layout_marginTop="10dp" />
+
+
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/btnCan2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="#E1066DA1"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:paddingRight="10dp"
+                    android:text="Cannulation"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/canscrl1" />
+
+                <ScrollView
+                    android:id="@+id/canscrl2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnCan2"
+                    tools:layout_editor_absoluteX="-16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/canLay2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#CE066DA1"
+                            android:isScrollContainer="true"
+                            android:padding="15dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="false"
+                            app:ael_interpolator="accelerateDecelerate"
+                            app:ael_orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/lblTim2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Time"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtTim2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="115dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTime2"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="hh:mm"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblSize2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblTim2"
+                                android:layout_marginTop="10dp"
+                                android:text="Size"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtSize2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/edtTim2"
+                                android:layout_alignLeft="@+id/edtTim2"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTim2"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="size"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblAtt2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblSize2"
+                                android:layout_marginTop="10dp"
+                                android:text="Attempts"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtAtt2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/edtSize2"
+                                android:layout_alignLeft="@+id/edtTim2"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTim2"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="e.g 1"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblSite2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblAtt2"
+                                android:layout_marginTop="10dp"
+                                android:text="Site"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtSite2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/edtAtt2"
+                                android:layout_alignLeft="@+id/edtTim2"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTim2"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter site here"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblRate2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblSite2"
+                                android:layout_marginTop="10dp"
+                                android:text="Rate"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtRate2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/edtSite2"
+                                android:layout_alignLeft="@+id/edtTim2"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTim2"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter rate here"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblVol2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblRate2"
+                                android:layout_marginTop="10dp"
+                                android:text="Volume Infused"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtVol2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/edtRate2"
+                                android:layout_alignLeft="@+id/edtTim2"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTim2"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter volume here"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblFluid2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblVol2"
+                                android:layout_marginTop="10dp"
+                                android:text="Fluid Type Used"
+                                android:textColor="@color/white" />
+
+                            <Spinner
+                                android:id="@+id/canSpin2"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtVol2"
+                                android:layout_alignLeft="@id/edtTim2"
+                                android:layout_marginTop="10dp" />
+
+
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

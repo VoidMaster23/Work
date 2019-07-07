@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TwoLineListItem xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:mode="twoLine"
+    android:paddingLeft="?attr/listPreferredItemPaddingLeft"
+    android:paddingRight="?attr/listPreferredItemPaddingRight">
+
+    <TextView android:id="@+id/tex1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tex2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tex1"
+        android:layout_alignStart="@id/tex1"
+        android:textAppearance="?attr/textAppearanceListItemSecondary"
+        android:layout_alignLeft="@id/tex1"
+        android:textStyle="bold|italic"
+        android:textColor="#FF0000"
+        android:textSize="12dp"/>
+
+</TwoLineListItem>

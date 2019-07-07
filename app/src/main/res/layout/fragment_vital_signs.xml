@@ -1,0 +1,1450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back"
+    tools:context=".VitalSigns" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView15"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginEnd="43dp"
+                    android:layout_marginRight="43dp"
+                    android:src="@drawable/logo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/chkNA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="131dp"
+                    android:layout_marginLeft="131dp"
+                    android:layout_marginEnd="131dp"
+                    android:layout_marginRight="131dp"
+                    android:text="Not Applicable"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+
+                <Button
+                    android:id="@+id/expBut1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="35dp"
+                    android:background="#ba1f04"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:onClick="expBut"
+                    android:paddingRight="10dp"
+                    android:text="Reading One"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chkNA" />
+
+                <ScrollView
+                    android:id="@+id/scrl1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/expBut1"
+                    tools:layout_editor_absoluteX="-16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/expLay1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#90ba1f04"
+                            android:isScrollContainer="true"
+                            android:padding="15dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="false"
+                            app:ael_interpolator="accelerateDecelerate"
+                            app:ael_orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/lblTime1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Time"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtTime1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginEnd="42dp"
+                                android:layout_marginRight="42dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="hh:mm"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblPulse1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtTime1"
+                                android:layout_marginTop="10dp"
+                                android:text="Pulse Rate"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtPulse1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtTime1"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="bpm"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblBp1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtPulse1"
+                                android:layout_marginTop="10dp"
+                                android:text="BP"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtBp1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtPulse1"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblSpo1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtBp1"
+                                android:layout_marginTop="10dp"
+                                android:text="SPO2"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtSpo1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtBp1"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="%"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblResp1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtSpo1"
+                                android:layout_marginTop="10dp"
+                                android:text="Resp Rate"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtResp1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtSpo1"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="b/pm"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblHgt1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtResp1"
+                                android:layout_marginTop="10dp"
+                                android:text="HGT"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtHgt1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtResp1"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblCO21"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtHgt1"
+                                android:layout_marginTop="10dp"
+                                android:text="CO2"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtCO21"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtHgt1"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblFlow1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtCO21"
+                                android:layout_marginTop="10dp"
+                                android:text="Peak Flow"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtFlow1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtCO21"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblPearl1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow1"
+                                android:layout_marginTop="10dp"
+                                android:text="Eyes - Pearl"
+                                android:textColor="@color/white" />
+
+                            <CheckBox
+                                android:id="@+id/chkLeft1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow1"
+                                android:layout_alignTop="@id/lblPearl1"
+                                android:layout_marginLeft="100dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/lblPearl1"
+                                android:text="Left"
+                                android:textColor="@color/white" />
+
+                            <CheckBox
+                                android:id="@+id/chkRight1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow1"
+                                android:layout_alignTop="@id/lblPearl1"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/chkLeft1"
+                                android:text="Right"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/lblPupSize1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/chkLeft1"
+                                android:layout_marginTop="10dp"
+                                android:text="Pupil Size"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/lblPupLeft1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupSize1"
+                                android:layout_marginTop="10dp"
+                                android:text="Left"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/lblPupRight1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupLeft1"
+                                android:layout_marginTop="10dp"
+                                android:text="Right"
+                                android:textColor="@color/white" />
+
+                            <Spinner
+                                android:id="@+id/spnLeftSize1"
+                                android:layout_width="240dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupSize1"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_marginRight="12dp" />
+
+                            <Spinner
+                                android:id="@+id/spnRightSize1"
+                                android:layout_width="240dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupLeft1"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_marginRight="12dp" />
+
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    </LinearLayout>
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/expBut2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="#E1066DA1"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:onClick="expBut2"
+                    android:paddingRight="10dp"
+                    android:text="Reading Two"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scrl1" />
+
+                <ScrollView
+                    android:id="@+id/scrl2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/expBut2"
+                    tools:layout_editor_absoluteX="-16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/expLay2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#CE066DA1"
+                            android:isScrollContainer="true"
+                            android:padding="16dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="false"
+                            app:ael_interpolator="accelerateDecelerate"
+                            app:ael_orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/lblTime2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Time"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtTime2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginEnd="42dp"
+                                android:layout_marginRight="42dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="hh:mm"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblPulse2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtTime2"
+                                android:layout_marginTop="10dp"
+                                android:text="Pulse Rate"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtPulse2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtTime2"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="bpm"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblBp2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtPulse2"
+                                android:layout_marginTop="10dp"
+                                android:text="BP"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtBp2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtPulse2"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblSpo2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtBp2"
+                                android:layout_marginTop="10dp"
+                                android:text="SPO2"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtSpo2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtBp2"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="%"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblResp2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtSpo2"
+                                android:layout_marginTop="10dp"
+                                android:text="Resp Rate"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtResp2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtSpo2"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="b/pm"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblHgt2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtResp2"
+                                android:layout_marginTop="10dp"
+                                android:text="HGT"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtHgt2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtResp2"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblCO22"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtHgt2"
+                                android:layout_marginTop="10dp"
+                                android:text="CO2"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtCO22"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtHgt2"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblFlow2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtCO22"
+                                android:layout_marginTop="10dp"
+                                android:text="Peak Flow"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtFlow2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtCO22"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblPearl2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow2"
+                                android:layout_marginTop="10dp"
+                                android:text="Eyes - Pearl"
+                                android:textColor="@color/white" />
+
+                            <CheckBox
+                                android:id="@+id/chkLeft2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow2"
+                                android:layout_alignTop="@id/lblPearl2"
+                                android:layout_marginLeft="100dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/lblPearl2"
+                                android:text="Left"
+                                android:textColor="@color/white" />
+
+                            <CheckBox
+                                android:id="@+id/chkRight2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow2"
+                                android:layout_alignTop="@id/lblPearl2"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/chkLeft2"
+                                android:text="Right"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/lblPupSize2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/chkLeft2"
+                                android:layout_marginTop="10dp"
+                                android:text="Pupil Size"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/lblPupLeft2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupSize2"
+                                android:layout_marginTop="10dp"
+                                android:text="Left"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/lblPupRight2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupLeft2"
+                                android:layout_marginTop="10dp"
+                                android:text="Right"
+                                android:textColor="@color/white" />
+
+                            <Spinner
+                                android:id="@+id/spnLeftSize2"
+                                android:layout_width="240dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupSize2"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_marginRight="12dp" />
+
+                            <Spinner
+                                android:id="@+id/spnRightSize2"
+                                android:layout_width="240dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupLeft2"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_marginRight="12dp" />
+
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    </LinearLayout>
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/expBut3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="#10a106"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:onClick="expBut3"
+                    android:paddingRight="10dp"
+                    android:text="Reading Three"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scrl2" />
+
+                <ScrollView
+                    android:id="@+id/scrl3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/expBut3"
+                    tools:layout_editor_absoluteX="-16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/expLay3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#9010a106"
+                            android:isScrollContainer="true"
+                            android:padding="16dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="false"
+                            app:ael_interpolator="accelerateDecelerate"
+                            app:ael_orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/lblTime3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Time"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtTime3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginEnd="42dp"
+                                android:layout_marginRight="42dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="hh:mm"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblPulse3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtTime3"
+                                android:layout_marginTop="10dp"
+                                android:text="Pulse Rate"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtPulse3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtTime3"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="bpm"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblBp3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtPulse3"
+                                android:layout_marginTop="10dp"
+                                android:text="BP"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtBp3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtPulse3"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblSpo3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtBp3"
+                                android:layout_marginTop="10dp"
+                                android:text="SPO2"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtSpo3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtBp3"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="%"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblResp3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtSpo3"
+                                android:layout_marginTop="10dp"
+                                android:text="Resp Rate"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtResp3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtSpo3"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="b/pm"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblHgt3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtResp3"
+                                android:layout_marginTop="10dp"
+                                android:text="HGT"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtHgt3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtResp3"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblCO23"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtHgt3"
+                                android:layout_marginTop="10dp"
+                                android:text="CO2"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtCO23"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtHgt3"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblFlow3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtCO23"
+                                android:layout_marginTop="10dp"
+                                android:text="Peak Flow"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtFlow3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtCO23"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblPearl3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow3"
+                                android:layout_marginTop="10dp"
+                                android:text="Eyes - Pearl"
+                                android:textColor="@color/white" />
+
+                            <CheckBox
+                                android:id="@+id/chkLeft3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow3"
+                                android:layout_alignTop="@id/lblPearl3"
+                                android:layout_marginLeft="100dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/lblPearl3"
+                                android:text="Left"
+                                android:textColor="@color/white" />
+
+                            <CheckBox
+                                android:id="@+id/chkRight3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow3"
+                                android:layout_alignTop="@id/lblPearl3"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/chkLeft3"
+                                android:text="Right"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/lblPupSize3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/chkLeft3"
+                                android:layout_marginTop="10dp"
+                                android:text="Pupil Size"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/lblPupLeft3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupSize3"
+                                android:layout_marginTop="10dp"
+                                android:text="Left"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/lblPupRight3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupLeft3"
+                                android:layout_marginTop="10dp"
+                                android:text="Right"
+                                android:textColor="@color/white" />
+
+                            <Spinner
+                                android:id="@+id/spnLeftSize3"
+                                android:layout_width="240dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupSize3"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_marginRight="12dp" />
+
+                            <Spinner
+                                android:id="@+id/spnRightSize3"
+                                android:layout_width="240dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupLeft3"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_marginRight="12dp" />
+
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    </LinearLayout>
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/expBut4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="@color/Tel"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:onClick="expBut4"
+                    android:paddingRight="10dp"
+                    android:text="Reading Four"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scrl3" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/expBut4"
+                    tools:layout_editor_absoluteX="-16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/expLay4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#DEB7741C"
+                            android:isScrollContainer="true"
+                            android:padding="16dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="false"
+                            app:ael_interpolator="accelerateDecelerate"
+                            app:ael_orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/lblTime4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Time"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtTime4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginEnd="42dp"
+                                android:layout_marginRight="42dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="hh:mm"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblPulse4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtTime4"
+                                android:layout_marginTop="10dp"
+                                android:text="Pulse Rate"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtPulse4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtTime4"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="bpm"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblBp4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtPulse4"
+                                android:layout_marginTop="10dp"
+                                android:text="BP"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtBp4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtPulse4"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblSpo4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtBp4"
+                                android:layout_marginTop="10dp"
+                                android:text="SPO2"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtSpo4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtBp4"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="%"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblResp4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtSpo4"
+                                android:layout_marginTop="10dp"
+                                android:text="Resp Rate"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtResp4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtSpo4"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="b/pm"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblHgt4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtResp4"
+                                android:layout_marginTop="10dp"
+                                android:text="HGT"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtHgt4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtResp4"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblCO24"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtHgt4"
+                                android:layout_marginTop="10dp"
+                                android:text="CO2"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtCO24"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtHgt4"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblFlow4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtCO24"
+                                android:layout_marginTop="10dp"
+                                android:text="Peak Flow"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtFlow4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_below="@id/edtCO24"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginEnd="41dp"
+                                android:layout_marginRight="41dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:gravity="top"
+                                android:hint="enter here"
+                                android:inputType="textPersonName"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/lblPearl4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow4"
+                                android:layout_marginTop="10dp"
+                                android:text="Eyes - Pearl"
+                                android:textColor="@color/white" />
+
+                            <CheckBox
+                                android:id="@+id/chkLeft4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow4"
+                                android:layout_alignTop="@id/lblPearl4"
+                                android:layout_marginLeft="100dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/lblPearl4"
+                                android:text="Left"
+                                android:textColor="@color/white" />
+
+                            <CheckBox
+                                android:id="@+id/chkRight4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow4"
+                                android:layout_alignTop="@id/lblPearl4"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/chkLeft4"
+                                android:text="Right"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/lblPupSize4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/chkLeft4"
+                                android:layout_marginTop="10dp"
+                                android:text="Pupil Size"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/lblPupLeft4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupSize4"
+                                android:layout_marginTop="10dp"
+                                android:text="Left"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/lblPupRight4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupLeft4"
+                                android:layout_marginTop="10dp"
+                                android:text="Right"
+                                android:textColor="@color/white" />
+
+                            <Spinner
+                                android:id="@+id/spnLeftSize4"
+                                android:layout_width="240dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupSize4"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_marginRight="12dp" />
+
+                            <Spinner
+                                android:id="@+id/spnRightSize4"
+                                android:layout_width="240dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lblPupLeft4"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_marginRight="12dp" />
+
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    </LinearLayout>
+                </ScrollView>
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back"
+    tools:context=".PresentingCondition">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/logo" />
+
+                <CheckBox
+                    android:id="@+id/chkNA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageView13"
+                    android:layout_centerHorizontal="true"
+                    android:text="Not Applicable"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/lblPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkNA"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Primary Presenting Complaint"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/edtPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkNA"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/lblPrimary"
+                    android:ems="10"
+                    android:hint="enter name here"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lblPrimary"
+                    android:layout_alignLeft="@id/lblPrimary"
+                    android:layout_marginTop="15dp"
+                    android:text="Presenting Medical Contition"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/chkCardiac"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView19"
+                    android:text="Cardiac Arrest"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkChest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkCardiac"
+                    android:text="Chest Pain"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkAst"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkChest"
+                    android:text="Asthma"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkCopd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkAst"
+                    android:text="COPD"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkAb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkCopd"
+                    android:text="Abdo. Pain"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkVomit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkAb"
+                    android:text="Diarrhoea/Vomiting"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkConvulse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkVomit"
+                    android:text="Convulsions"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkStroke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkConvulse"
+                    android:text="Stroke/TIA"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkDiabetes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkStroke"
+                    android:text="Diabetes"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkHypo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkDiabetes"
+                    android:text="Hypoglycaemia"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkHyper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkHypo"
+                    android:text="Hyperglycaemia"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkAlcohol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkHyper"
+                    android:text="Alcohol/Intoxication"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkDrugs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkAlcohol"
+                    android:text="Illicit Drugs/OD"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkFirstAid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkDrugs"
+                    android:text="First Aid"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkAssault"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView19"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_toRightOf="@id/chkCardiac"
+                    android:text="Alleged Assault"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkMoreTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkAssault"
+                    android:layout_alignLeft="@id/chkAssault"
+                    android:text="Fall From &gt; 2m"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkLessTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkMoreTwo"
+                    android:layout_alignLeft="@id/chkAssault"
+                    android:text="Fall From &lt; 2m"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkHead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkLessTwo"
+                    android:layout_alignLeft="@id/chkAssault"
+                    android:text="Head Injury"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkPen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkHead"
+                    android:layout_alignLeft="@id/chkAssault"
+                    android:text="Penetrating Injury"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkFract"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkPen"
+                    android:layout_alignLeft="@id/chkAssault"
+                    android:text="Fracture"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkMva"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkFract"
+                    android:layout_alignLeft="@id/chkAssault"
+                    android:text="MVA/PVA"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkDrown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkMva"
+                    android:layout_alignLeft="@id/chkAssault"
+                    android:text="Drowning"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkBurn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkDrown"
+                    android:layout_alignLeft="@id/chkAssault"
+                    android:text="Burns"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkGun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkBurn"
+                    android:layout_alignLeft="@id/chkAssault"
+                    android:text="Gunshot Wound"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkInhale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkGun"
+                    android:layout_alignLeft="@id/chkAssault"
+                    android:text="Inhalation"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkMusc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkInhale"
+                    android:layout_alignLeft="@id/chkAssault"
+                    android:text="Musculoskeletal Trauma"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkObs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkMusc"
+                    android:layout_alignLeft="@id/chkAssault"
+                    android:text="OBS-GYN"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkDeliver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkObs"
+                    android:layout_alignLeft="@id/chkAssault"
+                    android:text="Delivery"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

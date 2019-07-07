@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="400dp"
+        android:layout_height="80dp"
+        app:layout_constraintHorizontal_bias="0.317"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disposal"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <CheckBox
+        android:id="@+id/notApplicable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not Applicable"
+        android:onClick="skip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/heading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select One"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+
+    <CheckBox
+        android:id="@+id/hospitalChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:onClick="hospitalClk"
+        android:text="Hospital"
+        app:layout_constraintEnd_toStartOf="@id/homeChk"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heading1" />
+
+    <CheckBox
+        android:id="@+id/homeChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:onClick="homeClk"
+        android:text="Home"
+        app:layout_constraintEnd_toStartOf="@+id/familyChk"
+        app:layout_constraintStart_toEndOf="@+id/hospitalChk"
+        app:layout_constraintTop_toBottomOf="@id/heading1" />
+
+    <CheckBox
+        android:id="@+id/familyChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Family GP"
+        android:onClick="familyClk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/homeChk"
+        app:layout_constraintTop_toBottomOf="@id/heading1" />
+
+    <TextView
+        android:id="@+id/heading2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Select One"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/familyChk" />
+
+    <CheckBox
+        android:id="@+id/ambulanceChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:onClick="ambulanceClk"
+        android:text="Ambulance"
+        app:layout_constraintEnd_toStartOf="@id/carChk"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heading2" />
+
+    <CheckBox
+        android:id="@+id/carChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:onClick="carClk"
+        android:text="Car"
+        app:layout_constraintEnd_toStartOf="@+id/ownChk"
+        app:layout_constraintStart_toEndOf="@+id/ambulanceChk"
+        app:layout_constraintTop_toBottomOf="@id/heading2" />
+
+    <CheckBox
+        android:id="@+id/ownChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Own transport"
+        android:onClick="ownClk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/carChk"
+        app:layout_constraintTop_toBottomOf="@id/heading2" />
+
+    <TextView
+        android:id="@+id/heading3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Select One"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ownChk" />
+
+    <CheckBox
+        android:id="@+id/adviceChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:onClick="adviceClk"
+        android:text="Advice Only"
+        app:layout_constraintEnd_toStartOf="@id/helpChk"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heading3" />
+
+    <CheckBox
+        android:id="@+id/helpChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="helpClk"
+        android:text="Refused Help"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/adviceChk"
+        app:layout_constraintTop_toBottomOf="@id/heading3" />
+
+    <CheckBox
+        android:id="@+id/signChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="signClk"
+        android:text="Refused to sign"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/returnChk"
+        app:layout_constraintTop_toBottomOf="@id/helpChk" />
+
+    <CheckBox
+        android:id="@+id/returnChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="returnClk"
+        android:text="Return to Work/Venue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/signChk"
+        app:layout_constraintTop_toBottomOf="@id/helpChk" />
+
+
+</android.support.constraint.ConstraintLayout>

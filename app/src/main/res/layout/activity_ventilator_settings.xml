@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back">
+
+    <ScrollView
+        android:id="@+id/sideScroll0"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="400dp"
+                android:layout_height="80dp"
+                app:layout_constraintHorizontal_bias="0.317"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ventilator Settings"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+            <CheckBox
+                android:id="@+id/notApplicable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not Applicable"
+                android:onClick="skip"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title" />
+
+            <TextView
+                android:id="@+id/lpm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fi02/LPM"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+
+            <EditText
+                android:id="@+id/lpmEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "First Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/lpmTime"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lpm" />
+
+            <EditText
+                android:id="@+id/lpmTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/lpmEdit"
+                app:layout_constraintTop_toBottomOf="@+id/lpm" />
+
+            <EditText
+                android:id="@+id/lpmEdit1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Second Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/lpmTime1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lpmEdit" />
+
+            <EditText
+                android:id="@+id/lpmTime1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/lpmEdit1"
+                app:layout_constraintTop_toBottomOf="@+id/lpmEdit" />
+
+            <EditText
+                android:id="@+id/lpmEdit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Third Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/lpmTime2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lpmEdit1" />
+
+            <EditText
+                android:id="@+id/lpmTime2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/lpmEdit2"
+                app:layout_constraintTop_toBottomOf="@+id/lpmEdit1" />
+
+            <TextView
+                android:id="@+id/tidal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tidal Volume"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lpmTime2" />
+
+            <EditText
+                android:id="@+id/tidalEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "First Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/tidalTime"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tidal" />
+
+            <EditText
+                android:id="@+id/tidalTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tidalEdit"
+                app:layout_constraintTop_toBottomOf="@+id/tidal" />
+
+            <EditText
+                android:id="@+id/tidalEdit1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Second Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/tidalTime1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tidalEdit" />
+
+            <EditText
+                android:id="@+id/tidalTime1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tidalEdit1"
+                app:layout_constraintTop_toBottomOf="@+id/tidalEdit" />
+
+            <EditText
+                android:id="@+id/tidalEdit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Third Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/tidalTime2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tidalEdit1" />
+
+            <EditText
+                android:id="@+id/tidalTime2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tidalEdit2"
+                app:layout_constraintTop_toBottomOf="@+id/tidalEdit1" />
+
+            <TextView
+                android:id="@+id/spontaneous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Spontaneous TV"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tidalTime2" />
+
+            <EditText
+                android:id="@+id/spontaneousEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "First Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/spontaneousTime"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spontaneous" />
+
+            <EditText
+                android:id="@+id/spontaneousTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/spontaneousEdit"
+                app:layout_constraintTop_toBottomOf="@+id/spontaneous" />
+
+            <EditText
+                android:id="@+id/spontaneousEdit1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Second Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/spontaneousTime1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spontaneousEdit" />
+
+            <EditText
+                android:id="@+id/spontaneousTime1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/spontaneousEdit1"
+                app:layout_constraintTop_toBottomOf="@+id/spontaneousEdit" />
+
+            <EditText
+                android:id="@+id/spontaneousEdit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Third Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/spontaneousTime2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spontaneousEdit1" />
+
+            <EditText
+                android:id="@+id/spontaneousTime2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/spontaneousEdit2"
+                app:layout_constraintTop_toBottomOf="@+id/spontaneousEdit1" />
+
+            <TextView
+                android:id="@+id/vent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vent Mode (SIMV/CMV/CPAP/IPPV)"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spontaneousTime2" />
+
+            <EditText
+                android:id="@+id/ventEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "First Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/ventTime"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vent" />
+
+            <EditText
+                android:id="@+id/ventTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ventEdit"
+                app:layout_constraintTop_toBottomOf="@+id/vent" />
+
+            <EditText
+                android:id="@+id/ventEdit1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Second Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/ventTime1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ventEdit" />
+
+            <EditText
+                android:id="@+id/ventTime1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ventEdit1"
+                app:layout_constraintTop_toBottomOf="@+id/ventEdit" />
+
+            <EditText
+                android:id="@+id/ventEdit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Third Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/ventTime2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ventEdit1" />
+
+            <EditText
+                android:id="@+id/ventTime2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ventEdit2"
+                app:layout_constraintTop_toBottomOf="@+id/ventEdit1" />
+
+            <TextView
+                android:id="@+id/rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vent Rate"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ventTime2" />
+
+            <EditText
+                android:id="@+id/rateEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "First Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/rateTime"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rate" />
+
+            <EditText
+                android:id="@+id/rateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/rateEdit"
+                app:layout_constraintTop_toBottomOf="@+id/rate" />
+
+            <EditText
+                android:id="@+id/rateEdit1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Second Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/rateTime1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rateEdit" />
+
+            <EditText
+                android:id="@+id/rateTime1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/rateEdit1"
+                app:layout_constraintTop_toBottomOf="@+id/rateEdit" />
+
+            <EditText
+                android:id="@+id/rateEdit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Third Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/rateTime2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rateEdit1" />
+
+            <EditText
+                android:id="@+id/rateTime2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/rateEdit2"
+                app:layout_constraintTop_toBottomOf="@+id/rateEdit1" />
+
+            <TextView
+                android:id="@+id/peep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PEEP"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rateTime2" />
+
+            <EditText
+                android:id="@+id/peepEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "First Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/peepTime"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/peep" />
+
+            <EditText
+                android:id="@+id/peepTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/peepEdit"
+                app:layout_constraintTop_toBottomOf="@+id/peep" />
+
+            <EditText
+                android:id="@+id/peepEdit1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Second Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/peepTime1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/peepEdit" />
+
+            <EditText
+                android:id="@+id/peepTime1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/peepEdit1"
+                app:layout_constraintTop_toBottomOf="@+id/peepEdit" />
+
+            <EditText
+                android:id="@+id/peepEdit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Third Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/peepTime2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/peepEdit1" />
+
+            <EditText
+                android:id="@+id/peepTime2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/peepEdit2"
+                app:layout_constraintTop_toBottomOf="@+id/peepEdit1" />
+
+            <TextView
+                android:id="@+id/ratio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I.E. Ratio"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/peepTime2" />
+
+            <EditText
+                android:id="@+id/ratioEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "First Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/ratioTime"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratio" />
+
+            <EditText
+                android:id="@+id/ratioTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ratioEdit"
+                app:layout_constraintTop_toBottomOf="@+id/ratio" />
+
+            <EditText
+                android:id="@+id/ratioEdit1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Second Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/ratioTime1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratioEdit" />
+
+            <EditText
+                android:id="@+id/ratioTime1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ratioEdit1"
+                app:layout_constraintTop_toBottomOf="@+id/ratioEdit" />
+
+            <EditText
+                android:id="@+id/ratioEdit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Third Measurement"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/ratioTime2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratioEdit1" />
+
+            <EditText
+                android:id="@+id/ratioTime2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint= "Time"
+                android:inputType="textPersonName"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ratioEdit2"
+                app:layout_constraintTop_toBottomOf="@+id/ratioEdit1" />
+
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

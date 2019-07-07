@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back">
+
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="400dp"
+        android:layout_height="80dp"
+        app:layout_constraintHorizontal_bias="0.317"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Refusal of Care"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <CheckBox
+        android:id="@+id/notApplicable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not Applicable"
+        android:onClick="skip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/statement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="I have"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/seenChk"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+
+    <CheckBox
+        android:id="@+id/seenChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="seen"
+        app:layout_constraintEnd_toStartOf="@+id/examinedChk"
+        app:layout_constraintStart_toEndOf="@+id/statement"
+        app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+
+    <CheckBox
+        android:id="@+id/examinedChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="examined"
+        app:layout_constraintEnd_toStartOf="@+id/treatedChk"
+        app:layout_constraintStart_toEndOf="@+id/seenChk"
+        app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+
+    <CheckBox
+        android:id="@+id/treatedChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="treated"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/examinedChk"
+        app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+
+    <TextView
+        android:id="@+id/statement1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="and reached the following conclusion"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/treatedChk" />
+
+    <CheckBox
+        android:id="@+id/firstChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="The Patient's condition is such that further medical assessment is strongly advised and that patient should be transferred to hospital by Ambulance. The patient has refused care and transportation via Ambulance and has the capacity to make this decision."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statement1" />
+
+    <CheckBox
+        android:id="@+id/secondChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="The Patient requires treatment at a hospital, clinic or other treatment facility, but is able and willing to make their own arrangements to get there."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstChk" />
+
+    <CheckBox
+        android:id="@+id/thirdChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="The Patient's condition is such that a medical or social assessment is advisable, but the patient wishes to arrange their own treatment and will call their own GP or doctor."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secondChk" />
+
+    <CheckBox
+        android:id="@+id/fourthChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="The Patient requires assistance only. Medical attention was provided by CApe Medics Crew."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/thirdChk" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:text="Patient Name"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/nameEdit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fourthChk" />
+
+    <EditText
+        android:id="@+id/nameEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/fourthChk" />
+
+    <TextView
+        android:id="@+id/signature"
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Signature"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/signatureButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <Button
+        android:id="@+id/signatureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/loginshape"
+        android:onClick="Go"
+        android:text="Go"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/signature"
+        app:layout_constraintTop_toBottomOf="@id/name" />
+
+    <TextView
+        android:id="@+id/contact"
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Contact Number"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/contactEdit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signature" />
+
+    <EditText
+        android:id="@+id/contactEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Type No. Here.."
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/contact"
+        app:layout_constraintTop_toBottomOf="@+id/signatureButton" />
+
+    <TextView
+        android:id="@+id/witness"
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Witness"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/witnessButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contact" />
+
+    <Button
+        android:id="@+id/witnessButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/loginshape"
+        android:onClick="Go2"
+        android:text="Go"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/witness"
+        app:layout_constraintTop_toBottomOf="@id/contact" />
+
+
+</android.support.constraint.ConstraintLayout>

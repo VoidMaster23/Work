@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back"
+    tools:context=".PatientDetails">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="75dp">
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:src="@drawable/logo" />
+
+                <TextView
+                    android:id="@+id/lblName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageView10"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Full Name"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageView10"
+                    android:layout_marginLeft="71dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_toRightOf="@id/lblName"
+                    android:ems="10"
+                    android:hint="enter full name here"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/lblSurname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lblName"
+                    android:layout_alignLeft="@id/lblName"
+                    android:layout_marginTop="25dp"
+                    android:text="Surname"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/edtSurname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edtName"
+                    android:layout_alignLeft="@id/edtName"
+                    android:ems="10"
+                    android:hint="enter surname here"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/lblDOB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lblSurname"
+                    android:layout_alignLeft="@id/lblName"
+                    android:layout_marginTop="25dp"
+                    android:text="DOB"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/edtDOB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edtSurname"
+                    android:layout_alignLeft="@id/edtName"
+                    android:ems="10"
+                    android:hint="yyyy-mm-dd"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/lblID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lblDOB"
+                    android:layout_alignLeft="@id/lblName"
+                    android:layout_marginTop="25dp"
+                    android:text="ID/Passport No."
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/edtID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edtDOB"
+                    android:layout_alignLeft="@id/edtName"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="enter id/passport no."
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/lblEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lblID"
+                    android:layout_alignLeft="@id/lblName"
+                    android:layout_marginTop="25dp"
+                    android:text="Email "
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edtID"
+                    android:layout_alignLeft="@id/edtName"
+                    android:ems="10"
+                    android:hint="enter email here"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/lblPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lblEmail"
+                    android:layout_alignLeft="@id/lblName"
+                    android:layout_marginTop="25dp"
+                    android:text="Contact Phone"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/edtPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edtEmail"
+                    android:layout_alignLeft="@id/edtName"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="e.g 089534776"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/lblAlt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lblPhone"
+                    android:layout_alignLeft="@id/lblName"
+                    android:layout_marginTop="25dp"
+                    android:text="Alt Phone"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/edtAlt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edtPhone"
+                    android:layout_alignLeft="@id/edtName"
+                    android:layout_marginTop="5dp"
+                    android:ems="10"
+                    android:hint="e.g 0795348876"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/lblAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lblAlt"
+                    android:layout_alignLeft="@id/lblName"
+                    android:layout_marginTop="25dp"
+                    android:text="Address"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/edtAddress1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edtAlt"
+                    android:layout_alignLeft="@id/edtName"
+                    android:layout_marginTop="5dp"
+                    android:ems="10"
+                    android:hint="address line 1"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edtAddress2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edtAddress1"
+                    android:layout_alignLeft="@id/edtName"
+                    android:layout_marginTop="5dp"
+                    android:ems="10"
+                    android:hint="address line 2"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edtAddress3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edtAddress2"
+                    android:layout_alignLeft="@id/edtName"
+                    android:layout_marginTop="5dp"
+                    android:ems="10"
+                    android:hint="address line 3"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edtAddress3"
+                    android:layout_alignLeft="@id/lblName"
+                    android:text="Age Group"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/chkAdult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView21"
+                    android:layout_alignLeft="@id/lblName"
+                    android:layout_marginTop="10dp"
+                    android:text="Adult"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkChild"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/chkAdult"
+                    android:layout_marginLeft="25dp"
+                    android:layout_toRightOf="@id/chkAdult"
+                    android:text="Child/Juvenile"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkBaby"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/chkAdult"
+                    android:layout_marginLeft="25dp"
+                    android:layout_toRightOf="@id/chkChild"
+                    android:text="Newborn Baby"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkAdult"
+                    android:layout_alignLeft="@id/textView21"
+                    android:text="Race"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/chkWhite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/chkColored"
+                    android:layout_alignTop="@id/chkAsian"
+                    android:layout_centerHorizontal="true"
+                    android:text="White"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkColored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/chkBlack"
+                    android:layout_centerHorizontal="true"
+                    android:text="Coloured"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView22"
+                    android:layout_alignLeft="@id/lblName"
+                    android:text="Black"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkAsian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkBlack"
+                    android:layout_alignLeft="@id/lblName"
+                    android:text="Asian/Indian"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkAsian"
+                    android:layout_alignLeft="@id/lblName"
+                    android:text="Sex"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/chkMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView23"
+                    android:layout_alignLeft="@id/lblName"
+                    android:text="Male"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/chkColored"
+                    android:layout_alignTop="@id/chkMale"
+                    android:text="Female"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/lblRef"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkMale"
+                    android:layout_alignLeft="@id/lblName"
+                    android:layout_marginTop="10dp"
+                    android:text="Reference Number"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/edtRef"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkFemale"
+                    android:layout_alignLeft="@id/edtName"
+                    android:ems="10"
+                    android:hint="enter reference number"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

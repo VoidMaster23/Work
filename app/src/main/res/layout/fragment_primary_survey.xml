@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back"
+    tools:context=".PrimarySurvey" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="401dp"
+                    android:layout_height="102dp"
+                    android:src="@drawable/logo" />
+
+                <CheckBox
+                    android:id="@+id/chkNA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageView12"
+                    android:layout_centerHorizontal="true"
+                    android:text="Not Applicable"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/lblTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkNA"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Time"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/edtTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkNA"
+                    android:layout_marginLeft="67dp"
+                    android:layout_marginTop="-1dp"
+                    android:layout_toRightOf="@id/lblTime"
+                    android:ems="10"
+                    android:hint="enter time here"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lblTime"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:layout_marginTop="15dp"
+                    android:text="Airway"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/chkClear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView14"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="Clear"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkOcc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView14"
+                    android:layout_centerHorizontal="true"
+                    android:text="Occluded"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkNoisy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkClear"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="Noisy"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkSpine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkOcc"
+                    android:layout_alignLeft="@id/chkOcc"
+                    android:text="C-Spine"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkZero"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="Pulse"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/chkRadial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView16"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="Radial"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkBrachial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView16"
+                    android:layout_alignLeft="@id/chkOcc"
+                    android:text="Brachial"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkCarotid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkRadial"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="Carotid"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkFemoral"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkBrachial"
+                    android:layout_alignLeft="@id/chkOcc"
+                    android:text="Femoral"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkAbsent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkCarotid"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="Absent"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkNoisy"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="Respiration Rate"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/chkHigh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView15"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="&gt; 29"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkMed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView15"
+                    android:layout_alignLeft="@id/chkOcc"
+                    android:text="10-29"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chSix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkHigh"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="6-9"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkLow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkMed"
+                    android:layout_alignLeft="@id/chkOcc"
+                    android:text="1-5"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkZero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chSix"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="0"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkAbsent"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="Respiration Rate"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/chkNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView17"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="Normal"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkAbnormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView17"
+                    android:layout_alignLeft="@id/chkOcc"
+                    android:text="Abnormal"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chkNormal"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="Cap Refill"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/chkTwoPlus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView18"
+                    android:layout_alignLeft="@id/lblTime"
+                    android:text="&gt; 2 Seconds"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/chkTwoMinus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView18"
+                    android:layout_alignLeft="@id/chkOcc"
+                    android:text="&lt; 2 Seconds"
+                    android:textColor="@color/white"
+                    android:layout_alignStart="@id/chkOcc" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

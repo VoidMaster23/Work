@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back">
+
+    <Button
+        android:id="@+id/expBut1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reportTime"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#ba1f04"
+        android:drawableRight="@android:drawable/arrow_down_float"
+        android:onClick="expandableButton1"
+        android:paddingRight="10dp"
+        android:text="ACSA"
+        android:textColor="#fff" />
+
+
+    <HorizontalScrollView
+        android:id="@+id/sideScroll0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/expBut1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:id="@+id/scroll0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal|vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                        android:id="@+id/expLay1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#90ba1f04"
+                        android:isScrollContainer="true"
+                        android:padding="16dp"
+                        app:ael_duration="400"
+                        app:ael_expanded="false"
+                        app:ael_interpolator="accelerateDecelerate"
+                        app:ael_orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/lblAirport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:text="Airport"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:visibility="visible" />
+
+                        <CheckBox
+                            android:id="@+id/ortiaChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:text="ORTIA"
+                            android:textColor="@color/white"
+                            android:visibility="visible" />
+
+                        <CheckBox
+                            android:id="@+id/ctiaChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="75dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_toRightOf="@id/ortiaChk"
+                            android:text="CTIA"
+                            android:textColor="@color/white"
+                            android:visibility="visible" />
+
+                        <CheckBox
+                            android:id="@+id/ksiaChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="75dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_toRightOf="@id/ctiaChk"
+                            android:text="KSIA"
+                            android:textColor="@color/white"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/lblJobType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ortiaChk"
+                            android:layout_centerHorizontal="true"
+                            android:text="Call Type"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <CheckBox
+                            android:id="@+id/inflightChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblJobType"
+                            android:text="Inflight Emergency"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/airsideChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblJobType"
+                            android:layout_alignTop="@id/inflightChk"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toRightOf="@id/inflightChk"
+                            android:text="Airside Transfer"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/airsideEmergenctChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/inflightChk"
+                            android:text="Airside Emergency"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/landsideChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/airsideChk"
+                            android:layout_marginLeft="22dp"
+                            android:layout_toRightOf="@id/airsideEmergenctChk"
+                            android:text="Landside Emergency"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/organChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/airsideEmergenctChk"
+                            android:text="Organ Transfer"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/lblacsaGeneral"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/organChk"
+                            android:layout_centerHorizontal="true"
+                            android:text="General"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <CheckBox
+                            android:id="@+id/acsaStaffChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblacsaGeneral"
+                            android:text="ACSA Staff"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/stakeholderChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblacsaGeneral"
+                            android:layout_marginLeft="70dp"
+                            android:layout_toRightOf="@id/acsaStaffChk"
+                            android:text="Other Stakeholder"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/publicPassChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/acsaStaffChk"
+                            android:text="Public/Passenger"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/location1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/publicPassChk"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginRight="20dp"
+                            android:text="Call Location"
+                            android:textColor="@color/white" />
+
+                        <EditText
+                            android:id="@+id/location1edt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/publicPassChk"
+                            android:layout_toRightOf="@id/location1"
+                            android:ems="10"
+                            android:hint="enter location here"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                    </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <Button
+        android:id="@+id/expandableButton2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sideScroll0"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#E1066DA1"
+        android:drawableRight="@android:drawable/arrow_down_float"
+        android:onClick="expandableButton2"
+        android:paddingRight="10dp"
+        android:text="Events"
+        android:textColor="#fff" />
+
+    <HorizontalScrollView
+        android:id="@+id/sideScroll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/expandableButton2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:id="@+id/scroll1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                        android:id="@+id/expLay2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#CE066DA1"
+                        android:isScrollContainer="true"
+                        android:overScrollMode="always"
+                        android:padding="16dp"
+                        android:scrollbarAlwaysDrawHorizontalTrack="false"
+                        android:scrollbarAlwaysDrawVerticalTrack="true"
+                        android:scrollbarStyle="insideOverlay"
+                        android:scrollbars="vertical"
+                        app:ael_duration="400"
+                        app:ael_expanded="false"
+                        app:ael_interpolator="accelerateDecelerate"
+                        app:ael_orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/lblCategory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="0dp"
+                            android:text="Category Type"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <CheckBox
+                            android:id="@+id/filmChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblCategory"
+                            android:text="Film &amp; TV"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/eventChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblCategory"
+                            android:layout_marginLeft="50dp"
+                            android:layout_toRightOf="@id/filmChk"
+                            android:text="Event"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/cticcChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/filmChk"
+                            android:text="CTICC"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/gccChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/eventChk"
+                            android:layout_alignLeft="@id/eventChk"
+                            android:layout_toRightOf="@id/cticcChk"
+                            android:text="GCC"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/lblEventDetails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/gccChk"
+                            android:layout_centerHorizontal="true"
+                            android:text="Event Details"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/lblEventName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblEventDetails"
+                            android:layout_alignLeft="@id/lblEventComp"
+                            android:layout_alignRight="@id/lblEventComp"
+                            android:layout_marginTop="15dp"
+                            android:text="Name of Event:"
+                            android:textColor="@color/white" />
+
+                        <EditText
+                            android:id="@+id/edtEventName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblEventDetails"
+                            android:layout_marginLeft="15dp"
+                            android:layout_toRightOf="@id/lblEventName"
+                            android:ems="10"
+                            android:hint="enter name here"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/lblEventComp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblEventName"
+                            android:layout_alignTop="@id/edtEventComp"
+                            android:layout_marginTop="15dp"
+                            android:text="Event Company:"
+                            android:textColor="@color/white" />
+
+                        <EditText
+                            android:id="@+id/edtEventComp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/edtEventName"
+                            android:layout_marginLeft="15dp"
+                            android:layout_toRightOf="@id/lblEventComp"
+                            android:ems="10"
+                            android:hint="enter company name"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/lblOrganiser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblEventComp"
+                            android:layout_alignLeft="@id/lblEventComp"
+                            android:layout_alignTop="@id/edtOrganiser"
+                            android:layout_marginTop="15dp"
+                            android:text="Organiser Name:"
+                            android:textColor="@color/white" />
+
+                        <EditText
+                            android:id="@+id/edtOrganiser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/edtEventComp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_toRightOf="@id/lblOrganiser"
+                            android:ems="10"
+                            android:hint="enter name"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/lblRole"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/edtOrganiser"
+                            android:layout_centerHorizontal="true"
+                            android:text="Role"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <CheckBox
+                            android:id="@+id/firstAidChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblRole"
+                            android:text="First Aid"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/prfChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblRole"
+                            android:layout_alignLeft="@id/gccChk"
+                            android:text="PRF"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/lblGeneral2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/prfChk"
+                            android:layout_centerHorizontal="true"
+                            android:text="General"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <CheckBox
+                            android:id="@+id/gccStaffChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblGeneral2"
+                            android:text="CTICC/GCC Staff"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/otherChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblGeneral2"
+                            android:layout_marginRight="30dp"
+                            android:layout_toRightOf="@id/gccChk"
+                            android:text="Other Stakeholders/Contractors"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/patronChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/gccStaffChk"
+                            android:text="Public/Patron"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/lblLoc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/patronChk"
+                            android:text="Location"
+                            android:textColor="@color/white" />
+
+                        <EditText
+                            android:id="@+id/edtLoc2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/otherChk"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_toRightOf="@id/lblLoc"
+                            android:ems="10"
+                            android:hint="enter location here"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <Button
+        android:id="@+id/expandableButton3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sideScroll1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#10a106"
+        android:drawableRight="@android:drawable/arrow_down_float"
+        android:onClick="expandableButton3"
+        android:paddingRight="10dp"
+        android:text="PRIMARY/IFT/HT"
+        android:textColor="#fff" />
+
+    <HorizontalScrollView
+        android:id="@+id/sideScroll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/expandableButton3"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:id="@+id/scroll2"
+                android:layout_width="383dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                        android:id="@+id/expLay3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="0dp"
+                        android:background="#9010a106"
+                        android:isScrollContainer="true"
+                        android:padding="16dp"
+                        app:ael_duration="400"
+                        app:ael_expanded="false"
+                        app:ael_interpolator="accelerateDecelerate"
+                        app:ael_orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/lblcallType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Call Type"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <CheckBox
+                            android:id="@+id/homeHosChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblcallType"
+                            android:text="Home To Hospital"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/facilityChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblcallType"
+                            android:layout_centerHorizontal="true"
+                            android:layout_toRightOf="@id/homeHosChk"
+                            android:text="Facility To Facility"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/houseChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/homeHosChk"
+                            android:text="House"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/officeChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/facilityChk"
+                            android:layout_alignLeft="@id/facilityChk"
+                            android:text="Office"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/publicChk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/houseChk"
+                            android:text="Public Venue"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/lblGeneral3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/publicChk"
+                            android:layout_centerHorizontal="true"
+                            android:text="General"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/lblLoc4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblGeneral3"
+                            android:layout_alignTop="@id/edtLoc4"
+                            android:layout_marginTop="15dp"
+                            android:text="Location:"
+                            android:textColor="@color/white" />
+
+                        <EditText
+                            android:id="@+id/edtLoc4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/lblGeneral3"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toRightOf="@id/lblLoc4"
+                            android:ems="10"
+                            android:hint="enter location"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="match_parent"
+        android:layout_height="153dp"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/lblDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView11"
+        android:layout_marginLeft="15dp"
+        android:text="Date:"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/dateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView11"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/lblDate"
+        android:text="dd-mm-yyyy"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/lblReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView11"
+        android:layout_marginLeft="35dp"
+        android:layout_toRightOf="@id/dateView"
+        android:text="Report Number:"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/reportNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView11"
+        android:layout_toRightOf="@id/lblReport"
+        android:text="001"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/lblTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="26dp"
+        android:text="Time of Report:"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/reportTime"
+        style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="78dp"
+        android:layout_marginTop="7dp"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="hh:mm"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sideScroll2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/loginshape"
+        android:onClick="Next"
+        android:shadowColor="@android:color/transparent"
+        android:text="Next"
+        android:textStyle="bold" />
+</RelativeLayout>

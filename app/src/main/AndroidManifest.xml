@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.cape_medics">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".VehicleCheckList"></activity>
+        <activity android:name=".Ambulance"/>
+        <activity android:name=".FireEngine"/>
+        <activity android:name=".ILSAMB"/>
+        <activity android:name=".ALS_ICU_AMB"/>
+        <activity android:name=".ALSRV"/>
+        <activity android:name=".ALSAMB_PAED"/>
+        <activity android:name=".medicalTabbedView" />
+
+        <activity android:name=".categoryType" />
+        <activity android:name=".MedicalForm" />
+        <activity android:name=".BroadCastMessage" />
+        <activity android:name=".ChooseBroadCast" />
+        <activity android:name=".ViewAttendanceCrew" />
+
+        <activity android:name=".BroadCast" />
+        <activity android:name=".ViewAttendance" />
+        <activity android:name=".TimeSheet" />
+        <activity android:name=".Home_Screen_Manager" />
+        <activity android:name=".Signature" />
+        <activity
+            android:name=".SwapShift"
+            android:label="@string/title_activity_swap_shift" />
+        <activity android:name=".DashBoard" />
+        <activity android:name=".Home_Screen_Crew" />
+        <activity android:name=".Login_Page">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back"
+    tools:context=".SwapShift">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo"
+        tools:layout_conversion_wrapHeight="525"
+        tools:layout_conversion_wrapWidth="1080" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:text="I hereby agree to work for "
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintRight_toLeftOf="@+id/spinner"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:layout_conversion_wrapHeight="105"
+        tools:layout_conversion_wrapWidth="542" />
+
+    <EditText
+        android:id="@+id/spinner"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="16dp"
+        android:hint="Name of person "
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:layout_conversion_wrapHeight="105"
+        tools:layout_conversion_wrapWidth="394" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginBottom="94dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="18sp"
+        android:text="on "
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintLeft_toLeftOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:layout_conversion_wrapHeight="105"
+        tools:layout_conversion_wrapWidth="63" />
+
+    <EditText
+        android:id="@+id/editText"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="333dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:ems="10"
+        android:hint="Date"
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        android:textAppearance="@android:style/TextAppearance.Holo.Small"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.429"
+        tools:layout_conversion_wrapHeight="105"
+        tools:layout_conversion_wrapWidth="874" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="348dp"
+        android:buttonTint="@android:color/black"
+        android:onClick="uncheck"
+        android:text="07H00 – 19h00"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        tools:layout_conversion_wrapHeight="84"
+        tools:layout_conversion_wrapWidth="341" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:buttonTint="@android:color/black"
+        android:onClick="uncheck"
+        android:text="19h00 – 07h00"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/checkBox"
+        tools:layout_conversion_wrapHeight="84"
+        tools:layout_conversion_wrapWidth="336" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="256dp"
+        android:background="@drawable/loginshape"
+        android:onClick="Send"
+
+        android:padding="15dp"
+        android:shadowColor="@android:color/transparent"
+        android:text="Send "
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/checkBox"
+        app:layout_constraintRight_toRightOf="@+id/checkBox"
+        tools:layout_conversion_wrapHeight="128"
+        tools:layout_conversion_wrapWidth="378" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="308dp"
+
+        android:background="@drawable/loginshape"
+        android:onClick="Cancel"
+        android:padding="15dp"
+        android:shadowColor="@android:color/transparent"
+        android:text="Cancel"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_conversion_wrapHeight="128"
+        tools:layout_conversion_wrapWidth="373" />
+
+</android.support.constraint.ConstraintLayout>
+
+

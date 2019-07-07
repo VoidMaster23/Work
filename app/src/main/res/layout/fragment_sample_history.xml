@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back"
+    tools:context=".SampleHistory" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:src="@drawable/logo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/chkNA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="131dp"
+                    android:layout_marginLeft="131dp"
+                    android:layout_marginEnd="131dp"
+                    android:layout_marginRight="131dp"
+                    android:text="Not Applicable"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+
+                <TextView
+                    android:id="@+id/lblSigns"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="56dp"
+                    android:text="Signs and Symptoms"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+
+                <EditText
+                    android:id="@+id/edtSigns"
+                    android:layout_width="217dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:height="50dp"
+                    android:ems="10"
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine|textPersonName"
+                    android:isScrollContainer="true"
+                    android:padding="5dp"
+
+                    android:singleLine="false"
+                    android:text="Name"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chkNA" />
+
+                <EditText
+                    android:id="@+id/edtAllergies"
+                    android:layout_width="217dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="33dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:ems="10"
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine|textPersonName"
+                    android:isScrollContainer="true"
+                    android:paddingTop="5dp"
+                    android:text="Name"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtSigns" />
+
+                <TextView
+                    android:id="@+id/lblAllergies"
+                    android:layout_width="67dp"
+                    android:layout_height="19dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="56dp"
+                    android:text="Allergies"
+                    android:ems="10"
+                    android:gravity="top|left"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblSigns" />
+
+                <EditText
+                    android:id="@+id/edtMedication"
+                    android:layout_width="217dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="33dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:ems="10"
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine|textPersonName"
+                    android:isScrollContainer="true"
+                    android:paddingTop="5dp"
+                    android:text="Name"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtAllergies" />
+
+                <EditText
+                    android:id="@+id/edtPast"
+                    android:layout_width="217dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="33dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:ems="10"
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine|textPersonName"
+                    android:isScrollContainer="true"
+                    android:paddingTop="5dp"
+                    android:text="Name"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtMedication" />
+
+                <EditText
+                    android:id="@+id/edtIntake"
+                    android:layout_width="217dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="33dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:ems="10"
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine|textPersonName"
+                    android:isScrollContainer="true"
+                    android:paddingTop="5dp"
+                    android:text="Name"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtPast" />
+
+                <EditText
+                    android:id="@+id/edtEvents"
+                    android:layout_width="217dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="33dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:ems="10"
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine|textPersonName"
+                    android:isScrollContainer="true"
+                    android:paddingTop="5dp"
+                    android:text="Name"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtIntake" />
+
+                <TextView
+                    android:id="@+id/lblMedication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="65dp"
+                    android:text="Medications"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblAllergies" />
+
+                <TextView
+                    android:id="@+id/lblPast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="65dp"
+                    android:text="Past Medical Hx"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblMedication" />
+
+                <TextView
+                    android:id="@+id/lblIntake"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="65dp"
+                    android:text="Last Intake/Output"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblPast" />
+
+                <TextView
+                    android:id="@+id/lblEvents"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="65dp"
+                    android:text="Events leading up to"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblIntake" />
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

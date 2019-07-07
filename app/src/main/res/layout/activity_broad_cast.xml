@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="match_parent"
+        android:layout_height="132dp"
+        android:text="Select All"
+        app:srcCompat="@drawable/logo" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select All"
+        android:textColor="@color/white"
+        android:buttonTint="@android:color/black"/>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:backgroundTint="@android:color/background_dark"
+        android:clickable="true" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/loginshape"
+            android:onClick="Cancel"
+            android:padding="15dp"
+            android:shadowColor="@android:color/transparent"
+
+            android:text="Cancel"
+            android:textColor="@android:color/black" />
+
+        <Space
+            android:layout_width="15dp"
+            android:layout_height="42dp" />
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/loginshape"
+            android:onClick="Choose"
+            android:padding="15dp"
+            android:shadowColor="@android:color/transparent"
+
+            android:text="Choose"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

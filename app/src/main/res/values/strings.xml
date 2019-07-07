@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Cape_Medics</string>
+    <string name="title_activity_swap_shift">SwapShift</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

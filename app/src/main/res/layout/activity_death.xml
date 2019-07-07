@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/back">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="400dp"
+        android:layout_height="80dp"
+        app:layout_constraintHorizontal_bias="0.317"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Declaration of Death"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location where deceased was found"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <EditText
+        android:id="@+id/locationEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:ems="10"
+        android:hint="location"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time of examination"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationEdit" />
+
+    <EditText
+        android:id="@+id/timeEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:ems="10"
+        android:hint="hh:mm"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/time" />
+
+    <TextView
+        android:id="@+id/findings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clinical FIndings"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeEdit" />
+
+    <TextView
+        android:id="@+id/pulse"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Carotid Pulse"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/leftChk"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/findings" />
+
+    <CheckBox
+        android:id="@+id/leftChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Left"
+        app:layout_constraintEnd_toStartOf="@id/rightChk"
+        app:layout_constraintStart_toEndOf="@+id/pulse"
+        app:layout_constraintTop_toBottomOf="@+id/findings" />
+
+    <CheckBox
+        android:id="@+id/rightChk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/leftChk"
+        app:layout_constraintTop_toBottomOf="@+id/findings" />
+
+
+    <TextView
+        android:id="@+id/breathing"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Breathing"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/breathingChkYes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pulse" />
+
+    <CheckBox
+        android:id="@+id/breathingChkYes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        app:layout_constraintEnd_toStartOf="@id/breathingChkNo"
+        app:layout_constraintStart_toEndOf="@+id/breathing"
+        app:layout_constraintTop_toBottomOf="@+id/leftChk" />
+
+    <CheckBox
+        android:id="@+id/breathingChkNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/breathingChkYes"
+        app:layout_constraintTop_toBottomOf="@+id/rightChk" />
+
+
+    <TextView
+        android:id="@+id/doll"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Doll Eye Movements"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/dollChkYes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breathing" />
+
+    <CheckBox
+        android:id="@+id/dollChkYes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        app:layout_constraintEnd_toStartOf="@id/dollChkNo"
+        app:layout_constraintStart_toEndOf="@+id/doll"
+        app:layout_constraintTop_toBottomOf="@id/breathingChkYes" />
+
+    <CheckBox
+        android:id="@+id/dollChkNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dollChkYes"
+        app:layout_constraintTop_toBottomOf="@id/breathingChkNo" />
+
+    <TextView
+        android:id="@+id/ecgLbl"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="ECG Straight Line"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/ecgChkYes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doll" />
+
+    <CheckBox
+        android:id="@+id/ecgChkYes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        app:layout_constraintEnd_toStartOf="@id/ecgChkNo"
+        app:layout_constraintStart_toEndOf="@+id/ecgLbl"
+        app:layout_constraintTop_toBottomOf="@id/dollChkYes" />
+
+    <CheckBox
+        android:id="@+id/ecgChkNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ecgChkYes"
+        app:layout_constraintTop_toBottomOf="@id/dollChkNo" />
+
+    <TextView
+        android:id="@+id/dilated"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Bilateral Fixed Dilated Pupils"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/dilatedChkYes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ecgLbl" />
+
+    <CheckBox
+        android:id="@+id/dilatedChkYes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        app:layout_constraintEnd_toStartOf="@id/dilatedChkNo"
+        app:layout_constraintStart_toEndOf="@+id/dilated"
+        app:layout_constraintTop_toBottomOf="@id/ecgChkYes" />
+
+    <CheckBox
+        android:id="@+id/dilatedChkNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dilatedChkYes"
+        app:layout_constraintTop_toBottomOf="@id/ecgChkNo" />
+
+
+    <TextView
+        android:id="@+id/statement1"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="**  I read this statement before I sign it"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dilated" />
+
+    <TextView
+        android:id="@+id/statement2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="**  I know and understand the content of this declaration"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statement1" />
+
+    <TextView
+        android:id="@+id/statement3"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="**  I have no objection to taking the prescribed oath"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statement2" />
+
+    <TextView
+        android:id="@+id/statement4"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="**  I Consider the prescribed oath to be binding on my concience."
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statement3" />
+
+
+
+    <TextView
+        android:id="@+id/declaration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:text="I HEREBY SWEAR THAT THE ABOVE STATEMENT WAS TAKEN BY ME AND THAT THE DEPONENT HAS ACKNOWLEDGED THAT HE KNOWS AND UNDERSTANDS THE CONTENTS OF THIS STATEMENT. THIS STATEMENT WAS SWORN TO BEFORE ME AND THE DEPONENTS SIGNATURE WAS PLACED THEREON IN MY PRESENCE"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statement4" />
+
+</android.support.constraint.ConstraintLayout>

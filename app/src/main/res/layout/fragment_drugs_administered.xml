@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@mipmap/back"
+    tools:context=".DrugsAdministered">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:src="@drawable/logo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/chkNA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Not Applicable"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView18"
+                    tools:layout_editor_absoluteX="74dp"
+                    tools:layout_editor_absoluteY="52dp" />
+
+                <Button
+                    android:id="@+id/btnDrugs1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="35dp"
+                    android:background="#ba1f04"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:paddingRight="10dp"
+                    android:text="Drugs Administered 1"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chkNA" />
+
+                <ScrollView
+                    android:id="@+id/drugScrl1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnDrugs1"
+                    tools:layout_editor_absoluteX="-16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/drugLay1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#90ba1f04"
+                            android:isScrollContainer="true"
+                            android:padding="15dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="false"
+                            app:ael_interpolator="accelerateDecelerate"
+                            app:ael_orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/drugTime1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Time"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugTime1"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="100dp"
+                                android:layout_toRightOf="@id/drugTime1"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="hh:mm"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/drugName1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugTime1"
+                                android:layout_marginTop="10dp"
+                                android:text="Drug Name"
+                                android:textColor="@color/white" />
+
+                            <Spinner
+                                android:id="@+id/drugNameSpn1"
+                                android:layout_width="300dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtDrugTime1"
+                                android:layout_alignLeft="@id/edtDrugTime1"
+                                android:layout_toRightOf="@id/drugName1" />
+
+                            <TextView
+                                android:id="@+id/drugDose1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugName1"
+                                android:layout_marginTop="10dp"
+                                android:text="Dosage"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugDose1"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/drugNameSpn1"
+                                android:layout_alignLeft="@+id/edtDrugTime1"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="dosage"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/drugRoute1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugDose1"
+                                android:layout_marginTop="10dp"
+                                android:text="Route"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugRoute1"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/edtDrugDose1"
+                                android:layout_alignLeft="@+id/edtDrugTime1"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="route"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+
+                            <TextView
+                                android:id="@+id/drugGiven1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugRoute1"
+                                android:layout_marginTop="10dp"
+                                android:text="Given By"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugGiven1"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/drugRoute1"
+                                android:layout_alignLeft="@+id/edtDrugTime1"
+                                android:layout_marginTop="5dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="enter name here"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    </LinearLayout>
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/btnDrugs2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="#E1066DA1"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:paddingRight="10dp"
+                    android:text="Drugs Administered 2"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/drugScrl1" />
+
+                <ScrollView
+                    android:id="@+id/drugScrl2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnDrugs2"
+                    tools:layout_editor_absoluteX="-16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/drugLay2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#CE066DA1"
+                            android:isScrollContainer="true"
+                            android:padding="15dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="false"
+                            app:ael_interpolator="accelerateDecelerate"
+                            app:ael_orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/drugTime2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Time"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugTime2"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="100dp"
+                                android:layout_toRightOf="@id/drugTime2"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="hh:mm"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/drugName2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugTime2"
+                                android:layout_marginTop="10dp"
+                                android:text="Drug Name"
+                                android:textColor="@color/white" />
+
+                            <Spinner
+                                android:id="@+id/drugNameSpn2"
+                                android:layout_width="300dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtDrugTime2"
+                                android:layout_alignLeft="@id/edtDrugTime2"
+                                android:layout_toRightOf="@id/drugName2" />
+
+                            <TextView
+                                android:id="@+id/drugDose2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugName2"
+                                android:layout_marginTop="10dp"
+                                android:text="Dosage"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugDose2"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/drugNameSpn2"
+                                android:layout_alignLeft="@+id/edtDrugTime2"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="dosage"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/drugRoute2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugDose2"
+                                android:layout_marginTop="10dp"
+                                android:text="Route"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugRoute2"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/edtDrugDose2"
+                                android:layout_alignLeft="@+id/edtDrugTime2"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="route"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+
+                            <TextView
+                                android:id="@+id/drugGiven2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugRoute2"
+                                android:layout_marginTop="10dp"
+                                android:text="Given By"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugGiven2"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/drugRoute2"
+                                android:layout_alignLeft="@+id/edtDrugTime2"
+                                android:layout_marginTop="5dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="enter name here"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    </LinearLayout>
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/btnDrugs3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="#10a106"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:paddingRight="10dp"
+                    android:text="Drugs Administered 3"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/drugScrl2" />
+
+                <ScrollView
+                    android:id="@+id/drugScrl3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnDrugs3"
+                    tools:layout_editor_absoluteX="-16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/drugLay3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#9010a106"
+                            android:isScrollContainer="true"
+                            android:padding="15dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="false"
+                            app:ael_interpolator="accelerateDecelerate"
+                            app:ael_orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/drugTime3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Time"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugTime3"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="100dp"
+                                android:layout_toRightOf="@id/drugTime3"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="hh:mm"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/drugName3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugTime3"
+                                android:layout_marginTop="10dp"
+                                android:text="Drug Name"
+                                android:textColor="@color/white" />
+
+                            <Spinner
+                                android:id="@+id/drugNameSpn3"
+                                android:layout_width="300dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtDrugTime3"
+                                android:layout_alignLeft="@id/edtDrugTime3"
+                                android:layout_toRightOf="@id/drugName3" />
+
+                            <TextView
+                                android:id="@+id/drugDose3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugName3"
+                                android:layout_marginTop="10dp"
+                                android:text="Dosage"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugDose3"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/drugNameSpn3"
+                                android:layout_alignLeft="@+id/edtDrugTime3"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="dosage"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/drugRoute3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugDose3"
+                                android:layout_marginTop="10dp"
+                                android:text="Route"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugRoute3"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/edtDrugDose3"
+                                android:layout_alignLeft="@+id/edtDrugTime3"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="route"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+
+                            <TextView
+                                android:id="@+id/drugGiven3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugRoute3"
+                                android:layout_marginTop="10dp"
+                                android:text="Given By"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugGiven3"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/drugRoute3"
+                                android:layout_alignLeft="@+id/edtDrugTime3"
+                                android:layout_marginTop="5dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="enter name here"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    </LinearLayout>
+                </ScrollView>
+
+
+                <Button
+                    android:id="@+id/btnDrugs4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="@color/Tel"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:paddingRight="10dp"
+                    android:text="Drugs Administered 4"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/drugScrl3" />
+
+                <ScrollView
+                    android:id="@+id/drugScrl4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnDrugs4"
+                    tools:layout_editor_absoluteX="-16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/drugLay4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#DEB7741C"
+                            android:isScrollContainer="true"
+                            android:padding="15dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="false"
+                            app:ael_interpolator="accelerateDecelerate"
+                            app:ael_orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/drugTime4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Time"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugTime4"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="100dp"
+                                android:layout_toRightOf="@id/drugTime4"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="hh:mm"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/drugName4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugTime4"
+                                android:layout_marginTop="10dp"
+                                android:text="Drug Name"
+                                android:textColor="@color/white" />
+
+                            <Spinner
+                                android:id="@+id/drugNameSpn4"
+                                android:layout_width="300dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtDrugTime4"
+                                android:layout_alignLeft="@id/edtDrugTime4"
+                                android:layout_toRightOf="@id/drugName4" />
+
+                            <TextView
+                                android:id="@+id/drugDose4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugName4"
+                                android:layout_marginTop="10dp"
+                                android:text="Dosage"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugDose4"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/drugNameSpn4"
+                                android:layout_alignLeft="@+id/edtDrugTime4"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="dosage"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/drugRoute4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugDose4"
+                                android:layout_marginTop="10dp"
+                                android:text="Route"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugRoute4"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/edtDrugDose4"
+                                android:layout_alignLeft="@+id/edtDrugTime4"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="route"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+
+                            <TextView
+                                android:id="@+id/drugGiven4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugRoute4"
+                                android:layout_marginTop="10dp"
+                                android:text="Given By"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugGiven4"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/drugRoute4"
+                                android:layout_alignLeft="@+id/edtDrugTime4"
+                                android:layout_marginTop="5dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="enter name here"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    </LinearLayout>
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/btnDrugs5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="#ba1f04"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:paddingRight="10dp"
+                    android:text="Drugs Administered 5"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/drugScrl4" />
+
+                <ScrollView
+                    android:id="@+id/drugScrl5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnDrugs5"
+                    tools:layout_editor_absoluteX="-16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/drugLay5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#90ba1f04"
+                            android:isScrollContainer="true"
+                            android:padding="15dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="false"
+                            app:ael_interpolator="accelerateDecelerate"
+                            app:ael_orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/drugTime5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Time"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugTime5"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="100dp"
+                                android:layout_toRightOf="@id/drugTime5"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="hh:mm"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/drugName5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugTime5"
+                                android:layout_marginTop="10dp"
+                                android:text="Drug Name"
+                                android:textColor="@color/white" />
+
+                            <Spinner
+                                android:id="@+id/drugNameSpn5"
+                                android:layout_width="300dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtDrugTime5"
+                                android:layout_alignLeft="@id/edtDrugTime5"
+                                android:layout_toRightOf="@id/drugName5" />
+
+                            <TextView
+                                android:id="@+id/drugDose5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugName5"
+                                android:layout_marginTop="10dp"
+                                android:text="Dosage"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugDose5"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/drugNameSpn5"
+                                android:layout_alignLeft="@+id/edtDrugTime5"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="dosage"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/drugRoute5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugDose5"
+                                android:layout_marginTop="10dp"
+                                android:text="Route"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugRoute5"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/edtDrugDose5"
+                                android:layout_alignLeft="@+id/edtDrugTime5"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="route"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+
+                            <TextView
+                                android:id="@+id/drugGiven5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugRoute5"
+                                android:layout_marginTop="10dp"
+                                android:text="Given By"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugGiven5"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/drugRoute5"
+                                android:layout_alignLeft="@+id/edtDrugTime5"
+                                android:layout_marginTop="5dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="enter name here"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    </LinearLayout>
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/btnDrugs6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="#E1066DA1"
+                    android:drawableRight="@android:drawable/arrow_down_float"
+                    android:paddingRight="10dp"
+                    android:text="Drugs Administered 6"
+                    android:textColor="#fff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/drugScrl5" />
+
+                <ScrollView
+                    android:id="@+id/drugScrl6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnDrugs6"
+                    tools:layout_editor_absoluteX="-16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                            android:id="@+id/drugLay6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#CE066DA1"
+                            android:isScrollContainer="true"
+                            android:padding="15dp"
+                            app:ael_duration="400"
+                            app:ael_expanded="false"
+                            app:ael_interpolator="accelerateDecelerate"
+                            app:ael_orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/drugTime6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Time"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugTime6"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_marginLeft="100dp"
+                                android:layout_toRightOf="@id/drugTime6"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="hh:mm"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/drugName6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugTime6"
+                                android:layout_marginTop="10dp"
+                                android:text="Drug Name"
+                                android:textColor="@color/white" />
+
+                            <Spinner
+                                android:id="@+id/drugNameSpn6"
+                                android:layout_width="300dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtDrugTime6"
+                                android:layout_alignLeft="@id/edtDrugTime6"
+                                android:layout_toRightOf="@id/drugName6" />
+
+                            <TextView
+                                android:id="@+id/drugDose6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugName6"
+                                android:layout_marginTop="10dp"
+                                android:text="Dosage"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugDose6"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/drugNameSpn6"
+                                android:layout_alignLeft="@+id/edtDrugTime6"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="dosage"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/drugRoute6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugDose6"
+                                android:layout_marginTop="10dp"
+                                android:text="Route"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugRoute6"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/edtDrugDose6"
+                                android:layout_alignLeft="@+id/edtDrugTime6"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="route"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+
+                            <TextView
+                                android:id="@+id/drugGiven6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/drugRoute6"
+                                android:layout_marginTop="10dp"
+                                android:text="Given By"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/edtDrugGiven6"
+                                android:layout_width="146dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@id/drugRoute6"
+                                android:layout_alignLeft="@+id/edtDrugTime6"
+                                android:layout_marginTop="5dp"
+                                android:background="@null"
+                                android:ems="10"
+                                android:hint="enter name here"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+                        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+                    </LinearLayout>
+                </ScrollView>
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
