@@ -9,11 +9,42 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
 
 
 public class Resuscitation extends Fragment {
+    private ImageView imageView19;
+    private CheckBox chkNA;
+    private TextView countDown;
+    private Button btnStart;
+    private Button btnStop;
+    private Button btnReset;
+    private TextView textView25;
+    private CheckBox chkBystander;
+    private CheckBox chkEms;
+    private CheckBox chkFirst;
+    private CheckBox chkOther;
+    private TextView textView26;
+    private CheckBox chkPads;
+    private CheckBox chkPaddles;
+    private TextView textView27;
+    private CheckBox chkCPRo;
+    private CheckBox chkIncAirway;
+    private TextView textView28;
+    private EditText edtStartCPR;
+    private TextView textView29;
+    private EditText edtEndCPR;
+    private TextView textView30;
+    private EditText edtDrugIssue;
+    private CheckBox chkWitness;
 
+    JSONObject resicitation;
 
     TextView textView;
     int minutes, sec;
@@ -35,6 +66,32 @@ public class Resuscitation extends Fragment {
         minutes = 3;
         sec = 60;
         textView = view.findViewById(R.id.countDown);
+        imageView19 = (ImageView)view.findViewById(R.id.imageView19);
+        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
+        btnStart = (Button)view.findViewById( R.id.btnStart );
+        btnStop = (Button)view.findViewById( R.id.btnStop );
+        btnReset = (Button)view.findViewById( R.id.btnReset );
+        textView25 = (TextView)view.findViewById( R.id.textView25 );
+        chkBystander = (CheckBox)view.findViewById( R.id.chkBystander );
+        chkEms = (CheckBox)view.findViewById( R.id.chkEms );
+        chkFirst = (CheckBox)view.findViewById( R.id.chkFirst );
+        chkOther = (CheckBox)view.findViewById( R.id.chkOther );
+        textView26 = (TextView)view.findViewById( R.id.textView26 );
+        chkPads = (CheckBox)view.findViewById( R.id.chkPads );
+        chkPaddles = (CheckBox)view.findViewById( R.id.chkPaddles );
+        textView27 = (TextView)view.findViewById( R.id.textView27 );
+        chkCPRo = (CheckBox)view.findViewById( R.id.chkCPRo );
+        chkIncAirway = (CheckBox)view.findViewById( R.id.chkIncAirway );
+        textView28 = (TextView)view.findViewById( R.id.textView28 );
+        edtStartCPR = (EditText)view.findViewById( R.id.edtStartCPR );
+        textView29 = (TextView)view.findViewById( R.id.textView29 );
+        edtEndCPR = (EditText)view.findViewById( R.id.edtEndCPR );
+        textView30 = (TextView)view.findViewById( R.id.textView30 );
+        edtDrugIssue = (EditText)view.findViewById( R.id.edtDrugIssue );
+        chkWitness = (CheckBox)view.findViewById( R.id.chkWitness );
+
+
+
 
         final CountDownTimer timer = new CountDownTimer(180000,1000){
             @Override
@@ -98,5 +155,53 @@ public class Resuscitation extends Fragment {
         return view;
     }
 
+
+    public void createJson(){
+
+        String provided = null;
+
+        if(chkBystander.isChecked()){
+            provided = chkBystander.getText().toString();
+        }else if(chkEms.isChecked()){
+            provided = chkEms.getText().toString();
+        }else if(chkFirst.isChecked()){
+            provided = chkFirst.getText().toString();
+        }else if(chkOther.isChecked()){
+            provided = chkOther.getText().toString();
+        }
+
+        String items = null;
+
+        if (chkPads.isChecked()){
+            items = chkPads.getText().toString();
+        }else if(chkPaddles.isChecked()){
+            items = chkPaddles.getText().toString();
+        }
+
+
+        String cpr = null;
+        if(chkCPRo.isChecked()){
+            cpr = chkCPRo.getText().toString();
+        }else if(chkIncAirway.isChecked()){
+            cpr = chkIncAirway.getText().toString();
+
+        }
+
+
+        String start = edtStartCPR.getText().toString();
+        String end  = edtEndCPR.getText().toString();
+
+
+        try{
+            resicitation.put("Provided",provided);
+            resicitation.put("Items",items);
+            resicitation.put("CPR Details",cpr);
+            resicitation.put("Start",start);
+            resicitation.put("End",end);
+        }catch (Exception e){
+            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
 }

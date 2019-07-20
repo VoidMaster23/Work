@@ -9,9 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -20,6 +24,13 @@ public class AirwayAdjunct extends Fragment {
 
 ArrayList<String> myList1;
 ListView list;
+CheckBox checkBox;
+Spinner attempts;
+Spinner check;
+JSONObject airwayAdjunct;
+String category;
+String numAttempt;
+String posChk;
 
 Integer[] attempt = {1,2,3,4};
 String[] pos = {"Auscultation","ETCO2"};
@@ -44,6 +55,7 @@ String[] pos = {"Auscultation","ETCO2"};
         myList1.add("S-CRICH");
 
         list = view.findViewById(R.id.airway);
+        checkBox = view.findViewById(R.id.chkAchieved);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),R.layout.custom_checked_list,myList1);
 
         list.setAdapter(adapter);
@@ -52,25 +64,59 @@ String[] pos = {"Auscultation","ETCO2"};
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView chk = view.findViewById(android.R.id.text1);
+                category = chk.getText().toString();
 
                 chk.toggle();
             }
         });
 
         //for the attempts
-        Spinner attempts = view.findViewById(R.id.spnAttempt);
+        attempts = view.findViewById(R.id.spnAttempt);
         ArrayAdapter aa = new ArrayAdapter(getContext(),R.layout.custom_spinner,attempt);
+
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         attempts.setAdapter(aa);
+
+        attempts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+               numAttempt = attempt[i].toString();
+            }
+        });
 
         //for the pos
         Spinner spnPos = view.findViewById(R.id.spnPos);
         ArrayAdapter bb = new ArrayAdapter(getContext(),R.layout.custom_spinner, pos);
         bb.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnPos.setAdapter(bb);
-        return view;
-    }
 
+        spnPos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                posChk = pos[i];
+            }
+        });
+        return view;
+
+
+
+    }
+    public void createJson(){
+
+
+        try{
+
+            airwayAdjunct.put("Category",category);
+            airwayAdjunct.put("Achieved",checkBox.getText().toString());
+            airwayAdjunct.put("Attempts",numAttempt);
+            airwayAdjunct.put("Position Check", posChk);
+
+        }catch (Exception e){
+            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
 
 }

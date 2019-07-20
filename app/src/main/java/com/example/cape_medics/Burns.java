@@ -8,10 +8,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 
@@ -30,6 +34,10 @@ public class Burns extends Fragment {
 
     Button calc;
 
+    CheckBox adult, child;
+    String bType, bDress, bInhale, burnDeg;
+    JSONObject burns;
+
     public Burns() {
         // Required empty public constructor
     }
@@ -45,6 +53,8 @@ public class Burns extends Fragment {
         dress = view.findViewById(R.id.treatment);
         inhale = view.findViewById(R.id.inhaleBurn);
         burn = view.findViewById(R.id.degree);
+        adult = view.findViewById(R.id.chkAdult);
+        child = view.findViewById(R.id.chkChild);
 
         ArrayAdapter a1 = new ArrayAdapter(getContext(),R.layout.custom_checked_list,burnType);
         ArrayAdapter a2 = new ArrayAdapter(getContext(),R.layout.custom_checked_list,treatment);
@@ -85,7 +95,7 @@ public class Burns extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
-
+                bType = text.getText().toString();
                 text.toggle();
             }
         });
@@ -94,7 +104,7 @@ public class Burns extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
-
+                bDress = text.getText().toString();
                 text.toggle();
             }
         });
@@ -103,7 +113,7 @@ public class Burns extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
-
+                bInhale = text.getText().toString();
                 text.toggle();
             }
         });
@@ -112,13 +122,41 @@ public class Burns extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
-
+                burnDeg = text.getText().toString();
                 text.toggle();
             }
         });
 
 
         return view;
+    }
+
+    public void createJson(){
+        String ageBurn = null;
+
+        if(adult.isChecked()){
+            ageBurn = adult.getText().toString();
+        }else if(child.isChecked()){
+            ageBurn = child.getText().toString();
+        }
+
+        String weigh = weight.getText().toString();
+        String surf = tsa.getText().toString();
+        String ans = score.getText().toString();
+
+        try{
+            burns.put("Age", ageBurn);
+            burns.put("Burn Type", bType);
+            burns.put("Dressing", bDress);
+            burns.put("Inhalation", bInhale);
+            burns.put("Degree of Burn", burnDeg);
+            burns.put("Weight", weigh);
+            burns.put("TSA", surf);
+            burns.put("Answer", ans);
+
+        }catch (Exception e){
+            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

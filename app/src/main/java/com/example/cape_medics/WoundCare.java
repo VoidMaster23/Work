@@ -11,6 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
 
 
 public class WoundCare extends Fragment {
@@ -20,6 +23,9 @@ public class WoundCare extends Fragment {
     String[] barrier = {"Strip(steri-strip etc)","Adhesive Plaster (strip or anchor)","Film Barrier (Tergaderm)","Island Dressing","FAD","Cohesive/Elastic Bandage"};
 
     ListView lisWound, lisTreat, lisBarrier;
+    String woundStr, treatStr, barrierStr;
+
+    JSONObject woundCare;
 
     public WoundCare() {
         // Required empty public constructor
@@ -49,6 +55,7 @@ public class WoundCare extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
 
+                woundStr = text.getText().toString();
                 text.toggle();
             }
         });
@@ -57,6 +64,8 @@ public class WoundCare extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
+
+                barrierStr = text.getText().toString();
 
                 text.toggle();
             }
@@ -67,11 +76,21 @@ public class WoundCare extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
 
+                treatStr = text.getText().toString();
                 text.toggle();
             }
         });
         return view;
     }
 
+    public void createJson(){
+       try{
+           woundCare.put("Wound Type",woundStr);
+           woundCare.put("Barrier",barrierStr);
+           woundCare.put("Treated With",treatStr);
+       }catch (Exception e){
+           Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+       }
+    }
 
 }

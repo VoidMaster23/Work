@@ -13,11 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import org.json.JSONObject;
+
 
 public class ApgarScore extends Fragment {
     EditText activity, pulse, grim, look, breathe;
     Button calc;
     TextView textView;
+
+    JSONObject apgarScpre;
 
     public ApgarScore() {
         // Required empty public constructor
@@ -53,6 +57,14 @@ public class ApgarScore extends Fragment {
 
 
         return view;
+    }
+
+    public void createJson(){
+        try{
+            apgarScpre.put("Apgar Score",textView.getText().toString());
+        }catch (Exception e){
+            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
     }
 
 

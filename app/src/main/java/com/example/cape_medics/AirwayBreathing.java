@@ -12,6 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -19,6 +22,9 @@ import java.util.ArrayList;
 public class AirwayBreathing extends Fragment {
 
     ArrayList<String> myList;
+    ListView listView;
+    JSONObject airwayBreathing;
+    String management;
     public AirwayBreathing() {
         // Required empty public constructor
     }
@@ -44,7 +50,7 @@ public class AirwayBreathing extends Fragment {
 
         ArrayAdapter adapter = new ArrayAdapter(getContext(),R.layout.custom_checked_list, myList);
 
-        ListView listView = view.findViewById(R.id.listView);
+        listView = view.findViewById(R.id.listView);
 
         listView.setAdapter(adapter);
 
@@ -52,14 +58,22 @@ public class AirwayBreathing extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
-
+                management = text.getText().toString();
                 text.toggle();
             }
         });
 
 
+
         return view;
     }
 
+    public void createJson(){
+        try{
+            airwayBreathing.put("Management",management);
+        }catch (Exception e){
+            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+    }
 
 }

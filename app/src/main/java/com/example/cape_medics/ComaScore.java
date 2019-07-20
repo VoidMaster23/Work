@@ -11,6 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
 
 
 public class ComaScore extends Fragment {
@@ -26,6 +29,10 @@ public class ComaScore extends Fragment {
     ArrayAdapter eyeAdapter, verbAdapter, motorAdapter;
 
     String gScore, tScore;
+
+    JSONObject comaScore;
+
+    String eyeStr, verbStr, motorStr;
 
     public ComaScore() {
         // Required empty public constructor
@@ -72,6 +79,8 @@ public class ComaScore extends Fragment {
 
                tScore = "Revised Trauma Score: "+traumaScore()+"/12";
                trauma.setText(tScore);
+
+               eyeStr = eyeResp[i];
            }
 
            @Override
@@ -88,6 +97,8 @@ public class ComaScore extends Fragment {
 
                 tScore = "Revised Trauma Score: "+traumaScore()+"/12";
                 trauma.setText(tScore);
+
+                motorStr = motorResp[i];
             }
 
             @Override
@@ -104,6 +115,8 @@ public class ComaScore extends Fragment {
 
                 tScore = "Revised Trauma Score: "+traumaScore()+"/12";
                 trauma.setText(tScore);
+
+                verbStr = verbResp[i];
             }
 
             @Override
@@ -140,6 +153,19 @@ public class ComaScore extends Fragment {
             return 0;
         }
 
+    }
+
+    public void  createJson(){
+        try{
+            comaScore.put("Eye Response",eyeStr);
+            comaScore.put("Verbal Response",verbStr);
+            comaScore.put("Motor Response",motorStr);
+
+            comaScore.put("GCS",gcs.getText().toString());
+            comaScore.put("RTS",trauma.getText().toString());
+        }catch (Exception e){
+            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
     }
 
 

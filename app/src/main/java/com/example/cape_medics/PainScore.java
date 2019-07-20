@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
 
 
 public class PainScore extends Fragment {
@@ -22,6 +25,8 @@ public class PainScore extends Fragment {
 
     TextView textView1, textView2, textView3, textView4;
     RelativeLayout painLay;
+
+    JSONObject painScore;
 
     public PainScore() {
         // Required empty public constructor
@@ -108,6 +113,26 @@ public class PainScore extends Fragment {
 
 
         return view;
+    }
+
+    public void createJson(){
+
+        String preStr = pre.getText().toString();
+        String post5Str = post1.getText().toString();
+        String post10Str = post2.getText().toString();
+        String hospStr = hosp.getText().toString();
+
+        try{
+            painScore.put("Pre-Analgesia",preStr);
+            painScore.put("Post 5",post5Str);
+            painScore.put("Post 10",post10Str);
+            painScore.put("Hospital",hospStr);
+
+
+        }catch (Exception e){
+            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 }
