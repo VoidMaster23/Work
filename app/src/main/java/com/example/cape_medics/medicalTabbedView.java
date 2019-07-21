@@ -8,12 +8,20 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+
+import org.json.JSONObject;
+import org.json.JSONArray;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class medicalTabbedView extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
     public static int int_items = 35 ;
+
 
     private MedicalFormCalls medicalFormCalls;
     private PatientDetails patientDetails;
@@ -50,6 +58,11 @@ public class medicalTabbedView extends AppCompatActivity {
     private Notes notes;
     private Death death;
     private Death2 death2;
+
+    static HashMap<String,JSONObject> map;
+
+    String[] tabNames = {"Call Details","Patient Details","Primary Survey","Presenting Condition","Sample History","Vital Signs","Airway & Breathing Management","Airway Adjunct","Resuscitation","Cardiac Monitoring","Cannulation","Drugs Administered","Injury Matrix","Glasgow Coma Score","Wound Care","Burns","Pain Score","Stroke","APGAR Score","BLS/ILS Aid To Patient","Treatment","Ventilator Settings","Employers Details","Payment Method","Guarantee of Payment","Refusal of Care","Mobility","Disposal","Crew Details","Accompanying Practitioner","Items Handed Over","Handover/Disposal","Notes","Death","Death2"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +119,58 @@ public class medicalTabbedView extends AppCompatActivity {
         notes = new Notes();
         death = new Death();
         death2 = new Death2();
+
+
+        map = new HashMap<>();
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+                switch (tabNames[i]){
+
+                    case "Death2": {
+                        map.put("Call Details", medicalFormCalls.createJson());
+                        map.put("Patient Details", patientDetails.createJson());
+                        map.put("Primary Survey",primarySurvey.createJson());
+                        map.put("Presenting Condition", presentingCondition.createJson());
+                        map.put("Sample History",sampleHistory.createJson());
+                        map.put("Vital Signs",vitalSigns.createJson());
+                        map.put("Airway & Breathing Management", airwayBreathing.createJson());
+                        map.put("Airway Adjunct", airwayAdjunct.createJson());
+                        map.put("Resuscitation", resuscitation.createJson());
+                        map.put("Cannulation", cannulation.createJson());
+                        map.put("Drugs Administered",drugsAdministered.createJson());
+                        map.put("Cardiac Monitoring", cardiacMonitoring.createJson());
+                        map.put("Glasgow Coma Score", comaScore.createJson());
+                        map.put("Wound Care", woundCare.createJson());
+                        map.put("Burns", burns.createJson());
+                        map.put("Pain Score", score.createJson());
+                        map.put("Stroke",stroke.createJson());
+                        map.put("APGAR Score", apgarScore.createJson());
+
+                        Log.i("HERE", "I made it ");
+
+                    }
+
+
+
+
+
+
+
+                }
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
 
     }
 
@@ -244,5 +309,7 @@ public class medicalTabbedView extends AppCompatActivity {
             }
             return null;
         }
+
+
     }
 }

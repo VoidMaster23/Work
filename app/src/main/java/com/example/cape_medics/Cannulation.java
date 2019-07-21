@@ -110,20 +110,28 @@ private Spinner spn1,spn2;
         spn1.setAdapter(a1);
         spn2.setAdapter(a2);
 
-        spn1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spn1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 fluidType2 = fluid[i];
             }
-        });
 
-        spn2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                fluidType2 = fluid[i];
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
+spn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        fluidType2 = fluid[i];
+    }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+});
 
         chkNA = (CheckBox)view.findViewById( R.id.chkNA );
 
@@ -160,7 +168,9 @@ private Spinner spn1,spn2;
         return view;
     }
 
-    public void createJson(){
+    public JSONObject createJson(){
+
+        cannulation = new JSONObject();
 
         String time1 = edtTim1.getText().toString();
         String size1 = edtSize1.getText().toString();
@@ -207,6 +217,8 @@ private Spinner spn1,spn2;
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+
+        return cannulation;
     }
 
 

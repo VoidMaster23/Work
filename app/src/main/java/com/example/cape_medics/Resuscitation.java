@@ -156,8 +156,9 @@ public class Resuscitation extends Fragment {
     }
 
 
-    public void createJson(){
+    public JSONObject createJson(){
 
+        resicitation = new JSONObject();
         String provided = null;
 
         if(chkBystander.isChecked()){
@@ -201,7 +202,7 @@ public class Resuscitation extends Fragment {
         }catch (Exception e){
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
+    return resicitation;
     }
 
 }

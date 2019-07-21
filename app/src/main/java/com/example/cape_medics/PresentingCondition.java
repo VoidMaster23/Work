@@ -97,7 +97,7 @@ public class PresentingCondition extends Fragment{
     }
 
 
-    public void createJson(){
+    public JSONObject createJson(){
         //name
 
         String name = edtPrimary.getText().toString();
@@ -164,12 +164,16 @@ public class PresentingCondition extends Fragment{
             condition = chkDeliver.getText().toString();
         }
 
+        presentingConditon = new JSONObject();
+
         try{
             presentingConditon.put("Primary",name);
             presentingConditon.put("Medical Condition",condition);
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+
+        return presentingConditon;
     }
 
 }

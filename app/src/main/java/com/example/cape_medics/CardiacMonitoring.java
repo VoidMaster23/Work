@@ -50,8 +50,9 @@ public class CardiacMonitoring extends Fragment {
         return view;
     }
 
-    public void creareJson(){
+    public JSONObject createJson(){
         String monitor  = null;
+        cardiacMonitoring = new JSONObject();
         if(chk3Lead.isChecked()){
             monitor = chk3Lead.getText().toString();
         }else if(chk5Lead.isChecked()){
@@ -74,6 +75,7 @@ public class CardiacMonitoring extends Fragment {
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+        return cardiacMonitoring;
 
     }
 

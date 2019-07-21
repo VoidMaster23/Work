@@ -21,7 +21,7 @@ public class ApgarScore extends Fragment {
     Button calc;
     TextView textView;
 
-    JSONObject apgarScpre;
+    JSONObject apgarScore;
 
     public ApgarScore() {
         // Required empty public constructor
@@ -59,13 +59,16 @@ public class ApgarScore extends Fragment {
         return view;
     }
 
-    public void createJson(){
+    public JSONObject createJson(){
+        apgarScore = new JSONObject();
         try{
-            apgarScpre.put("Apgar Score",textView.getText().toString());
+            apgarScore.put("Apgar Score",textView.getText().toString());
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+        return apgarScore;
     }
+
 
 
 }

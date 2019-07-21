@@ -59,7 +59,10 @@ public class Stroke extends Fragment {
        return view;
     }
 
-    public void createJson(){
+    public JSONObject createJson(){
+
+        stroke = new JSONObject();
+
         String facial = null;
         String arm = null;
         String speech = null;
@@ -85,6 +88,7 @@ public class Stroke extends Fragment {
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
+        return stroke;
     }
 
 }

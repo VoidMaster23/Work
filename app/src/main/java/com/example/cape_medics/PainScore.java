@@ -115,7 +115,9 @@ public class PainScore extends Fragment {
         return view;
     }
 
-    public void createJson(){
+    public JSONObject createJson(){
+
+        painScore = new JSONObject();
 
         String preStr = pre.getText().toString();
         String post5Str = post1.getText().toString();
@@ -133,6 +135,7 @@ public class PainScore extends Fragment {
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
+        return painScore;
     }
 
 }

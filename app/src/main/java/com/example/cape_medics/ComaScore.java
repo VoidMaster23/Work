@@ -155,7 +155,8 @@ public class ComaScore extends Fragment {
 
     }
 
-    public void  createJson(){
+    public JSONObject  createJson(){
+        comaScore = new JSONObject();
         try{
             comaScore.put("Eye Response",eyeStr);
             comaScore.put("Verbal Response",verbStr);
@@ -166,6 +167,8 @@ public class ComaScore extends Fragment {
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+
+        return comaScore;
     }
 
 

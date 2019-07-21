@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.Iterator;
 
 
 public class SampleHistory extends Fragment {
@@ -32,6 +37,7 @@ public class SampleHistory extends Fragment {
     private TextView lblIntake;
     private TextView lblEvents;
 JSONObject sampleHistory;
+    JSONObject myOBJ;
 
 
 
@@ -62,11 +68,13 @@ JSONObject sampleHistory;
         lblIntake = (TextView)view.findViewById( R.id.lblIntake );
         lblEvents = (TextView)view.findViewById( R.id.lblEvents );
 
+        sampleHistory = new JSONObject();
+        myOBJ = new JSONObject();
         return view;
     }
 
 
-    public void createJson(){
+    public JSONObject createJson(){
 
         String signs = edtSigns.getText().toString();
         String allergies = edtAllergies.getText().toString();
@@ -74,6 +82,12 @@ JSONObject sampleHistory;
         String past = edtPast.getText().toString();
         String last = edtIntake.getText().toString();
         String events = edtEvents.getText().toString();
+
+    sampleHistory = new JSONObject();
+
+
+
+
 
         try{
 
@@ -83,10 +97,17 @@ JSONObject sampleHistory;
             sampleHistory.put("Past",past);
             sampleHistory.put("Last",last);
             sampleHistory.put("Events",events);
+
+
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
+
+        Log.i("Called","Summon");
+        return sampleHistory;
     }
+
+
 
 }

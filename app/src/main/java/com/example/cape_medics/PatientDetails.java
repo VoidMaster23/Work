@@ -96,7 +96,7 @@ public class PatientDetails extends Fragment {
         return view;
     }
 
-    public void createJson(){
+    public JSONObject createJson(){
 
         //details
         String name = edtName.getText().toString();
@@ -145,6 +145,7 @@ public class PatientDetails extends Fragment {
 
 
         //json
+        patientDetails = new JSONObject();
         try{
             patientDetails.put("Full name",name);
             patientDetails.put("Surname",surname);
@@ -162,6 +163,8 @@ public class PatientDetails extends Fragment {
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+
+        return patientDetails;
 
     }
 

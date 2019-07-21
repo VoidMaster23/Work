@@ -83,7 +83,10 @@ public class WoundCare extends Fragment {
         return view;
     }
 
-    public void createJson(){
+    public JSONObject createJson(){
+
+        woundCare = new JSONObject();
+
        try{
            woundCare.put("Wound Type",woundStr);
            woundCare.put("Barrier",barrierStr);
@@ -91,6 +94,7 @@ public class WoundCare extends Fragment {
        }catch (Exception e){
            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
        }
+       return woundCare;
     }
 
 }

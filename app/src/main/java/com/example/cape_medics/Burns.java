@@ -131,7 +131,8 @@ public class Burns extends Fragment {
         return view;
     }
 
-    public void createJson(){
+    public JSONObject createJson(){
+        burns = new JSONObject();
         String ageBurn = null;
 
         if(adult.isChecked()){
@@ -157,6 +158,8 @@ public class Burns extends Fragment {
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+
+        return burns;
     }
 
 }

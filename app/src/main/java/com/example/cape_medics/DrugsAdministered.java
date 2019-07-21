@@ -241,42 +241,73 @@ public class DrugsAdministered extends Fragment {
             drugspn5.setAdapter(adapter5);
             drugspn6.setAdapter(adapter6);
 
-            drugspn1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            drugspn1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     drugStr1 = drugs[i];
                 }
-            });
-            drugspn2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
                 @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
+            drugspn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     drugStr2 = drugs[i];
                 }
-            });
-            drugspn3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
                 @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+            drugspn3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     drugStr3 = drugs[i];
                 }
-            });
-            drugspn4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
                 @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+            drugspn4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     drugStr4 = drugs[i];
                 }
-            });
-            drugspn5.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
                 @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            }); drugspn5.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     drugStr5 = drugs[i];
                 }
-            });
-            drugspn6.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
                 @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    drugStr6 = drugs[i];
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
                 }
             });
+            drugspn6.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    drugStr6 = drugs[i];
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
 
 
         }catch (IOException e){
@@ -349,7 +380,10 @@ public class DrugsAdministered extends Fragment {
         return writer.toString();
     }
 
-    public void createJson(){
+    public JSONObject createJson(){
+
+        drugsAdministered = new JSONObject();
+
         String time1 = edtDrugTime1.getText().toString();
         String dosage1 = edtDrugDose1.getText().toString();
         String route1 = edtDrugRoute1.getText().toString();
@@ -441,5 +475,7 @@ public class DrugsAdministered extends Fragment {
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+
+        return drugsAdministered;
     }
 }

@@ -111,7 +111,7 @@ public class MedicalFormCalls extends Fragment {
         return view;
     }
 
-    public void createJson(){
+    public JSONObject createJson(){
 
         //callRec
         String callTime = callEnRouteTime.getText().toString();
@@ -144,6 +144,8 @@ public class MedicalFormCalls extends Fragment {
         //call priority
         String priority;
 
+
+
         if(checkBox8.isChecked()) {priority = checkBox8.getText().toString();}
         else if(checkBox9.isChecked()){
             priority = checkBox9.getText().toString();
@@ -156,6 +158,8 @@ public class MedicalFormCalls extends Fragment {
         } else{
             priority = checkBox13.getText().toString();
         }
+
+        callDetails = new JSONObject();
 
         try{
             callDetails.put("Call Received Time",callTime);
@@ -179,6 +183,8 @@ public class MedicalFormCalls extends Fragment {
         }catch (Exception e){
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+
+        return callDetails;
     }
 
 

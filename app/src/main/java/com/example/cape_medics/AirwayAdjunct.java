@@ -78,10 +78,15 @@ String[] pos = {"Auscultation","ETCO2"};
 
         attempts.setAdapter(aa);
 
-        attempts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        attempts.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-               numAttempt = attempt[i].toString();
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                numAttempt = attempt[i].toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 
@@ -91,10 +96,15 @@ String[] pos = {"Auscultation","ETCO2"};
         bb.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnPos.setAdapter(bb);
 
-        spnPos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spnPos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 posChk = pos[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
         return view;
@@ -102,8 +112,9 @@ String[] pos = {"Auscultation","ETCO2"};
 
 
     }
-    public void createJson(){
+    public JSONObject createJson(){
 
+        airwayAdjunct = new JSONObject();
 
         try{
 
@@ -115,7 +126,7 @@ String[] pos = {"Auscultation","ETCO2"};
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
-
+    return  airwayAdjunct;
 
     }
 

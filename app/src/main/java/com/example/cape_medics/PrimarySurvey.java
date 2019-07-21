@@ -89,7 +89,7 @@ JSONObject primarySurvery;
     }
 
 
-    public void createJson(){
+    public JSONObject createJson(){
 
         //Time
         String time = edtTime.getText().toString();
@@ -154,6 +154,7 @@ JSONObject primarySurvery;
         }
 
         //Create JSOn
+        primarySurvery = new JSONObject();
         try{
             primarySurvery.put("Time", time);
             primarySurvery.put("Airway", airway);
@@ -165,6 +166,7 @@ JSONObject primarySurvery;
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
+        return primarySurvery;
     }
 
 

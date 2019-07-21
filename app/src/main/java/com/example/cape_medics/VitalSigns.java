@@ -299,8 +299,9 @@ Button button1,button2,button3, button4;
     }
 
 
-    public void createJson(){
+    public JSONObject createJson(){
 
+        vitalSigns = new JSONObject();
 
         String time1 = edtTime1.getText().toString();
         String pulse1 = edtPulse1.getText().toString();
@@ -434,6 +435,7 @@ Button button1,button2,button3, button4;
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
+        return vitalSigns;
     }
 
 
