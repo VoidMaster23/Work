@@ -2,6 +2,7 @@ package com.example.cape_medics;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -9,13 +10,24 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class ALSAMB_PAED extends AppCompatActivity {
     Spinner VehicleNumber;
     TextView dateView;
+    List<CheckBox> checkBoxList;
+    List<EditText> commentList;
+    JSONObject als_amb_paed;
+    String Date;
+
+    private  EditText driver, controller, checkedBy, inspectionTime;
+
     private CheckBox air;
     private EditText airComment;
     private CheckBox antennae;
@@ -540,7 +552,7 @@ public class ALSAMB_PAED extends AppCompatActivity {
     private EditText ngTubeComment;
     private CheckBox airwayPack;
     private TextView airwayPackQty;
-    private EditText gairwayPackComment;
+    private EditText airwayPackComment;
     private CheckBox urinaryCatheter;
     private TextView urinaryCatheterQty;
     private EditText urinaryCatheterComment;
@@ -1242,7 +1254,7 @@ public class ALSAMB_PAED extends AppCompatActivity {
         ngTubeComment = (EditText)findViewById( R.id.ngTubeComment );
         airwayPack = (CheckBox)findViewById( R.id.airwayPack );
         airwayPackQty = (TextView)findViewById( R.id.airwayPackQty );
-        gairwayPackComment = (EditText)findViewById( R.id.gairwayPackComment );
+        airwayPackComment = (EditText)findViewById( R.id.airwayPackComment );
         urinaryCatheter = (CheckBox)findViewById( R.id.urinaryCatheter );
         urinaryCatheterQty = (TextView)findViewById( R.id.urinaryCatheterQty );
         urinaryCatheterComment = (EditText)findViewById( R.id.urinaryCatheterComment );
@@ -1429,7 +1441,14 @@ public class ALSAMB_PAED extends AppCompatActivity {
         setContentView(R.layout.activity_alsamb__paed);
         VehicleNumber = findViewById(R.id.vehicleNumberSpinner);
         dateView = findViewById(R.id.dateView);
+        driver = findViewById(R.id.driverEdit);
+        controller = findViewById(R.id.controllerEdit);
+        checkedBy = findViewById(R.id.checkedEdit);
+        inspectionTime = findViewById(R.id.timeEdit);
+        dateView = findViewById(R.id.dateView);
 
+        findViews();
+        als_amb_paed = new JSONObject();
         String[] vehicleNumber = {"MED 1","MED 2","MED 3","MED 4","MED 5","MED 6","MED 7","MED 8","MED 9","MED 10","MED 11","MED 12","MED 13","MED 14","MED 15","MED 16","MED 17","MED 18","MED 19","MED 20","MED 21","MED 22","MED 23","MED 24"};
 
         ArrayAdapter<String> vehicleNumberAdapter = new ArrayAdapter<>(this,
@@ -1445,6 +1464,28 @@ public class ALSAMB_PAED extends AppCompatActivity {
         String Date = DateTime.substring(0,10);
         dateView.setText(Date);
 
-        findViews();
+        checkBoxList = Arrays.asList(air,antennae,battery,body,brake,branding,dashboard,emergency,exhaust,oil,fuel,headlights,leftIndicator,rightIndicator,back,front,jack,leds,licence,plates,radio,rear,reverse,side,siren,spare,tread,pressure,windows,windscreen,ecgLbl,adultEcg,childEcg,spareBattery,spareEcg,oximeter,suctionUnit,suctionReservoir,chargingCable,suctionTubing,softSuction,adultSuction,paedSuction,ventilatorKit,circuitHose,circuitHoseFilter,co2Attachment,oxygenCylinder,oxygenGauge,oxygenCylinderKey,syringePump,powerCable,fiftySyringe,microbore,incubator,incubatorBattery,incubatorPowerCable,incubatorMattress,incubatorHeadbox,incubatorSensor,disposableProbes,gauge,stretcher,straps,mattress,sheet,pillow,pillowCase,blanket,other,adultKed,childKed,adultSplint,scoopStretcher,spinalBoard,headBlocks,basePlate,spiderHarness,headStraps,zipStretcher,longSplints,shortSplints,adultCollar,childCollar,fireExtinguisher,rescueHelmet,roadCones,reflectorVests,wasteBin,medicalWaste,sharpsBin,bodyBag,gloves,portableOxygen,pinRegulator,oxygenMainline,oxygenFlowMeter,bullNose,aed,adultDefibPads,childDefibPads,defibGel,asprin,gtn,clopidogrel,adenosine,amiodarone,lignocaine,adrenaline,atropine,magnesium,calcium,soda,thiamine,diazepam,midazolam,promethazine,activatedCharcoal,flumazenil,naloxone,morphine,dextrose,glucose,fenoterol,bromide,corticosteriods,furosemide,metaclopramide,buscopan,bigPlasters,smallPlasters,cetrimide,elastoplastRoll,prf,doa,gop,torniquet,glucometer,gloves2,bp,stethoscope,rescueScissors,thermometer,pupilTorch,testStrips,lancets,sats,adultMask,adultRebreather,adultNebulizer,adultNasal,childMask,childRebreather,childNebuliser,childNasal,traumaPads,traumaDressing100,traumaDressing200,bandage75,bandage50,stretchBandage,elastoplast,adultBvm,childBvm,infantBvm,adultMagilles,childMagilles,tube000,tube00,tube0,tube1,tube2,tube3,tube4,tube5,lma5,lma4,lma3,lma2,lma1,uvcPack,maternity,needleCric,ngTube,airwayPack,urinaryCatheter,urineBag,suturePack,spirometer,ringers1000,sodiumChloride,colloid,canulla14,canulla16,canulla18,canulla20,canulla22,canulla24,admin60,admin20,admin15,admin10,webcol,tegaderm,syringe50,syringe20,syringe10,syringe5,syringe3,needle18,needle21,handle,blade4,blade3,blade2,blade1,blade0,et25,et3,et35,et4,et45,et5,et55,et6,et65,et7,et75,et8,et85,tongue,childHolder,tubeTape,spareBatteries,micropore,peepValve,spaceBlanket,gauze,triBandages,vommit,multiPack);
+        commentList = Arrays.asList(airComment,antennaeComment,batteryComment,bodyComment,brakeComment,brandingComment,dashboardComment,emergencyComment,exhaustComment,oilComment,fuelComment,headlightsComment,leftIndicatorComment,rightIndicatorComment,backComment,frontComment,jackComment,ledsComment,licenceComment,platesComment,radioComment,rearComment,reverseComment,sideComment,sirenComment,spareComment,treadComment,pressureComment,windowsComment,windscreenComment,ecgComment,adultEcgComment,childEcgComment,spareBatteryComment,spareEcgComment,oximeterComment,suctionUnitComment,suctionReservoirComment,chargingCableComment,suctionTubingComment,softSuctionComment,adultSuctionComment,paedSuctionComment,ventilatorKitComment,circuitHoseComment,circuitHoseFilterComment,co2AttachmentComment,oxygenCylinderComment,oxygenGaugeComment,oxygenCylinderKeyComment,syringePumpComment,powerCableComment,fiftySyringeComment,microboreComment,incubatorComment,incubatorBatteryComment,incubatorPowerCableComment,incubatorMattressComment,incubatorHeadboxComment,incubatorSensorComment,disposableProbesComment,gaugeComment,stretcherComment,strapsComment,mattressComment,sheetComment,pillowComment,pillowCaseComment,blanketComment,otherComment,adultKedComment,childKedComment,adultSplintComment,scoopStretcherComment,spinalBoardComment,headBlocksComment,basePlateComment,spiderHarnessComment,headStrapsComment,zipStretcherComment,longSplintsComment,shortSplintsComment,adultCollarComment,childCollarComment,fireExtinguisherComment,rescueHelmetComment,roadConesComment,reflectorVestsComment,wasteBinComment,medicalWasteComment,sharpsBinComment,bodyBagComment,glovesComment,portableOxygenComment,pinRegulatorComment,oxygenMainlineComment,oxygenFlowMeterComment,bullNoseComment,aedComment,adultDefibPadsComment,childDefibPadsComment,defibGelComment,asprinComment,gtnComment,clopidogrelComment,adenosineComment,amiodaroneComment,lignocaineComment,adrenalineComment,atropineComment,magnesiumComment,calciumComment,sodaComment,thiamineComment,diazepamComment,midazolamComment,promethazineComment,activatedCharcoalComment,flumazenilComment,naloxoneComment,morphineComment,dextroseComment,glucoseComment,fenoterolComment,bromideComment,corticosteriodsComment,furosemideComment,metaclopramideComment,buscopanComment,bigPlastersComment,smallPlastersComment,cetrimideComment,elastoplastRollComment,prfComment,doaComment,gopComment,torniquetComment,glucometerComment,gloves2Comment,bpComment,stethoscopeComment,rescueScissorsComment,thermometerComment,pupilTorchComment,testStripsComment,lancetsComment,satsComment,adultMaskComment,adultRebreatherComment,adultNebulizerComment,adultNasalComment,childMaskComment,childRebreatherComment,childNebuliserComment,childNasalComment,traumaPadsComment,traumaDressing100Comment,traumaDressing200Comment,bandage75Comment,bandage50Comment,stretchBandageComment,elastoplastComment,adultBvmComment,childBvmComment,infantBvmComment,adultMagillesComment,childMagillesComment,tube000Comment,tube00Comment,tube0Comment,tube1Comment,tube2Comment,tube3Comment,tube4Comment,tube5Comment,lma5Comment,lma4Comment,lma3Comment,lma2Comment,lma1Comment,uvcPackComment,maternityComment,needleCricComment,ngTubeComment,airwayPackComment,urinaryCatheterComment,urineBagComment,suturePackComment,spirometerComment,ringers1000Comment,sodiumChlorideComment,colloidComment,canulla14Comment,canulla16Comment,canulla18Comment,canulla20Comment,canulla22Comment,canulla24Comment,admin60Comment,admin20Comment,admin15Comment,admin10Comment,webcolComment,tegadermComment,syringe50Comment,syringe20Comment,syringe10Comment,syringe5Comment,syringe3Comment,needle18Comment,needle21Comment,handleComment,blade4Comment,blade3Comment,blade2Comment,blade1Comment,blade0Comment,et25Comment,et3Comment,et35Comment,et4Comment,et45Comment,et5Comment,et55Comment,et6Comment,et65Comment,et7Comment,et75Comment,et8Comment,et85Comment,tongueComment,childHolderComment,tubeTapeComment,spareBatteriesComment,microporeComment,peepValveComment,spaceBlanketComment,gauzeComment,triBandagesComment,vommitComment,multiPackComment);
+    }
+
+    public void Send (View v){
+        try{
+            als_amb_paed.put("Vehicle Number", String.valueOf(VehicleNumber));
+            als_amb_paed.put("Driver", driver.toString());
+            als_amb_paed.put("Controller", controller.toString());
+            als_amb_paed.put("Checked By", checkedBy.toString());
+            als_amb_paed.put("Inspection Date", Date);
+            als_amb_paed.put("Inspection Time", inspectionTime.toString());
+
+        }catch(Exception e){}
+
+        for (int i = 0; i<checkBoxList.size();i++){
+            if(!checkBoxList.get(i).isChecked()){
+                try{
+                    als_amb_paed.put(checkBoxList.get(i).getText().toString(),commentList.get(i).toString());
+                }catch(Exception e){}
+            }
+        }
+
     }
 }

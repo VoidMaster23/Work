@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     android:background="@mipmap/back">
 
+
+
     <Button
         android:id="@+id/button6"
         android:layout_width="160dp"
@@ -130,5 +132,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
+
+
 
 </android.support.constraint.ConstraintLayout>

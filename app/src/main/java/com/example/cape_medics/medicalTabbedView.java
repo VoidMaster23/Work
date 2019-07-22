@@ -20,7 +20,7 @@ public class medicalTabbedView extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    public static int int_items = 35 ;
+    public static int int_items = 34 ;
 
 
     private MedicalFormCalls medicalFormCalls;
@@ -57,7 +57,7 @@ public class medicalTabbedView extends AppCompatActivity {
     private Handoff_frag handoff_frag;
     private Notes notes;
     private Death death;
-    private Death2 death2;
+
 
     static HashMap<String,JSONObject> map;
 
@@ -118,7 +118,7 @@ public class medicalTabbedView extends AppCompatActivity {
         handoff_frag = new Handoff_frag();
         notes = new Notes();
         death = new Death();
-        death2 = new Death2();
+
 
 
         map = new HashMap<>();
@@ -128,7 +128,7 @@ public class medicalTabbedView extends AppCompatActivity {
             public void onPageScrolled(int i, float v, int i1) {
                 switch (tabNames[i]){
 
-                    case "Death2": {
+                    case "Death": {
                         map.put("Call Details", medicalFormCalls.createJson());
                         map.put("Patient Details", patientDetails.createJson());
                         map.put("Primary Survey",primarySurvey.createJson());
@@ -140,6 +140,7 @@ public class medicalTabbedView extends AppCompatActivity {
                         map.put("Resuscitation", resuscitation.createJson());
                         map.put("Cannulation", cannulation.createJson());
                         map.put("Drugs Administered",drugsAdministered.createJson());
+                        map.put("Injury Matrix",injuryMatrix.createJson());
                         map.put("Cardiac Monitoring", cardiacMonitoring.createJson());
                         map.put("Glasgow Coma Score", comaScore.createJson());
                         map.put("Wound Care", woundCare.createJson());
@@ -223,7 +224,7 @@ public class medicalTabbedView extends AppCompatActivity {
                 case 31: return handoff_frag;
                 case 32: return notes;
                 case 33: return death;
-                case 34: return death2;
+
 
 
 
@@ -303,7 +304,7 @@ public class medicalTabbedView extends AppCompatActivity {
                 case 31: return "Handover/Disposal";
                 case 32: return "Notes";
                 case 33: return "Death";
-                case 34: return "Death2";
+
 
 
             }

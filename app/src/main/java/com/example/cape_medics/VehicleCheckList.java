@@ -19,7 +19,7 @@ public class VehicleCheckList extends AppCompatActivity {
     }
 
     public void Fire(View v){
-        Intent i = new Intent(getApplicationContext(), FireEngine.class);
+        Intent i = new Intent(getApplicationContext(), FireSelect.class);
         startActivity(i);
     }
 }

@@ -10,7 +10,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 public class PaymentMethod extends Fragment {
+    JSONObject paymentMethod;
     TextView receipt, name, plan, number, member;
     EditText receiptEdit, nameEdit, planEdit, numberEdit, memberEdit;
     CheckBox medicalaid, account, cash, credit, gop;
@@ -22,6 +25,7 @@ public class PaymentMethod extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.activity_payment_method,container,false);
 
+        paymentMethod = new JSONObject();
 
         medicalaid = view.findViewById(R.id.medicalaidChk);
         account = view.findViewById(R.id.accountChk);
@@ -241,6 +245,51 @@ public class PaymentMethod extends Fragment {
         return view;
     }
 
+    public JSONObject Send(View v){
+        paymentMethod = new JSONObject();
+
+        if (medicalaid.isChecked()){
+            try{
+                paymentMethod.put("Medical Aid",  medicalaid.getText().toString());
+                paymentMethod.put("Name",  nameEdit);
+                paymentMethod.put("Plan",  planEdit);
+                paymentMethod.put("Receipt Number",  receiptEdit);
+                paymentMethod.put("Main Member",  memberEdit);
+            }catch(Exception e){}
+        }
+        if (account.isChecked()) {
+            try{
+                paymentMethod.put("Account",  account.getText().toString());
+                paymentMethod.put("Name",  nameEdit);
+                paymentMethod.put("Plan",  planEdit);
+                paymentMethod.put("Receipt Number",  receiptEdit);
+                paymentMethod.put("Main Member",  memberEdit);
+            }catch(Exception e){}
+        }
+        if (cash.isChecked()){
+            try{
+                paymentMethod.put("Cash",  cash.getText().toString());
+                paymentMethod.put("Receipt Number",  receiptEdit);
+            }catch(Exception e){}
+        }
+        if (credit.isChecked()){
+            try{
+                paymentMethod.put("Credit Card/EFT",  credit.getText().toString());
+                paymentMethod.put("Receipt Number",  receiptEdit);
+            }catch(Exception e){}
+        }
+        if (gop.isChecked()){
+            try{
+                paymentMethod.put("G.O.P",  gop.getText().toString());
+                paymentMethod.put("Name",  nameEdit);
+                paymentMethod.put("Plan",  planEdit);
+                paymentMethod.put("Receipt Number",  receiptEdit);
+                paymentMethod.put("Main Member",  memberEdit);
+            }catch(Exception e){}
+        }
+
+        return paymentMethod;
+    }
 
 
 

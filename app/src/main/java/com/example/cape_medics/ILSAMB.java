@@ -13,17 +13,26 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class ILSAMB extends AppCompatActivity {
     Spinner VehicleNumber;
     TextView dateView;
+    List<CheckBox> checkBoxList;
+    List<EditText> commentList;
+    JSONObject ils_amb;
+    String Date;
+
+    private  EditText driver, controller, checkedBy, inspectionTime;
 
     private HorizontalScrollView sideScroll0;
     private ScrollView scroll0;
-    private TextView driver;
     private CheckBox air;
     private EditText airComment;
     private CheckBox antennae;
@@ -494,7 +503,6 @@ public class ILSAMB extends AppCompatActivity {
     private void findViews() {
         sideScroll0 = (HorizontalScrollView)findViewById( R.id.sideScroll0 );
         scroll0 = (ScrollView)findViewById( R.id.scroll0 );
-        driver = (TextView)findViewById( R.id.driver );
         air = (CheckBox)findViewById( R.id.air );
         airComment = (EditText)findViewById( R.id.airComment );
         antennae = (CheckBox)findViewById( R.id.antennae );
@@ -966,7 +974,14 @@ public class ILSAMB extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ilsamb);
 
+        ils_amb = new JSONObject();
+
         VehicleNumber = findViewById(R.id.vehicleNumberSpinner);
+        dateView = findViewById(R.id.dateView);
+        driver = findViewById(R.id.driverEdit);
+        controller = findViewById(R.id.controllerEdit);
+        checkedBy = findViewById(R.id.checkedEdit);
+        inspectionTime = findViewById(R.id.timeEdit);
         dateView = findViewById(R.id.dateView);
 
         String[] vehicleNumber = {"MED 1","MED 2","MED 3","MED 4","MED 5","MED 6","MED 7","MED 8","MED 9","MED 10","MED 11","MED 12","MED 13","MED 14","MED 15","MED 16","MED 17","MED 18","MED 19","MED 20","MED 21","MED 22","MED 23","MED 24"};
@@ -981,10 +996,33 @@ public class ILSAMB extends AppCompatActivity {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         String DateTime = dateFormat.format(date);
-        String Date = DateTime.substring(0,10);
+        Date = DateTime.substring(0,10);
         dateView.setText(Date);
 
         findViews();
 
+        checkBoxList = Arrays.asList(air,antennae,battery,body,brake,branding,dashboard,emergency,exhaust,oil,fuel,headlights,leftIndicator,rightIndicator,back,front,jack,leds,licence,plates,radio,rear,reverse,side,siren,spare,tread,pressure,windows,windscreen,ecgLbl,adultEcg,childEcg,spareBattery,spareEcg,oximeter,suctionUnit,suctionReservoir,chargingCable,suctionTubing,softSuction,adultSuction,paedSuction,stretcher,straps,mattress,sheet,pillow,pillowCase,blanket,other,adultKed,childKed,adultSplint,scoopStretcher,spinalBoard,headBlocks,basePlate,spiderHarness,headStraps,zipStretcher,longSplints,shortSplints,adultCollar,childCollar,fireExtinguisher,rescueHelmet,roadCones,reflectorVests,wasteBin,medicalWaste,sharpsBin,bodyBag,gloves,portableOxygen,pinRegulator,oxygenMainline,oxygenFlowMeter,bullNose,aed,adultDefibPads,childDefibPads,defibGel,asprin,gtn,dextrose,glucose,fenoterol,bromide,bigPlasters,smallPlasters,cetrimide,elastoplastRoll,prf,doa,gop,torniquet,glucometer,gloves2,bp,stethoscope,rescueScissors,thermometer,pupilTorch,testStrips,lancets,sats,adultMask,adultRebreather,adultNebulizer,adultNasal,childMask,childRebreather,childNebuliser,childNasal,traumaPads,traumaDressing100,traumaDressing200,bandage75,bandage50,stretchBandage,elastoplast,adultBvm,childBvm,infantBvm,tube000,tube00,tube0,tube1,tube2,tube3,tube4,tube5,maternity,needleCric,ringers1000,sodiumChloride,colloid,canulla14,canulla16,canulla18,canulla20,canulla22,canulla24,admin60,admin20,admin15,admin10,webcol,tegaderm,syringe20,syringe10,syringe5,syringe3,needle18,needle21,tongue,micropore,spaceBlanket,gauze,triBandages,vommit,multiPack);
+        commentList = Arrays.asList(airComment,antennaeComment,batteryComment,bodyComment,brakeComment,brandingComment,dashboardComment,emergencyComment,exhaustComment,oilComment,fuelComment,headlightsComment,leftIndicatorComment,rightIndicatorComment,backComment,frontComment,jackComment,ledsComment,licenceComment,platesComment,radioComment,rearComment,reverseComment,sideComment,sirenComment,spareComment,treadComment,pressureComment,windowsComment,windscreenComment,ecgComment,adultEcgComment,childEcgComment,spareBatteryComment,spareEcgComment,oximeterComment,suctionUnitComment,suctionReservoirComment,chargingCableComment,suctionTubingComment,softSuctionComment,adultSuctionComment,paedSuctionComment,stretcherComment,strapsComment,mattressComment,sheetComment,pillowComment,pillowCaseComment,blanketComment,otherComment,adultKedComment,childKedComment,adultSplintComment,scoopStretcherComment,spinalBoardComment,headBlocksComment,basePlateComment,spiderHarnessComment,headStrapsComment,zipStretcherComment,longSplintsComment,shortSplintsComment,adultCollarComment,childCollarComment,fireExtinguisherComment,rescueHelmetComment,roadConesComment,reflectorVestsComment,wasteBinComment,medicalWasteComment,sharpsBinComment,bodyBagComment,glovesComment,portableOxygenComment,pinRegulatorComment,oxygenMainlineComment,oxygenFlowMeterComment,bullNoseComment,aedComment,adultDefibPadsComment,childDefibPadsComment,defibGelComment,asprinComment,gtnComment,dextroseComment,glucoseComment,fenoterolComment,bromideComment,bigPlastersComment,smallPlastersComment,cetrimideComment,elastoplastRollComment,prfComment,doaComment,gopComment,torniquetComment,glucometerComment,gloves2Comment,bpComment,stethoscopeComment,rescueScissorsComment,thermometerComment,pupilTorchComment,testStripsComment,lancetsComment,satsComment,adultMaskComment,adultRebreatherComment,adultNebulizerComment,adultNasalComment,childMaskComment,childRebreatherComment,childNebuliserComment,childNasalComment,traumaPadsComment,traumaDressing100Comment,traumaDressing200Comment,bandage75Comment,bandage50Comment,stretchBandageComment,elastoplastComment,adultBvmComment,childBvmComment,infantBvmComment,tube000Comment,tube00Comment,tube0Comment,tube1Comment,tube2Comment,tube3Comment,tube4Comment,tube5Comment,maternityComment,needleCricComment,ringers1000Comment,sodiumChlorideComment,colloidComment,canulla14Comment,canulla16Comment,canulla18Comment,canulla20Comment,canulla22Comment,canulla24Comment,admin60Comment,admin20Comment,admin15Comment,admin10Comment,webcolComment,tegadermComment,syringe20Comment,syringe10Comment,syringe5Comment,syringe3Comment,needle18Comment,needle21Comment,tongueComment,microporeComment,spaceBlanketComment,gauzeComment,triBandagesComment,vommitComment,multiPackComment);
+
+    }
+
+    public void Send(View v){
+        try{
+            ils_amb.put("Vehicle Number", String.valueOf(VehicleNumber));
+            ils_amb.put("Driver", driver.toString());
+            ils_amb.put("Controller", controller.toString());
+            ils_amb.put("Checked By", checkedBy.toString());
+            ils_amb.put("Inspection Date", Date);
+            ils_amb.put("Inspection Time", inspectionTime.toString());
+
+        }catch(Exception e){}
+
+        for (int i = 0; i<checkBoxList.size();i++){
+            if(!checkBoxList.get(i).isChecked()){
+                try{
+                    ils_amb.put(checkBoxList.get(i).getText().toString(),commentList.get(i).toString());
+                }catch(Exception e){}
+            }
+        }
     }
 }

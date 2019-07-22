@@ -27,12 +27,9 @@
         android:text="I hereby agree to work for "
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
-        app:layout_constraintRight_toLeftOf="@+id/spinner"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:layout_conversion_wrapHeight="105"
-        tools:layout_conversion_wrapWidth="542" />
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/spinner"
@@ -44,12 +41,9 @@
         android:layout_marginBottom="16dp"
         android:hint="Name of person "
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:layout_conversion_wrapHeight="105"
-        tools:layout_conversion_wrapWidth="394" />
+        app:layout_constraintStart_toEndOf="@id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/textView3"
@@ -61,12 +55,9 @@
         android:text="on "
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintLeft_toLeftOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:layout_conversion_wrapHeight="105"
-        tools:layout_conversion_wrapWidth="63" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintEnd_toStartOf="@+id/editText"
+        app:layout_constraintStart_toStartOf="parent"  />
 
     <EditText
         android:id="@+id/editText"
@@ -82,13 +73,9 @@
         android:textAppearance="@android:style/TextAppearance.Holo.Small"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/textView3"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.429"
-        tools:layout_conversion_wrapHeight="105"
-        tools:layout_conversion_wrapWidth="874" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"/>
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -101,11 +88,9 @@
         android:onClick="uncheck"
         android:text="07H00 – 19h00"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/textView3"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        tools:layout_conversion_wrapHeight="84"
-        tools:layout_conversion_wrapWidth="341" />
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintEnd_toStartOf="@+id/checkBox2"
+        app:layout_constraintStart_toStartOf="parent"  />
 
     <CheckBox
         android:id="@+id/checkBox2"
@@ -116,12 +101,9 @@
         android:buttonTint="@android:color/black"
         android:onClick="uncheck"
         android:text="19h00 – 07h00"
-        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/checkBox"
-        tools:layout_conversion_wrapHeight="84"
-        tools:layout_conversion_wrapWidth="336" />
+        app:layout_constraintStart_toEndOf="@id/checkBox"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <Button
         android:id="@+id/button"
@@ -137,11 +119,9 @@
         android:shadowColor="@android:color/transparent"
         android:text="Send "
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/checkBox"
-        app:layout_constraintRight_toRightOf="@+id/checkBox"
-        tools:layout_conversion_wrapHeight="128"
-        tools:layout_conversion_wrapWidth="378" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2"
+        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button5"
@@ -157,13 +137,9 @@
         android:shadowColor="@android:color/transparent"
         android:text="Cancel"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_conversion_wrapHeight="128"
-        tools:layout_conversion_wrapWidth="373" />
+        app:layout_constraintStart_toEndOf="@id/button"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
 
 </android.support.constraint.ConstraintLayout>
 

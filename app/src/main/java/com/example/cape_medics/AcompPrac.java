@@ -9,19 +9,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+
+import org.json.JSONObject;
 
 public class AcompPrac extends Fragment {
 
     ListView practitioner;
+    SendMessage SM;
     Button go;
+    JSONObject accompanyingPractitioner;
+    EditText healthRegistration, name;
 
-    public AcompPrac(){};
+    public AcompPrac(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_acomp_prac,container,false);
+        accompanyingPractitioner = new JSONObject();
+        healthRegistration = view.findViewById(R.id.healthEdit);
+        name = view.findViewById(R.id.nameEdit);
         practitioner = view.findViewById(R.id.items);
 
         practitioner.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -43,8 +52,29 @@ public class AcompPrac extends Fragment {
         });
 
         //add recording mechanism
-    return view;
+        return view;
     }
 
+    interface SendMessage{
+        void sendData(String message);
+    }
 
+    public JSONObject Send (View v){
+        accompanyingPractitioner = new JSONObject();
+        for (int i = 0; i < practitioner.getChildCount(); i++) {
+
+            if (practitioner.isItemChecked(i)){
+                try{
+                    accompanyingPractitioner.put(practitioner.getItemAtPosition(i).toString(),practitioner.getItemAtPosition(i).toString());
+
+                }catch (Exception e){}
+            }
+
+            try{
+                accompanyingPractitioner.put("Name", name);
+                accompanyingPractitioner.put("Health and Registration Number", healthRegistration);
+            }catch (Exception e){}
+        }
+        return accompanyingPractitioner;
+    }
 }

@@ -7,343 +7,351 @@
     android:background="@mipmap/back"
     tools:context=".Resuscitation">
 
-    <ScrollView
+    <HorizontalScrollView
+        android:id="@+id/sideScroll0"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="50dp">
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
             android:paddingBottom="50dp">
 
-            <android.support.constraint.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="50dp">
 
-                <ImageView
-                    android:id="@+id/imageView19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:src="@drawable/logo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <CheckBox
-                    android:id="@+id/chkNA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="Not Applicable"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView19"
-                    tools:layout_editor_absoluteX="74dp"
-                    tools:layout_editor_absoluteY="52dp" />
+                    <ImageView
+                        android:id="@+id/imageView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:src="@drawable/logo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/countDown"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="100dp"
-                    android:layout_marginLeft="100dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="103dp"
-                    android:layout_marginRight="103dp"
-                    android:text="03:00"
-                    android:textColor="@color/white"
-                    android:textSize="36sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkNA" />
+                    <CheckBox
+                        android:id="@+id/chkNA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="Not Applicable"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView19"
+                        tools:layout_editor_absoluteX="74dp"
+                        tools:layout_editor_absoluteY="52dp" />
 
-                <Button
-                    android:id="@+id/btnStart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:background="@drawable/loginshape"
-                    android:text="Start"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/countDown" />
+                    <TextView
+                        android:id="@+id/countDown"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="100dp"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginEnd="103dp"
+                        android:layout_marginRight="103dp"
+                        android:text="03:00"
+                        android:textColor="@color/white"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/chkNA" />
 
-                <Button
-                    android:id="@+id/btnStop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="29dp"
-                    android:layout_marginLeft="29dp"
-                    android:layout_marginEnd="35dp"
-                    android:layout_marginRight="35dp"
-                    android:background="@drawable/loginshape"
-                    android:text="Stop"
-                    app:layout_constraintEnd_toStartOf="@+id/btnReset"
-                    app:layout_constraintStart_toEndOf="@+id/btnStart"
-                    app:layout_constraintTop_toBottomOf="@+id/countDown" />
+                    <Button
+                        android:id="@+id/btnStart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:background="@drawable/loginshape"
+                        android:text="Start"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/countDown" />
 
-                <Button
-                    android:id="@+id/btnReset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="95dp"
-                    android:layout_marginEnd="43dp"
-                    android:layout_marginRight="43dp"
-                    android:background="@drawable/loginshape"
-                    android:text="Reset"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView19" />
+                    <Button
+                        android:id="@+id/btnStop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="29dp"
+                        android:layout_marginLeft="29dp"
+                        android:layout_marginEnd="35dp"
+                        android:layout_marginRight="35dp"
+                        android:background="@drawable/loginshape"
+                        android:text="Stop"
+                        app:layout_constraintEnd_toStartOf="@+id/btnReset"
+                        app:layout_constraintStart_toEndOf="@+id/btnStart"
+                        app:layout_constraintTop_toBottomOf="@+id/countDown" />
 
-                <TextView
-                    android:id="@+id/textView25"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="168dp"
-                    android:layout_marginLeft="168dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="168dp"
-                    android:layout_marginRight="168dp"
-                    android:text="Provided By"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnStop" />
+                    <Button
+                        android:id="@+id/btnReset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="95dp"
+                        android:layout_marginEnd="43dp"
+                        android:layout_marginRight="43dp"
+                        android:background="@drawable/loginshape"
+                        android:text="Reset"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView19" />
 
-                <CheckBox
-                    android:id="@+id/chkBystander"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="54dp"
-                    android:text="Bystander"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnStart" />
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="168dp"
+                        android:layout_marginLeft="168dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="168dp"
+                        android:layout_marginRight="168dp"
+                        android:text="Provided By"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnStop" />
 
-                <CheckBox
-                    android:id="@+id/chkEms"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="54dp"
-                    android:layout_marginEnd="71dp"
-                    android:layout_marginRight="71dp"
-                    android:text="EMS"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnReset" />
+                    <CheckBox
+                        android:id="@+id/chkBystander"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="54dp"
+                        android:text="Bystander"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnStart" />
 
-                <CheckBox
-                    android:id="@+id/chkFirst"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="31dp"
-                    android:text="First Reporter"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkBystander" />
+                    <CheckBox
+                        android:id="@+id/chkEms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="54dp"
+                        android:layout_marginEnd="71dp"
+                        android:layout_marginRight="71dp"
+                        android:text="EMS"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnReset" />
 
-                <CheckBox
-                    android:id="@+id/chkOther"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="31dp"
-                    android:layout_marginEnd="64dp"
-                    android:layout_marginRight="64dp"
-                    android:text="Other"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkEms" />
+                    <CheckBox
+                        android:id="@+id/chkFirst"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="31dp"
+                        android:text="First Reporter"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/chkBystander" />
 
-                <TextView
-                    android:id="@+id/textView26"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="176dp"
-                    android:layout_marginLeft="176dp"
-                    android:layout_marginTop="119dp"
-                    android:layout_marginEnd="176dp"
-                    android:layout_marginRight="176dp"
-                    android:text="Items Used"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView25" />
+                    <CheckBox
+                        android:id="@+id/chkOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="31dp"
+                        android:layout_marginEnd="64dp"
+                        android:layout_marginRight="64dp"
+                        android:text="Other"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/chkEms" />
 
-                <CheckBox
-                    android:id="@+id/chkPads"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="64dp"
-                    android:text="Pads"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkFirst" />
+                    <TextView
+                        android:id="@+id/textView26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="176dp"
+                        android:layout_marginLeft="176dp"
+                        android:layout_marginTop="119dp"
+                        android:layout_marginEnd="176dp"
+                        android:layout_marginRight="176dp"
+                        android:text="Items Used"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
-                <CheckBox
-                    android:id="@+id/chkPaddles"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="64dp"
-                    android:layout_marginEnd="48dp"
-                    android:layout_marginRight="48dp"
-                    android:text="Paddles"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkOther" />
+                    <CheckBox
+                        android:id="@+id/chkPads"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="64dp"
+                        android:text="Pads"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/chkFirst" />
 
-                <TextView
-                    android:id="@+id/textView27"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="176dp"
-                    android:layout_marginLeft="176dp"
-                    android:layout_marginTop="76dp"
-                    android:layout_marginEnd="176dp"
-                    android:layout_marginRight="176dp"
-                    android:text="CPR Details"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView26" />
+                    <CheckBox
+                        android:id="@+id/chkPaddles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="64dp"
+                        android:layout_marginEnd="48dp"
+                        android:layout_marginRight="48dp"
+                        android:text="Paddles"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/chkOther" />
 
-                <CheckBox
-                    android:id="@+id/chkCPRo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginTop="60dp"
-                    android:text="CPR Only"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkPads" />
+                    <TextView
+                        android:id="@+id/textView27"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="176dp"
+                        android:layout_marginLeft="176dp"
+                        android:layout_marginTop="76dp"
+                        android:layout_marginEnd="176dp"
+                        android:layout_marginRight="176dp"
+                        android:text="CPR Details"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
-                <CheckBox
-                    android:id="@+id/chkIncAirway"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="CPR Inc Airway and Drugs"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView27" />
+                    <CheckBox
+                        android:id="@+id/chkCPRo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="60dp"
+                        android:text="CPR Only"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/chkPads" />
 
-                <TextView
-                    android:id="@+id/textView28"
-                    android:layout_width="wrap_content"
-                    android:layout_height="18dp"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="26dp"
-                    android:text="CPR Start Time"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkCPRo" />
+                    <CheckBox
+                        android:id="@+id/chkIncAirway"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:text="CPR Inc Airway and Drugs"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
-                <EditText
-                    android:id="@+id/edtStartCPR"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
-                    android:layout_marginEnd="43dp"
-                    android:layout_marginRight="43dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkIncAirway" />
+                    <TextView
+                        android:id="@+id/textView28"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="26dp"
+                        android:text="CPR Start Time"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/chkCPRo" />
 
-                <TextView
-                    android:id="@+id/textView29"
-                    android:layout_width="wrap_content"
-                    android:layout_height="18dp"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginTop="32dp"
-                    android:text="CPR Discontinued"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView28" />
+                    <EditText
+                        android:id="@+id/edtStartCPR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginEnd="43dp"
+                        android:layout_marginRight="43dp"
+                        android:ems="10"
+                        android:hint="hh:mm"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/chkIncAirway" />
 
-                <EditText
-                    android:id="@+id/edtEndCPR"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
-                    android:layout_marginEnd="43dp"
-                    android:layout_marginRight="43dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtStartCPR" />
+                    <TextView
+                        android:id="@+id/textView29"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="32dp"
+                        android:text="CPR Discontinued"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
-                <TextView
-                    android:id="@+id/textView30"
-                    android:layout_width="wrap_content"
-                    android:layout_height="18dp"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginTop="40dp"
-                    android:text="Time 1st Drug Pushed"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView29" />
+                    <EditText
+                        android:id="@+id/edtEndCPR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginEnd="43dp"
+                        android:layout_marginRight="43dp"
+                        android:ems="10"
+                        android:hint="hh:mm"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtStartCPR" />
 
-                <EditText
-                    android:id="@+id/edtDrugIssue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
-                    android:layout_marginEnd="43dp"
-                    android:layout_marginRight="43dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtEndCPR" />
+                    <TextView
+                        android:id="@+id/textView30"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="40dp"
+                        android:text="Time 1st Drug Pushed"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
-                <CheckBox
-                    android:id="@+id/chkWitness"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="157dp"
-                    android:layout_marginLeft="157dp"
-                    android:layout_marginTop="44dp"
-                    android:layout_marginEnd="158dp"
-                    android:layout_marginRight="158dp"
-                    android:text="Witnessed Arrest"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtDrugIssue" />
+                    <EditText
+                        android:id="@+id/edtDrugIssue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginEnd="43dp"
+                        android:layout_marginRight="43dp"
+                        android:ems="10"
+                        android:hint="hh:mm"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtEndCPR" />
+
+                    <CheckBox
+                        android:id="@+id/chkWitness"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="157dp"
+                        android:layout_marginLeft="157dp"
+                        android:layout_marginTop="44dp"
+                        android:layout_marginEnd="158dp"
+                        android:layout_marginRight="158dp"
+                        android:text="Witnessed Arrest"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtDrugIssue" />
 
 
-            </android.support.constraint.ConstraintLayout>
-        </LinearLayout>
-    </ScrollView>
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+    </HorizontalScrollView>
 </RelativeLayout>

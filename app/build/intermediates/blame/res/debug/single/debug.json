@@ -372,6 +372,10 @@
         "source": "C:\\Users\\test\\Desktop\\Cape_Medics_2-20190611T210423Z-001\\Cape_Medics_2\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\test\\Desktop\\Cape_Medics_2-20190611T210423Z-001\\Cape_Medics_2\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_fire_select.xml.flat",
+        "source": "C:\\Users\\test\\Desktop\\Cape_Medics_2-20190611T210423Z-001\\Cape_Medics_2\\app\\src\\main\\res\\layout\\activity_fire_select.xml"
+    },
+    {
         "merged": "C:\\Users\\test\\Desktop\\Cape_Medics_2-20190611T210423Z-001\\Cape_Medics_2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
         "source": "C:\\Users\\test\\.gradle\\caches\\transforms-2\\files-2.1\\37b7b8c354933d407a8d301b11b53308\\res\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
     },
@@ -2002,6 +2006,10 @@
     {
         "merged": "C:\\Users\\test\\Desktop\\Cape_Medics_2-20190611T210423Z-001\\Cape_Medics_2\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_normal.9.png.flat",
         "source": "C:\\Users\\test\\.gradle\\caches\\transforms-2\\files-2.1\\54a93334bb6c5b690d01181cfddc12e0\\res\\drawable-hdpi-v4\\notification_bg_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\test\\Desktop\\Cape_Medics_2-20190611T210423Z-001\\Cape_Medics_2\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_fire_skid.xml.flat",
+        "source": "C:\\Users\\test\\Desktop\\Cape_Medics_2-20190611T210423Z-001\\Cape_Medics_2\\app\\src\\main\\res\\layout\\activity_fire_skid.xml"
     },
     {
         "merged": "C:\\Users\\test\\Desktop\\Cape_Medics_2-20190611T210423Z-001\\Cape_Medics_2\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_media_cancel_action.xml.flat",

@@ -8,232 +8,240 @@
     android:background="@mipmap/back"
     tools:context=".PainScore">
 
-    <ScrollView
+    <HorizontalScrollView
+        android:id="@+id/sideScroll0"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <android.support.constraint.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/imageView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:src="@drawable/logo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <CheckBox
-                    android:id="@+id/chkNA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="Not Applicable"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18"
-                    tools:layout_editor_absoluteX="74dp"
-                    tools:layout_editor_absoluteY="52dp" />
-
-
-                <TextView
-                    android:id="@+id/textView58"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginLeft="31dp"
-                    android:layout_marginTop="75dp"
-                    android:text="Activity"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18" />
-
-                <EditText
-                    android:id="@+id/editAct"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="75dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
-                    android:background="@null"
-                    android:ems="10"
-                    android:hint="e.g 1"
-                    android:inputType="number"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imageView18" />
-
-                <TextView
-                    android:id="@+id/textView59"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginLeft="31dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Pulse Rate"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView58" />
-
-                <EditText
-                    android:id="@+id/editPulseRate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
-                    android:background="@null"
-                    android:ems="10"
-                    android:hint="e.g 1"
-                    android:inputType="number"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editAct" />
-
-                <TextView
-                    android:id="@+id/textView60"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginLeft="31dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Grimace"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView59" />
-
-                <EditText
-                    android:id="@+id/editGrim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
-                    android:background="@null"
-                    android:ems="10"
-                    android:hint="e.g 1"
-                    android:inputType="number"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editPulseRate" />
-
-                <TextView
-                    android:id="@+id/textView61"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginLeft="31dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Appearance(Skin Colour)"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView60" />
-
-                <EditText
-                    android:id="@+id/editAppearance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
-                    android:background="@null"
-                    android:ems="10"
-                    android:hint="e.g 1"
-                    android:inputType="number"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editGrim" />
-
-                <TextView
-                android:id="@+id/textView62"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="31dp"
-                android:layout_marginLeft="31dp"
-                android:layout_marginTop="15dp"
-                android:text="Respiration"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView61" />
+                android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/editRespiration"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
-                    android:background="@null"
-                    android:ems="10"
-                    android:hint="e.g 1"
-                    android:inputType="number"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editAppearance" />
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/imageView20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginEnd="35dp"
-                    android:layout_marginRight="35dp"
-                    android:src="@drawable/apgar"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/apgarScore" />
+                    <ImageView
+                        android:id="@+id/imageView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:src="@drawable/logo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/apgarScore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="150dp"
-                    android:layout_marginLeft="150dp"
-                    android:layout_marginTop="23dp"
-                    android:layout_marginEnd="150dp"
-                    android:layout_marginRight="150dp"
-                    android:text="APGAR Score"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnCalcapgar" />
-
-                <Button
-                    android:id="@+id/btnCalcapgar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="161dp"
-                    android:layout_marginLeft="161dp"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginEnd="162dp"
-                    android:layout_marginRight="162dp"
-                    android:background="@drawable/loginshape"
-                    android:text="Calculate"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editRespiration" />
+                    <CheckBox
+                        android:id="@+id/chkNA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="Not Applicable"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView18"
+                        tools:layout_editor_absoluteX="74dp"
+                        tools:layout_editor_absoluteY="52dp" />
 
 
-            </android.support.constraint.ConstraintLayout>
-        </LinearLayout>
-    </ScrollView>
+                    <TextView
+                        android:id="@+id/textView58"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="31dp"
+                        android:layout_marginLeft="31dp"
+                        android:layout_marginTop="75dp"
+                        android:text="Activity"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView18" />
+
+                    <EditText
+                        android:id="@+id/editAct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="75dp"
+                        android:layout_marginEnd="38dp"
+                        android:layout_marginRight="38dp"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="e.g 1"
+                        android:inputType="number"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/imageView18" />
+
+                    <TextView
+                        android:id="@+id/textView59"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="31dp"
+                        android:layout_marginLeft="31dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Pulse Rate"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView58" />
+
+                    <EditText
+                        android:id="@+id/editPulseRate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="38dp"
+                        android:layout_marginRight="38dp"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="e.g 1"
+                        android:inputType="number"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editAct" />
+
+                    <TextView
+                        android:id="@+id/textView60"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="31dp"
+                        android:layout_marginLeft="31dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Grimace"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView59" />
+
+                    <EditText
+                        android:id="@+id/editGrim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="38dp"
+                        android:layout_marginRight="38dp"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="e.g 1"
+                        android:inputType="number"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editPulseRate" />
+
+                    <TextView
+                        android:id="@+id/textView61"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="31dp"
+                        android:layout_marginLeft="31dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Appearance(Skin Colour)"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView60" />
+
+                    <EditText
+                        android:id="@+id/editAppearance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="38dp"
+                        android:layout_marginRight="38dp"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="e.g 1"
+                        android:inputType="number"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editGrim" />
+
+                    <TextView
+                        android:id="@+id/textView62"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="31dp"
+                        android:layout_marginLeft="31dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Respiration"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView61" />
+
+                    <EditText
+                        android:id="@+id/editRespiration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="38dp"
+                        android:layout_marginRight="38dp"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="e.g 1"
+                        android:inputType="number"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editAppearance" />
+
+                    <ImageView
+                        android:id="@+id/imageView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginEnd="35dp"
+                        android:layout_marginRight="35dp"
+                        android:src="@drawable/apgar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/apgarScore" />
+
+                    <TextView
+                        android:id="@+id/apgarScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="150dp"
+                        android:layout_marginLeft="150dp"
+                        android:layout_marginTop="23dp"
+                        android:layout_marginEnd="150dp"
+                        android:layout_marginRight="150dp"
+                        android:text="APGAR Score"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnCalcapgar" />
+
+                    <Button
+                        android:id="@+id/btnCalcapgar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="161dp"
+                        android:layout_marginLeft="161dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginEnd="162dp"
+                        android:layout_marginRight="162dp"
+                        android:background="@drawable/loginshape"
+                        android:text="Calculate"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editRespiration" />
+
+
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+    </HorizontalScrollView>
 </RelativeLayout>

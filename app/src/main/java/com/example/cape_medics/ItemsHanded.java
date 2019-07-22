@@ -9,8 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import org.json.JSONObject;
+
 public class ItemsHanded extends Fragment {
     ListView itemsHanded;
+    JSONObject itemsHandedOver;
 
     public ItemsHanded(){}
 
@@ -18,6 +21,8 @@ public class ItemsHanded extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_items_handed,container,false);
+
+        itemsHandedOver = new JSONObject();
 
         itemsHanded = view.findViewById(R.id.items);
         itemsHanded.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -31,5 +36,23 @@ public class ItemsHanded extends Fragment {
         return view;
 
         //add recording mechanism
+    }
+
+    public JSONObject Send(View v){
+        itemsHandedOver = new JSONObject();
+        for (int i = 0; i < itemsHanded.getChildCount(); i++) {
+
+            if (itemsHanded.isItemChecked(i)){
+                try{
+                    itemsHandedOver.put(itemsHanded.getItemAtPosition(i).toString(),itemsHanded.getItemAtPosition(i).toString());
+
+                }catch (Exception e){}
+            }
+        }
+        return itemsHandedOver;
+    }
+
+    public void skip(View v){
+
     }
 }

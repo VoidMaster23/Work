@@ -11,18 +11,22 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import org.json.JSONObject;
+
 public class ViewAttendance extends AppCompatActivity {
     Spinner jobType;
     Spinner unitType;
     ListView Jobs;
     String job;
     String unit;
+    JSONObject viewAttendance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_view_attendance);
+        viewAttendance = new JSONObject();
         jobType = findViewById(R.id.spinner9);
         unitType = findViewById(R.id.spinner10);
         Jobs = findViewById(R.id.listView);
@@ -45,7 +49,7 @@ public class ViewAttendance extends AppCompatActivity {
 
 
 
-        //fill from db and have them change on spinner change
+        //fill from db and have them change on spinner change (needs to always be running)
         jobType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -71,6 +75,10 @@ public class ViewAttendance extends AppCompatActivity {
         });
 
         //send over unit and job strings to db and get list of current jobs
+        try{
+            viewAttendance.put("Job", job);
+            viewAttendance.put("Unit Type", unitType);
+        }catch(Exception e){}
 
         String[] currentJobs = {"Job 1", "Job 2"};
 

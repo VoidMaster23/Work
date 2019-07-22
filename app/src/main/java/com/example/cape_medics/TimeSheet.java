@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import org.json.JSONObject;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -23,13 +25,14 @@ public class TimeSheet extends AppCompatActivity {
     EditText callTime;
     EditText jobName;
     EditText Location;
+    JSONObject timeSheet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_sheet);
 
-
+        timeSheet = new JSONObject();
         jobName = findViewById(R.id.editText);
         Location = findViewById(R.id.editText2);
         callTime = findViewById(R.id.editText3);
@@ -44,7 +47,7 @@ public class TimeSheet extends AppCompatActivity {
                 "AIR MONITORING","EAP","RISK ASSESSMENT"};
         String[] ServiceProvided = {"SKID UNIT","MEDIC","AMBULANCE","FIRE MARSHAL","FIRE ENGINE","SAFETY ADVISOR","" +
                 "SAFETY MARSHAL","RESCUE","RESPONSE CAR","WATER TANKER","4X4 SKID","OFFICE STAFF"};
-      //  String[] CallTime = {""};
+        //  String[] CallTime = {""};
 
         ArrayAdapter<String> JobTypeAdapter = new ArrayAdapter<String>(this,
                 R.layout.custom_spinner,JobType);
@@ -52,13 +55,13 @@ public class TimeSheet extends AppCompatActivity {
                 R.layout.custom_spinner,UnitType);
         ArrayAdapter<String> ServiceProvidedAdapter = new ArrayAdapter<String>(this,
                 R.layout.custom_spinner,ServiceProvided);
-       // ArrayAdapter<String> CallTimeAdapter = new ArrayAdapter<String>(this,
-         //       android.R.layout.simple_spinner_item,CallTime);
+        // ArrayAdapter<String> CallTimeAdapter = new ArrayAdapter<String>(this,
+        //       android.R.layout.simple_spinner_item,CallTime);
 
         JobTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         UnitTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ServiceProvidedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-       // CallTimeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // CallTimeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         jobType.setAdapter(JobTypeAdapter);
         unitType.setAdapter(UnitTypeAdapter);
@@ -68,12 +71,15 @@ public class TimeSheet extends AppCompatActivity {
     }
 
     public void StartShift(View v){
-        String jobname = jobName.getText().toString();
-        String location = Location.getText().toString();
-        String calltime = callTime.getText().toString();
-        String jobtype = String.valueOf(jobType);
-        String unittype = String.valueOf(unitType);
-        String serviceprovided = String.valueOf(serviceProvided);
+        try{
+            timeSheet.put("Job Name",jobName.getText().toString());
+            timeSheet.put("Location",Location.getText().toString());
+            timeSheet.put("Call Time",callTime.getText().toString());
+            timeSheet.put("Job Type",String.valueOf(jobType));
+            timeSheet.put("Unit Type",String.valueOf(unitType));
+            timeSheet.put("Service Provided",String.valueOf(serviceProvided));
+
+        }catch(Exception e){}
 
         //send all the above info
 

@@ -16,186 +16,197 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="400dp"
-                android:layout_height="80dp"
-                app:layout_constraintHorizontal_bias="0.317"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo" />
+            <ScrollView
+                android:id="@+id/scroll0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="horizontal|vertical">
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Guarantee of Payment"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo" />
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="8dp">
 
-            <CheckBox
-                android:id="@+id/notApplicable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Not Applicable"
-                android:onClick="skip"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="400dp"
+                        android:layout_height="80dp"
+                        app:layout_constraintHorizontal_bias="0.317"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/logo" />
 
-            <TextView
-                android:id="@+id/statement"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
-                android:text="I,"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@+id/seenChk"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guarantee of Payment"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-            <EditText
-                android:id="@+id/nameEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint= "Full Name"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@+id/statement1"
-                app:layout_constraintStart_toEndOf="@+id/statement"
-                app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+                    <CheckBox
+                        android:id="@+id/notApplicable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Not Applicable"
+                        android:onClick="skip"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/title" />
 
-            <TextView
-                android:id="@+id/statement1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="From,"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@+id/companyEdit"
-                app:layout_constraintStart_toEndOf="@+id/nameEdit"
-                app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+                    <TextView
+                        android:id="@+id/statement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:text="I,"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toStartOf="@+id/seenChk"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
 
-            <EditText
-                android:id="@+id/companyEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint= "Company Name"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/statement1"
-                app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+                    <EditText
+                        android:id="@+id/nameEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint= "Full Name"
+                        android:inputType="textPersonName"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toStartOf="@+id/statement1"
+                        app:layout_constraintStart_toEndOf="@+id/statement"
+                        app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
 
-            <TextView
-                android:id="@+id/statement2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Hereby authorize Cape Medics to supply services to the"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statement" />
+                    <TextView
+                        android:id="@+id/statement1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="From,"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toStartOf="@+id/companyEdit"
+                        app:layout_constraintStart_toEndOf="@+id/nameEdit"
+                        app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
 
-            <CheckBox
-                android:id="@+id/staffChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="staff"
-                app:layout_constraintEnd_toStartOf="@+id/passengerChk"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statement2" />
+                    <EditText
+                        android:id="@+id/companyEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint= "Company Name"
+                        android:inputType="textPersonName"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/statement1"
+                        app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
 
-            <CheckBox
-                android:id="@+id/passengerChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="passenger"
-                app:layout_constraintEnd_toStartOf="@+id/personChk"
-                app:layout_constraintStart_toEndOf="@+id/staffChk"
-                app:layout_constraintTop_toBottomOf="@+id/statement2" />
+                    <TextView
+                        android:id="@+id/statement2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Hereby authorize Cape Medics to supply services to the"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/statement" />
 
-            <CheckBox
-                android:id="@+id/personChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="person"
-                app:layout_constraintEnd_toStartOf="@+id/statement3"
-                app:layout_constraintStart_toEndOf="@+id/passengerChk"
-                app:layout_constraintTop_toBottomOf="@+id/statement2" />
+                    <CheckBox
+                        android:id="@+id/staffChk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="staff"
+                        app:layout_constraintEnd_toStartOf="@+id/passengerChk"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/statement2" />
 
-            <TextView
-                android:id="@+id/statement3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text=", below,"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/personChk"
-                app:layout_constraintTop_toBottomOf="@+id/statement2" />
+                    <CheckBox
+                        android:id="@+id/passengerChk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="passenger"
+                        app:layout_constraintEnd_toStartOf="@+id/personChk"
+                        app:layout_constraintStart_toEndOf="@+id/staffChk"
+                        app:layout_constraintTop_toBottomOf="@+id/statement2" />
 
-            <TextView
-                android:id="@+id/statement4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="for the company account. This is done in my capacity as"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statement3" />
+                    <CheckBox
+                        android:id="@+id/personChk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="person"
+                        app:layout_constraintEnd_toStartOf="@+id/statement3"
+                        app:layout_constraintStart_toEndOf="@+id/passengerChk"
+                        app:layout_constraintTop_toBottomOf="@+id/statement2" />
 
-            <EditText
-                android:id="@+id/positionEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint= "Position Held"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@+id/statement5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statement4" />
+                    <TextView
+                        android:id="@+id/statement3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text=", below,"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/personChk"
+                        app:layout_constraintTop_toBottomOf="@+id/statement2" />
 
-            <TextView
-                android:id="@+id/statement5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="working for"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/positionEdit"
-                app:layout_constraintTop_toBottomOf="@+id/statement4" />
+                    <TextView
+                        android:id="@+id/statement4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="for the company account. This is done in my capacity as"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/statement3" />
 
-            <EditText
-                android:id="@+id/company2Edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint= "Company Name"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/positionEdit" />
+                    <EditText
+                        android:id="@+id/positionEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint= "Position Held"
+                        android:inputType="textPersonName"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toStartOf="@+id/statement5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/statement4" />
+
+                    <TextView
+                        android:id="@+id/statement5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="working for"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/positionEdit"
+                        app:layout_constraintTop_toBottomOf="@+id/statement4" />
+
+                    <EditText
+                        android:id="@+id/company2Edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint= "Company Name"
+                        android:inputType="textPersonName"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/positionEdit" />
+                </android.support.constraint.ConstraintLayout>
+            </ScrollView>
         </android.support.constraint.ConstraintLayout>
-
     </HorizontalScrollView>
 
 

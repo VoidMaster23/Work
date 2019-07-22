@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import org.json.JSONObject;
+
 public class ChooseBroadCast extends AppCompatActivity {
 
     Spinner jobType;
@@ -18,11 +20,14 @@ public class ChooseBroadCast extends AppCompatActivity {
     ListView Jobs;
     String job;
     String unit;
+    JSONObject chooseBroadcast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_attendance);
+
+        chooseBroadcast = new JSONObject();
 
         jobType = findViewById(R.id.spinner9);
         unitType = findViewById(R.id.spinner10);
@@ -72,6 +77,11 @@ public class ChooseBroadCast extends AppCompatActivity {
         });
 
         //send over unit and job strings to db and get list of current jobs
+        try{
+            chooseBroadcast.put("Job", job);
+            chooseBroadcast.put("Unit Type", unitType);
+        }catch(Exception e){}
+
 
         String[] currentJobs = {"Job 1", "Job 2"};
 

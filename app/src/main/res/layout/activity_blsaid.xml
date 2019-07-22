@@ -214,7 +214,7 @@
                 android:id="@+id/manuelChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nasal Int."
+                android:text="Manuel Defib"
                 app:layout_constraintEnd_toStartOf="@id/manuelEdit"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/ioChk" />
@@ -236,7 +236,7 @@
                 android:id="@+id/ioChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nasal Int."
+                android:text="IO Therapy"
                 app:layout_constraintEnd_toStartOf="@id/ioEdit"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/ngtChk" />
@@ -258,7 +258,7 @@
                 android:id="@+id/ngtChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nasal Int."
+                android:text="NGT"
                 app:layout_constraintEnd_toStartOf="@id/ngtEdit"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />

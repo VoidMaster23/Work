@@ -7,126 +7,147 @@
     android:layout_height="match_parent"
     android:background="@mipmap/back">
 
-
-    <ScrollView
-        android:id="@+id/scroll0"
+    <HorizontalScrollView
+        android:id="@+id/sideScroll0"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="horizontal|vertical">
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
 
-        <android.support.constraint.ConstraintLayout
+        <ScrollView
+            android:id="@+id/scroll0"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
+            android:scrollbars="horizontal|vertical">
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="400dp"
-                android:layout_height="80dp"
-                app:layout_constraintHorizontal_bias="0.317"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="8dp">
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Treatment"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo" />
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="400dp"
+                    android:layout_height="80dp"
+                    app:layout_constraintHorizontal_bias="0.317"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/logo" />
 
-            <TextView
-                android:id="@+id/examination"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Examination and Treatment Notes"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Treatment"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-
-            <EditText
-                android:id="@+id/examinationEdit"
-                android:layout_width="400dp"
-                android:layout_height="400dp"
-                android:layout_marginBottom="4dp"
-                android:ems="10"
-                android:gravity="top"
-                android:hint="Type Here.."
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="parent"
-                app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/examination" />
-
-            <TextView
-                android:id="@+id/other"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Treatment by Other Providers (when care provided by another provider in your ambulance or a snr where he is not accompanying you to) (leave empty if not applicable)"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/examinationEdit" />
+                <TextView
+                    android:id="@+id/examination"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Examination and Treatment Notes"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title" />
 
 
-            <EditText
-                android:id="@+id/otherEdit"
-                android:layout_width="400dp"
-                android:layout_height="400dp"
-                android:layout_marginBottom="4dp"
-                android:ems="10"
-                android:hint="Type Here.."
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:gravity="top"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="parent"
-                app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/other" />
+                <EditText
+                    android:id="@+id/examinationEdit"
+                    android:layout_width="400dp"
+                    android:layout_height="400dp"
+                    android:layout_marginBottom="4dp"
+                    android:ems="10"
+                    android:gravity="top"
+                    android:hint="Type Here.."
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/examination" />
 
-            <TextView
-                android:id="@+id/diagnosis"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Diagnosis"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/otherEdit" />
+                <TextView
+                    android:id="@+id/other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Treatment by Other Providers (when care provided by another provider in your ambulance or a snr "
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/examinationEdit" />
+
+                <TextView
+                    android:id="@+id/other2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="where he is not accompanying you to) (leave empty if not applicable)"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/other" />
 
 
-            <EditText
-                android:id="@+id/diagnosisEdit"
-                android:layout_width="400dp"
-                android:layout_height="400dp"
-                android:layout_marginBottom="4dp"
-                android:ems="10"
-                android:hint="Type Here.."
-                android:inputType="textPersonName"
-                android:gravity="top"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="parent"
-                app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/diagnosis" />
+                <EditText
+                    android:id="@+id/otherEdit"
+                    android:layout_width="400dp"
+                    android:layout_height="400dp"
+                    android:layout_marginBottom="4dp"
+                    android:ems="10"
+                    android:hint="Type Here.."
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:gravity="top"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/other2" />
 
-        </android.support.constraint.ConstraintLayout>
-    </ScrollView>
+                <TextView
+                    android:id="@+id/diagnosis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diagnosis"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/otherEdit" />
+
+
+                <EditText
+                    android:id="@+id/diagnosisEdit"
+                    android:layout_width="400dp"
+                    android:layout_height="400dp"
+                    android:layout_marginBottom="4dp"
+                    android:ems="10"
+                    android:hint="Type Here.."
+                    android:inputType="textPersonName"
+                    android:gravity="top"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/diagnosis" />
+
+            </LinearLayout>
+        </ScrollView>
+    </HorizontalScrollView>
+
 
 </android.support.constraint.ConstraintLayout>

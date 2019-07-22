@@ -8,182 +8,190 @@
     android:background="@mipmap/back"
     tools:context=".PainScore">
 
-    <ScrollView
+    <HorizontalScrollView
+        android:id="@+id/sideScroll0"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <android.support.constraint.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:src="@drawable/logo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <CheckBox
-                    android:id="@+id/chkNA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="Not Applicable"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18"
-                    tools:layout_editor_absoluteX="74dp"
-                    tools:layout_editor_absoluteY="52dp" />
+                    <ImageView
+                        android:id="@+id/imageView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:src="@drawable/logo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/btnPainScale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="63dp"
-                    android:layout_marginStart="161dp"
-                    android:layout_marginLeft="161dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="162dp"
-                    android:layout_marginRight="162dp"
-                    android:background="@drawable/loginshape"
-                    android:text="Show Scale"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkNA" />
+                    <CheckBox
+                        android:id="@+id/chkNA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="Not Applicable"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView18"
+                        tools:layout_editor_absoluteX="74dp"
+                        tools:layout_editor_absoluteY="52dp" />
 
-                <TextView
-                    android:id="@+id/textView51"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginLeft="31dp"
-                    android:layout_marginTop="158dp"
-                    android:text="Pre-Analgesia"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18" />
+                    <Button
+                        android:id="@+id/btnPainScale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="63dp"
+                        android:layout_marginStart="161dp"
+                        android:layout_marginLeft="161dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="162dp"
+                        android:layout_marginRight="162dp"
+                        android:background="@drawable/loginshape"
+                        android:text="Show Scale"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/chkNA" />
 
-                <EditText
-                    android:id="@+id/editPre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
-                    android:background="@null"
-                    android:ems="10"
-                    android:hint="e.g 1"
-                    android:inputType="number"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnPainScale" />
+                    <TextView
+                        android:id="@+id/textView51"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="31dp"
+                        android:layout_marginLeft="31dp"
+                        android:layout_marginTop="158dp"
+                        android:text="Pre-Analgesia"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView18" />
 
-                <TextView
-                    android:id="@+id/textView52"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginLeft="31dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Post Analgesia @ 5 min"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView51" />
+                    <EditText
+                        android:id="@+id/editPre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:layout_marginEnd="38dp"
+                        android:layout_marginRight="38dp"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="e.g 1"
+                        android:inputType="number"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnPainScale" />
 
-                <EditText
-                    android:id="@+id/editPost5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
-                    android:background="@null"
-                    android:ems="10"
-                    android:hint="e.g 1"
-                    android:inputType="number"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editPre" />
+                    <TextView
+                        android:id="@+id/textView52"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="31dp"
+                        android:layout_marginLeft="31dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Post Analgesia @ 5 min"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView51" />
 
-                <TextView
-                    android:id="@+id/textView53"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginLeft="31dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Post Analfesia @ 10 min"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView52" />
+                    <EditText
+                        android:id="@+id/editPost5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="38dp"
+                        android:layout_marginRight="38dp"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="e.g 1"
+                        android:inputType="number"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editPre" />
 
-                <EditText
-                    android:id="@+id/editPost10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
-                    android:background="@null"
-                    android:ems="10"
-                    android:hint="e.g 1"
-                    android:inputType="number"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editPost5" />
+                    <TextView
+                        android:id="@+id/textView53"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="31dp"
+                        android:layout_marginLeft="31dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Post Analfesia @ 10 min"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView52" />
 
-                <TextView
-                    android:id="@+id/textView54"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginLeft="31dp"
-                    android:layout_marginTop="15dp"
-                    android:text="At Hospital"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView53" />
+                    <EditText
+                        android:id="@+id/editPost10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="38dp"
+                        android:layout_marginRight="38dp"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="e.g 1"
+                        android:inputType="number"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editPost5" />
 
-                <EditText
-                    android:id="@+id/editAtHosp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
-                    android:background="@null"
-                    android:ems="10"
-                    android:hint="e.g 1"
-                    android:inputType="number"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editPost10" />
+                    <TextView
+                        android:id="@+id/textView54"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="31dp"
+                        android:layout_marginLeft="31dp"
+                        android:layout_marginTop="15dp"
+                        android:text="At Hospital"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView53" />
 
-                <ImageView
-                    android:id="@+id/imgPain"
-                    android:layout_width="153dp"
-                    android:layout_height="697dp"
-                    android:src="@drawable/paintwo"
-                    android:visibility="invisible"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView18"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/imageView18"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <EditText
+                        android:id="@+id/editAtHosp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="38dp"
+                        android:layout_marginRight="38dp"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="e.g 1"
+                        android:inputType="number"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editPost10" />
+
+                    <ImageView
+                        android:id="@+id/imgPain"
+                        android:layout_width="153dp"
+                        android:layout_height="697dp"
+                        android:src="@drawable/paintwo"
+                        android:visibility="invisible"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView18"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/imageView18"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
-            </android.support.constraint.ConstraintLayout>
-        </LinearLayout>
-    </ScrollView>
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+    </HorizontalScrollView>
 </RelativeLayout>
