@@ -1,8 +1,15 @@
 package com.example.cape_medics;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -10,22 +17,44 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class ALS_ICU_AMB extends AppCompatActivity {
     Spinner VehicleNumber;
     TextView dateView;
-    JSONObject als_icu_amb;
+    JSONObject als_icu_amb, response, load, save;
     List<CheckBox> checkBoxList;
     List<EditText> commentList;
-    String Date;
+    String Date, responseServer,url, code, saved;
+    Cache cache;
+    boolean connected;
+    ScheduledExecutorService scheduledExecutorService;
 
     private  EditText driver, controller, checkedBy, inspectionTime;
 
@@ -1397,6 +1426,12 @@ public class ALS_ICU_AMB extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_als__icu__amb);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        Bundle bundle = getIntent().getExtras();
+        code = bundle.getString("code");
+        cache = new Cache(getApplicationContext());
+        save = new JSONObject();
+
         VehicleNumber = findViewById(R.id.vehicleNumberSpinner);
         dateView = findViewById(R.id.dateView);
         driver = findViewById(R.id.driverEdit);
@@ -1404,8 +1439,10 @@ public class ALS_ICU_AMB extends AppCompatActivity {
         checkedBy = findViewById(R.id.checkedEdit);
         inspectionTime = findViewById(R.id.timeEdit);
         dateView = findViewById(R.id.dateView);
+        url = "http://capemedicstestserver-com.stackstaging.com/apktest/vehicleChecklist.php";
+        driver.requestFocus();
 
-        String[] vehicleNumber = {"MED 1","MED 2","MED 3","MED 4","MED 5","MED 6","MED 7","MED 8","MED 9","MED 10","MED 11","MED 12","MED 13","MED 14","MED 15","MED 16","MED 17","MED 18","MED 19","MED 20","MED 21","MED 22","MED 23","MED 24"};
+        final String[] vehicleNumber = {"MED 1","MED 2","MED 3","MED 4","MED 5","MED 6","MED 7","MED 8","MED 9","MED 10","MED 11","MED 12","MED 13","MED 14","MED 15","MED 16","MED 17","MED 18","MED 19","MED 20","MED 21","MED 22","MED 23","MED 24"};
 
         ArrayAdapter<String> vehicleNumberAdapter = new ArrayAdapter<>(this,
                 R.layout.custom_spinner,vehicleNumber);
@@ -1423,25 +1460,212 @@ public class ALS_ICU_AMB extends AppCompatActivity {
 
         checkBoxList = Arrays.asList(air,antennae,battery,body,brake,branding,dashboard,emergency,exhaust,oil,fuel,headlights,leftIndicator,rightIndicator,back,front,jack,leds,licence,plates,radio,rear,reverse,side,siren,spare,tread,pressure,windows,windscreen,adultEcg,childEcg,spareBattery,spareEcg,oximeter,suctionUnit,suctionReservoir,chargingCable,suctionTubing,softSuction,adultSuction,paedSuction,ventilatorKit,circuitHose,circuitHoseFilter,co2Attachment,oxygenCylinder,oxygenGauge,oxygenCylinderKey,syringePump,powerCable,fiftySyringe,microbore,stretcher,straps,mattress,sheet,pillow,pillowCase,blanket,other,adultKed,childKed,adultSplint,scoopStretcher,spinalBoard,headBlocks,basePlate,spiderHarness,headStraps,zipStretcher,longSplints,shortSplints,adultCollar,childCollar,fireExtinguisher,rescueHelmet,roadCones,reflectorVests,wasteBin,medicalWaste,sharpsBin,bodyBag,gloves,portableOxygen,pinRegulator,oxygenMainline,oxygenFlowMeter,bullNose,aed,adultDefibPads,childDefibPads,defibGel,asprin,gtn,clopidogrel,adenosine,amiodarone,lignocaine,adrenaline,atropine,magnesium,calcium,soda,thiamine,diazepam,midazolam,promethazine,activatedCharcoal,flumazenil,naloxone,morphine,dextrose,glucose,fenoterol,bromide,corticosteriods,furosemide,metaclopramide,buscopan,bigPlasters,smallPlasters,cetrimide,elastoplastRoll,prf,doa,gop,torniquet,glucometer,gloves2,bp,stethoscope,rescueScissors,thermometer,pupilTorch,testStrips,lancets,sats,adultMask,adultRebreather,adultNebulizer,adultNasal,childMask,childRebreather,childNebuliser,childNasal,traumaPads,traumaDressing100,traumaDressing200,bandage75,bandage50,stretchBandage,elastoplast,adultBvm,childBvm,infantBvm,adultMagilles,childMagilles,tube000,tube00,tube0,tube1,tube2,tube3,tube4,tube5,lma5,lma4,lma3,lma2,lma1,uvcPack,maternity,needleCric,ngTube,airwayPack,urinaryCatheter,urineBag,suturePack,spirometer,ringers1000,sodiumChloride,colloid,canulla14,canulla16,canulla18,canulla20,canulla22,canulla24,admin60,admin20,admin15,admin10,webcol,tegaderm,syringe50,syringe20,syringe10,syringe5,syringe3,needle18,needle21,handle,blade4,blade3,blade2,blade1,blade0,et25,et3,et35,et4,et45,et5,et55,et6,et65,et7,et75,et8,et85,tongue,childHolder,tubeTape,spareBatteries,micropore,peepValve,spaceBlanket,gauze,triBandages,vommit,multiPack);
         commentList = Arrays.asList(airComment,antennaeComment,batteryComment,bodyComment,brakeComment,brandingComment,dashboardComment,emergencyComment,exhaustComment,oilComment,fuelComment,headlightsComment,leftIndicatorComment,rightIndicatorComment,backComment,frontComment,jackComment,ledsComment,licenceComment,platesComment,radioComment,rearComment,reverseComment,sideComment,sirenComment,spareComment,treadComment,pressureComment,windowsComment,windscreenComment,ecgComment,adultEcgComment,childEcgComment,spareBatteryComment,spareEcgComment,oximeterComment,suctionUnitComment,suctionReservoirComment,chargingCableComment,suctionTubingComment,softSuctionComment,adultSuctionComment,paedSuctionComment,ventilatorKitComment,circuitHoseComment,circuitHoseFilterComment,co2AttachmentComment,oxygenCylinderComment,oxygenGaugeComment,oxygenCylinderKeyComment,syringePumpComment,powerCableComment,fiftySyringeComment,microboreComment,stretcherComment,strapsComment,mattressComment,sheetComment,pillowComment,pillowCaseComment,blanketComment,otherComment,adultKedComment,childKedComment,adultSplintComment,scoopStretcherComment,spinalBoardComment,headBlocksComment,basePlateComment,spiderHarnessComment,headStrapsComment,zipStretcherComment,longSplintsComment,shortSplintsComment,adultCollarComment,childCollarComment,fireExtinguisherComment,rescueHelmetComment,roadConesComment,reflectorVestsComment,wasteBinComment,medicalWasteComment,sharpsBinComment,bodyBagComment,glovesComment,portableOxygenComment,pinRegulatorComment,oxygenMainlineComment,oxygenFlowMeterComment,bullNoseComment,aedComment,adultDefibPadsComment,childDefibPadsComment,defibGelComment,asprinComment,gtnComment,clopidogrelComment,adenosineComment,amiodaroneComment,lignocaineComment,adrenalineComment,atropineComment,magnesiumComment,calciumComment,sodaComment,thiamineComment,diazepamComment,midazolamComment,promethazineComment,activatedCharcoalComment,flumazenilComment,naloxoneComment,morphineComment,dextroseComment,glucoseComment,fenoterolComment,bromideComment,corticosteriodsComment,furosemideComment,metaclopramideComment,buscopanComment,bigPlastersComment,smallPlastersComment,cetrimideComment,elastoplastRollComment,prfComment,doaComment,gopComment,torniquetComment,glucometerComment,gloves2Comment,bpComment,stethoscopeComment,rescueScissorsComment,thermometerComment,pupilTorchComment,testStripsComment,lancetsComment,satsComment,adultMaskComment,adultRebreatherComment,adultNebulizerComment,adultNasalComment,childMaskComment,childRebreatherComment,childNebuliserComment,childNasalComment,traumaPadsComment,traumaDressing100Comment,traumaDressing200Comment,bandage75Comment,bandage50Comment,stretchBandageComment,elastoplastComment,adultBvmComment,childBvmComment,infantBvmComment,adultMagillesComment,childMagillesComment,tube000Comment,tube00Comment,tube0Comment,tube1Comment,tube2Comment,tube3Comment,tube4Comment,tube5Comment,lma5Comment,lma4Comment,lma3Comment,lma2Comment,lma1Comment,uvcPackComment,maternityComment,needleCricComment,ngTubeComment,airwayPackComment,urinaryCatheterComment,urineBagComment,suturePackComment,spirometerComment,ringers1000Comment,sodiumChlorideComment,colloidComment,canulla14Comment,canulla16Comment,canulla18Comment,canulla20Comment,canulla22Comment,canulla24Comment,admin60Comment,admin20Comment,admin15Comment,admin10Comment,webcolComment,tegadermComment,syringe50Comment,syringe20Comment,syringe10Comment,syringe5Comment,syringe3Comment,needle18Comment,needle21Comment,handleComment,blade4Comment,blade3Comment,blade2Comment,blade1Comment,blade0Comment,et25Comment,et3Comment,et35Comment,et4Comment,et45Comment,et5Comment,et55Comment,et6Comment,et65Comment,et7Comment,et75Comment,et8Comment,et85Comment,tongueComment,childHolderComment,tubeTapeComment,spareBatteriesComment,microporeComment,peepValveComment,spaceBlanketComment,gauzeComment,triBandagesComment,vommitComment,multiPackComment);
+        saved = cache.getStringProperty("vehicleSaveALS_ICU_AMB"+code);
+
+        if( saved != null){
+            try {
+                load = new JSONObject(saved);
+                VehicleNumber.setSelection(load.getInt("Vehicle Number"));
+                controller.setText(load.getString("Controller"));
+                driver.setText(load.getString("Driver"));
+                inspectionTime.setText(load.getString("Inspection_Time"));
+                checkedBy.setText(load.getString("Checked_By"));
+                Iterator<String> keys = load.keys();
+                while(keys.hasNext()) {
+                    String key = keys.next();
+                    String item = load.getString(key);
+                    for (int j = 0; j<checkBoxList.size();j++) {
+                        if (checkBoxList.get(j) != null) {
+                            if (key.equals(checkBoxList.get(j).getText().toString())) {
+                                checkBoxList.get(j).setChecked(true);
+                                commentList.get(j).setText(item);
+
+                            }
+                        }
+                    }
+
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        scheduledExecutorService = Executors.newScheduledThreadPool(1);
+
+        scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                ALS_ICU_AMB.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        try {
+                            save.put("Controller", controller.getText().toString());
+                            save.put("Driver", driver.getText().toString());
+                            save.put("Vehicle_Number", VehicleNumber.getSelectedItemPosition());
+                            save.put("Checked_By", checkedBy.getText().toString());
+                            save.put("Inspection_Time", inspectionTime.getText().toString());
+
+                            for (int i = 0; i<checkBoxList.size();i++) {
+                                if (checkBoxList.get(i) != null) {
+                                    if (checkBoxList.get(i).isChecked()) {
+                                        if (commentList.get(i).getText() != null) {
+                                            save.put(checkBoxList.get(i).getText().toString(), commentList.get(i).getText().toString());
+                                        }
+
+                                    }
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        cache.setStringProperty("vehicleSaveALS_ICU_AMB"+code,save.toString());
+                    }
+                });
+            }
+        },30,30, TimeUnit.SECONDS);
+
+        Toast.makeText(getApplicationContext(), "saved", Toast.LENGTH_SHORT).show();
     }
 
     public void Send(View v){
-        try{
-            als_icu_amb.put("Vehicle Number", String.valueOf(VehicleNumber));
-            als_icu_amb.put("Driver", driver.toString());
-            als_icu_amb.put("Controller", controller.toString());
-            als_icu_amb.put("Checked By", checkedBy.toString());
-            als_icu_amb.put("Inspection Date", Date);
-            als_icu_amb.put("Inspection Time", inspectionTime.toString());
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        else connected = false;
+        if (connected) {
+            AsyncT send = new AsyncT();
+            send.execute();
+            Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
+            cache.removeStringProperty("vehicleSaveALS_ICU_AMB"+code);
+            scheduledExecutorService.shutdown();
+            i.putExtra("code",code);
+            i.putExtra("first","not");
+            startActivity(i);
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Please establish an internet connection", Toast.LENGTH_SHORT).show();
+        }
 
-        }catch(Exception e){}
+    }
 
-        for (int i = 0; i<checkBoxList.size();i++){
-            if(!checkBoxList.get(i).isChecked()){
-                try{
-                    als_icu_amb.put(checkBoxList.get(i).getText().toString(),commentList.get(i).toString());
-                }catch(Exception e){}
+    class AsyncT extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url);
+
+            try {
+                als_icu_amb.put("Ambulance_Type", "ALS/ICU Ambulance");
+                als_icu_amb.put("Vehicle_Type", "Ambulance");
+                als_icu_amb.put("Vehicle_Number", VehicleNumber.getSelectedItem().toString());
+                als_icu_amb.put("Driver", driver.toString());
+                als_icu_amb.put("Controller", controller.toString());
+                als_icu_amb.put("Checked_By", checkedBy.toString());
+                als_icu_amb.put("Inspection_Date", Date);
+                als_icu_amb.put("Inspection_Time", inspectionTime.toString());
+
+                for (int i = 0; i<checkBoxList.size();i++) {
+                    if (checkBoxList.get(i) != null) {
+                        if (!checkBoxList.get(i).isChecked()) {
+                            if (commentList.get(i).getText() != null) {
+                                als_icu_amb.put(checkBoxList.get(i).getText().toString(), commentList.get(i).getText().toString());
+                            } else
+                                als_icu_amb.put(checkBoxList.get(i).getText().toString(), "No Comment");
+
+                        }
+                    }
+                }
+
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                nameValuePairs.add(new BasicNameValuePair("req", als_icu_amb.toString()));
+
+                Log.e("mainToPost", "mainToPost" + nameValuePairs.toString());
+
+                // Use UrlEncodedFormEntity to send in proper format which we need
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                // Execute HTTP Post Request
+                HttpResponse response = httpclient.execute(httppost);
+                InputStream inputStream = response.getEntity().getContent();
+                Login_Page.InputStreamToStringExample str = new Login_Page.InputStreamToStringExample();
+                responseServer = str.getStringFromInputStream(inputStream);
+                Log.e("response", "cake -----" + responseServer);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            try {
+                response = new JSONObject(responseServer);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+           /* if (response.length() < 3) {
+                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+            }
+           else {
+                Toast.makeText(getApplicationContext(), responseServer, Toast.LENGTH_SHORT).show();
+            }*/
+            Toast.makeText(getApplicationContext(), "sent", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public static class InputStreamToStringExample {
+
+        public static void main(String[] args) throws IOException {
+
+            // intilize an InputStream
+            InputStream is = new ByteArrayInputStream("file content..blah blah".getBytes());
+
+            String result = getStringFromInputStream(is);
+
+            System.out.println(result);
+            System.out.println("Done");
+
+        }
+
+        // convert InputStream to String
+        public static String getStringFromInputStream(InputStream is) {
+
+            BufferedReader br = null;
+            StringBuilder sb = new StringBuilder();
+
+            String line;
+            try {
+
+                br = new BufferedReader(new InputStreamReader(is));
+                while ((line = br.readLine()) != null) {
+                    sb.append(line);
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (br != null) {
+                    try {
+                        br.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            return sb.toString();
+        }
+
+    }
+
 }

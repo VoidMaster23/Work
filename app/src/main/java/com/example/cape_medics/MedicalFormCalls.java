@@ -10,15 +10,20 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
 public class MedicalFormCalls extends Fragment {
-    private RelativeLayout linearLayout;
     private ImageView imageView9;
     private TextView textView5;
     private TextView KMs;
@@ -51,6 +56,10 @@ public class MedicalFormCalls extends Fragment {
     private CheckBox checkBox12;
     private CheckBox checkBox13;
     private CheckBox checkBox3;
+    List<CheckBox> checkBoxList;
+    Cache cache;
+    String saved;
+    JSONObject load;
 
     JSONObject callDetails;
     /**
@@ -72,7 +81,6 @@ public class MedicalFormCalls extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.activity_medical_form_calls,container,false);
-        linearLayout = (RelativeLayout)view.findViewById( R.id.linearLayout );
         imageView9 = (ImageView)view.findViewById( R.id.imageView9 );
         textView5 = (TextView)view.findViewById( R.id.textView5 );
         KMs = (TextView)view.findViewById( R.id.KMs );
@@ -105,11 +113,49 @@ public class MedicalFormCalls extends Fragment {
         checkBox12 = (CheckBox)view.findViewById( R.id.checkBox12 );
         checkBox13 = (CheckBox)view.findViewById( R.id.checkBox13 );
         checkBox3 = (CheckBox)view.findViewById( R.id.checkBox3 );
-
-
         callDetails = new JSONObject();
+
+        checkBoxList = Arrays.asList(checkBox8,checkBox9,checkBox10,checkBox11,checkBox12,checkBox13,checkBox3);
+        cache = new Cache(getContext());
+        saved = cache.getStringProperty("callDetails");
+        if(saved != null ){
+            try {
+                load = new JSONObject(saved);
+                callreceivedTime.setText(callDetails.getString("Call_Received_Time"));
+                callreceived.setText(callDetails.getString("Call_Received_KM"));
+                calldispachedTime.setText(callDetails.getString("Dispached_Time"));
+                calldispached.setText(callDetails.getString("Dispached_KM"));
+                callEnRouteTime.setText(callDetails.getString("En-Route_Time"));
+                callEnRoute.setText(callDetails.getString("En-Route_KM"));
+                callArrivedTime.setText(callDetails.getString("Arrived_Time"));
+                calldepartTime.setText(callDetails.getString("Arrived_KM"));
+                calldepart.setText(callDetails.getString("Depart_Time"));
+                callHospitalArriveTime.setText(callDetails.getString("Depart_KM"));
+                callHospitalArrive.setText(callDetails.getString("Hospital_Time"));
+                callHandoverTime.setText(callDetails.getString("Hospital_KM"));
+                callHandover.setText(callDetails.getString("Hospital_Time"));
+                Iterator<String> keys = load.keys();
+                while(keys.hasNext()) {
+                    String key = keys.next();
+                    String item = load.getString(key);
+                    for (int j = 0; j<checkBoxList.size();j++) {
+                        if (checkBoxList.get(j) != null) {
+                            if (item.equals(checkBoxList.get(j).getText().toString())) {
+                                checkBoxList.get(j).setChecked(true);
+
+                            }
+                        }
+                    }
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
         return view;
     }
+
 
     public JSONObject createJson(){
 
@@ -162,28 +208,28 @@ public class MedicalFormCalls extends Fragment {
         callDetails = new JSONObject();
 
         try{
-            callDetails.put("Call Received Time",callTime);
-            callDetails.put("Call Received KM",callKM);
-            callDetails.put("Dispached Time",dispatchTime);
-            callDetails.put("Dispached KM",dispatchKM);
-            callDetails.put("En-Route Time",enrouteTime);
-            callDetails.put("En-Route KM",enrouteKM);
-            callDetails.put("Arrived Time",arriveTime);
-            callDetails.put("Arrived KM", arriveKM);
-            callDetails.put("Depart Time",departTime);
-            callDetails.put("Depart KM",departKM);
-            callDetails.put("Hospital Time",hospitalTime);
-            callDetails.put("Hospital KM",hospitalKM);
-            callDetails.put("Handover Time",handoverTime);
-            callDetails.put("Handover KM",handoverKM);
-            callDetails.put("Call Priority",priority);
+            callDetails.put("Call_Received_Time",callTime);
+            callDetails.put("Call_Received_KM",callKM);
+            callDetails.put("Dispached_Time",dispatchTime);
+            callDetails.put("Dispached_KM",dispatchKM);
+            callDetails.put("En-Route_Time",enrouteTime);
+            callDetails.put("En-Route_KM",enrouteKM);
+            callDetails.put("Arrived_Time",arriveTime);
+            callDetails.put("Arrived_KM", arriveKM);
+            callDetails.put("Depart_Time",departTime);
+            callDetails.put("Depart_KM",departKM);
+            callDetails.put("Hospital_Time",hospitalTime);
+            callDetails.put("Hospital_KM",hospitalKM);
+            callDetails.put("Handover_Time",handoverTime);
+            callDetails.put("Handover_KM",handoverKM);
+            callDetails.put("Call_Priority",priority);
 
 
 
         }catch (Exception e){
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
+        cache.setStringProperty("callDetails",callDetails.toString());
         return callDetails;
     }
 

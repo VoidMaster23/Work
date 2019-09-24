@@ -1,13 +1,14 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:2:1-50:12
-INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:2:1-50:12
-INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:2:1-50:12
-INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:2:1-50:12
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:2:1-63:12
 MERGED from [com.android.support:design:28.0.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\69bb531047407225f0b135dff0b1826e\AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\37b7b8c354933d407a8d301b11b53308\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\test\.gradle\caches\transforms-2\files-2.1\25cfc64ec98635a1fb5dab01e0c30ab4\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:support-v4:28.0.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\fad2547b3edaba905bb6d8e7501ba031\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\51fe0e44f53c1908c5a681c71e3578d2\AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.aakira:expandable-layout:1.4.2] C:\Users\test\.gradle\caches\transforms-2\files-2.1\8bf3f48d0bc94a2b92e7c4266b226049\AndroidManifest.xml:2:1-14:12
 MERGED from [com.android.support:gridlayout-v7:28.0.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\173daa29151501dd1b5f3fe96f390f42\AndroidManifest.xml:17:1-22:12
 MERGED from [com.kyanogen.signatureview:signature-view:1.2] C:\Users\test\.gradle\caches\transforms-2\files-2.1\383cccde24fb682d34a4583e89ea741e\AndroidManifest.xml:2:1-14:12
@@ -40,37 +41,41 @@ MERGED from [com.android.support:interpolator:28.0.0] C:\Users\test\.gradle\cach
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\test\.gradle\caches\transforms-2\files-2.1\6cc8454a320639983647a7040ae91444\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\test\.gradle\caches\transforms-2\files-2.1\14657004c3d5571d95db3742f7ed223b\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\test\.gradle\caches\transforms-2\files-2.1\a1b1258f3f6ce8e42b4dfe45e337ad05\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:2:1-50:12
-INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:2:1-50:12
-INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:2:1-50:12
+INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:2:1-63:12
 	package
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:3:5-38
-		INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:3:5-38
+		INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:2:1-50:12
-		INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:2:1-63:12
+		INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:2:1-50:12
-		INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:2:1-63:12
+		INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:2:11-69
-uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:5:5-79
-	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:5:22-76
-uses-permission#android.permission.INTERNET
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:6:5-67
-	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:6:22-64
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:2:11-69
+supports-screens
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:5:2-9:40
+	android:largeScreens
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:6:9-36
+	android:smallScreens
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:8:9-36
+	android:normalScreens
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:7:9-37
+	android:xlargeScreens
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:9:9-37
 application
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:9:5-48:19
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:11:5-55:19
 MERGED from [com.android.support:design:28.0.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\69bb531047407225f0b135dff0b1826e\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\69bb531047407225f0b135dff0b1826e\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\test\.gradle\caches\transforms-2\files-2.1\25cfc64ec98635a1fb5dab01e0c30ab4\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\test\.gradle\caches\transforms-2\files-2.1\25cfc64ec98635a1fb5dab01e0c30ab4\AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\51fe0e44f53c1908c5a681c71e3578d2\AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\51fe0e44f53c1908c5a681c71e3578d2\AndroidManifest.xml:9:5-20
 MERGED from [com.github.aakira:expandable-layout:1.4.2] C:\Users\test\.gradle\caches\transforms-2\files-2.1\8bf3f48d0bc94a2b92e7c4266b226049\AndroidManifest.xml:12:5-20
 MERGED from [com.github.aakira:expandable-layout:1.4.2] C:\Users\test\.gradle\caches\transforms-2\files-2.1\8bf3f48d0bc94a2b92e7c4266b226049\AndroidManifest.xml:12:5-20
 MERGED from [com.kyanogen.signatureview:signature-view:1.2] C:\Users\test\.gradle\caches\transforms-2\files-2.1\383cccde24fb682d34a4583e89ea741e\AndroidManifest.xml:11:5-12:19
@@ -82,121 +87,163 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\test\.grad
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\54a93334bb6c5b690d01181cfddc12e0\AndroidManifest.xml:22:18-91
 	android:supportsRtl
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:18:9-35
 	android:label
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:12:9-41
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:16:9-41
 	android:roundIcon
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:13:9-54
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:17:9-54
 	android:icon
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:11:9-43
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:15:9-43
 	android:allowBackup
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:10:9-35
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:12:9-35
 	android:theme
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:15:9-40
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:19:9-40
+	android:usesCleartextTraffic
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:14:9-44
+	android:name
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:13:9-45
+uses-library#org.apache.http.legacy
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:20:9-87
+	android:required
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:20:61-85
+	android:name
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:20:23-60
+activity#com.example.cape_medics.Time_Sheet2
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:22:9-58
+	android:name
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:22:19-46
 activity#com.example.cape_medics.VehicleCheckList
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:16:9-63
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:23:9-54
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:16:19-51
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:23:19-51
 activity#com.example.cape_medics.Ambulance
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:17:9-46
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:24:9-47
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:17:19-44
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:24:19-44
 activity#com.example.cape_medics.FireEngine
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:18:9-47
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:25:9-48
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:18:19-45
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:25:19-45
+activity#com.example.cape_medics.FireSelect
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:26:9-48
+	android:name
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:26:19-45
+activity#com.example.cape_medics.FireSkid
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:27:9-46
+	android:name
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:27:19-43
 activity#com.example.cape_medics.ILSAMB
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:19:9-43
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:28:9-44
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:19:19-41
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:28:19-41
 activity#com.example.cape_medics.ALS_ICU_AMB
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:20:9-48
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:29:9-49
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:20:19-46
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:29:19-46
 activity#com.example.cape_medics.ALSRV
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:21:9-42
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:30:9-43
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:21:19-40
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:30:19-40
 activity#com.example.cape_medics.ALSAMB_PAED
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:22:9-48
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:31:9-49
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:22:19-46
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:31:19-46
 activity#com.example.cape_medics.medicalTabbedView
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:23:9-55
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:32:9-55
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:23:19-52
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:32:19-52
 activity#com.example.cape_medics.categoryType
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:25:9-50
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:33:9-50
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:25:19-47
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:33:19-47
 activity#com.example.cape_medics.MedicalForm
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:26:9-49
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:34:9-49
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:26:19-46
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:34:19-46
 activity#com.example.cape_medics.BroadCastMessage
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:27:9-54
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:35:9-54
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:27:19-51
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:35:19-51
 activity#com.example.cape_medics.ChooseBroadCast
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:28:9-53
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:36:9-53
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:28:19-50
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:36:19-50
 activity#com.example.cape_medics.ViewAttendanceCrew
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:29:9-56
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:37:9-56
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:29:19-53
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:37:19-53
 activity#com.example.cape_medics.BroadCast
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:31:9-47
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:38:9-47
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:31:19-44
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:38:19-44
 activity#com.example.cape_medics.ViewAttendance
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:32:9-52
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:39:9-52
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:32:19-49
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:39:19-49
 activity#com.example.cape_medics.TimeSheet
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:33:9-47
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:40:9-47
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:33:19-44
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:40:19-44
 activity#com.example.cape_medics.Home_Screen_Manager
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:34:9-57
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:41:9-57
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:34:19-54
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:41:19-54
 activity#com.example.cape_medics.Signature
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:35:9-47
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:42:9-47
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:35:19-44
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:42:19-44
 activity#com.example.cape_medics.SwapShift
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:36:9-38:65
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:43:9-45:65
 	android:label
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:38:13-62
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:45:13-62
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:37:13-38
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:44:13-38
 activity#com.example.cape_medics.DashBoard
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:39:9-47
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:46:9-47
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:39:19-44
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:46:19-44
 activity#com.example.cape_medics.Home_Screen_Crew
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:40:9-54
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:47:9-54
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:40:19-51
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:47:19-51
 activity#com.example.cape_medics.Login_Page
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:41:9-47:20
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:48:9-54:20
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:41:19-45
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:48:19-45
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:42:13-46:29
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:49:13-53:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:43:17-69
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:50:17-69
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:43:25-66
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:50:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:45:17-77
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:52:17-77
 	android:name
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml:45:27-74
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:52:27-74
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:56:5-67
+	android:name
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:56:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:57:5-79
+	android:name
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:57:22-76
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:58:5-80
+	android:name
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:58:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:59:5-81
+	android:name
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:59:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:61:5-79
+	android:name
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:61:22-76
 uses-sdk
-INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
 MERGED from [com.android.support:design:28.0.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\69bb531047407225f0b135dff0b1826e\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:design:28.0.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\69bb531047407225f0b135dff0b1826e\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\37b7b8c354933d407a8d301b11b53308\AndroidManifest.xml:20:5-44
@@ -205,6 +252,8 @@ MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\te
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\test\.gradle\caches\transforms-2\files-2.1\25cfc64ec98635a1fb5dab01e0c30ab4\AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support:support-v4:28.0.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\fad2547b3edaba905bb6d8e7501ba031\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-v4:28.0.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\fad2547b3edaba905bb6d8e7501ba031\AndroidManifest.xml:20:5-44
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\51fe0e44f53c1908c5a681c71e3578d2\AndroidManifest.xml:7:5-43
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\51fe0e44f53c1908c5a681c71e3578d2\AndroidManifest.xml:7:5-43
 MERGED from [com.github.aakira:expandable-layout:1.4.2] C:\Users\test\.gradle\caches\transforms-2\files-2.1\8bf3f48d0bc94a2b92e7c4266b226049\AndroidManifest.xml:8:5-10:41
 MERGED from [com.github.aakira:expandable-layout:1.4.2] C:\Users\test\.gradle\caches\transforms-2\files-2.1\8bf3f48d0bc94a2b92e7c4266b226049\AndroidManifest.xml:8:5-10:41
 MERGED from [com.android.support:gridlayout-v7:28.0.0] C:\Users\test\.gradle\caches\transforms-2\files-2.1\173daa29151501dd1b5f3fe96f390f42\AndroidManifest.xml:20:5-44
@@ -269,13 +318,13 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\test\.gradle\c
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\test\.gradle\caches\transforms-2\files-2.1\14657004c3d5571d95db3742f7ed223b\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\test\.gradle\caches\transforms-2\files-2.1\a1b1258f3f6ce8e42b4dfe45e337ad05\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\test\.gradle\caches\transforms-2\files-2.1\a1b1258f3f6ce8e42b4dfe45e337ad05\AndroidManifest.xml:20:5-44
-INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\test\Desktop\Cape_Medics_2-20190611T210423Z-001\Cape_Medics_2\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml

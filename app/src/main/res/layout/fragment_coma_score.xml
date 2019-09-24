@@ -22,27 +22,26 @@
 
                 <ImageView
                     android:id="@+id/imageView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_width="208dp"
+                    android:layout_height="166dp"
+                    android:layout_marginTop="16dp"
                     android:src="@drawable/logo"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteX="17dp" />
 
                 <CheckBox
                     android:id="@+id/chkNA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="76dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
                     android:text="Not Applicable"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18"
-                    tools:layout_editor_absoluteX="74dp"
-                    tools:layout_editor_absoluteY="52dp"
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/lblEyeResponse"
@@ -60,11 +59,11 @@
                     android:id="@+id/spnEyeResponse"
                     android:layout_width="190dp"
                     android:layout_height="23dp"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="56dp"
                     android:layout_marginEnd="28dp"
                     android:layout_marginRight="28dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkNA" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView18" />
 
                 <TextView
                     android:id="@+id/lblVerbalResponse"
@@ -141,8 +140,8 @@
 
                 <ImageView
                     android:id="@+id/imageView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="303dp"
+                    android:layout_height="293dp"
                     android:layout_marginStart="80dp"
                     android:layout_marginLeft="80dp"
                     android:layout_marginTop="78dp"

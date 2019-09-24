@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
@@ -23,29 +25,34 @@ public class categoryType extends AppCompatActivity {
     CheckBox publicpassenger, film, event, cticc, gcc, firstaid, prf, gccstaff, other, publicPatron, home2hospital;
     CheckBox facility2facility, house, office, publicVenue;
     EditText callLocation, name, company, organiser, callLocation2, callLocation3, reportTime;
+    Cache cache;
 
     TextView dateView;
 
-    JSONObject acsa;
-    String airport,callType_acsa,general_acsa ;
+    JSONObject acsa, load;
+    String airport,callType_acsa,general_acsa,code ;
 
     JSONObject events;
     String categoryType, role, general_events;
     JSONObject eventDetails;
 
     JSONObject primary;
-    String callType_primary;
+    String callType_primary, saved;
 
-    JSONArray CategoryType;
+    JSONObject CategoryType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         setContentView(R.layout.activity_category_type);
         reportTime = findViewById(R.id.reportTime);
-        CategoryType = new JSONArray();
+        CategoryType = new JSONObject();
         dateView = findViewById(R.id.dateView);
+        cache = new Cache(getApplicationContext());
+        Bundle bundle = getIntent().getExtras();
+        code = bundle.getString("code");
 
         //first tab
         acsa = new JSONObject();
@@ -94,10 +101,23 @@ public class categoryType extends AppCompatActivity {
         String Date = DateTime.substring(0,10);
         dateView.setText(Date);
 
+        saved = cache.getStringProperty("categoryType"+code);
+        if ( saved != null){
+            try {
+                load = new JSONObject(saved);
+                //remove each value from JSON object and make set edit text or checkbox to it (checkbox code in fireEngine activity)
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
     }
 
     public void expandableButton1(View view) {
         expandableLayout1 = (ExpandableRelativeLayout) findViewById(R.id.expLay1);
+        expandableLayout1.setMinimumWidth(view.getWidth());
         expandableLayout1.toggle(); // toggle expand and collapse
 
 
@@ -105,11 +125,13 @@ public class categoryType extends AppCompatActivity {
 
     public void expandableButton2(View view) {
         expandableLayout2 = (ExpandableRelativeLayout) findViewById(R.id.expLay2);
+        expandableLayout2.setMinimumWidth(view.getWidth());
         expandableLayout2.toggle(); // toggle expand and collapse
     }
 
     public void expandableButton3(View view) {
         expandableLayout3 = (ExpandableRelativeLayout) findViewById(R.id.expLay3);
+        expandableLayout3.setMinimumWidth(view.getWidth());
         expandableLayout3.toggle(); // toggle expand and collapse
     }
 
@@ -196,9 +218,16 @@ public class categoryType extends AppCompatActivity {
 
 
         //placing JSONs into a JSON array
-        CategoryType.put(acsa);
-        CategoryType.put(events);
-        CategoryType.put(primary);
+        try {
+            CategoryType.put("ACSA",acsa);
+            CategoryType.put("Events",events);
+            CategoryType.put("Primary",primary);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        cache.setStringProperty("categoryType"+code, CategoryType.toString());
 
         //sends JSONArray to
         Intent intent= new Intent(getApplicationContext(), Death.class);

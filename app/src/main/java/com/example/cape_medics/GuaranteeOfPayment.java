@@ -38,7 +38,7 @@ public class GuaranteeOfPayment extends Fragment {
         return view;
     }
 
-    public JSONObject Send(View v){
+    public JSONObject createJson(){
         guaranteeOfPayment = new JSONObject();
 
         if(staff.isChecked()) authorisedPerson = "Staff";

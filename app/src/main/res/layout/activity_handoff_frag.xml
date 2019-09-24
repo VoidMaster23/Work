@@ -6,19 +6,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/back"
+    app:layout_gravity="center_horizontal"
     tools:context=".Handoff_frag">
 
 
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="400dp"
-        android:layout_height="80dp"
-        app:layout_constraintHorizontal_bias="0.317"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="224dp"
+            android:layout_height="191dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
+        <CheckBox
+            android:id="@+id/notApplicable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Not Applicable"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 
     <TextView
         android:id="@+id/title"
@@ -30,30 +54,21 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-    <CheckBox
-        android:id="@+id/notApplicable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Not Applicable"
-        android:onClick="skip"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@id/lay" />
 
     <TextView
         android:id="@+id/destination"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
         android:text="Destination"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+        app:layout_constraintTop_toBottomOf="@id/title" />
 
     <EditText
         android:id="@+id/destinationEdit"
@@ -74,6 +89,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
         android:text="Name"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -101,6 +117,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
         android:text="Qual and Reg. No"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -128,6 +145,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
         android:text="Service"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -155,6 +173,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
         android:text="Signature"
         android:textColor="@color/white"
         android:textSize="16sp"
@@ -167,10 +186,12 @@
         android:id="@+id/signatureButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:background="@drawable/loginshape"
         android:onClick="Go"
-        android:text="Go"
+        android:text="Sign"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/signature" />
 

@@ -38,7 +38,7 @@ public class ItemsHanded extends Fragment {
         //add recording mechanism
     }
 
-    public JSONObject Send(View v){
+    public JSONObject createJson(){
         itemsHandedOver = new JSONObject();
         for (int i = 0; i < itemsHanded.getChildCount(); i++) {
 

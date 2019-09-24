@@ -16,34 +16,46 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="400dp"
-                android:layout_height="80dp"
-                app:layout_constraintHorizontal_bias="0.317"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo" />
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="200dp"
+                    android:layout_height="159dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/logo" />
 
-            <CheckBox
-                android:id="@+id/notApplicable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Not Applicable"
-                android:onClick="skip"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo" />
+                <CheckBox
+                    android:id="@+id/notApplicable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="76dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="Not Applicable"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="BLS/ILS Aid to Patient"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -57,73 +69,102 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 app:layout_constraintBottom_toTopOf="@+id/oralChk"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+                app:layout_constraintTop_toBottomOf="@+id/title" >
 
-            <CheckBox
-                android:id="@+id/oralChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Oral Airway"
-                app:layout_constraintEnd_toStartOf="@id/oralEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/needleChk" />
+            </ListView>
 
-            <EditText
-                android:id="@+id/oralEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Size"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/oralChk"
-                app:layout_constraintBottom_toTopOf="@id/needleChk" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <CheckBox
-                android:id="@+id/needleChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Needle Crich"
-                app:layout_constraintEnd_toStartOf="@id/needleEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/o2Chk" />
+                <CheckBox
+                    android:id="@+id/oralChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Oral Airway"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/needleEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Size"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/needleChk"
-                app:layout_constraintBottom_toTopOf="@id/o2Chk" />
+                <EditText
+                    android:id="@+id/oralEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:hint="Size"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <CheckBox
-                android:id="@+id/o2Chk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="02 Mask"
-                app:layout_constraintEnd_toStartOf="@id/o2Edit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/title1" />
+                <CheckBox
+                    android:id="@+id/needleChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Needle Crich"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/oralChk" />
 
-            <EditText
-                android:id="@+id/o2Edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="l/min"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/o2Chk"
-                app:layout_constraintBottom_toTopOf="@id/title1" />
+                <CheckBox
+                    android:id="@+id/o2Chk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="02 Mask"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/needleChk" />
+
+                <EditText
+                    android:id="@+id/needleEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="Size"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/oralEdit" />
+
+                <EditText
+                    android:id="@+id/o2Edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="l/min"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/needleEdit" />
+            </android.support.constraint.ConstraintLayout>
 
             <TextView
                 android:id="@+id/title1"
@@ -133,149 +174,229 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/items1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/items1" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <ListView
                 android:id="@+id/items1"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 app:layout_constraintBottom_toTopOf="@+id/etiChk"
-                app:layout_constraintTop_toBottomOf="@+id/title1" />
+                app:layout_constraintTop_toBottomOf="@+id/title1" >
 
-            <CheckBox
-                android:id="@+id/etiChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ETI"
-                app:layout_constraintEnd_toStartOf="@id/etiEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/sgaChk" />
+            </ListView>
 
-            <EditText
-                android:id="@+id/etiEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Size"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/etiChk"
-                app:layout_constraintBottom_toTopOf="@id/sgaChk" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <CheckBox
-                android:id="@+id/sgaChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SGA"
-                app:layout_constraintEnd_toStartOf="@id/sgaEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/nasalChk" />
+                <CheckBox
+                    android:id="@+id/etiChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="ETI"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/sgaEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Size"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/sgaChk"
-                app:layout_constraintBottom_toTopOf="@id/nasalChk" />
+                <EditText
+                    android:id="@+id/etiEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="Size"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
 
-            <CheckBox
-                android:id="@+id/nasalChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nasal Int."
-                app:layout_constraintEnd_toStartOf="@id/nasalEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/manuelChk" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:id="@+id/linearLayout3">
 
-            <EditText
-                android:id="@+id/nasalEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Size"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/nasalChk"
-                app:layout_constraintBottom_toTopOf="@id/manuelChk" />
+                <CheckBox
+                    android:id="@+id/sgaChk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:text="SGA"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@id/nasalChk"
+                    app:layout_constraintEnd_toStartOf="@id/sgaEdit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_conversion_absoluteHeight="32dp"
+                    tools:layout_conversion_absoluteWidth="67dp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="609dp" />
 
-            <CheckBox
-                android:id="@+id/manuelChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Manuel Defib"
-                app:layout_constraintEnd_toStartOf="@id/manuelEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/ioChk" />
+                <EditText
+                    android:id="@+id/sgaEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="Size"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@id/nasalChk"
+                    tools:layout_conversion_absoluteHeight="24dp"
+                    tools:layout_conversion_absoluteWidth="213dp"
+                    tools:layout_editor_absoluteX="83dp"
+                    tools:layout_editor_absoluteY="613dp" />
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/manuelEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Size"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/manuelChk"
-                app:layout_constraintBottom_toTopOf="@id/ioChk" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/ioChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="IO Therapy"
-                app:layout_constraintEnd_toStartOf="@id/ioEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/ngtChk" />
+                <CheckBox
+                    android:id="@+id/nasalChk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:text="Nasal Int."
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@id/manuelChk"
+                    app:layout_constraintEnd_toStartOf="@id/nasalEdit"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-            <EditText
-                android:id="@+id/ioEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Size/Site"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ioChk"
-                app:layout_constraintBottom_toTopOf="@id/ngtChk" />
+                <EditText
+                    android:id="@+id/nasalEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="Size"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@id/manuelChk"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/nasalChk" />
+            </LinearLayout>
 
-            <CheckBox
-                android:id="@+id/ngtChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NGT"
-                app:layout_constraintEnd_toStartOf="@id/ngtEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/ngtEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Size"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ngtChk"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                <CheckBox
+                    android:id="@+id/manuelChk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:text="Manuel Defib"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@id/ioChk"
+                    app:layout_constraintEnd_toStartOf="@id/manuelEdit"
+                    app:layout_constraintStart_toStartOf="parent" />
 
+                <EditText
+                    android:id="@+id/manuelEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="Size"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@id/ioChk"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/manuelChk" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/ioChk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:text="IO Therapy"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@id/ngtChk"
+                    app:layout_constraintEnd_toStartOf="@id/ioEdit"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <EditText
+                    android:id="@+id/ioEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="Size/Site"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@id/ngtChk"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ioChk" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/ngtChk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:text="NGT"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/ngtEdit"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <EditText
+                    android:id="@+id/ngtEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="Size"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ngtChk" />
+            </LinearLayout>
 
 
         </LinearLayout>

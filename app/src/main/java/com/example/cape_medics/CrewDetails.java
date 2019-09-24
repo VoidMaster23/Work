@@ -44,7 +44,7 @@ public class CrewDetails extends Fragment {
         return view;
     }
 
-    public JSONObject Send (View v){
+    public JSONObject createJson (){
         crewDetails = new JSONObject();
         try{
             crewDetails.put("Crew 1", crew1);

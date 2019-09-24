@@ -22,8 +22,8 @@
 
                 <ImageView
                     android:id="@+id/imageView13"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_width="162dp"
+                    android:layout_height="145dp"
                     android:src="@drawable/logo" />
 
                 <CheckBox
@@ -31,7 +31,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imageView13"
-                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-101dp"
+                    android:layout_marginRight="15dp"
                     android:text="Not Applicable"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
@@ -42,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/chkNA"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="80dp"
                     android:text="Primary Presenting Complaint"
                     android:textColor="@color/white" />
 
@@ -51,7 +53,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/chkNA"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="71dp"
                     android:layout_toRightOf="@id/lblPrimary"
                     android:ems="10"
                     android:hint="enter name here"
@@ -66,7 +69,7 @@
                     android:layout_below="@id/lblPrimary"
                     android:layout_alignLeft="@id/lblPrimary"
                     android:layout_marginTop="15dp"
-                    android:text="Presenting Medical Contition"
+                    android:text="Presenting Medical Condition"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />

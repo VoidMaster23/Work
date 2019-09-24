@@ -59,7 +59,7 @@ public class RefusalofCare extends Fragment {
         return view;
     }
 
-    public JSONObject Send(View v){
+    public JSONObject createJson(){
         refusalOfCare = new JSONObject();
 
         if(seen.isChecked()) observationType = "seen";

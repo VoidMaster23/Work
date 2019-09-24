@@ -28,7 +28,7 @@ public class Treatment extends Fragment {
         return view;
     }
 
-    public JSONObject Send(View v){
+    public JSONObject createJson(){
         treatment = new JSONObject();
         try {
             treatment.put("Examination", examination.toString());

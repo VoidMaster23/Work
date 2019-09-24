@@ -54,7 +54,7 @@ public class EmployerDetails extends Fragment {
         return view;
     }
 
-    public JSONObject Send(View v){
+    public JSONObject createJson(){
         employerDetails = new JSONObject();
         if (iod.isChecked()) {
             try{

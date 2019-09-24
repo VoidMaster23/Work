@@ -34,7 +34,7 @@ public class Handoff_frag extends Fragment {
 
     }
 
-    public JSONObject Send (View v){
+    public JSONObject createJson (){
         handover = new JSONObject();
         try{
             handover.put("Destination", destination.toString());

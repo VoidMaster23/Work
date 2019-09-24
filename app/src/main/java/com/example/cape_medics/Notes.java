@@ -33,13 +33,7 @@ public class Notes extends Fragment {
         return view;
     }
 
-    public void skip (View v){
-        //send it as this is last one
-        Intent i = new Intent(getContext(), Home_Screen_Crew.class);
-        startActivity(i);
-    }
-
-    public JSONObject Send (View v){
+    public JSONObject createJson (){
         notes = new JSONObject();
         try{
             notes.put("Challenges", challenges.toString());

@@ -1,25 +1,34 @@
 package com.example.cape_medics;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
+
 public class Death extends Fragment {
     JSONArray CategoryType;
-
+    Button send, go;
     JSONObject death;
     EditText location, time, place, date, name, post, time2;
     CheckBox carotidPulseLeft, carotidPulseRight, breathingYes, breathingNo, eyeYes, eyeNo, ecgYes, ecgNo, pupilsYes, pupilsNo;
     String carotidPulse, breathing, dollEyeMovements, ecgStraightLine, bilateralFixedDilatedPupils;
+    private static final String IMAGE_DIRECTORY = "/Pictures";
 
     public Death(){}
 
@@ -28,6 +37,12 @@ public class Death extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_death,container,false);
 
+
+
+        death = new JSONObject();
+
+        send = view.findViewById(R.id.send);
+        go = view.findViewById(R.id.signatureButton);
         location = view.findViewById(R.id.locationEdit);
         time = view.findViewById(R.id.timeEdit);
         place = view.findViewById(R.id.placeEdit);
@@ -46,8 +61,27 @@ public class Death extends Fragment {
         ecgNo = view.findViewById(R.id.ecgChkNo);
         pupilsYes = view.findViewById(R.id.dilatedChkYes);
         pupilsNo = view.findViewById(R.id.dilatedChkNo);
-        death = new JSONObject();
         CategoryType = new JSONArray();
+
+        go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), Signature.class);
+                i.putExtra("name", "Death ");
+                startActivity(i);
+            }
+        });
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    createJson();
+                    Intent i = new Intent(getContext(), Home_Screen_Crew.class);
+                    startActivity(i);
+                }catch (Exception e){}
+            }
+        });
 
         try {
             CategoryType = new JSONArray(getActivity().getIntent().getStringExtra("Category Type"));
@@ -56,8 +90,14 @@ public class Death extends Fragment {
         return view;
     }
 
-    public JSONObject Send (View v){
-        death = new JSONObject();
+    public void removeStringPropertys(String code, Cache cache, Context context){
+        //use this method to remove all string caches
+        cache = new Cache(context);
+        cache.removeStringProperty("categoryType"+code);
+    }
+
+    public JSONObject createJson (){
+
         //carotid pulse
         if(carotidPulseLeft.isChecked()) carotidPulse = carotidPulseLeft.getText().toString();
         if(carotidPulseRight.isChecked()) carotidPulse = carotidPulseRight.getText().toString();
@@ -79,6 +119,7 @@ public class Death extends Fragment {
         if(pupilsYes.isChecked()) bilateralFixedDilatedPupils = pupilsYes.getText().toString();
 
         try{
+            death.put("Commissioner of Oaths",loadImage());
             death.put("Carotid Pulse",carotidPulse);
             death.put("Breathing",breathing);
             death.put("Doll Eye Movements",dollEyeMovements);
@@ -94,19 +135,29 @@ public class Death extends Fragment {
 
         }catch (Exception e){}
 
-
-
         return death;
+
     }
 
-    public void send(){
-        // do some stuff here but eh im tired
+    public Bitmap loadImage(){
+        File wallpaperDirectory = new File(Environment.getExternalStorageDirectory() + IMAGE_DIRECTORY,"Death.jpg");
 
-        try {
-            Intent i = new Intent(getContext(), Home_Screen_Crew.class);
-            startActivity(i);
-        }catch (Exception e){}
+        if(wallpaperDirectory.exists()){
+
+            Bitmap myBitmap = BitmapFactory.decodeFile(wallpaperDirectory.getAbsolutePath());
+            return myBitmap;
+        }
+        else{
+            return null;
+        }
+
+
+
     }
+
+
+
+
 
 
 }

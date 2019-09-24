@@ -1,6 +1,7 @@
 package com.example.cape_medics;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,6 +12,9 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -25,28 +29,46 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class Home_Screen_Crew extends AppCompatActivity {
-    /*
-    Button dashboard;
-    Button HRform;
-    Button MedRecords;
-    Button timesheet;*/
 
-    Button checkin;
+    Button attendance, broadcast;
+    String name, authorisation, broadcasts, jobs, saved;
+    int id;
+    Button checkinbtn;
+    JSONObject checkin, load;
     public LocationManager locationManager;
     public LocationListener locationListener;
     JSONObject checkinInfo;
+    String responseServer;
+    String url;
+    Cache cache;
+    String first;
+    String code;
+    boolean connected;
+
 
     private static final int REQUEST_LOCATION = 1;
 
@@ -66,13 +88,68 @@ public class Home_Screen_Crew extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen_crew);
-        checkin = findViewById(R.id.button2);
-        /*
-        dashboard = findViewById(R.id.DashBoard);
-        HRform = findViewById(R.id.HR_Forms);
-        MedRecords = findViewById(R.id.MedicalRecords);
-        timesheet = findViewById(R.id.TimeSheet);*/
-        //create pull down menu with logout option
+        checkinbtn = findViewById(R.id.button2);
+        attendance = findViewById(R.id.button3);
+        broadcast = findViewById(R.id.button8);
+        cache = new Cache(getApplicationContext());
+        url = "http://capemedicstestserver-com.stackstaging.com/apktest/checkIn.php";
+
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        else connected = false;
+
+        // send through another variable that if true is the first iteration.
+        Bundle bundle = getIntent().getExtras();
+        first = bundle.getString("first");
+        code = bundle.getString("code");
+
+        if(first.equals("true")) {
+
+            name = bundle.getString("Crew name");
+            cache.setStringProperty("name"+code, name);
+
+            authorisation = bundle.getString("Authorisation");
+            cache.setStringProperty("authorisation"+code, authorisation);
+
+            id = bundle.getInt("Crew ID");
+            cache.setStringProperty("id"+code, Integer.toString(id));
+
+            broadcasts = bundle.getString("broadcasts");
+            cache.setStringProperty("broadcasts"+code, broadcasts);
+
+            jobs = bundle.getString("jobs");
+            cache.setStringProperty("jobs"+code, jobs);
+        }
+        else{
+            name = cache.getStringProperty("name"+code);
+            authorisation = cache.getStringProperty("authorisation"+code);
+            id = Integer.parseInt(cache.getStringProperty("id"+code));
+            broadcasts = cache.getStringProperty("broadcasts"+code);
+            jobs = cache.getStringProperty("jobs"+code);
+        }
+
+        if(connected){
+            saved = cache.getStringProperty("checkIn"+code);
+            if (saved != null){
+                try {
+                    checkin = new JSONObject(saved);
+                    AsyncT send = new AsyncT();
+                    send.execute();
+                    cache.removeStringProperty("checkIn"+code);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        if(!authorisation.equals("Manager")){
+            attendance.setVisibility(View.INVISIBLE);
+            broadcast.setVisibility(View.INVISIBLE);
+        }
 
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -150,7 +227,7 @@ public class Home_Screen_Crew extends AppCompatActivity {
         };
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 50, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
         }
 
@@ -192,10 +269,19 @@ public class Home_Screen_Crew extends AppCompatActivity {
 
     public void Dash(View v) {
         Intent i = new Intent(getApplicationContext(), DashBoard.class);
+        i.putExtra("broadcasts",broadcasts);
+        i.putExtra("jobs",jobs);
         startActivity(i);
     }
 
     public void CheckIn(View v) {
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        else connected = false;
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -206,11 +292,22 @@ public class Home_Screen_Crew extends AppCompatActivity {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-       JSONObject checkin = new JSONObject();
+        checkin = new JSONObject();
         try {
-            checkin.put("Check-in",addressBuild(locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)));
+            if(locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER) == null){
+                checkin.put("Check-in",addressBuild(locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)));
+            }else {
+                checkin.put("Check-in", addressBuild(locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)));
+            }
         } catch (JSONException e) {
             Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+        if(connected) {
+            AsyncT send = new AsyncT();
+            send.execute();
+        }
+        else{
+            cache.setStringProperty("checkIn"+code,checkin.toString());
         }
 
         Log.i("JSON",checkin.toString());
@@ -219,12 +316,14 @@ public class Home_Screen_Crew extends AppCompatActivity {
     public void vehicle(View v){
 
         Intent i = new Intent(getApplicationContext(),VehicleCheckList.class);
+        i.putExtra("code",code);
         startActivity(i);
 
     }
 
     public void MedRec(View v){
     Intent i = new Intent(getApplicationContext(), categoryType.class);
+    i.putExtra("code",code);
     startActivity(i);
 
     }
@@ -325,4 +424,88 @@ public class Home_Screen_Crew extends AppCompatActivity {
         }
         return checkinInfo;
     }
+
+    class AsyncT extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url);
+
+            try {
+
+
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                nameValuePairs.add(new BasicNameValuePair("req", checkin.toString()));
+
+                Log.e("mainToPost", "mainToPost" + nameValuePairs.toString());
+
+                // Use UrlEncodedFormEntity to send in proper format which we need
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                httppost.addHeader("Cookie", "__test=fdeabe1d0dca3968e3da6a69937fc2e6; expires=Thu, 31-Dec-37 23:55:55 GMT; path=/");
+
+                // Execute HTTP Post Request
+                HttpResponse response = httpclient.execute(httppost);
+                InputStream inputStream = response.getEntity().getContent();
+                Login_Page.InputStreamToStringExample str = new Login_Page.InputStreamToStringExample();
+                responseServer = str.getStringFromInputStream(inputStream);
+                Log.e("response", "cake -----" + responseServer);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Toast.makeText(getApplicationContext(), checkin.toString(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public static class InputStreamToStringExample {
+
+        public static void main(String[] args) throws IOException {
+
+            // intilize an InputStream
+            InputStream is = new ByteArrayInputStream("file content..blah blah".getBytes());
+
+            String result = getStringFromInputStream(is);
+
+            System.out.println(result);
+            System.out.println("Done");
+
+        }
+
+        // convert InputStream to String
+        public static String getStringFromInputStream(InputStream is) {
+
+            BufferedReader br = null;
+            StringBuilder sb = new StringBuilder();
+
+            String line;
+            try {
+
+                br = new BufferedReader(new InputStreamReader(is));
+                while ((line = br.readLine()) != null) {
+                    sb.append(line);
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (br != null) {
+                    try {
+                        br.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            return sb.toString();
+        }
+
+    }
+
 }

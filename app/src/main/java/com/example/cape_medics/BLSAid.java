@@ -69,7 +69,7 @@ public class BLSAid extends Fragment {
 
     }
 
-    public JSONObject Send(View v){
+    public JSONObject createJson(){
 
         BLS_ILSAidtoPatient = new JSONObject();
 

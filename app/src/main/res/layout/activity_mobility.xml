@@ -46,7 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Not Applicable"
-                android:onClick="skip"
+                android:textColor="@color/white"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title" />
@@ -67,9 +68,11 @@
                 android:id="@+id/stretcherChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:onClick="stretcherClk"
                 android:text="Stretcher"
-                app:layout_constraintEnd_toStartOf="@id/wheelchairChk"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/heading1" />
 
@@ -77,21 +80,25 @@
                 android:id="@+id/wheelchairChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:onClick="wheelchairClk"
                 android:text="Wheelchair"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/stretcherChk"
                 app:layout_constraintTop_toBottomOf="@id/heading1" />
 
             <CheckBox
                 android:id="@+id/walkingChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:onClick="walkingClk"
                 android:text="Walking"
 
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/stretcherChk" />
 
@@ -99,10 +106,12 @@
                 android:id="@+id/crutchesChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Crutches"
+                android:layout_marginEnd="28dp"
+                android:layout_marginRight="28dp"
                 android:onClick="crutchesClk"
+                android:text="Crutches"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/walkingChk"
                 app:layout_constraintTop_toBottomOf="@id/stretcherChk" />
 
             <TextView
@@ -122,8 +131,10 @@
                 android:id="@+id/neckChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:text="Neck Collar"
-                app:layout_constraintEnd_toStartOf="@id/scoopChk"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/heading2" />
 
@@ -131,19 +142,22 @@
                 android:id="@+id/scoopChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="88dp"
+                android:layout_marginRight="88dp"
                 android:text="Scoop"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/neckChk"
                 app:layout_constraintTop_toBottomOf="@id/heading2" />
 
             <CheckBox
                 android:id="@+id/spinalChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:text="Spinal Board"
 
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/scoopChk" />
 
@@ -152,9 +166,11 @@
                 android:id="@+id/vacuumChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:text="Vacuum Mattress"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/spinalChk"
                 app:layout_constraintTop_toBottomOf="@id/scoopChk" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

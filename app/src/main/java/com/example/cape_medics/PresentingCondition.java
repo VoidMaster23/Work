@@ -12,7 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 
 public class PresentingCondition extends Fragment{
@@ -48,6 +53,10 @@ public class PresentingCondition extends Fragment{
     private CheckBox chkMusc;
     private CheckBox chkObs;
     private CheckBox chkDeliver;
+    List<CheckBox> checkBoxList;
+    Cache cache;
+    String saved;
+    JSONObject load;
 
   JSONObject presentingConditon;
 
@@ -93,7 +102,36 @@ public class PresentingCondition extends Fragment{
         chkMusc = (CheckBox)view.findViewById( R.id.chkMusc );
         chkObs = (CheckBox)view.findViewById( R.id.chkObs );
         chkDeliver = (CheckBox)view.findViewById( R.id.chkDeliver );
+
+        checkBoxList = Arrays.asList(chkCardiac,chkAssault,chkChest,chkLessTwo,chkMoreTwo,chkAst,chkCopd,chkHead,chkAb,chkPen,chkVomit,chkFract,chkConvulse,chkMva,chkStroke,chkDrown,chkDiabetes,chkBurn,chkHypo,chkGun,chkHyper,chkInhale,chkAlcohol,chkMusc,chkDrugs,chkObs,chkFirstAid,chkDeliver);
+        cache = new Cache(getContext());
+        saved = cache.getStringProperty("presentingConditon");
+        if(saved != null ){
+            try {
+                load = new JSONObject(saved);
+                edtPrimary.setText(presentingConditon.getString("Primary"));
+                Iterator<String> keys = load.keys();
+                while(keys.hasNext()) {
+                    String key = keys.next();
+                    String item = load.getString(key);
+                    for (int j = 0; j<checkBoxList.size();j++) {
+                        if (checkBoxList.get(j) != null) {
+                            if (item.equals(checkBoxList.get(j).getText().toString())) {
+                                checkBoxList.get(j).setChecked(true);
+
+                            }
+                        }
+                    }
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
         return view;
+
     }
 
 
@@ -172,6 +210,7 @@ public class PresentingCondition extends Fragment{
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+        cache.setStringProperty("presentingConditon",presentingConditon.toString());
 
         return presentingConditon;
     }

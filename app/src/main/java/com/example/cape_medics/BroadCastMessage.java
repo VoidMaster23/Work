@@ -24,11 +24,13 @@ public class BroadCastMessage extends AppCompatActivity {
 
         Toast.makeText(this, "Broadcast Sent",Toast.LENGTH_LONG).show();
         Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
+        i.putExtra("first","not");
         startActivity(i);
     }
 
     public void Cancel(View v){
         Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
+        i.putExtra("first","not");
         startActivity(i);
     }
 }

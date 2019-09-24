@@ -17,7 +17,6 @@ import org.json.JSONObject;
 public class AcompPrac extends Fragment {
 
     ListView practitioner;
-    SendMessage SM;
     Button go;
     JSONObject accompanyingPractitioner;
     EditText healthRegistration, name;
@@ -55,11 +54,8 @@ public class AcompPrac extends Fragment {
         return view;
     }
 
-    interface SendMessage{
-        void sendData(String message);
-    }
 
-    public JSONObject Send (View v){
+    public JSONObject createJson (){
         accompanyingPractitioner = new JSONObject();
         for (int i = 0; i < practitioner.getChildCount(); i++) {
 

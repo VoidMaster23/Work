@@ -173,7 +173,7 @@ public class Disposal extends Fragment {
     }
 
 
-    public JSONObject Send(View v){
+    public JSONObject createJson(){
         disposal = new JSONObject();
         if(home.isChecked()) hospital_home_familyGP = home.getText().toString();
         if(hospital.isChecked()) hospital_home_familyGP = hospital.getText().toString();

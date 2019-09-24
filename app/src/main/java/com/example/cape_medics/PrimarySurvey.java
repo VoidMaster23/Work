@@ -12,7 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 
 public class PrimarySurvey extends Fragment {
@@ -42,6 +47,11 @@ public class PrimarySurvey extends Fragment {
     private TextView textView18;
     private CheckBox chkTwoPlus;
     private CheckBox chkTwoMinus;
+    List<CheckBox> checkBoxList;
+    JSONObject load;
+    Cache cache;
+    String saved;
+
 
 JSONObject primarySurvery;
 
@@ -85,6 +95,31 @@ JSONObject primarySurvery;
         textView18 = (TextView)view.findViewById( R.id.textView18 );
         chkTwoPlus = (CheckBox)view.findViewById( R.id.chkTwoPlus );
         chkTwoMinus = (CheckBox)view.findViewById( R.id.chkTwoMinus );
+        checkBoxList = Arrays.asList(chkNA,chkAbnormal,chkAbsent,chkClear,chkOcc,chkNoisy,chkSpine,chkRadial,chkBrachial,chkCarotid,chkFemoral,chkHigh,chkLow,chkMed,chSix,chkZero,chkNormal,chkTwoMinus,chkTwoPlus);
+
+        cache = new Cache(getContext());
+        saved = cache.getStringProperty("primarySurvery");
+        if(saved != null ){
+            try {
+                load = new JSONObject(saved);
+                Iterator<String> keys = load.keys();
+                while(keys.hasNext()) {
+                    String key = keys.next();
+                    String item = load.getString(key);
+                    for (int j = 0; j<checkBoxList.size();j++) {
+                        if (checkBoxList.get(j) != null) {
+                            if (item.equals(checkBoxList.get(j).getText().toString())) {
+                                checkBoxList.get(j).setChecked(true);
+
+                            }
+                        }
+                    }
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
         return view;
     }
 
@@ -165,6 +200,7 @@ JSONObject primarySurvery;
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+        cache.setStringProperty("primarySurvery",primarySurvery.toString());
 
         return primarySurvery;
     }

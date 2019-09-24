@@ -20,10 +20,11 @@
 
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="400dp"
-                android:layout_height="80dp"
-                app:layout_constraintHorizontal_bias="0.317"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="185dp"
+                android:layout_height="162dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/logo" />
@@ -44,11 +45,14 @@
                 android:id="@+id/notApplicable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="76dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:text="Not Applicable"
-                android:onClick="skip"
+                android:textColor="@color/white"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/heading1"
@@ -60,15 +64,18 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+                app:layout_constraintTop_toBottomOf="@+id/title" />
 
             <CheckBox
                 android:id="@+id/medicalaidChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:onClick="medicalaidClk"
                 android:text="Medical Aid"
-                app:layout_constraintEnd_toStartOf="@id/accountChk"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/heading1" />
 
@@ -76,33 +83,39 @@
                 android:id="@+id/accountChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginEnd="64dp"
+                android:layout_marginRight="64dp"
                 android:onClick="accountClk"
                 android:text="Account"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@id/cashChk"
-                app:layout_constraintStart_toEndOf="@id/medicalaidChk"
                 app:layout_constraintTop_toBottomOf="@id/heading1" />
 
             <CheckBox
                 android:id="@+id/cashChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
                 android:onClick="cashClk"
                 android:text="Cash"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/accountChk"
                 app:layout_constraintTop_toBottomOf="@id/heading1" />
 
             <CheckBox
                 android:id="@+id/creditChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:onClick="creditClk"
                 android:text="Credit Card/EFT"
 
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/medicalaidChk" />
 
@@ -110,10 +123,13 @@
                 android:id="@+id/gopChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="G.O.P"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
                 android:onClick="gopClk"
+                android:text="G.O.P"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/creditChk"
                 app:layout_constraintTop_toBottomOf="@id/medicalaidChk" />
 
             <TextView

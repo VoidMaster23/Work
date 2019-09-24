@@ -6,20 +6,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class FireSelect extends AppCompatActivity {
+    String code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fire_select);
+        Bundle bundle = getIntent().getExtras();
+        code = bundle.getString("code");
     }
 
     public void Engine(View v){
         Intent i = new Intent(getApplicationContext(), FireEngine.class);
+        i.putExtra("code",code);
         startActivity(i);
     }
 
     public void Skid(View v){
         Intent i = new Intent(getApplicationContext(), FireSkid.class);
+        i.putExtra("code",code);
         startActivity(i);
     }
 }

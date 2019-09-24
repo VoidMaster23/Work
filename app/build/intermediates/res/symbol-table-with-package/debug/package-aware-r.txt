@@ -1436,6 +1436,7 @@ id checkBox3
 id checkBox4
 id checkBox5
 id checkBox6
+id checkBox7
 id checkBox8
 id checkBox9
 id checkbox
@@ -1584,6 +1585,7 @@ id commentsEdit
 id company
 id company2Edit
 id companyEdit
+id constraintLayout
 id contact
 id contactEdit
 id container
@@ -2129,6 +2131,7 @@ id lancetsQty
 id landsideChk
 id largeLabel
 id lastlin
+id lay
 id layflat25
 id layflat25Comment
 id layflat25Qty
@@ -2249,6 +2252,9 @@ id line1
 id line3
 id linear
 id linearLayout
+id linearLayout2
+id linearLayout3
+id linearLayout4
 id linearOutSlowIn
 id listMode
 id listView
@@ -2578,6 +2584,7 @@ id section_label
 id seenChk
 id select_dialog_listview
 id selected
+id send
 id service
 id serviceEdit
 id sgaChk
@@ -3078,6 +3085,7 @@ layout activity_payment_method
 layout activity_refusalof_care
 layout activity_signature
 layout activity_swap
+layout activity_time__sheet2
 layout activity_time_sheet
 layout activity_treatment
 layout activity_vehicle_check_list

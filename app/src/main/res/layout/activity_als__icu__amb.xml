@@ -42,7 +42,7 @@
                         android:id="@+id/title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ILS/ICU Ambulance"
+                        android:text="ALS/ICU Ambulance"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -221,730 +221,754 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/timeEdit" />
 
-                    <CheckBox
-                        android:id="@+id/air"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/vert1"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="49dp"
-                        android:text="Air Conditioner"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/time" />
+                        android:orientation="vertical"
+                        app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                    <CheckBox
-                        android:id="@+id/antennae"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Antennae's"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/air" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                    <CheckBox
-                        android:id="@+id/battery"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Battery Secured"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/antennae" />
+                            <CheckBox
+                                android:id="@+id/air"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Air Conditioner"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <CheckBox
-                        android:id="@+id/body"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Body Work"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/battery" />
+                            <EditText
+                                android:id="@+id/airComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                    <CheckBox
-                        android:id="@+id/brake"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Brake Lights"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/body" />
+                        </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/branding"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Branding"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/brake" />
 
-                    <CheckBox
-                        android:id="@+id/dashboard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Dashboard Lights"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/branding" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/antennae"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Antennae's"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <CheckBox
-                        android:id="@+id/emergency"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Emergency Lights"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/dashboard" />
+                            <EditText
+                                android:id="@+id/antennaeComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/exhaust"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Exhaust"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/emergency" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/battery"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Battery Secured"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <CheckBox
-                        android:id="@+id/oil"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Oil Level"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/exhaust" />
+                            <EditText
+                                android:id="@+id/batteryComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                    <CheckBox
-                        android:id="@+id/fuel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Fuel Level"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/oil" />
+                        </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/headlights"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Headlights"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fuel" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/body"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Body Work"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <CheckBox
-                        android:id="@+id/leftIndicator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Left Indicator"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/headlights" />
+                            <EditText
+                                android:id="@+id/bodyComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                    <CheckBox
-                        android:id="@+id/rightIndicator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Right Indicator"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/leftIndicator" />
+                        </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/back"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Interior Light Back"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rightIndicator" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/brake"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Brake Lights"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <CheckBox
-                        android:id="@+id/front"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Interior Light Front"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/back" />
+                            <EditText
+                                android:id="@+id/brakeComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                    <CheckBox
-                        android:id="@+id/jack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Jack and Tools"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/front" />
+                        </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/leds"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="LED's Lights"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/jack" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/branding"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Branding"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <CheckBox
-                        android:id="@+id/licence"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Licence Disk x2 and Exp Date"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/leds" />
+                            <EditText
+                                android:id="@+id/brandingComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                    <CheckBox
-                        android:id="@+id/plates"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Number Plates"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/licence" />
+                        </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/radio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Radio CD"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/plates" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/dashboard"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Dashboard Lights"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <CheckBox
-                        android:id="@+id/rear"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rear View Mirror"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/radio" />
+                            <EditText
+                                android:id="@+id/dashboardComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                    <CheckBox
-                        android:id="@+id/reverse"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Reverse Lights"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rear" />
+                        </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/side"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Side Mirrors"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/reverse" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/emergency"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Emergency Lights"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <CheckBox
-                        android:id="@+id/siren"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Siren"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/side" />
+                            <EditText
+                                android:id="@+id/emergencyComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                    <CheckBox
-                        android:id="@+id/spare"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Spare Wheel"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/siren" />
+                        </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/tread"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tyre Tread"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/spare" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/exhaust"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Exhaust"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <CheckBox
-                        android:id="@+id/pressure"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tyre Pressure"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tread" />
+                            <EditText
+                                android:id="@+id/exhaustComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                    <CheckBox
-                        android:id="@+id/windows"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Windows"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/pressure" />
+                        </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/windscreen"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Windscreen"
-                        android:textColor="@color/white"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/windows" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/oil"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Oil Level"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
-                        android:id="@+id/airComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="49dp"
+                            <EditText
+                                android:id="@+id/oilComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                        android:background="@null"
-                        android:ems="10"
-                        android:gravity="left"
-                        android:hint="Comments"
+                        </LinearLayout>
 
-                        android:inputType="textPersonName"
-                        android:paddingTop="5dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/time" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/fuel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Fuel Level"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
-                        android:id="@+id/antennaeComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
+                            <EditText
+                                android:id="@+id/fuelComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                        app:layout_constraintEnd_toEndOf="parent"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/headlights"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Headlights"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                        app:layout_constraintTop_toBottomOf="@+id/airComment" />
+                            <EditText
+                                android:id="@+id/headlightsComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/batteryComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/antennaeComment" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/leftIndicator"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Left Indicator"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
-                        android:id="@+id/bodyComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/batteryComment" />
+                            <EditText
+                                android:id="@+id/leftIndicatorComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/brakeComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/bodyComment" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/rightIndicator"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Right Indicator"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
-                        android:id="@+id/brandingComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/brakeComment" />
+                            <EditText
+                                android:id="@+id/rightIndicatorComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                    <EditText
-                        android:id="@+id/dashboardComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/brandingComment" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/emergencyComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/dashboardComment" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/back"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Interior Light Back"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
-                        android:id="@+id/exhaustComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/emergencyComment" />
+                            <EditText
+                                android:id="@+id/backComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/oilComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/exhaustComment" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/front"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Interior Light Front"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
-                        android:id="@+id/fuelComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/oilComment" />
+                            <EditText
+                                android:id="@+id/frontComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/headlightsComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fuelComment" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/jack"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Jack and Tools"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
-                        android:id="@+id/leftIndicatorComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/headlightsComment" />
+                            <EditText
+                                android:id="@+id/jackComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/rightIndicatorComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/leftIndicatorComment" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/leds"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="LED's Lights"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
-                        android:id="@+id/backComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rightIndicatorComment" />
+                            <EditText
+                                android:id="@+id/ledsComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                    <EditText
-                        android:id="@+id/frontComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/backComment" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/jackComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/frontComment" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/licence"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Licence Disk x2 and Exp Date"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
-                        android:id="@+id/ledsComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/jackComment" />
+                            <EditText
+                                android:id="@+id/licenceComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                    <EditText
-                        android:id="@+id/licenceComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ledsComment" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/platesComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/licenceComment" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/plates"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Number Plates"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
-                        android:id="@+id/radioComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/platesComment" />
+                            <EditText
+                                android:id="@+id/platesComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                    <EditText
-                        android:id="@+id/rearComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/radioComment" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/reverseComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rearComment" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/radio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Radio CD"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
-                        android:id="@+id/sideComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/reverseComment" />
+                            <EditText
+                                android:id="@+id/radioComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/sirenComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/sideComment" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/rear"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rear View Mirror"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
-                        android:id="@+id/spareComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/sirenComment" />
+                            <EditText
+                                android:id="@+id/rearComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/treadComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/spareComment" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/reverse"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Reverse Lights"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
-                        android:id="@+id/pressureComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/treadComment" />
+                            <EditText
+                                android:id="@+id/reverseComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
-                    <EditText
-                        android:id="@+id/windowsComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/pressureComment" />
+                        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/windscreenComment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:background="@null"
-                        android:ems="10"
-                        android:hint="Comments"
-                        android:inputType="textPersonName"
-                        android:paddingTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/windowsComment" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/side"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Side Mirrors"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <EditText
+                                android:id="@+id/sideComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/siren"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Siren"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <EditText
+                                android:id="@+id/sirenComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/spare"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Spare Wheel"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <EditText
+                                android:id="@+id/spareComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/tread"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tyre Tread"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <EditText
+                                android:id="@+id/treadComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/pressure"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tyre Pressure"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <EditText
+                                android:id="@+id/pressureComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/windows"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Windows"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <EditText
+                                android:id="@+id/windowsComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <CheckBox
+                                android:id="@+id/windscreen"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Windscreen"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <EditText
+                                android:id="@+id/windscreenComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/header2"
@@ -957,7 +981,7 @@
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/windscreenComment" />
+                        app:layout_constraintTop_toBottomOf="@+id/vert1" />
 
                     <LinearLayout
                         android:id="@+id/vert2"
@@ -8186,8 +8210,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/loginshape"
-                            android:onClick="next"
-                            android:text="Next" />
+                            android:onClick="Send"
+                            android:text="Send" />
 
                     </LinearLayout>
 

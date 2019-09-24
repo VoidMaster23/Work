@@ -16,7 +16,12 @@ import android.widget.Toast;
 
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 
 public class VitalSigns extends Fragment {
@@ -134,6 +139,11 @@ Button button1,button2,button3, button4;
     private Spinner spnRightSize4;
 
     JSONObject vitalSigns;
+
+    List<CheckBox> checkBoxList;
+    Cache cache;
+    String saved;
+    JSONObject load;
 
 
     public VitalSigns() {
@@ -295,6 +305,68 @@ Button button1,button2,button3, button4;
         spnLeftSize4 = (Spinner)view.findViewById( R.id.spnLeftSize4 );
         spnRightSize4 = (Spinner)view.findViewById( R.id.spnRightSize4 );
 
+        checkBoxList = Arrays.asList(chkLeft1,chkLeft2,chkLeft3,chkLeft4,chkRight1,chkRight2,chkRight3,chkRight4);
+        cache = new Cache(getContext());
+        saved = cache.getStringProperty("vitalSigns");
+        if(saved != null ){
+            try {
+                load = new JSONObject(saved);
+                edtTime1.setText(vitalSigns.getString("Time1"));
+                edtPulse1.setText(vitalSigns.getString("Pulse1"));
+                edtBp1.setText(vitalSigns.getString("BP1"));
+                edtSpo1.setText(vitalSigns.getString("spo21"));
+                edtResp1.setText(vitalSigns.getString("resp1"));
+                edtHgt1.setText(vitalSigns.getString("hgt1"));
+                edtCO21.setText(vitalSigns.getString("co21"));
+                edtFlow1.setText(vitalSigns.getString("peak1"));
+
+                edtTime2.setText(vitalSigns.getString("Time2"));
+                edtPulse2.setText(vitalSigns.getString("Pulse2"));
+                edtBp2.setText(vitalSigns.getString("BP2"));
+                edtSpo2.setText(vitalSigns.getString("spo22"));
+                edtResp2.setText(vitalSigns.getString("resp2"));
+                edtHgt2.setText(vitalSigns.getString("hgt2"));
+                edtCO22.setText(vitalSigns.getString("co22"));
+                edtFlow2.setText(vitalSigns.getString("peak2"));
+
+                edtTime3.setText(vitalSigns.getString("Time3"));
+                edtPulse3.setText(vitalSigns.getString("Pulse3"));
+                edtBp3.setText(vitalSigns.getString("BP3"));
+                edtSpo3.setText(vitalSigns.getString("spo23"));
+                edtResp3.setText(vitalSigns.getString("resp3"));
+                edtHgt3.setText(vitalSigns.getString("hgt3"));
+                edtCO23.setText(vitalSigns.getString("co23"));
+                edtFlow3.setText(vitalSigns.getString("peak3"));
+
+                edtTime4.setText(vitalSigns.getString("Time4"));
+                edtPulse4.setText(vitalSigns.getString("Pulse4"));
+                edtBp4.setText(vitalSigns.getString("BP4"));
+                edtSpo4.setText(vitalSigns.getString("spo24"));
+                edtResp4.setText(vitalSigns.getString("resp4"));
+                edtHgt4.setText(vitalSigns.getString("hgt4"));
+                edtCO24.setText(vitalSigns.getString("co24"));
+                edtFlow4.setText(vitalSigns.getString("peak4"));
+
+                Iterator<String> keys = load.keys();
+                while(keys.hasNext()) {
+                    String key = keys.next();
+                    String item = load.getString(key);
+                    for (int j = 0; j<checkBoxList.size();j++) {
+                        if (checkBoxList.get(j) != null) {
+                            if (item.equals(checkBoxList.get(j).getText().toString())) {
+                                checkBoxList.get(j).setChecked(true);
+
+                            }
+                        }
+                    }
+
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
      return view;
     }
 
@@ -434,7 +506,7 @@ Button button1,button2,button3, button4;
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
-
+        cache.setStringProperty("vitalSigns",vitalSigns.toString());
         return vitalSigns;
     }
 

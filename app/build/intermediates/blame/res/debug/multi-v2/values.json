@@ -1,25 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\test\\Desktop\\Cape_Medics_2-20190611T210423Z-001\\Cape_Medics_2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\test\\Downloads\\Merged1\\Cape_Medics\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
-                {
-                    "source": "C:\\Users\\test\\Desktop\\Cape_Medics_2-20190611T210423Z-001\\Cape_Medics_2\\app\\src\\main\\res\\values\\colors.xml",
-                    "from": {
-                        "startLines": "14,6,5,4,2,3,11,12,13,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "618,252,202,157,57,105,452,507,562,303,357,411",
-                        "endColumns": "37,47,48,43,46,50,53,53,54,52,52,39",
-                        "endOffsets": "651,295,246,196,99,151,501,556,612,351,405,446"
-                    },
-                    "to": {
-                        "startLines": "170,187,188,195,196,197,219,220,221,264,265,268",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "8316,9647,9695,10107,10151,10198,11693,11747,11801,14633,14686,14860",
-                        "endColumns": "37,47,47,43,46,50,53,53,54,52,52,39",
-                        "endOffsets": "8349,9690,9738,10146,10193,10244,11742,11796,11851,14681,14734,14895"
-                    }
-                },
                 {
                     "source": "C:\\Users\\test\\.gradle\\caches\\transforms-2\\files-2.1\\54a93334bb6c5b690d01181cfddc12e0\\res\\values\\values.xml",
                     "from": {
@@ -76,6 +59,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\test\\Downloads\\Merged1\\Cape_Medics\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1,5,2",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "16,188,65",
+                        "endColumns": "48,69,63",
+                        "endOffsets": "60,253,124"
+                    },
+                    "to": {
+                        "startLines": "586,593,603",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "34986,35796,37021",
+                        "endColumns": "48,69,63",
+                        "endOffsets": "35030,35861,37080"
+                    }
+                },
+                {
                     "source": "C:\\Users\\test\\.gradle\\caches\\transforms-2\\files-2.1\\48de0b3d3d8e60870f2a8eea7d2a0fae\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11",
@@ -109,6 +109,23 @@
                         "endLines": "357,4102,4219",
                         "endColumns": "42,24,24",
                         "endOffsets": "20876,263052,268761"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\test\\Downloads\\Merged1\\Cape_Medics\\app\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "14,6,5,4,2,3,11,12,13,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "618,252,202,157,57,105,452,507,562,303,357,411",
+                        "endColumns": "37,47,48,43,46,50,53,53,54,52,52,39",
+                        "endOffsets": "651,295,246,196,99,151,501,556,612,351,405,446"
+                    },
+                    "to": {
+                        "startLines": "170,187,188,195,196,197,219,220,221,264,265,268",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "8316,9647,9695,10107,10151,10198,11693,11747,11801,14633,14686,14860",
+                        "endColumns": "37,47,47,43,46,50,53,53,54,52,52,39",
+                        "endOffsets": "8349,9690,9738,10146,10193,10244,11742,11796,11851,14681,14734,14895"
                     }
                 },
                 {
@@ -224,39 +241,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\test\\Desktop\\Cape_Medics_2-20190611T210423Z-001\\Cape_Medics_2\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "C:\\Users\\test\\Downloads\\Merged1\\Cape_Medics\\app\\src\\main\\res\\values\\dimens.xml",
                     "from": {
-                        "startLines": "3,21,23,25",
+                        "startLines": "3,4,6,5",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "57,717,811,895",
-                        "endLines": "19,21,23,25",
-                        "endColumns": "12,90,80,104",
-                        "endOffsets": "709,803,887,995"
+                        "startOffsets": "127,185,283,241",
+                        "endColumns": "57,55,48,41",
+                        "endOffsets": "180,236,327,278"
                     },
                     "to": {
-                        "startLines": "613,630,631,2964",
+                        "startLines": "344,345,346,404",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "37804,38445,38535,192788",
-                        "endLines": "629,630,631,2964",
-                        "endColumns": "12,89,79,104",
-                        "endOffsets": "38440,38530,38610,192888"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\test\\Desktop\\Cape_Medics_2-20190611T210423Z-001\\Cape_Medics_2\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "1,5,2",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "16,188,65",
-                        "endColumns": "48,69,63",
-                        "endOffsets": "60,253,124"
-                    },
-                    "to": {
-                        "startLines": "586,593,603",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "34986,35796,37021",
-                        "endColumns": "48,69,63",
-                        "endOffsets": "35030,35861,37080"
+                        "startOffsets": "20017,20075,20131,23858",
+                        "endColumns": "57,55,48,41",
+                        "endOffsets": "20070,20126,20175,23895"
                     }
                 },
                 {
@@ -277,20 +275,22 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\test\\Desktop\\Cape_Medics_2-20190611T210423Z-001\\Cape_Medics_2\\app\\src\\main\\res\\values\\dimens.xml",
+                    "source": "C:\\Users\\test\\Downloads\\Merged1\\Cape_Medics\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
-                        "startLines": "3,4,6,5",
+                        "startLines": "3,21,23,25",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "127,185,283,241",
-                        "endColumns": "57,55,48,41",
-                        "endOffsets": "180,236,327,278"
+                        "startOffsets": "57,717,811,895",
+                        "endLines": "19,21,23,25",
+                        "endColumns": "12,90,80,104",
+                        "endOffsets": "709,803,887,995"
                     },
                     "to": {
-                        "startLines": "344,345,346,404",
+                        "startLines": "613,630,631,2964",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "20017,20075,20131,23858",
-                        "endColumns": "57,55,48,41",
-                        "endOffsets": "20070,20126,20175,23895"
+                        "startOffsets": "37804,38445,38535,192788",
+                        "endLines": "629,630,631,2964",
+                        "endColumns": "12,89,79,104",
+                        "endOffsets": "38440,38530,38610,192888"
                     }
                 }
             ]

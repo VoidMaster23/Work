@@ -2,32 +2,39 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cape_medics">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
+	<supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
 
     <application
         android:allowBackup="true"
+        android:name=".MyApplicationContext"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VehicleCheckList"></activity>
-        <activity android:name=".Ambulance"/>
-        <activity android:name=".FireEngine"/>
-        <activity android:name=".ILSAMB"/>
-        <activity android:name=".ALS_ICU_AMB"/>
-        <activity android:name=".ALSRV"/>
-        <activity android:name=".ALSAMB_PAED"/>
-        <activity android:name=".medicalTabbedView" />
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
+        <activity android:name=".Time_Sheet2"></activity>
+        <activity android:name=".VehicleCheckList" />
+        <activity android:name=".Ambulance" />
+        <activity android:name=".FireEngine" />
+        <activity android:name=".FireSelect" />
+        <activity android:name=".FireSkid" />
+        <activity android:name=".ILSAMB" />
+        <activity android:name=".ALS_ICU_AMB" />
+        <activity android:name=".ALSRV" />
+        <activity android:name=".ALSAMB_PAED" />
+        <activity android:name=".medicalTabbedView" />
         <activity android:name=".categoryType" />
         <activity android:name=".MedicalForm" />
         <activity android:name=".BroadCastMessage" />
         <activity android:name=".ChooseBroadCast" />
         <activity android:name=".ViewAttendanceCrew" />
-
         <activity android:name=".BroadCast" />
         <activity android:name=".ViewAttendance" />
         <activity android:name=".TimeSheet" />
@@ -46,5 +53,11 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>

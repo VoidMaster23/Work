@@ -245,7 +245,7 @@ public class PaymentMethod extends Fragment {
         return view;
     }
 
-    public JSONObject Send(View v){
+    public JSONObject createJson(){
         paymentMethod = new JSONObject();
 
         if (medicalaid.isChecked()){

@@ -23,10 +23,11 @@
 
                 <ImageView
                     android:id="@+id/imageView17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_width="177dp"
+                    android:layout_height="138dp"
                     android:src="@drawable/logo"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.025"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,16 +36,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginStart="131dp"
-                    android:layout_marginLeft="131dp"
-                    android:layout_marginEnd="131dp"
-                    android:layout_marginRight="131dp"
+                    android:layout_marginTop="56dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
                     android:text="Not Applicable"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView17" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ListView
                     android:id="@+id/listView"
@@ -52,10 +51,11 @@
                     android:layout_height="577dp"
                     android:layout_marginStart="131dp"
                     android:layout_marginLeft="131dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="88dp"
                     android:layout_marginEnd="131dp"
                     android:layout_marginRight="131dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.525"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/chkNA" />
             </android.support.constraint.ConstraintLayout>

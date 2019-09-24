@@ -23,10 +23,11 @@
 
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="400dp"
-                android:layout_height="80dp"
-                app:layout_constraintHorizontal_bias="0.317"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="184dp"
+                android:layout_height="155dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/logo" />
@@ -47,46 +48,56 @@
                 android:id="@+id/notApplicable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="76dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:text="Not Applicable"
-                android:onClick="skip"
+                android:textColor="@color/white"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/statement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="63dp"
                 android:text="I have"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toStartOf="@+id/seenChk"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+                app:layout_constraintTop_toBottomOf="@+id/logo" />
 
             <CheckBox
                 android:id="@+id/seenChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
                 android:text="seen"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/examinedChk"
                 app:layout_constraintStart_toEndOf="@+id/statement"
-                app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+                app:layout_constraintTop_toBottomOf="@+id/title" />
 
             <CheckBox
                 android:id="@+id/examinedChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
                 android:text="examined"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/treatedChk"
                 app:layout_constraintStart_toEndOf="@+id/seenChk"
-                app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+                app:layout_constraintTop_toBottomOf="@+id/title" />
 
             <CheckBox
                 android:id="@+id/treatedChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="121dp"
                 android:text="treated"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/examinedChk"
                 app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
@@ -96,6 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="and reached the following conclusion"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -107,6 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="The Patient's condition is such that further medical assessment is strongly advised and that patient should be transferred to hospital by Ambulance. The patient has refused care and transportation via Ambulance and has the capacity to make this decision."
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/statement1" />
@@ -117,6 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="The Patient requires treatment at a hospital, clinic or other treatment facility, but is able and willing to make their own arrangements to get there."
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/firstChk" />
@@ -127,6 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="The Patient's condition is such that a medical or social assessment is advisable, but the patient wishes to arrange their own treatment and will call their own GP or doctor."
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/secondChk" />
@@ -137,6 +152,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="The Patient requires assistance only. Medical attention was provided by CApe Medics Crew."
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/thirdChk" />
@@ -188,7 +204,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/loginshape"
                 android:onClick="Go"
-                android:text="Go"
+                android:text="Sign"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/signature"
                 app:layout_constraintTop_toBottomOf="@id/name" />
@@ -242,7 +258,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/loginshape"
                 android:onClick="Go2"
-                android:text="Go"
+                android:text="Sign"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/witness"
                 app:layout_constraintTop_toBottomOf="@id/contact" />

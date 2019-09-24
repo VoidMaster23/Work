@@ -20,7 +20,7 @@ public class medicalTabbedView extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    public static int int_items = 34 ;
+    public static int int_items = 34;
 
 
     private MedicalFormCalls medicalFormCalls;
@@ -57,6 +57,7 @@ public class medicalTabbedView extends AppCompatActivity {
     private Handoff_frag handoff_frag;
     private Notes notes;
     private Death death;
+    Cache cache;
 
 
     static HashMap<String,JSONObject> map;
@@ -123,10 +124,14 @@ public class medicalTabbedView extends AppCompatActivity {
 
         map = new HashMap<>();
 
+
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
+
+
                 switch (tabNames[i]){
+
 
                     case "Death": {
                         map.put("Call Details", medicalFormCalls.createJson());

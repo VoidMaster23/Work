@@ -76,7 +76,7 @@ public class VentilatorSettings extends Fragment {
         return view;
     }
 
-    public JSONObject Send(View v){
+    public JSONObject createJson(){
         ventilatorSettings = new JSONObject();
         try{
             ventilatorSettings.put("Fi02/LPM - First Measurement", lpm.toString());

@@ -19,10 +19,11 @@
 
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="400dp"
-                android:layout_height="80dp"
-                app:layout_constraintHorizontal_bias="0.317"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="207dp"
+                android:layout_height="164dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/logo" />
@@ -43,33 +44,37 @@
                 android:id="@+id/notApplicable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="76dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:text="Not Applicable"
-                android:onClick="skip"
+                android:textColor="@color/white"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/heading1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="Select One"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+                app:layout_constraintTop_toBottomOf="@+id/title" />
 
             <CheckBox
                 android:id="@+id/hospitalChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:onClick="hospitalClk"
                 android:text="Hospital"
-                app:layout_constraintEnd_toStartOf="@id/homeChk"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/heading1" />
 
@@ -77,22 +82,24 @@
                 android:id="@+id/homeChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginRight="60dp"
                 android:onClick="homeClk"
                 android:text="Home"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/familyChk"
-                app:layout_constraintStart_toEndOf="@+id/hospitalChk"
                 app:layout_constraintTop_toBottomOf="@id/heading1" />
 
             <CheckBox
                 android:id="@+id/familyChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Family GP"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:onClick="familyClk"
+                android:text="Family GP"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/homeChk"
                 app:layout_constraintTop_toBottomOf="@id/heading1" />
 
             <TextView
@@ -112,11 +119,11 @@
                 android:id="@+id/ambulanceChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:onClick="ambulanceClk"
                 android:text="Ambulance"
-                app:layout_constraintEnd_toStartOf="@id/carChk"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/heading2" />
 
@@ -124,22 +131,24 @@
                 android:id="@+id/carChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginEnd="57dp"
+                android:layout_marginRight="57dp"
                 android:onClick="carClk"
                 android:text="Car"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/ownChk"
-                app:layout_constraintStart_toEndOf="@+id/ambulanceChk"
                 app:layout_constraintTop_toBottomOf="@id/heading2" />
 
             <CheckBox
                 android:id="@+id/ownChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Own transport"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:onClick="ownClk"
+                android:text="Own transport"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/carChk"
                 app:layout_constraintTop_toBottomOf="@id/heading2" />
 
             <TextView
@@ -157,13 +166,13 @@
 
             <CheckBox
                 android:id="@+id/adviceChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_width="104dp"
+                android:layout_height="37dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:onClick="adviceClk"
                 android:text="Advice Only"
-                app:layout_constraintEnd_toStartOf="@id/helpChk"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/heading3" />
 
@@ -171,30 +180,36 @@
                 android:id="@+id/helpChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="72dp"
+                android:layout_marginRight="72dp"
                 android:onClick="helpClk"
                 android:text="Refused Help"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/adviceChk"
                 app:layout_constraintTop_toBottomOf="@id/heading3" />
 
             <CheckBox
                 android:id="@+id/signChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:onClick="signClk"
                 android:text="Refused to sign"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/returnChk"
                 app:layout_constraintTop_toBottomOf="@id/helpChk" />
 
             <CheckBox
                 android:id="@+id/returnChk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:onClick="returnClk"
                 android:text="Return to Work/Venue"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/signChk"
                 app:layout_constraintTop_toBottomOf="@id/helpChk" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

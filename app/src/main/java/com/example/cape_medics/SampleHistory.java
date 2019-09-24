@@ -16,9 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Iterator;
+import java.util.List;
 
 
 public class SampleHistory extends Fragment {
@@ -36,8 +38,12 @@ public class SampleHistory extends Fragment {
     private TextView lblPast;
     private TextView lblIntake;
     private TextView lblEvents;
-JSONObject sampleHistory;
+    JSONObject sampleHistory;
     JSONObject myOBJ;
+    List<CheckBox> checkBoxList;
+    Cache cache;
+    String saved;
+    JSONObject load;
 
 
 
@@ -70,6 +76,22 @@ JSONObject sampleHistory;
 
         sampleHistory = new JSONObject();
         myOBJ = new JSONObject();
+        cache = new Cache(getContext());
+        saved = cache.getStringProperty("sampleHistory");
+        if(saved != null ){
+            try {
+                load = new JSONObject(saved);
+                edtSigns.setText(sampleHistory.getString("Signs"));
+                edtAllergies.setText(sampleHistory.getString("Allergies"));
+                edtMedication.setText(sampleHistory.getString("Medications"));
+                edtPast.setText(sampleHistory.getString("Past"));
+                edtIntake.setText(sampleHistory.getString("Last"));
+                edtEvents.setText(sampleHistory.getString("Events"));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
         return view;
     }
 
@@ -105,6 +127,7 @@ JSONObject sampleHistory;
 
 
         Log.i("Called","Summon");
+        cache.setStringProperty("sampleHistory",sampleHistory.toString());
         return sampleHistory;
     }
 

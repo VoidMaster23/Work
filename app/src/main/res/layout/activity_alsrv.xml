@@ -7890,7 +7890,7 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/loginshape"
                             android:onClick="next"
-                            android:text="Next"
+                            android:text="Send"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
 

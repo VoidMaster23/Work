@@ -9,10 +9,11 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="400dp"
-        android:layout_height="80dp"
-        app:layout_constraintHorizontal_bias="0.317"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="191dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
@@ -33,20 +34,25 @@
         android:id="@+id/notApplicable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:text="Not Applicable"
-        android:onClick="skip"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/iodChk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="IOD"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/workmens"
@@ -80,7 +86,7 @@
         android:layout_width="150dp"
         android:layout_height="42dp"
         android:gravity="center"
-        android:text="Comapny Name"
+        android:text="Company Name"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"

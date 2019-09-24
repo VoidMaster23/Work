@@ -100,11 +100,8 @@ public class Mobility extends Fragment {
         return view;
     }
 
-    public void skip(View v) {
 
-    }
-
-    public JSONObject Send(View v) {
+    public JSONObject createJson() {
         mobility = new JSONObject();
         if (stretcher.isChecked()) transportMethod = stretcher.getText().toString();
         if (wheelchair.isChecked()) transportMethod = wheelchair.getText().toString();

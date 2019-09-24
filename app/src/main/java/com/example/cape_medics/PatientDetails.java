@@ -12,7 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class PatientDetails extends Fragment {
     // TODO: Rename and change types of parameters
@@ -49,6 +54,10 @@ public class PatientDetails extends Fragment {
     private TextView lblRef;
     private EditText edtRef;
     JSONObject patientDetails;
+    List<CheckBox> checkBoxList;
+    JSONObject load;
+    Cache cache;
+    String saved;
 
 
     public PatientDetails() {
@@ -93,6 +102,46 @@ public class PatientDetails extends Fragment {
         chkFemale = (CheckBox)view.findViewById( R.id.chkFemale );
         lblRef = (TextView)view.findViewById( R.id.lblRef );
         edtRef = (EditText)view.findViewById( R.id.edtRef );
+        checkBoxList = Arrays.asList(chkAdult,chkChild,chkBaby,chkAsian,chkBlack,chkWhite,chkMale,chkFemale,chkColored);
+
+
+        cache = new Cache(getContext());
+        saved = cache.getStringProperty("patientDetails");
+        if(saved != null ){
+            try {
+                load = new JSONObject(saved);
+                edtName.setText(patientDetails.getString("Full_name"));
+                edtSurname.setText(patientDetails.getString("Surname"));
+                edtDOB.setText(patientDetails.getString("DOB"));
+                edtID.setText(patientDetails.getString("ID"));
+                edtEmail.setText(patientDetails.getString("Email"));
+                edtPhone.setText(patientDetails.getString("Contact"));
+                edtAlt.setText(patientDetails.getString("Alt"));
+                edtAddress1.setText(patientDetails.getString("Address"));
+                edtRef.setText(patientDetails.getString("Reference_Number"));
+
+                Iterator<String> keys = load.keys();
+                while(keys.hasNext()) {
+                    String key = keys.next();
+                    String item = load.getString(key);
+                    for (int j = 0; j<checkBoxList.size();j++) {
+                        if (checkBoxList.get(j) != null) {
+                            if (item.equals(checkBoxList.get(j).getText().toString())) {
+                                checkBoxList.get(j).setChecked(true);
+
+                            }
+                        }
+                    }
+
+                }
+
+
+                //write code for check boxes
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
         return view;
     }
 
@@ -147,7 +196,7 @@ public class PatientDetails extends Fragment {
         //json
         patientDetails = new JSONObject();
         try{
-            patientDetails.put("Full name",name);
+            patientDetails.put("Full_name",name);
             patientDetails.put("Surname",surname);
             patientDetails.put("DOB",DOB);
             patientDetails.put("ID",ID);
@@ -155,14 +204,15 @@ public class PatientDetails extends Fragment {
             patientDetails.put("Contact",contact);
             patientDetails.put("Alt",alt);
             patientDetails.put("Address",address);
-            patientDetails.put("Age Group",ageGroup);
+            patientDetails.put("Age_Group",ageGroup);
             patientDetails.put("Race",race);
             patientDetails.put("Sex",sex);
-            patientDetails.put("Reference Number",ref);
+            patientDetails.put("Reference_Number",ref);
 
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+        cache.setStringProperty("patientDetails",patientDetails.toString());
 
         return patientDetails;
 

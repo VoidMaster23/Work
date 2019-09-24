@@ -22,14 +22,12 @@
 
                 <ImageView
                     android:id="@+id/imageView15"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginEnd="43dp"
-                    android:layout_marginRight="43dp"
+                    android:layout_width="192dp"
+                    android:layout_height="152dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
                     android:src="@drawable/logo"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,23 +36,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginStart="131dp"
-                    android:layout_marginLeft="131dp"
-                    android:layout_marginEnd="131dp"
-                    android:layout_marginRight="131dp"
+                    android:layout_marginTop="76dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="92dp"
                     android:text="Not Applicable"
                     android:textColor="@color/white"
                     android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@+id/expBut1"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/expBut1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    android:layout_marginTop="35dp"
+                    android:layout_marginTop="32dp"
                     android:background="#ba1f04"
                     android:drawableRight="@android:drawable/arrow_down_float"
                     android:onClick="expBut"
@@ -63,7 +61,7 @@
                     android:textColor="#fff"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkNA" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
                 <ScrollView
                     android:id="@+id/scrl1"
