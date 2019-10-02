@@ -1111,25 +1111,26 @@ public class ILSAMB extends AppCompatActivity {
     }
 
     public void Send(View v){
-        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-            //we are connected to a network
-            connected = true;
-        }
-        else connected = false;
-        if (connected) {
-            AsyncT send = new AsyncT();
-            send.execute();
-            Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
-            cache.removeStringProperty("vehicleSaveILSAMB"+code);
-            scheduledExecutorService1.shutdown();
-            i.putExtra("code",code);
-            i.putExtra("first","not");
-            startActivity(i);
-        }
-        else {
-            Toast.makeText(getApplicationContext(), "Please establish an internet connection", Toast.LENGTH_SHORT).show();
+
+        if(validate()) {
+            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                    connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                //we are connected to a network
+                connected = true;
+            } else connected = false;
+            if (connected) {
+                AsyncT send = new AsyncT();
+                send.execute();
+                Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
+                cache.removeStringProperty("vehicleSaveILSAMB" + code);
+                scheduledExecutorService1.shutdown();
+                i.putExtra("code", code);
+                i.putExtra("first", "not");
+                startActivity(i);
+            } else {
+                Toast.makeText(getApplicationContext(), "Please establish an internet connection", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
@@ -1246,6 +1247,637 @@ public class ILSAMB extends AppCompatActivity {
         }
 
     }
+
+    public boolean validate(){
+
+        //check if the edits at the to are empty
+        boolean valid = true;
+
+        if(driver.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(),"Please Enter the Driver's name ", Toast.LENGTH_SHORT).show();
+            valid = false;
+        }else if(controller.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(),"Please Enter the Controller's name ", Toast.LENGTH_SHORT).show();
+            valid = false;
+        }else if(checkedBy.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(),"Please Enter the checker's name ", Toast.LENGTH_SHORT).show();
+            valid = false;
+        }else if(inspectionTime.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(),"Please Enter the inspection time ", Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+
+        if (valid){
+            try {
+                String time = inspectionTime.getText().toString();
+                time = time.trim();
+                DateFormat sdf = new SimpleDateFormat("hh:mm");
+                Date date = sdf.parse(time);
+            }catch (Exception e){
+                Toast.makeText(getApplicationContext(),"Please ensure that the inspection time is in 24 hour format", Toast.LENGTH_SHORT).show();
+                valid = false;
+            }
+        }
+
+        if(valid){
+            if (!air.isChecked() && airComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that air conditioner is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!antennae.isChecked() && antennaeComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that antennae is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!battery.isChecked() && batteryComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that battery secured is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!body.isChecked() && bodyComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that body work is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!brake.isChecked() && brakeComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that brake lights is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!branding.isChecked() && brandingComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that branding is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!dashboard.isChecked() && dashboard.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that dashboard lights is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!emergency.isChecked() && emergencyComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that emergency is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!exhaust.isChecked() && exhaustComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that exhaust is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!oil.isChecked() && oilComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that oil level is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!fuel.isChecked() && fuelComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that fuel level is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!headlights.isChecked() && headlightsComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that headlights is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!leftIndicator.isChecked() && leftIndicatorComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that left indicator is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!rightIndicator.isChecked() && rightIndicatorComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that right indicator is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!back.isChecked() && backComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that interior light back is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!front.isChecked() && frontComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that interior light front is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!jack.isChecked() && jackComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that jack and tools is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!licence.isChecked() && licenceComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that licence is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!leds.isChecked() && ledsComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that LED lights is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!plates.isChecked() && platesComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that number plates is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!radio.isChecked() && radioComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that radio is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!rear.isChecked() && rear.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that rear view mirror is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!reverse.isChecked() && reverseComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that reverse lights is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!side.isChecked() && sideComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that side mirror is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!siren.isChecked() && sirenComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that siren is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!spare.isChecked() && spareComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that spare wheel is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!tread.isChecked() && treadComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that tyre tread is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!pressure.isChecked() && pressureComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that tyre pressure is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!windows.isChecked() && windowsComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that windows is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!windscreen.isChecked() && windscreenComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that windscreen is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!ecgLbl.isChecked() && ecgComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that ECG is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+
+        if(valid){
+            if (!adultEcg.isChecked() && adultEcgComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that adult ECG is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!childEcg.isChecked() && childEcgComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that paed ECG is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!spareBattery.isChecked() && spareBatteryComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that spare battery is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!spareEcg.isChecked() && spareEcgComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that spare ecg is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!oximeter.isChecked() && oximeterComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that pulse oximeter is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!suctionUnit.isChecked() && suctionUnitComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that suction unit is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!suctionReservoir.isChecked() && suctionReservoirComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that suction reservoir is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!chargingCable.isChecked() && chargingCableComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that charging cable is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+
+        if(valid){
+            if (!suctionTubing.isChecked() && suctionTubingComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that suction tubing is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!softSuction.isChecked() && softSuctionComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that soft suction catheters is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!adultSuction.isChecked() && adultSuctionComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that adult suction catheters is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!paedSuction.isChecked() && paedSuctionComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that paed suction catheters is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!stretcher.isChecked() && stretcherComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that stretcher is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!straps.isChecked() && strapsComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that stretcher straps is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!mattress.isChecked() && mattressComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that stretcher matress is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!sheet.isChecked() && sheetComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that sheet is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!pillow.isChecked() && pillowComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that pillow is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!pillowCase.isChecked() && pillowCaseComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that pillow case is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!blanket.isChecked() && blanketComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that blanket is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!other.isChecked() && otherComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that other is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!adultKed.isChecked() && adultKedComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that adult KED is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!childKed.isChecked() && childKedComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that child KED is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!adultSplint.isChecked() && adultSplintComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that adult traction splint is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!scoopStretcher.isChecked() && scoopStretcher.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that scoop stretcher is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!spinalBoard.isChecked() && spinalBoardComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that spinal board is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!headBlocks.isChecked() && headBlocksComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that head blocks is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!basePlate.isChecked() && basePlateComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that base plate is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!spiderHarness.isChecked() && spiderHarnessComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that spider harness is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!headStraps.isChecked() && headStrapsComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that head straps is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!zipStretcher.isChecked() && zipStretcherComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that zip stretcher is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!longSplints.isChecked() && longSplints.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that long splints is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!shortSplints.isChecked() && shortSplintsComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that short splints is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!adultCollar.isChecked() && adultCollarComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that c-collar(adult) is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!childCollar.isChecked() && childCollarComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that c-collar(paed) is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!fireExtinguisher.isChecked() && fireExtinguisherComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that fire extinguisher is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!rescueHelmet.isChecked() && rescueHelmet.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that rescue helmet is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!roadCones.isChecked() && roadConesComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that collapsble road cones is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!reflectorVests.isChecked() && reflectorVestsComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that body work is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!body.isChecked() && bodyComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that body work is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!wasteBin.isChecked() && wasteBinComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that waste bin is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!medicalWaste.isChecked() && medicalWasteComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that medical waste bag is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!sharpsBin.isChecked() && sharpsBinComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that bo is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        if(valid){
+            if (!body.isChecked() && bodyComment.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please ensure that body work is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        return valid;
+    }
+
+
+
 
 
 }
