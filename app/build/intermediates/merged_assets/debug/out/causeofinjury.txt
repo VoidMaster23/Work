@@ -1,0 +1,37 @@
+Accidental Chemical Poisoning
+Accidental Drug Poisoning 
+Accidental Falls
+Aircraft Related Accident
+Alleged Sexual Assault
+Bicycle
+Bicycle Accident
+Bites
+Child Battering
+Drowning
+Electrocution (Non-lightning)
+Excessive Cold
+Excessive Heat
+Fire and Flames
+Firearm Assault
+Firearm Injury (Accidental)
+Firearm Self-Inflicted (Intentional)
+Lightning
+Machinery Accidents
+Motor Vehicle Non-Traffic Crash
+Mechanical Suffocation
+Vehicle
+Motorcycle
+Motorcycle/Vehicle
+Not Applicable
+Radiation Exposure
+Smoke Inhalation
+Snowmobile
+Stabbing Assault
+Vehicle/Bicycle
+Vehicle/Fixed Object
+Vehicle/Pedestrian
+Vehicle/Train
+Vehicle/Vehicle
+Venemous Stings (plants, animals)
+Water Transport Accident
+Unknown
