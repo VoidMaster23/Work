@@ -384,7 +384,7 @@
                     android:layout_below="@id/chkFemale"
                     android:layout_alignLeft="@id/edtName"
                     android:ems="10"
-                    android:hint="enter reference number"
+                    android:hint="case no:"
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textSize="14sp" />

@@ -133,37 +133,37 @@ spn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
     }
 });
 
-        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
+        chkNA = view.findViewById( R.id.chkNA );
 
-        canscrl1 = (ScrollView)view.findViewById( R.id.canscrl1 );
+        canscrl1 = view.findViewById( R.id.canscrl1 );
 
-        lblTim1 = (TextView)view.findViewById( R.id.lblTim1 );
-        edtTim1 = (EditText)view.findViewById( R.id.edtTim1 );
-        lblSize1 = (TextView)view.findViewById( R.id.lblSize1 );
-        edtSize1 = (EditText)view.findViewById( R.id.edtSize1 );
-        lblAtt1 = (TextView)view.findViewById( R.id.lblAtt1 );
-        edtAtt1 = (EditText)view.findViewById( R.id.edtAtt1 );
-        lblSite1 = (TextView)view.findViewById( R.id.lblSite1 );
-        edtSite1 = (EditText)view.findViewById( R.id.edtSite1 );
-        lblRate1 = (TextView)view.findViewById( R.id.lblRate1 );
-        edtRate1 = (EditText)view.findViewById( R.id.edtRate1 );
-        lblVol1 = (TextView)view.findViewById( R.id.lblVol1 );
-        edtVol1 = (EditText)view.findViewById( R.id.edtVol1 );
-        lblFluid1 = (TextView)view.findViewById( R.id.lblFluid1 );
-        canscrl2 = (ScrollView)view.findViewById( R.id.canscrl2 );
-        lblTim2 = (TextView)view.findViewById( R.id.lblTim2 );
-        edtTim2 = (EditText)view.findViewById( R.id.edtTim2 );
-        lblSize2 = (TextView)view.findViewById( R.id.lblSize2 );
-        edtSize2 = (EditText)view.findViewById( R.id.edtSize2 );
-        lblAtt2 = (TextView)view.findViewById( R.id.lblAtt2 );
-        edtAtt2 = (EditText)view.findViewById( R.id.edtAtt2 );
-        lblSite2 = (TextView)view.findViewById( R.id.lblSite2 );
-        edtSite2 = (EditText)view.findViewById( R.id.edtSite2 );
-        lblRate2 = (TextView)view.findViewById( R.id.lblRate2 );
-        edtRate2 = (EditText)view.findViewById( R.id.edtRate2 );
-        lblVol2 = (TextView)view.findViewById( R.id.lblVol2 );
-        edtVol2 = (EditText)view.findViewById( R.id.edtVol2 );
-        lblFluid2 = (TextView)view.findViewById( R.id.lblFluid2 );
+        lblTim1 = view.findViewById( R.id.lblTim1 );
+        edtTim1 = view.findViewById( R.id.edtTim1 );
+        lblSize1 = view.findViewById( R.id.lblSize1 );
+        edtSize1 = view.findViewById( R.id.edtSize1 );
+        lblAtt1 = view.findViewById( R.id.lblAtt1 );
+        edtAtt1 = view.findViewById( R.id.edtAtt1 );
+        lblSite1 = view.findViewById( R.id.lblSite1 );
+        edtSite1 = view.findViewById( R.id.edtSite1 );
+        lblRate1 = view.findViewById( R.id.lblRate1 );
+        edtRate1 = view.findViewById( R.id.edtRate1 );
+        lblVol1 = view.findViewById( R.id.lblVol1 );
+        edtVol1 = view.findViewById( R.id.edtVol1 );
+        lblFluid1 = view.findViewById( R.id.lblFluid1 );
+        canscrl2 = view.findViewById( R.id.canscrl2 );
+        lblTim2 = view.findViewById( R.id.lblTim2 );
+        edtTim2 = view.findViewById( R.id.edtTim2 );
+        lblSize2 = view.findViewById( R.id.lblSize2 );
+        edtSize2 = view.findViewById( R.id.edtSize2 );
+        lblAtt2 = view.findViewById( R.id.lblAtt2 );
+        edtAtt2 = view.findViewById( R.id.edtAtt2 );
+        lblSite2 = view.findViewById( R.id.lblSite2 );
+        edtSite2 = view.findViewById( R.id.edtSite2 );
+        lblRate2 = view.findViewById( R.id.lblRate2 );
+        edtRate2 = view.findViewById( R.id.edtRate2 );
+        lblVol2 = view.findViewById( R.id.lblVol2 );
+        edtVol2 = view.findViewById( R.id.edtVol2 );
+        lblFluid2 = view.findViewById( R.id.lblFluid2 );
 
         return view;
     }

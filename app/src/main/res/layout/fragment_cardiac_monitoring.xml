@@ -5,73 +5,73 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@mipmap/back"
-    tools:context=".CardiacMonitoring">
+    tools:context=".CardiacMonitoring"
+    android:padding="36dp">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <android.support.constraint.ConstraintLayout
+            <RelativeLayout
+                android:id="@+id/logoContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true">
 
                 <ImageView
-                    android:id="@+id/imageView18"
-                    android:layout_width="152dp"
-                    android:layout_height="140dp"
-                    android:layout_marginTop="4dp"
+                    android:id="@+id/imageView12"
+                    android:layout_width="184dp"
+                    android:layout_height="150dp"
                     android:src="@drawable/logo"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
 
                 <CheckBox
-                    android:id="@+id/chkNA"
+                    android:id="@+id/notApplicableCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="56dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:text="Not Applicable"
-                    android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cardiacContainer"
+                android:layout_below="@id/logoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="176dp"
-                    android:layout_marginLeft="176dp"
-                    android:layout_marginTop="104dp"
-                    android:layout_marginEnd="176dp"
-                    android:layout_marginRight="176dp"
                     android:text="Cardiac Monitoring"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.608"
+                    app:layout_constraintHorizontal_bias="0.50"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkNA" />
+                    app:layout_constraintTop_toBottomOf="@+id/chkNA"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <CheckBox
                     android:id="@+id/chk3Lead"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="92dp"
+                    android:layout_marginTop="22dp"
                     android:text="3 Lead"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
                 <CheckBox
                     android:id="@+id/chk5Lead"
@@ -92,55 +92,98 @@
                     android:id="@+id/chk12Lead"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="91dp"
-                    android:layout_marginEnd="17dp"
-                    android:layout_marginRight="17dp"
+                    android:layout_marginTop="22dp"
                     android:text="12 Lead"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
                 <CheckBox
                     android:id="@+id/chkRhythm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="35dp"
                     android:text="Rhythm"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/chk3Lead" />
 
+                <EditText
+                    android:id="@+id/editRhythm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="e.g 1"
+                    android:inputType="number"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chk3Lead" />
+
                 <CheckBox
                     android:id="@+id/chkCardio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginEnd="28dp"
                     android:layout_marginRight="28dp"
                     android:text="Cardioversion"
                     android:textColor="@color/white"
-                    app:layout_constraintEnd_toStartOf="@+id/chkPacing"
-                    app:layout_constraintStart_toEndOf="@+id/chkRhythm"
-                    app:layout_constraintTop_toBottomOf="@+id/chk5Lead" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chkRhythm" />
+
+                <EditText
+                    android:id="@+id/editCardio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="e.g 1"
+                    android:inputType="number"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chkRhythm" />
 
                 <CheckBox
                     android:id="@+id/chkPacing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="33dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:text="External Pacing"
                     android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chkCardio" />
+
+                <EditText
+                    android:id="@+id/editPacing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="e.g 1"
+                    android:inputType="number"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chk12Lead" />
+                    app:layout_constraintTop_toBottomOf="@+id/chkCardio" />
 
 
             </android.support.constraint.ConstraintLayout>
-        </LinearLayout>
+
+        </RelativeLayout>
+
     </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_camera"/>
 </RelativeLayout>

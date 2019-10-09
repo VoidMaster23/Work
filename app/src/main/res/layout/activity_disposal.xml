@@ -5,7 +5,8 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/back">
+    android:background="@mipmap/back"
+    android:padding="15dp">
 
     <ScrollView
         android:id="@+id/scroll0"
@@ -13,205 +14,237 @@
         android:layout_height="match_parent"
         android:scrollbars="horizontal|vertical">
 
-        <android.support.constraint.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="207dp"
-                android:layout_height="164dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo" />
+            <RelativeLayout
+                android:id="@+id/logoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Disposal"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo" />
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="184dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logo"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
 
-            <CheckBox
-                android:id="@+id/notApplicable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="76dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="Not Applicable"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <CheckBox
+                    android:id="@+id/notApplicableCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Not Applicable"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true" />
 
-            <TextView
-                android:id="@+id/heading1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Select One"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+            </RelativeLayout>
 
-            <CheckBox
-                android:id="@+id/hospitalChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:onClick="hospitalClk"
-                android:text="Hospital"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/heading1" />
 
-            <CheckBox
-                android:id="@+id/homeChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="60dp"
-                android:layout_marginRight="60dp"
-                android:onClick="homeClk"
-                android:text="Home"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toStartOf="@+id/familyChk"
-                app:layout_constraintTop_toBottomOf="@id/heading1" />
+            <RelativeLayout
+                android:layout_below="@id/logoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <CheckBox
-                android:id="@+id/familyChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:onClick="familyClk"
-                android:text="Family GP"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/heading1" />
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Disposal"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"/>
 
-            <TextView
-                android:id="@+id/heading2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Select One"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/familyChk" />
+                <TextView
+                    android:id="@+id/heading1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Select One"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/title" />
 
-            <CheckBox
-                android:id="@+id/ambulanceChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:onClick="ambulanceClk"
-                android:text="Ambulance"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/heading2" />
+                <CheckBox
+                    android:id="@+id/hospitalChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:onClick="hospitalClk"
+                    android:text="Hospital"
+                    android:textColor="@color/white"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/heading1"
+                    android:layout_alignParentLeft="true" />
 
-            <CheckBox
-                android:id="@+id/carChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="57dp"
-                android:layout_marginRight="57dp"
-                android:onClick="carClk"
-                android:text="Car"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toStartOf="@+id/ownChk"
-                app:layout_constraintTop_toBottomOf="@id/heading2" />
+                <CheckBox
+                    android:id="@+id/homeChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="60dp"
+                    android:layout_marginRight="60dp"
+                    android:onClick="homeClk"
+                    android:text="Home"
+                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/heading1" />
 
-            <CheckBox
-                android:id="@+id/ownChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:onClick="ownClk"
-                android:text="Own transport"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/heading2" />
+                <CheckBox
+                    android:id="@+id/familyChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:onClick="familyClk"
+                    android:text="Family GP"
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/heading1"
+                    android:layout_alignParentRight="true" />
 
-            <TextView
-                android:id="@+id/heading3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Select One"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ownChk" />
+                <TextView
+                    android:id="@+id/heading2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="Select One"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/familyChk" />
 
-            <CheckBox
-                android:id="@+id/adviceChk"
-                android:layout_width="104dp"
-                android:layout_height="37dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:onClick="adviceClk"
-                android:text="Advice Only"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/heading3" />
+                <CheckBox
+                    android:id="@+id/ambulanceChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:onClick="ambulanceClk"
+                    android:text="Ambulance"
+                    android:textColor="@color/white"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/heading2"
+                    android:layout_alignParentLeft="true" />
 
-            <CheckBox
-                android:id="@+id/helpChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="72dp"
-                android:layout_marginRight="72dp"
-                android:onClick="helpClk"
-                android:text="Refused Help"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/heading3" />
+                <CheckBox
+                    android:id="@+id/carChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="57dp"
+                    android:layout_marginRight="57dp"
+                    android:onClick="carClk"
+                    android:text="Car"
+                    android:textColor="@color/white"
+                    android:layout_alignStart="@id/homeChk"
+                    android:layout_below="@id/heading2"
+                    android:layout_alignLeft="@id/homeChk" />
 
-            <CheckBox
-                android:id="@+id/signChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:onClick="signClk"
-                android:text="Refused to sign"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/helpChk" />
+                <CheckBox
+                    android:id="@+id/ownChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="ownClk"
+                    android:text="Own transport"
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/heading2"
+                    android:layout_alignParentRight="true" />
 
-            <CheckBox
-                android:id="@+id/returnChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:onClick="returnClk"
-                android:text="Return to Work/Venue"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/helpChk" />
-        </android.support.constraint.ConstraintLayout>
+                <TextView
+                    android:id="@+id/or"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="OR"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/ownChk"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/or"
+                    android:layout_marginTop="25dp" >
+
+                    <TextView
+                        android:id="@+id/heading3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Select One"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_centerHorizontal="true"/>
+
+                    <CheckBox
+                        android:id="@+id/adviceChk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="37dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:onClick="adviceClk"
+                        android:text="Advice Only"
+                        android:textColor="@color/white"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@id/heading3"
+                        android:layout_alignParentLeft="true" />
+
+                    <CheckBox
+                        android:id="@+id/helpChk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="72dp"
+                        android:layout_marginRight="72dp"
+                        android:onClick="helpClk"
+                        android:text="Refused Help"
+                        android:textColor="@color/white"
+                        android:layout_alignStart="@id/returnChk"
+                        android:layout_below="@id/heading3"
+                        android:layout_alignLeft="@id/returnChk" />
+
+                    <CheckBox
+                        android:id="@+id/signChk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:onClick="signClk"
+                        android:text="Refused to sign"
+                        android:textColor="@color/white"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@id/helpChk"
+                        android:layout_alignParentLeft="true" />
+
+                    <CheckBox
+                        android:id="@+id/returnChk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:onClick="returnClk"
+                        android:text="Return to Work/Venue"
+                        android:textColor="@color/white"
+                        android:layout_alignParentEnd="true"
+                        android:layout_below="@id/helpChk"
+                        android:layout_alignParentRight="true" />
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
     </ScrollView>
 
 

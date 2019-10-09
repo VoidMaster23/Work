@@ -115,7 +115,6 @@ public class medicalTabbedView extends AppCompatActivity {
         disposal = new Disposal();
         crewDetails = new CrewDetails();
         acompPrac = new AcompPrac();
-        handed = new ItemsHanded();
         handoff_frag = new Handoff_frag();
         notes = new Notes();
         death = new Death();
@@ -134,7 +133,7 @@ public class medicalTabbedView extends AppCompatActivity {
 
 
                     case "Death": {
-                       
+
                         Log.i("HERE", "I made it ");
 
                     }
@@ -206,10 +205,9 @@ public class medicalTabbedView extends AppCompatActivity {
                 case 27: return disposal;
                 case 28: return crewDetails;
                 case 29: return acompPrac;
-                case 30: return handed;
-                case 31: return handoff_frag;
-                case 32: return notes;
-                case 33: return death;
+                case 30: return handoff_frag;
+                case 31: return notes;
+                case 32: return death;
 
 
 
