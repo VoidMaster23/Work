@@ -5,7 +5,8 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/back">
+    android:background="@mipmap/back"
+    android:padding="15dp">
 
     <ScrollView
         android:id="@+id/scroll0"
@@ -14,209 +15,232 @@
         android:scrollbars="horizontal|vertical"
         tools:layout_editor_absoluteX="15dp">
 
-        <android.support.constraint.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="210dp"
-                android:layout_height="191dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo" />
+            <RelativeLayout
+                android:id="@+id/logoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Guarantee of Payment"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo" />
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="184dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logo"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
 
-            <CheckBox
-                android:id="@+id/notApplicable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="72dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="Not Applicable"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <CheckBox
+                    android:id="@+id/notApplicableCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Not Applicable"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true" />
 
-            <TextView
-                android:id="@+id/statement"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="276dp"
-                android:text="I,"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@+id/seenChk"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            </RelativeLayout>
 
-            <EditText
-                android:id="@+id/nameEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:background="@null"
-                android:ems="10"
-                android:hint="Full Name"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@+id/statement1"
-                app:layout_constraintStart_toEndOf="@+id/statement"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+            <RelativeLayout
+                android:layout_below="@id/logoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/statement1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="42dp"
-                android:text="From,"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@+id/companyEdit"
-                app:layout_constraintStart_toEndOf="@+id/nameEdit"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Guarantee of Payment"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"/>
 
-            <EditText
-                android:id="@+id/companyEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:background="@null"
-                android:ems="10"
-                android:hint="Company Name"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/statement1"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+                <LinearLayout
+                    android:id="@+id/declaration"
+                    android:layout_below="@id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="40dp">
+                    
+                    <TextView
+                        android:id="@+id/statement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="I,"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:layout_below="@id/title"/>
 
-            <TextView
-                android:id="@+id/statement2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Hereby authorize Cape Medics to supply services to the"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statement" />
+                    <EditText
+                        android:id="@+id/nameEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="Full Name"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:layout_below="@id/title"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp" />
 
-            <CheckBox
-                android:id="@+id/staffChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="staff"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toStartOf="@+id/passengerChk"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statement2" />
+                    <TextView
+                        android:id="@+id/statement1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="From,"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toStartOf="@+id/companyEdit"
+                        app:layout_constraintStart_toEndOf="@+id/nameEdit"
+                        android:layout_below="@+id/title"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"/>
 
-            <CheckBox
-                android:id="@+id/passengerChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="passenger"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toStartOf="@+id/personChk"
-                app:layout_constraintStart_toEndOf="@+id/staffChk"
-                app:layout_constraintTop_toBottomOf="@+id/statement2" />
+                    <EditText
+                        android:id="@+id/companyEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:ems="10"
+                        android:hint="Company Name"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/statement1"
+                        android:layout_below="@+id/title"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"/>
+                </LinearLayout>
 
-            <CheckBox
-                android:id="@+id/personChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="person"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toStartOf="@+id/statement3"
-                app:layout_constraintStart_toEndOf="@+id/passengerChk"
-                app:layout_constraintTop_toBottomOf="@+id/statement2" />
+                <TextView
+                    android:id="@+id/statement2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Hereby authorize Cape Medics to supply services to the"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_below="@+id/declaration" />
 
-            <TextView
-                android:id="@+id/statement3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text=", below,"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/personChk"
-                app:layout_constraintTop_toBottomOf="@+id/statement2" />
+                <CheckBox
+                    android:id="@+id/staffChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="staff"
+                    android:textColor="@color/white"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/statement2"
+                    android:layout_alignParentLeft="true" />
 
-            <TextView
-                android:id="@+id/statement4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="for the company account. This is done in my capacity as"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statement3" />
+                <CheckBox
+                    android:id="@+id/passengerChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="passenger"
+                    android:textColor="@color/white"
+                    android:layout_toEndOf="@+id/staffChk"
+                    android:layout_below="@+id/statement2"
+                    android:layout_toRightOf="@+id/staffChk"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp" />
 
-            <EditText
-                android:id="@+id/positionEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:ems="10"
-                android:hint="Position Held"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@+id/statement5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statement4" />
+                <CheckBox
+                    android:id="@+id/personChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="person"
+                    android:textColor="@color/white"
+                    android:layout_toEndOf="@+id/passengerChk"
+                    android:layout_below="@+id/statement2"
+                    android:layout_toRightOf="@+id/passengerChk"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"  />
 
-            <TextView
-                android:id="@+id/statement5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="working for"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/positionEdit"
-                app:layout_constraintTop_toBottomOf="@+id/statement4" />
+                <TextView
+                    android:id="@+id/statement3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=",  below,"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_toEndOf="@id/personChk"
+                    android:layout_below="@+id/statement2"
+                    android:layout_toRightOf="@id/personChk"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp" />
 
-            <EditText
-                android:id="@+id/company2Edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:ems="10"
-                android:hint="Company Name"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/positionEdit" />
-        </android.support.constraint.ConstraintLayout>
+                <TextView
+                    android:id="@+id/statement4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="for the company account. This is done in my capacity as"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_below="@+id/statement3" />
+
+                <EditText
+                    android:id="@+id/positionEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="Position Held"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/statement5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_below="@+id/statement4" />
+
+                <TextView
+                    android:id="@+id/statement5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="working for"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:layout_toEndOf="@id/positionEdit"
+                    android:layout_below="@+id/statement4"
+                    android:layout_toRightOf="@id/positionEdit" />
+
+                <EditText
+                    android:id="@+id/company2Edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="Company Name"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:layout_toEndOf="@id/statement5"
+                    android:layout_below="@+id/statement4"
+                    android:layout_toRightOf="@id/statement5"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
     </ScrollView>
 
 

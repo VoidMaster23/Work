@@ -20,35 +20,31 @@
             android:orientation="vertical">
 
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/linearLayout2"
+            <RelativeLayout
+                android:id="@+id/logoContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="150dp">
 
                 <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="200dp"
-                    android:layout_height="159dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/logo" />
+                    android:id="@+id/imageView12"
+                    android:layout_width="184dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logo"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
 
                 <CheckBox
-                    android:id="@+id/notApplicable"
+                    android:id="@+id/notApplicableCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="76dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:text="Not Applicable"
-                    android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </android.support.constraint.ConstraintLayout>
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
 
 
             <TextView
@@ -62,16 +58,14 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
+                app:layout_constraintTop_toBottomOf="@+id/logoContainer" />
 
             <ListView
                 android:id="@+id/items"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 app:layout_constraintBottom_toTopOf="@+id/oralChk"
-                app:layout_constraintTop_toBottomOf="@+id/title" >
-
-            </ListView>
+                app:layout_constraintTop_toBottomOf="@+id/title" />
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -170,6 +164,7 @@
                 android:id="@+id/title1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:text="ALS"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -183,33 +178,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 app:layout_constraintBottom_toTopOf="@+id/etiChk"
-                app:layout_constraintTop_toBottomOf="@+id/title1" >
+                app:layout_constraintTop_toBottomOf="@+id/title1"/>
 
-            </ListView>
-
-            <android.support.constraint.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
 
                 <CheckBox
                     android:id="@+id/etiChk"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
                     android:text="ETI"
                     android:textColor="@color/white"
                     android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@id/nasalChk"
+                    app:layout_constraintEnd_toStartOf="@id/sgaEdit"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    tools:layout_conversion_absoluteHeight="32dp"
+                    tools:layout_conversion_absoluteWidth="67dp"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="609dp" />
 
                 <EditText
                     android:id="@+id/etiEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:background="@null"
                     android:ems="10"
@@ -217,9 +214,12 @@
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </android.support.constraint.ConstraintLayout>
+                    app:layout_constraintBottom_toTopOf="@id/nasalChk"
+                    tools:layout_conversion_absoluteHeight="24dp"
+                    tools:layout_conversion_absoluteWidth="213dp"
+                    tools:layout_editor_absoluteX="83dp"
+                    tools:layout_editor_absoluteY="613dp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

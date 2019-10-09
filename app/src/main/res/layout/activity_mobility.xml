@@ -5,7 +5,8 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/back">
+    android:background="@mipmap/back"
+    android:padding="15dp">
 
     <ScrollView
         android:id="@+id/scroll0"
@@ -13,166 +14,180 @@
         android:layout_height="match_parent"
         android:scrollbars="horizontal|vertical">
 
-        <android.support.constraint.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/logoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="400dp"
-                android:layout_height="80dp"
-                app:layout_constraintHorizontal_bias="0.317"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo" />
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="184dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logo"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mobility"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo" />
+                <CheckBox
+                    android:id="@+id/notApplicableCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Not Applicable"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true" />
 
-            <CheckBox
-                android:id="@+id/notApplicable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Not Applicable"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
-
-            <TextView
-                android:id="@+id/heading1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Select One"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/notApplicable" />
-
-            <CheckBox
-                android:id="@+id/stretcherChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:onClick="stretcherClk"
-                android:text="Stretcher"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/heading1" />
-
-            <CheckBox
-                android:id="@+id/wheelchairChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:onClick="wheelchairClk"
-                android:text="Wheelchair"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/heading1" />
-
-            <CheckBox
-                android:id="@+id/walkingChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:onClick="walkingClk"
-                android:text="Walking"
-
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/stretcherChk" />
-
-            <CheckBox
-                android:id="@+id/crutchesChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="28dp"
-                android:layout_marginRight="28dp"
-                android:onClick="crutchesClk"
-                android:text="Crutches"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/stretcherChk" />
-
-            <TextView
-                android:id="@+id/heading2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Select as Many as Applicable"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/crutchesChk" />
-
-            <CheckBox
-                android:id="@+id/neckChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:text="Neck Collar"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/heading2" />
-
-            <CheckBox
-                android:id="@+id/scoopChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="88dp"
-                android:layout_marginRight="88dp"
-                android:text="Scoop"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/heading2" />
-
-            <CheckBox
-                android:id="@+id/spinalChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:text="Spinal Board"
-
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/scoopChk" />
+            </RelativeLayout>
 
 
-            <CheckBox
-                android:id="@+id/vacuumChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="Vacuum Mattress"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/scoopChk" />
-        </android.support.constraint.ConstraintLayout>
+            <RelativeLayout
+                android:layout_below="@id/logoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="8dp">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mobility"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/heading1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select One"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/title" />
+
+                <CheckBox
+                    android:id="@+id/stretcherChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:onClick="stretcherClk"
+                    android:text="Stretcher"
+                    android:textColor="@color/white"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/heading1"
+                    android:layout_alignParentLeft="true" />
+
+                <CheckBox
+                    android:id="@+id/wheelchairChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:onClick="wheelchairClk"
+                    android:text="Wheelchair"
+                    android:textColor="@color/white"
+                    android:layout_alignStart="@id/scoopChk"
+                    android:layout_alignLeft="@id/scoopChk"
+                    android:layout_below="@id/heading1" />
+
+                <CheckBox
+                    android:id="@+id/walkingChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:onClick="walkingClk"
+                    android:text="Walking"
+
+                    android:textColor="@color/white"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/stretcherChk"
+                    android:layout_alignParentLeft="true" />
+
+                <CheckBox
+                    android:id="@+id/crutchesChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginRight="28dp"
+                    android:onClick="crutchesClk"
+                    android:text="Crutches"
+                    android:textColor="@color/white"
+                    android:layout_alignStart="@id/scoopChk"
+                    android:layout_alignLeft="@id/scoopChk"
+                    android:layout_below="@id/stretcherChk" />
+
+                <TextView
+                    android:id="@+id/heading2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="Select as Many as Applicable"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/crutchesChk" />
+
+                <CheckBox
+                    android:id="@+id/neckChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Neck Collar"
+                    android:textColor="@color/white"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/heading2" />
+
+                <CheckBox
+                    android:id="@+id/scoopChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="88dp"
+                    android:layout_marginRight="88dp"
+                    android:text="Scoop"
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/heading2"
+                    android:layout_alignParentRight="true" />
+
+                <CheckBox
+                    android:id="@+id/spinalChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Spinal Board"
+
+                    android:textColor="@color/white"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/scoopChk"
+                    android:layout_alignParentLeft="true" />
+
+
+                <CheckBox
+                    android:id="@+id/vacuumChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vacuum Mattress"
+                    android:textColor="@color/white"
+                    android:layout_below="@id/scoopChk"
+                    android:layout_alignStart="@id/scoopChk"
+                    android:layout_alignLeft="@id/scoopChk" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
     </ScrollView>
 
 

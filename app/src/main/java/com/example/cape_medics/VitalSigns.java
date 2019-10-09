@@ -195,7 +195,7 @@ Button button1,button2,button3, button4;
             }
         });
 
-        imageView15 = (ImageView)view.findViewById( R.id.imageView15 );
+        imageView15 = (ImageView)view.findViewById( R.id.imageView12 );
         chkNA = (CheckBox)view.findViewById( R.id.chkNA );
         expBut1 = (Button)view.findViewById( R.id.expBut1 );
         scrl1 = (ScrollView)view.findViewById( R.id.scrl1 );

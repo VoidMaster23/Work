@@ -1,558 +1,521 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/back">
+    android:background="@mipmap/back"
+    android:padding="36dp">
 
     <ScrollView
         android:id="@+id/scroll0"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="horizontal|vertical">
+        android:scrollbars="horizontal">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/linearLayout"
+            <RelativeLayout
+                android:id="@+id/logoContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:background="@mipmap/back"
-                android:isScrollContainer="false">
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true">
 
                 <ImageView
-                    android:id="@+id/imageView9"
-                    android:layout_width="155dp"
-                    android:layout_height="93dp"
-
-
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="4dp"
-                    android:scaleType="centerInside"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/logo" />
+                    android:id="@+id/imageView12"
+                    android:layout_width="184dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logo"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
 
                 <CheckBox
-                    android:id="@+id/checkBox3"
+                    android:id="@+id/notApplicableCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
                     android:text="Not Applicable"
-                    android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="19dp"
-                    android:layout_marginRight="19dp"
-                    android:text="Time"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/KMs"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox3"
-                    tools:layout_conversion_wrapHeight="79"
-                    tools:layout_conversion_wrapWidth="263" />
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true" />
 
-                <TextView
-                    android:id="@+id/KMs"
-                    android:layout_width="110dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginRight="1dp"
-                    android:text="KM Readings"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox3"
-                    tools:layout_conversion_wrapHeight="79"
-                    tools:layout_conversion_wrapWidth="289" />
+            </RelativeLayout>
 
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="19dp"
+                android:layout_marginRight="19dp"
+                android:text="Time"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/logoContainer"/>
 
-                <TextView
-                    android:id="@+id/received"
-                    android:layout_width="wrap_content"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="72dp"
-                    android:layout_marginEnd="50dp"
-                    android:layout_marginRight="50dp"
-                    android:paddingLeft="10dp"
-                    android:text="Call Received"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/callreceivedTime"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView9"
-                    tools:layout_conversion_wrapHeight="87"
-                    tools:layout_conversion_wrapWidth="283" />
-
-                <EditText
-                    android:id="@+id/callreceivedTime"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="43dp"
-                    android:layout_marginEnd="23dp"
-                    android:layout_marginRight="23dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/callreceived"
-                    app:layout_constraintTop_toBottomOf="@+id/textView5"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="263" />
-
-                <EditText
-                    android:id="@+id/callreceived"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="43dp"
-                    android:ems="10"
-                    android:hint="Enter Reading"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/KMs"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="289" />
+            <TextView
+                android:id="@+id/KMs"
+                android:layout_width="110dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:text="KM Readings"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/logoContainer"
+                android:layout_alignParentRight="true" />
 
 
-                <TextView
-                    android:id="@+id/dispached"
-                    android:layout_width="wrap_content"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="77dp"
-                    android:layout_marginRight="77dp"
-                    android:paddingLeft="10dp"
-                    android:text="Dispached"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/calldispachedTime"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/received"
-                    tools:layout_conversion_wrapHeight="87"
-                    tools:layout_conversion_wrapWidth="223" />
+            <TextView
+                android:id="@+id/received"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_marginTop="15dp"
+                android:text="Call Received"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView5"
+                android:layout_alignParentLeft="true" />
 
-                <EditText
-                    android:id="@+id/calldispachedTime"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="19dp"
-                    android:layout_marginRight="19dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/calldispached"
-                    app:layout_constraintTop_toBottomOf="@+id/callreceivedTime"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="263" />
+            <EditText
+                android:id="@+id/callreceivedTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="23dp"
+                android:layout_marginRight="23dp"
+                android:ems="3"
+                android:hint="hh:mm"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_toEndOf="@+id/callreceived"
+                android:layout_alignStart="@id/textView5"
+                android:layout_below="@+id/textView5"
+                android:layout_toRightOf="@+id/callreceived"
+                android:layout_alignLeft="@id/textView5" />
 
-                <EditText
-                    android:id="@+id/calldispached"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
-                    android:ems="10"
-                    android:hint="Enter Reading"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/callreceived"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="289" />
+            <EditText
+                android:id="@+id/callreceived"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="3"
+                android:hint="Enter Reading"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/KMs"
+                android:layout_alignParentRight="true" />
 
 
-                <TextView
-                    android:id="@+id/enRoute"
-                    android:layout_width="wrap_content"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="85dp"
-                    android:layout_marginRight="85dp"
-                    android:paddingLeft="10dp"
-                    android:text="En-Route"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/callEnRouteTime"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/dispached"
-                    tools:layout_conversion_wrapHeight="87"
-                    tools:layout_conversion_wrapWidth="201" />
+            <TextView
+                android:id="@+id/dispached"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_marginTop="15dp"
+                android:text="Dispached"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/received"
+                android:layout_alignParentLeft="true" />
 
-                <EditText
-                    android:id="@+id/callEnRouteTime"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="19dp"
-                    android:layout_marginRight="19dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/callEnRoute"
-                    app:layout_constraintTop_toBottomOf="@+id/calldispachedTime"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="263" />
+            <EditText
+                android:id="@+id/calldispachedTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="3"
+                android:hint="hh:mm"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignStart="@id/textView5"
+                android:layout_below="@+id/callreceivedTime"
+                android:layout_alignLeft="@id/textView5" />
 
-                <EditText
-                    android:id="@+id/callEnRoute"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:ems="10"
-                    android:hint="Enter Reading"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/calldispached"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="289" />
+            <EditText
+                android:id="@+id/calldispached"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="3"
+                android:hint="Enter Reading"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/callreceived"
+                android:layout_alignParentRight="true" />
 
 
-                <TextView
-                    android:id="@+id/arrived"
-                    android:layout_width="wrap_content"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="36dp"
-                    android:layout_marginRight="36dp"
-                    android:paddingLeft="10dp"
-                    android:text="Arrived on scene"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/callArrivedTime"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/enRoute"
-                    tools:layout_conversion_wrapHeight="87"
-                    tools:layout_conversion_wrapWidth="341" />
+            <TextView
+                android:id="@+id/enRoute"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_marginTop="15dp"
+                android:text="En-Route"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/dispached"
+                android:layout_alignParentLeft="true" />
 
-                <EditText
-                    android:id="@+id/callArrivedTime"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginRight="15dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/callArrived"
-                    app:layout_constraintTop_toBottomOf="@+id/callEnRouteTime"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="263" />
+            <EditText
+                android:id="@+id/callEnRouteTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="3"
+                android:hint="hh:mm"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignStart="@id/textView5"
+                android:layout_below="@+id/calldispachedTime"
+                android:layout_alignLeft="@id/textView5" />
 
-                <EditText
-                    android:id="@+id/callArrived"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:ems="10"
-                    android:hint="Enter Reading"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/callEnRoute"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="289" />
+            <EditText
+                android:id="@+id/callEnRoute"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="3"
+                android:hint="Enter Reading"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/calldispached"
+                android:layout_alignParentRight="true" />
 
 
-                <TextView
-                    android:id="@+id/depart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="60dp"
-                    android:layout_marginRight="60dp"
-                    android:paddingLeft="10dp"
-                    android:text="Depart Scene"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/calldepartTime"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/arrived"
-                    tools:layout_conversion_wrapHeight="87"
-                    tools:layout_conversion_wrapWidth="278" />
+            <TextView
+                android:id="@+id/arrived"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_marginTop="15dp"
+                android:text="Arrived on scene"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/enRoute"
+                android:layout_alignParentLeft="true" />
 
-                <EditText
-                    android:id="@+id/calldepartTime"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginRight="15dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/calldepart"
-                    app:layout_constraintTop_toBottomOf="@+id/callArrivedTime"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="263" />
+            <EditText
+                android:id="@+id/callArrivedTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:ems="3"
+                android:hint="hh:mm"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignStart="@id/textView5"
+                android:layout_below="@+id/callEnRouteTime"
+                android:layout_alignLeft="@id/textView5" />
 
-                <EditText
-                    android:id="@+id/calldepart"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:ems="10"
-                    android:hint="Enter Reading"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/callArrived"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="289" />
+            <EditText
+                android:id="@+id/callArrived"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="3"
+                android:hint="Enter Reading"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/callEnRoute"
+                android:layout_alignParentRight="true" />
 
 
-                <TextView
-                    android:id="@+id/hospitalArrive"
-                    android:layout_width="wrap_content"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="31dp"
-                    android:layout_marginRight="31dp"
-                    android:paddingLeft="10dp"
-                    android:text="Arrive at Hospital"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/callHospitalArriveTime"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/depart"
-                    tools:layout_conversion_wrapHeight="87"
-                    tools:layout_conversion_wrapWidth="354" />
+            <TextView
+                android:id="@+id/depart"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_marginTop="15dp"
+                android:text="Depart Scene"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/arrived"
+                android:layout_alignParentLeft="true" />
 
-                <EditText
-                    android:id="@+id/callHospitalArriveTime"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginRight="15dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/callHospitalArrive"
-                    app:layout_constraintTop_toBottomOf="@+id/calldepartTime"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="263" />
+            <EditText
+                android:id="@+id/calldepartTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:ems="3"
+                android:hint="hh:mm"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignStart="@id/textView5"
+                android:layout_below="@+id/callArrivedTime"
+                android:layout_alignLeft="@id/textView5" />
 
-                <EditText
-                    android:id="@+id/callHospitalArrive"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ems="10"
-                    android:hint="Enter Reading"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/calldepart"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="289" />
+            <EditText
+                android:id="@+id/calldepart"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="3"
+                android:hint="Enter Reading"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/callArrived"
+                android:layout_alignParentRight="true" />
 
 
-                <TextView
-                    android:id="@+id/handover"
-                    android:layout_width="wrap_content"
-                    android:layout_height="33dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:paddingLeft="10dp"
-                    android:text="Hospital Handover"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/callHandoverTime"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/hospitalArrive"
-                    tools:layout_conversion_wrapHeight="87"
-                    tools:layout_conversion_wrapWidth="374" />
+            <TextView
+                android:id="@+id/hospitalArrive"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_marginTop="30dp"
+                android:text="Arrive at Hospital"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/depart"
+                android:layout_alignParentLeft="true" />
 
-                <EditText
-                    android:id="@+id/callHandoverTime"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginRight="15dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/callHandover"
-                    app:layout_constraintTop_toBottomOf="@+id/callHospitalArriveTime"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="263" />
+            <EditText
+                android:id="@+id/callHospitalArriveTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="3"
+                android:hint="hh:mm"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignStart="@id/textView5"
+                android:layout_below="@+id/calldepartTime"
+                android:layout_alignLeft="@id/textView5" />
 
-                <EditText
-                    android:id="@+id/callHandover"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:ems="10"
-                    android:hint="Enter Reading"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/callHospitalArrive"
-                    tools:layout_conversion_wrapHeight="111"
-                    tools:layout_conversion_wrapWidth="289" />
+            <EditText
+                android:id="@+id/callHospitalArrive"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="3"
+                android:hint="Enter Reading"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/calldepart"
+                android:layout_alignParentRight="true" />
 
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="128dp"
-                    android:layout_marginLeft="128dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="98dp"
-                    android:layout_marginRight="98dp"
-                    android:paddingLeft="10dp"
-                    android:text="Call Priority/Triage"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/callHandoverTime"
-                    tools:layout_conversion_wrapHeight="63"
-                    tools:layout_conversion_wrapWidth="435" />
+            <TextView
+                android:id="@+id/handover"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_marginTop="20dp"
+                android:text="Hospital Handover"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/hospitalArrive"
+                android:layout_alignParentLeft="true" />
 
-                <CheckBox
-                    android:id="@+id/checkBox8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="85dp"
-                    android:layout_marginRight="85dp"
-                    android:text="Red P1"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toStartOf="@+id/checkBox9"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6"
-                    tools:layout_conversion_wrapHeight="84"
-                    tools:layout_conversion_wrapWidth="201" />
+            <EditText
+                android:id="@+id/callHandoverTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="3"
+                android:hint="hh:mm"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignStart="@id/textView5"
+                android:layout_below="@+id/callHospitalArriveTime"
+                android:layout_alignLeft="@id/textView5" />
 
-                <CheckBox
-                    android:id="@+id/checkBox9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginRight="20dp"
-                    android:text="Orange P1/2"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintEnd_toStartOf="@+id/checkBox12"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6"
-                    tools:layout_conversion_wrapHeight="84"
-                    tools:layout_conversion_wrapWidth="293" />
+            <EditText
+                android:id="@+id/callHandover"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="3"
+                android:hint="Enter Reading"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/callHospitalArrive"
+                tools:layout_conversion_wrapHeight="111"
+                tools:layout_conversion_wrapWidth="289"
+                android:layout_alignParentRight="true" />
 
-                <CheckBox
-                    android:id="@+id/checkBox10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
 
-                    android:layout_marginTop="9dp"
-                    android:layout_marginEnd="68dp"
-                    android:layout_marginRight="68dp"
-                    android:text="Yellow P2"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintEnd_toStartOf="@+id/checkBox11"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox8"
-                    tools:layout_conversion_wrapHeight="84"
-                    tools:layout_conversion_wrapWidth="247" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Call Priority/Triage"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/callHandoverTime"
+                tools:layout_conversion_wrapHeight="63"
+                tools:layout_conversion_wrapWidth="435"
+                android:layout_alignParentLeft="true" />
 
-                <CheckBox
-                    android:id="@+id/checkBox11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:layout_marginEnd="41dp"
-                    android:layout_marginRight="41dp"
-                    android:text="Green P3"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintEnd_toStartOf="@+id/checkBox13"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox9"
-                    tools:layout_conversion_wrapHeight="84"
-                    tools:layout_conversion_wrapWidth="236" />
+            <CheckBox
+                android:id="@+id/checkBox8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/checkBox9"
+                android:text="Red P1"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#ff0000"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView6"
+                android:layout_alignParentLeft="true" />
 
-                <CheckBox
-                    android:id="@+id/checkBox12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="19dp"
-                    android:layout_marginRight="19dp"
-                    android:text="Blue P4"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/checkBox9"
-                    tools:layout_conversion_wrapHeight="84"
-                    tools:layout_conversion_wrapWidth="209" />
+            <CheckBox
+                android:id="@+id/checkBox9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Orange P1/2"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#FF5722"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/textView6"/>
 
-                <CheckBox
-                    android:id="@+id/checkBox13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/checkBox12"
+                android:layout_below="@id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/checkBox9"
+                android:layout_marginEnd="5dp"
+                android:text="Blue PR"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#000C4E"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp" />
 
-                    android:layout_marginEnd="28dp"
-                    android:layout_marginRight="28dp"
-                    android:text="No PT"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox12"
-                    tools:layout_conversion_wrapHeight="84"
-                    tools:layout_conversion_wrapWidth="186" />
+            <CheckBox
+                android:id="@+id/checkBox11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/checkBox10"
+                android:text="Green P3"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#4CAF50"
+                android:layout_below="@+id/checkBox9"
+                tools:layout_conversion_wrapHeight="84"
+                tools:layout_conversion_wrapWidth="236" />
 
-            </android.support.constraint.ConstraintLayout>
-        </LinearLayout>
+            <CheckBox
+                android:id="@+id/checkBox10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="Yellow P2"
+                android:textColor="#FFC107"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_alignStart="@id/checkBox9"
+                android:layout_below="@+id/checkBox8"
+                android:layout_alignLeft="@id/checkBox9" />
+
+            <!--CheckBox
+                android:id="@+id/checkBox13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/checkBox10"
+                android:layout_alignStart="@id/checkBox12"
+                android:text="Blue PR"
+                android:textColor="#1704C7"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_below="@+id/checkBox12"
+                android:layout_alignLeft="@id/checkBox9"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true" /-->
+
+            <TextView
+                android:id="@+id/timeOfDeathText"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_marginTop="20dp"
+                android:text="Time of Death"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/checkBox11"
+                android:layout_alignParentLeft="true" />
+
+            <EditText
+                android:id="@+id/timeOfDeathedit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="3"
+                android:hint="hh:mm"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_alignStart="@id/textView5"
+                android:layout_below="@+id/checkBox11"
+                android:layout_alignLeft="@id/textView5" />
+
+            <CheckBox
+                android:id="@+id/checkBox14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timeOfDeathText"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="25dp"
+                android:text="No PT"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_alignParentLeft="true" />
+        </RelativeLayout>
     </ScrollView>
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

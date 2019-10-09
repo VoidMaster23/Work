@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@mipmap/back"
-    tools:context=".ComaScore">
+    tools:context=".ComaScore"
+    android:padding="15dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,32 +17,35 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <RelativeLayout
+                android:id="@+id/logoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="184dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logo"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
+
+                <CheckBox
+                    android:id="@+id/notApplicableCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Not Applicable"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
+
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/imageView18"
-                    android:layout_width="208dp"
-                    android:layout_height="166dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/logo"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="17dp" />
-
-                <CheckBox
-                    android:id="@+id/chkNA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="76dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="Not Applicable"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/lblEyeResponse"
@@ -53,7 +57,7 @@
                     android:text="Best Eye Response"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18" />
+                    tools:ignore="MissingConstraints" />
 
                 <Spinner
                     android:id="@+id/spnEyeResponse"
@@ -63,7 +67,7 @@
                     android:layout_marginEnd="28dp"
                     android:layout_marginRight="28dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18" />
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/lblVerbalResponse"
@@ -125,6 +129,109 @@
                     app:layout_constraintTop_toBottomOf="@+id/lblMotorResponse" />
 
                 <TextView
+                    android:id="@+id/trtScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="30dp"
+                    android:text="The Revised Trauma Score"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblGCS" />
+
+                <TextView
+                    android:id="@+id/gcs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Glasgow Coma scale"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/trtScore" />
+
+                <Spinner
+                    android:id="@+id/spngcs"
+                    android:layout_width="190dp"
+                    android:layout_height="23dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginRight="28dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/trtScore" />
+
+                <TextView
+                    android:id="@+id/sbp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="29dp"
+                    android:text="Symtolic Blood Pressure"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gcs" />
+
+                <Spinner
+                    android:id="@+id/spnsbp"
+                    android:layout_width="190dp"
+                    android:layout_height="23dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginRight="28dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gcs" />
+
+
+                <TextView
+                    android:id="@+id/rr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="36dp"
+                    android:text="Respiratory Rate"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sbp" />
+
+                <Spinner
+                    android:id="@+id/spnrr"
+                    android:layout_width="190dp"
+                    android:layout_height="23dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginRight="28dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sbp" />
+
+                <TextView
+                    android:id="@+id/rtsValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="36dp"
+                    android:text="RTS Value"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rr" />
+
+                <Spinner
+                    android:id="@+id/spnrtsValue"
+                    android:layout_width="190dp"
+                    android:layout_height="23dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginRight="28dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rr" />
+
+                <TextView
                     android:id="@+id/lblTrauma"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -136,21 +243,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lblGCS" />
-
-                <ImageView
-                    android:id="@+id/imageView16"
-                    android:layout_width="303dp"
-                    android:layout_height="293dp"
-                    android:layout_marginStart="80dp"
-                    android:layout_marginLeft="80dp"
-                    android:layout_marginTop="78dp"
-                    android:layout_marginEnd="80dp"
-                    android:layout_marginRight="80dp"
-                    android:src="@drawable/rts"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lblTrauma" />
+                    app:layout_constraintTop_toBottomOf="@+id/rtsValue" />
 
 
             </android.support.constraint.ConstraintLayout>

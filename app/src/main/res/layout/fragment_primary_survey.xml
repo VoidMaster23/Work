@@ -20,44 +20,57 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/imageView12"
-                    android:layout_width="122dp"
-                    android:layout_height="98dp"
-                    android:src="@drawable/logo" />
+                <RelativeLayout
+                    android:id="@+id/logoContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="172dp">
 
-                <CheckBox
-                    android:id="@+id/chkNA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/imageView12"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="-63dp"
-                    android:layout_marginRight="15dp"
-                    android:gravity="start|end"
-                    android:text="Not Applicable"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    <ImageView
+                        android:id="@+id/imageView12"
+                        android:layout_width="194dp"
+                        android:layout_height="172dp"
+                        android:src="@drawable/logo"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true" />
+
+                    <CheckBox
+                        android:id="@+id/notApplicableCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Not Applicable"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp" />
+
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/lblTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/chkNA"
+                    android:layout_below="@id/logoContainer"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:text="Time"
-                    android:textColor="@color/white" />
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="15dp" />
+
 
                 <EditText
                     android:id="@+id/edtTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/chkNA"
+                    android:layout_below="@id/logoContainer"
+                    android:layout_toEndOf="@id/lblTime"
                     android:layout_marginLeft="67dp"
-                    android:layout_marginTop="-1dp"
+                    android:layout_marginTop="0dp"
                     android:layout_toRightOf="@id/lblTime"
-                    android:ems="10"
+                    android:ems="3"
                     android:hint="hh:mm"
                     android:inputType="textPersonName|time"
                     android:textColor="@color/white"

@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@mipmap/back"
-    tools:context=".Burns">
+    tools:context=".Burns"
+    android:padding="15dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,46 +17,67 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <RelativeLayout
+                android:id="@+id/logoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="184dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logo"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
+
+                <CheckBox
+                    android:id="@+id/notApplicableCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Not Applicable"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
+
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingBottom="30dp">
 
-
-                <ImageView
-                    android:id="@+id/imageView18"
-                    android:layout_width="194dp"
-                    android:layout_height="161dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/logo"
-                    app:layout_constraintStart_toStartOf="parent"
+                <CheckBox
+                    android:id="@+id/chkAdult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="35dp"
+                    android:layout_marginRight="35dp"
+                    android:text="Adult"
+                    android:textColor="@color/white"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <CheckBox
-                    android:id="@+id/chkNA"
+                    android:id="@+id/chkChild"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="76dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="Not Applicable"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginLeft="35dp"
+                    android:text="Child"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
 
                 <TextView
                     android:id="@+id/textView45"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="175dp"
-                    android:layout_marginLeft="175dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="177dp"
-                    android:layout_marginRight="177dp"
+                    android:layout_marginTop="25dp"
                     android:text="Type Of Burn"
                     android:textColor="@color/white"
                     android:textSize="18sp"
@@ -63,7 +85,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.479"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18" />
+                    app:layout_constraintTop_toBottomOf="@id/chkAdult"/>
 
                 <TextView
                     android:id="@+id/textView46"
@@ -90,7 +112,7 @@
                     android:layout_marginRight="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/chkAdult" />
+                    app:layout_constraintTop_toBottomOf="@id/textView45" />
 
                 <ListView
                     android:id="@+id/treatment"
@@ -158,32 +180,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView48" />
-
-                <CheckBox
-                    android:id="@+id/chkAdult"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="69dp"
-                    android:text="Adult"
-                    android:textColor="@color/white"
-                    android:visibility="visible"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18" />
-
-                <CheckBox
-                    android:id="@+id/chkChild"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="69dp"
-                    android:layout_marginEnd="35dp"
-                    android:layout_marginRight="35dp"
-                    android:text="Child"
-                    android:textColor="@color/white"
-                    android:visibility="visible"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18" />
 
                 <TextView
                     android:id="@+id/textView49"

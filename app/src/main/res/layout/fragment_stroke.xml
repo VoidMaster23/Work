@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@mipmap/back"
-    tools:context=".Stroke">
+    tools:context=".Stroke"
+    android:padding="36dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,83 +17,175 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <android.support.constraint.ConstraintLayout
+            <RelativeLayout
+                android:id="@+id/logoContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
+                android:layout_height="150dp">
 
                 <ImageView
-                    android:id="@+id/imageView18"
-                    android:layout_width="207dp"
-                    android:layout_height="171dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
+                    android:id="@+id/imageView12"
+                    android:layout_width="184dp"
+                    android:layout_height="150dp"
                     android:src="@drawable/logo"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
 
                 <CheckBox
-                    android:id="@+id/chkNA"
+                    android:id="@+id/notApplicableCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="76dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:text="Not Applicable"
-                    android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <CheckBox
                     android:id="@+id/checkBox4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="76dp"
+                    android:layout_marginTop="6dp"
                     android:text="Facial Droop/Weakness"
                     android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18" />
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"/>
+
+                <RelativeLayout
+                    android:id="@+id/facialDroopContainer"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_toEndOf="@id/checkBox4"
+                    android:layout_toRightOf="@id/checkBox4"
+                    android:layout_alignTop="@id/checkBox4"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp">
+
+                    <Button
+                        android:id="@+id/fd_btnYes"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:text="Y"
+                        android:background="@drawable/whiteshape"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true" />
+
+                    <Button
+                        android:id="@+id/fd_btnNo"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:text="N"
+                        android:textColor="@color/white"
+                        android:background="@drawable/orangeshape"
+                        android:layout_toEndOf="@id/fd_btnYes"
+                        android:layout_toRightOf="@id/fd_btnYes"/>
+
+                </RelativeLayout>
 
                 <CheckBox
                     android:id="@+id/checkBox5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Arm Weakness"
                     android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox4" />
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/checkBox4"
+                    android:layout_alignParentLeft="true" />
+
+                <RelativeLayout
+                    android:layout_alignStart="@id/facialDroopContainer"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_toEndOf="@id/checkBox5"
+                    android:layout_toRightOf="@id/checkBox5"
+                    android:layout_alignTop="@id/checkBox5"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignLeft="@id/facialDroopContainer">
+
+                    <Button
+                        android:id="@+id/aw_btnYes"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:text="Y"
+                        android:background="@drawable/whiteshape"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true" />
+
+                    <Button
+                        android:id="@+id/aw_btnNo"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:text="N"
+                        android:textColor="@color/white"
+                        android:background="@drawable/orangeshape"
+                        android:layout_toEndOf="@id/aw_btnYes"
+                        android:layout_toRightOf="@id/aw_btnYes"/>
+
+                </RelativeLayout>
 
                 <CheckBox
                     android:id="@+id/checkBox6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="20dp"
                     android:text="Speech Dificulties"
                     android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox5" />
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/checkBox5"
+                    android:layout_alignParentLeft="true" />
+
+                <RelativeLayout
+                    android:layout_alignStart="@id/facialDroopContainer"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_toEndOf="@id/checkBox6"
+                    android:layout_toRightOf="@id/checkBox6"
+                    android:layout_alignTop="@id/checkBox6"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignLeft="@id/facialDroopContainer">
+
+                    <Button
+                        android:id="@+id/sd_btnYes"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:text="Y"
+                        android:background="@drawable/whiteshape"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true" />
+
+                    <Button
+                        android:id="@+id/sd_btnNo"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:text="N"
+                        android:textColor="@color/white"
+                        android:background="@drawable/orangeshape"
+                        android:layout_toEndOf="@id/sd_btnYes"
+                        android:layout_toRightOf="@id/sd_btnYes"/>
+
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/textView55"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="30dp"
                     android:text="Door To Drug Time"
                     android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/checkBox6"
+                    android:layout_alignParentLeft="true" />
 
                 <EditText
                     android:id="@+id/editDoorDrug"
@@ -109,30 +202,39 @@
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView55"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox4" />
-
+                    android:layout_toEndOf="@+id/textView55"
+                    android:layout_below="@+id/checkBox4"
+                    android:layout_toRightOf="@+id/textView55" />
 
                 <TextView
-                    android:id="@+id/textView56"
+                    android:id="@+id/ortextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Select one"
+                    android:textColor="@color/white"
+                    android:layout_below="@+id/textView55"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
+
+
+                <CheckBox
+                    android:id="@+id/checkBoxStroke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
                     android:text="Stroke Unit"
                     android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView55" />
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/ortextView" />
+
 
                 <EditText
                     android:id="@+id/editStrokeUnit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="55dp"
-                    android:layout_marginLeft="55dp"
-                    android:layout_marginTop="31dp"
+                    android:layout_marginTop="0dp"
                     android:layout_marginEnd="53dp"
                     android:layout_marginRight="53dp"
                     android:background="@null"
@@ -141,30 +243,25 @@
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/textView56"
-                    app:layout_constraintTop_toBottomOf="@+id/editDoorDrug" />
+                    android:layout_alignStart="@id/editDoorDrug"
+                    android:layout_below="@+id/ortextView"
+                    android:layout_alignLeft="@id/editDoorDrug" />
 
-
-                <TextView
-                    android:id="@+id/textView57"
+                <CheckBox
+                    android:id="@+id/checkBoxCasualty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:text="Casualty"
                     android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView56" />
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/checkBoxStroke" />
 
                 <EditText
                     android:id="@+id/editCasualty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="55dp"
-                    android:layout_marginLeft="55dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="53dp"
                     android:layout_marginRight="53dp"
@@ -174,14 +271,13 @@
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/textView55"
-                    app:layout_constraintTop_toBottomOf="@+id/editStrokeUnit" />
+                    android:layout_alignStart="@id/editDoorDrug"
+                    android:layout_below="@+id/checkBoxStroke"
+                    android:layout_alignLeft="@id/editDoorDrug" />
 
 
 
-            </android.support.constraint.ConstraintLayout>
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
