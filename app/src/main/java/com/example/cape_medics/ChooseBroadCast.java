@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 public class ChooseBroadCast extends AppCompatActivity {
 
@@ -49,8 +52,8 @@ public class ChooseBroadCast extends AppCompatActivity {
     JSONObject response;
     List currentJobs;
     ArrayAdapter<String> CurrentJobs;
+    //Bundle bundle;
     boolean connected;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +61,11 @@ public class ChooseBroadCast extends AppCompatActivity {
         setContentView(R.layout.activity_view_attendance);
 
         Bundle bundle = getIntent().getExtras();
-        code = bundle.getString("code");
+        if (bundle != null)
+        {
+            code = bundle.getString("code");
+        }
+
         chooseBroadcast = new JSONObject();
         url = "http://capemedicstestserver-com.stackstaging.com/apktest/broadcast.php";
         jobType = findViewById(R.id.spinner9);
