@@ -131,7 +131,7 @@ public class Home_Screen_Crew extends AppCompatActivity {
 
             name = cache.getStringProperty("name"+code);
             authorisation = cache.getStringProperty("authorisation"+code);
-            id = Integer.parseInt(cache.getStringProperty("id "+code));
+            //id = Integer.parseInt(cache.getStringProperty("id "+code));
             broadcasts = cache.getStringProperty("broadcasts"+code);
             jobs = cache.getStringProperty("jobs"+code);
 
