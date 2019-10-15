@@ -104,8 +104,11 @@ public class Home_Screen_Crew extends AppCompatActivity {
 
         // send through another variable that if true is the first iteration.
         Bundle bundle = getIntent().getExtras();
-        first = bundle.getString("first");
-        code = bundle.getString("code");
+        if (bundle != null)
+        {
+            first = bundle.getString("first");
+            code = bundle.getString("code");
+        }
 
         if(first.equals("true")) {
 
@@ -125,11 +128,13 @@ public class Home_Screen_Crew extends AppCompatActivity {
             cache.setStringProperty("jobs"+code, jobs);
         }
         else{
+
             name = cache.getStringProperty("name"+code);
             authorisation = cache.getStringProperty("authorisation"+code);
-            id = Integer.parseInt(cache.getStringProperty("id"+code));
+            id = Integer.parseInt(cache.getStringProperty("id "+code));
             broadcasts = cache.getStringProperty("broadcasts"+code);
             jobs = cache.getStringProperty("jobs"+code);
+
         }
 
         if(connected){

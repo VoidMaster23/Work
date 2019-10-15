@@ -20,13 +20,14 @@ public class Cache {
         return res;
     }
 
-    public void setStringProperty(String key, String value) {
+    public int setStringProperty(String key, String value) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("preferences", Activity.MODE_PRIVATE);
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(key, value);
             editor.apply();
         }
+        return 0;
     }
 
     public void removeStringProperty(String key) {

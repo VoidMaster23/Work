@@ -54,8 +54,12 @@ public class ViewAttendance extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_view_attendance);
+
         Bundle bundle = getIntent().getExtras();
-        code = bundle.getString("code");
+        if (bundle != null)
+        {
+            code = bundle.getString("code");
+        }
         viewAttendance = new JSONObject();
         jobType = findViewById(R.id.spinner9);
         unitType = findViewById(R.id.spinner10);
