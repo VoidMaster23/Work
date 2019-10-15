@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 public class Stroke extends Fragment {
     private ImageView imageView18;
-    private CheckBox chkNA;
+    private CheckBox  chkNA;
     private CheckBox checkBox4;
     private CheckBox checkBox5;
     private CheckBox checkBox6;
@@ -51,9 +51,9 @@ public class Stroke extends Fragment {
         checkBox6 = (CheckBox)view.findViewById( R.id.checkBox6 );
         textView55 = (TextView)view.findViewById( R.id.textView55 );
         editDoorDrug = (EditText)view.findViewById( R.id.editDoorDrug );
-        textView56 = (TextView)view.findViewById( R.id.textView56 );
+        //textView56 = (TextView)view.findViewById( R.id.textView56 );
         editStrokeUnit = (EditText)view.findViewById( R.id.editStrokeUnit );
-        textView57 = (TextView)view.findViewById( R.id.textView57 );
+        //textView57 = (TextView)view.findViewById( R.id.textView57 );
         editCasualty = (EditText)view.findViewById( R.id.editCasualty );
 
        return view;

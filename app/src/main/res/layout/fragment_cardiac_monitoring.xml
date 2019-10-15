@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@mipmap/back"
     tools:context=".CardiacMonitoring"
-    android:padding="36dp">
+    android:padding="15dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -39,7 +39,9 @@
                     android:textColor="@color/white"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:layout_toStartOf="@id/imageView12"
+                    android:layout_toLeftOf="@id/imageView12" />
 
             </RelativeLayout>
 
@@ -119,7 +121,10 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chk3Lead" />
+                    app:layout_constraintTop_toBottomOf="@+id/chk3Lead"
+                    app:layout_constraintStart_toEndOf="@id/chkPacing"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp" />
 
                 <CheckBox
                     android:id="@+id/chkCardio"
@@ -144,7 +149,10 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkRhythm" />
+                    app:layout_constraintTop_toBottomOf="@+id/chkRhythm"
+                    app:layout_constraintStart_toEndOf="@id/chkPacing"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp" />
 
                 <CheckBox
                     android:id="@+id/chkPacing"
@@ -169,7 +177,10 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkCardio" />
+                    app:layout_constraintTop_toBottomOf="@+id/chkCardio"
+                    app:layout_constraintStart_toEndOf="@id/chkPacing"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp" />
 
 
             </android.support.constraint.ConstraintLayout>

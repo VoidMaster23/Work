@@ -53,10 +53,10 @@ public class PainScore extends Fragment {
         textView3 = view.findViewById(R.id.textView53);
         textView4 = view.findViewById(R.id.textView54);
 
-        show = view.findViewById(R.id.btnPainScale);
+        //show = view.findViewById(R.id.btnPainScale);
         painLay = view.findViewById(R.id.relLayPain);
 
-        show.setOnClickListener(new View.OnClickListener() {
+        /* show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (imageView.getVisibility() == View.INVISIBLE){
@@ -80,7 +80,7 @@ public class PainScore extends Fragment {
 
                 }
             }
-        });
+        });*/
 
 
         imageView.setOnClickListener(new View.OnClickListener() {

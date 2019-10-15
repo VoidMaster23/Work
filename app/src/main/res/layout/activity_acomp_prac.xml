@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/back"
-    tools:context=".AcompPrac">
+    tools:context=".AcompPrac"
+    android:padding="15dp">
 
     <ScrollView
         android:id="@+id/scroll0"
@@ -40,7 +41,9 @@
                     android:textColor="@color/white"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:layout_toStartOf="@id/imageView12"
+                    android:layout_toLeftOf="@id/imageView12" />
 
             </RelativeLayout>
 
@@ -134,7 +137,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
                 android:layout_below="@id/signature"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
 
         </RelativeLayout>
     </ScrollView>

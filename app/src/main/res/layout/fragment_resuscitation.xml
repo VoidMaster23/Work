@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@mipmap/back"
     tools:context=".Resuscitation"
-    android:padding="36dp">
+    android:padding="15dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,7 +41,9 @@
                     android:textColor="@color/white"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:layout_toStartOf="@id/imageView12"
+                    android:layout_toLeftOf="@id/imageView12" />
 
             </RelativeLayout>
 
@@ -234,99 +236,117 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
-                <TextView
-                    android:id="@+id/textView28"
-                    android:layout_width="wrap_content"
-                    android:layout_height="18dp"
-                    android:layout_marginTop="26dp"
-                    android:text="CPR Start Time"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkCPRo" />
+                <RelativeLayout
+                    app:layout_constraintTop_toBottomOf="@+id/chkCPRo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/edtStartCPR"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chkIncAirway" />
+                    <TextView
+                        android:id="@+id/textView28"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="26dp"
+                        android:text="CPR Start Time"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView29"
-                    android:layout_width="wrap_content"
-                    android:layout_height="18dp"
-                    android:layout_marginTop="32dp"
-                    android:text="CPR Discontinued"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView28" />
+                    <EditText
+                        android:id="@+id/edtStartCPR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="17dp"
+                        android:ems="10"
+                        android:hint="hh:mm"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_alignStart="@id/edtDrugIssue"
+                        android:layout_alignLeft="@id/edtDrugIssue"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"/>
 
-                <EditText
-                    android:id="@+id/edtEndCPR"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtStartCPR" />
+                    <TextView
+                        android:id="@+id/textView29"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="32dp"
+                        android:text="CPR Discontinued"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_below="@+id/textView28" />
 
-                <TextView
-                    android:id="@+id/roscTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="18dp"
-                    android:layout_marginTop="40dp"
-                    android:text="ROSC"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView29" />
+                    <EditText
+                        android:id="@+id/edtEndCPR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="17dp"
+                        android:ems="10"
+                        android:hint="hh:mm"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_below="@+id/edtStartCPR"
+                        android:layout_alignStart="@id/edtDrugIssue"
+                        android:layout_alignLeft="@id/edtDrugIssue"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"/>
 
-                <EditText
-                    android:id="@+id/rosceditTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtEndCPR" />
+                    <TextView
+                        android:id="@+id/roscTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="40dp"
+                        android:text="ROSC"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_below="@+id/textView29" />
 
-                <TextView
-                    android:id="@+id/textView30"
-                    android:layout_width="wrap_content"
-                    android:layout_height="18dp"
-                    android:layout_marginTop="40dp"
-                    android:text="Time 1st Drug Pushed"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/roscTextView" />
+                    <EditText
+                        android:id="@+id/rosceditTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="17dp"
+                        android:ems="10"
+                        android:hint="hh:mm"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:layout_below="@+id/edtEndCPR"
+                        android:layout_alignStart="@id/edtDrugIssue"
+                        android:layout_alignLeft="@id/edtDrugIssue"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"/>
 
-                <EditText
-                    android:id="@+id/edtDrugIssue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rosceditTextView" />
+                    <TextView
+                        android:id="@+id/textView30"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="40dp"
+                        android:text="Time 1st Drug Pushed"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_below="@+id/roscTextView" />
 
-
+                    <EditText
+                        android:id="@+id/edtDrugIssue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="17dp"
+                        android:ems="10"
+                        android:hint="hh:mm"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:layout_toEndOf="@id/textView30"
+                        android:layout_below="@+id/rosceditTextView"
+                        android:layout_toRightOf="@id/textView30"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true" />
+                </RelativeLayout>
 
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>

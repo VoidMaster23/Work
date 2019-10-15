@@ -20,7 +20,8 @@
             <RelativeLayout
                 android:id="@+id/logoContainer"
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true">
 
                 <ImageView
                     android:id="@+id/imageView12"
@@ -39,7 +40,9 @@
                     android:textColor="@color/white"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:layout_toStartOf="@id/imageView12"
+                    android:layout_toLeftOf="@id/imageView12" />
 
             </RelativeLayout>
 
@@ -118,11 +121,7 @@
                     android:id="@+id/treatment"
                     android:layout_width="0dp"
                     android:layout_height="250dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView46" />
@@ -145,11 +144,7 @@
                     android:id="@+id/inhaleBurn"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="27dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView47" />
@@ -172,11 +167,7 @@
                     android:id="@+id/degree"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="27dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView48" />

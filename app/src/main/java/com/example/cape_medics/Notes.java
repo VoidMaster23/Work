@@ -24,7 +24,7 @@ public class Notes extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.activity_notes, container, false);
-        notes = new JSONObject();
+        //notes = new JSONObject();
         challenges = view.findViewById(R.id.challengesEdit);
         delays = view.findViewById(R.id.delaysEdit);
         comments = view.findViewById(R.id.otherEdit);

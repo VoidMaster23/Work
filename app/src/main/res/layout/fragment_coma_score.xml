@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@mipmap/back"
     tools:context=".ComaScore"
-    android:padding="15dp">
+    android:paddingEnd="15dp"
+    android:paddingStart="15dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,7 +21,8 @@
             <RelativeLayout
                 android:id="@+id/logoContainer"
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true">
 
                 <ImageView
                     android:id="@+id/imageView12"
@@ -39,7 +41,9 @@
                     android:textColor="@color/white"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:layout_toStartOf="@id/imageView12"
+                    android:layout_toLeftOf="@id/imageView12" />
 
             </RelativeLayout>
 
@@ -51,8 +55,6 @@
                     android:id="@+id/lblEyeResponse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="63dp"
                     android:text="Best Eye Response"
                     android:textColor="@color/white"
@@ -67,14 +69,13 @@
                     android:layout_marginEnd="28dp"
                     android:layout_marginRight="28dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints"
+                    app:layout_constraintStart_toEndOf="@id/sbp"/>
 
                 <TextView
                     android:id="@+id/lblVerbalResponse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="29dp"
                     android:text="Best Verbal Response"
                     android:textColor="@color/white"
@@ -89,15 +90,14 @@
                     android:layout_marginEnd="28dp"
                     android:layout_marginRight="28dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/spnEyeResponse" />
+                    app:layout_constraintTop_toBottomOf="@+id/spnEyeResponse"
+                    app:layout_constraintStart_toEndOf="@id/sbp"/>
 
 
                 <TextView
                     android:id="@+id/lblMotorResponse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="36dp"
                     android:text="Best Motor Response"
                     android:textColor="@color/white"
@@ -112,28 +112,25 @@
                     android:layout_marginEnd="28dp"
                     android:layout_marginRight="28dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/spnVerbalResponse" />
+                    app:layout_constraintTop_toBottomOf="@+id/spnVerbalResponse"
+                    app:layout_constraintStart_toEndOf="@id/sbp"/>
 
                 <TextView
                     android:id="@+id/lblGCS"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="36dp"
                     android:text="TextView"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lblMotorResponse" />
+                    app:layout_constraintTop_toBottomOf="@+id/lblMotorResponse"/>
 
                 <TextView
                     android:id="@+id/trtScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="30dp"
                     android:text="The Revised Trauma Score"
                     android:textColor="@color/white"
@@ -146,8 +143,6 @@
                     android:id="@+id/gcs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="20dp"
                     android:text="Glasgow Coma scale"
                     android:textColor="@color/white"
@@ -162,14 +157,13 @@
                     android:layout_marginEnd="28dp"
                     android:layout_marginRight="28dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/trtScore" />
+                    app:layout_constraintTop_toBottomOf="@+id/trtScore"
+                    app:layout_constraintStart_toEndOf="@id/sbp" />
 
                 <TextView
                     android:id="@+id/sbp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="29dp"
                     android:text="Symtolic Blood Pressure"
                     android:textColor="@color/white"
@@ -184,15 +178,14 @@
                     android:layout_marginEnd="28dp"
                     android:layout_marginRight="28dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/gcs" />
+                    app:layout_constraintTop_toBottomOf="@+id/gcs"
+                    app:layout_constraintStart_toEndOf="@id/sbp" />
 
 
                 <TextView
                     android:id="@+id/rr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="36dp"
                     android:text="Respiratory Rate"
                     android:textColor="@color/white"
@@ -207,14 +200,13 @@
                     android:layout_marginEnd="28dp"
                     android:layout_marginRight="28dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sbp" />
+                    app:layout_constraintTop_toBottomOf="@+id/sbp"
+                    app:layout_constraintStart_toEndOf="@id/sbp" />
 
                 <TextView
                     android:id="@+id/rtsValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="36dp"
                     android:text="RTS Value"
                     android:textColor="@color/white"
@@ -229,14 +221,13 @@
                     android:layout_marginEnd="28dp"
                     android:layout_marginRight="28dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rr" />
+                    app:layout_constraintTop_toBottomOf="@+id/rr"
+                    app:layout_constraintStart_toEndOf="@id/sbp" />
 
                 <TextView
                     android:id="@+id/lblTrauma"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="27dp"
                     android:text="TextView"
                     android:textColor="@color/white"

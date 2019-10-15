@@ -27,7 +27,9 @@
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@color/white"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp" />
 
         <ListView
             android:id="@+id/Current_Jobs"
@@ -43,6 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="12dp"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
             android:text="Past Jobs"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@android:color/white"
@@ -63,6 +67,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="12dp"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
             android:text="BroadCasts"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@android:color/white"

@@ -5,13 +5,14 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/back">
+    android:background="@mipmap/back"
+    android:padding="15dp">
 
     <ScrollView
         android:id="@+id/scroll0"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="horizontal|vertical">
+        android:scrollbars="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +24,8 @@
             <RelativeLayout
                 android:id="@+id/logoContainer"
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true">
 
                 <ImageView
                     android:id="@+id/imageView12"
@@ -42,7 +44,9 @@
                     android:textColor="@color/white"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:layout_toStartOf="@id/imageView12"
+                    android:layout_toLeftOf="@id/imageView12" />
 
             </RelativeLayout>
 
@@ -89,8 +93,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:background="@null"
                     android:ems="10"
                     android:gravity="center_vertical"
@@ -99,7 +101,9 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"/>
 
                 <CheckBox
                     android:id="@+id/needleChk"
@@ -132,8 +136,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:background="@null"
                     android:ems="10"
                     android:hint="Size"
@@ -141,15 +143,16 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/oralEdit" />
+                    app:layout_constraintTop_toBottomOf="@+id/oralEdit"
+                    app:layout_constraintStart_toEndOf="@id/needleChk"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp" />
 
                 <EditText
                     android:id="@+id/o2Edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:background="@null"
                     android:ems="10"
                     android:hint="l/min"
@@ -157,7 +160,9 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/needleEdit" />
+                    app:layout_constraintTop_toBottomOf="@+id/needleEdit"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"/>
             </android.support.constraint.ConstraintLayout>
 
             <TextView
@@ -177,72 +182,54 @@
                 android:id="@+id/items1"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                app:layout_constraintBottom_toTopOf="@+id/etiChk"
+                app:layout_constraintBottom_toTopOf="@+id/bottomContainer"
                 app:layout_constraintTop_toBottomOf="@+id/title1"/>
 
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/bottomContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="15dp">
+                android:layout_height="wrap_content">
 
                 <CheckBox
                     android:id="@+id/etiChk"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginTop="15dp"
                     android:layout_weight="1"
                     android:text="ETI"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@id/nasalChk"
-                    app:layout_constraintEnd_toStartOf="@id/sgaEdit"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_conversion_absoluteHeight="32dp"
-                    tools:layout_conversion_absoluteWidth="67dp"
-                    tools:layout_editor_absoluteX="16dp"
-                    tools:layout_editor_absoluteY="609dp" />
+                    android:textSize="18sp"/>
 
                 <EditText
                     android:id="@+id/etiEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="16dp"
+                    android:layout_marginTop="15dp"
                     android:background="@null"
                     android:ems="10"
                     android:hint="Size"
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@id/nasalChk"
-                    tools:layout_conversion_absoluteHeight="24dp"
-                    tools:layout_conversion_absoluteWidth="213dp"
-                    tools:layout_editor_absoluteX="83dp"
-                    tools:layout_editor_absoluteY="613dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:id="@+id/linearLayout3">
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@id/manuelChk"
+                    android:layout_toRightOf="@id/manuelChk"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"/>
 
                 <CheckBox
                     android:id="@+id/sgaChk"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="SGA"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@id/nasalChk"
-                    app:layout_constraintEnd_toStartOf="@id/sgaEdit"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_conversion_absoluteHeight="32dp"
-                    tools:layout_conversion_absoluteWidth="67dp"
-                    tools:layout_editor_absoluteX="16dp"
-                    tools:layout_editor_absoluteY="609dp" />
+                    android:layout_below="@id/etiChk"/>
 
                 <EditText
                     android:id="@+id/sgaEdit"
@@ -255,30 +242,25 @@
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@id/nasalChk"
-                    tools:layout_conversion_absoluteHeight="24dp"
-                    tools:layout_conversion_absoluteWidth="213dp"
-                    tools:layout_editor_absoluteX="83dp"
-                    tools:layout_editor_absoluteY="613dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                    android:layout_below="@id/etiChk"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@id/manuelChk"
+                    android:layout_toRightOf="@id/manuelChk"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_alignTop="@id/sgaChk"/>
 
                 <CheckBox
                     android:id="@+id/nasalChk"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="Nasal Int."
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@id/manuelChk"
-                    app:layout_constraintEnd_toStartOf="@id/nasalEdit"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:layout_below="@id/sgaChk" />
 
                 <EditText
                     android:id="@+id/nasalEdit"
@@ -291,28 +273,25 @@
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@id/manuelChk"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/nasalChk" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                    android:layout_below="@id/sgaEdit"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@id/manuelChk"
+                    android:layout_toRightOf="@id/manuelChk"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_alignTop="@id/nasalChk"/>
 
                 <CheckBox
                     android:id="@+id/manuelChk"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="Manuel Defib"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@id/ioChk"
-                    app:layout_constraintEnd_toStartOf="@id/manuelEdit"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:layout_below="@id/nasalChk"/>
 
                 <EditText
                     android:id="@+id/manuelEdit"
@@ -325,28 +304,25 @@
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@id/ioChk"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/manuelChk" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                    android:layout_below="@id/nasalEdit"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@id/manuelChk"
+                    android:layout_toRightOf="@id/manuelChk"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_alignTop="@id/manuelChk"/>
 
                 <CheckBox
                     android:id="@+id/ioChk"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="IO Therapy"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@id/ngtChk"
-                    app:layout_constraintEnd_toStartOf="@id/ioEdit"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:layout_below="@id/manuelChk"/>
 
                 <EditText
                     android:id="@+id/ioEdit"
@@ -359,28 +335,25 @@
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toTopOf="@id/ngtChk"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ioChk" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                    android:layout_below="@id/manuelEdit"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@id/manuelChk"
+                    android:layout_toRightOf="@id/manuelChk"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_alignTop="@id/ioChk"/>
 
                 <CheckBox
                     android:id="@+id/ngtChk"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_weight="1"
                     android:text="NGT"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/ngtEdit"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:layout_below="@id/ioChk"/>
 
                 <EditText
                     android:id="@+id/ngtEdit"
@@ -393,11 +366,15 @@
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ngtChk" />
-            </LinearLayout>
-
+                    android:layout_below="@id/ioEdit"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@id/manuelChk"
+                    android:layout_toRightOf="@id/manuelChk"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_alignTop="@id/ngtChk"/>
+            </RelativeLayout>
 
         </LinearLayout>
     </ScrollView>

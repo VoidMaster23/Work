@@ -43,7 +43,9 @@
                         android:textColor="@color/white"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true" />
+                        android:layout_alignParentRight="true"
+                        android:layout_toStartOf="@id/imageView12"
+                        android:layout_toLeftOf="@id/imageView12" />
 
                 </RelativeLayout>
 

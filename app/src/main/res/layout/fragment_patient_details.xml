@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/back"
-    tools:context=".PatientDetails">
-
+    tools:context=".PatientDetails"
+    android:paddingEnd="15dp"
+    android:paddingStart="15dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,33 +19,43 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/logoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true">
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="184dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logo"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
+
+                <CheckBox
+                    android:id="@+id/notApplicableCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Not Applicable"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toStartOf="@id/imageView12"
+                    android:layout_toLeftOf="@id/imageView12" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingBottom="75dp">
-
-                <CheckBox
-                    android:id="@+id/checkBox7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="57dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_toRightOf="@id/imageView10"
-                    android:text="Not Applicable"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageView10"
-                    android:layout_width="192dp"
-                    android:layout_height="146dp"
-                    android:src="@drawable/logo" />
 
                 <TextView
                     android:id="@+id/lblName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/imageView10"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:text="Full Name"
@@ -55,7 +66,6 @@
                     android:id="@+id/edtName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/imageView10"
                     android:layout_marginLeft="71dp"
                     android:layout_marginTop="0dp"
                     android:layout_toRightOf="@id/lblName"

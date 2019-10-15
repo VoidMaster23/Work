@@ -5,283 +5,295 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/back">
-
+    android:background="@mipmap/back"
+    android:padding="15dp">
 
     <ScrollView
         android:id="@+id/scroll0"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="horizontal|vertical">
+        android:scrollbars="vertical">
 
-        <android.support.constraint.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="185dp"
-                android:layout_height="162dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo" />
+            <RelativeLayout
+                android:id="@+id/logoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Payment Method"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo" />
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="184dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logo"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
 
-            <CheckBox
-                android:id="@+id/notApplicable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="76dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="Not Applicable"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <CheckBox
+                    android:id="@+id/notApplicableCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Not Applicable"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toStartOf="@id/logo"
+                    android:layout_toLeftOf="@id/logo" />
 
-            <TextView
-                android:id="@+id/heading1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Select One"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+            </RelativeLayout>
 
-            <CheckBox
-                android:id="@+id/medicalaidChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:onClick="medicalaidClk"
-                android:text="Medical Aid"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/heading1" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_below="@id/logoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <CheckBox
-                android:id="@+id/accountChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="64dp"
-                android:layout_marginRight="64dp"
-                android:onClick="accountClk"
-                android:text="Account"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@id/cashChk"
-                app:layout_constraintTop_toBottomOf="@id/heading1" />
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Method"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <CheckBox
-                android:id="@+id/cashChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp"
-                android:onClick="cashClk"
-                android:text="Cash"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/heading1" />
+                <TextView
+                    android:id="@+id/heading1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select One"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title" />
 
-            <CheckBox
-                android:id="@+id/creditChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:onClick="creditClk"
-                android:text="Credit Card/EFT"
+                <CheckBox
+                    android:id="@+id/medicalaidChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:onClick="medicalaidClk"
+                    android:text="Medical Aid"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/heading1" />
 
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/medicalaidChk" />
+                <CheckBox
+                    android:id="@+id/accountChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="accountClk"
+                    android:text="Account"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/medicalaidChk"
+                    app:layout_constraintEnd_toStartOf="@id/cashChk"
+                    app:layout_constraintTop_toBottomOf="@id/heading1"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp" />
 
-            <CheckBox
-                android:id="@+id/gopChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:onClick="gopClk"
-                android:text="G.O.P"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/medicalaidChk" />
+                <CheckBox
+                    android:id="@+id/cashChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginRight="24dp"
+                    android:onClick="cashClk"
+                    android:text="Cash"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/heading1" />
 
-            <TextView
-                android:id="@+id/receipt"
-                android:layout_width="150dp"
-                android:layout_height="42dp"
-                android:gravity="center"
-                android:text="Receipt Number"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toStartOf="@id/receiptEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gopChk" />
+                <CheckBox
+                    android:id="@+id/creditChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:onClick="creditClk"
+                    android:text="Credit Card/EFT"
 
-            <EditText
-                android:id="@+id/receiptEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint= "Type No. Here.."
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/receipt"
-                app:layout_constraintTop_toBottomOf="@+id/gopChk" />
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicalaidChk" />
 
-            <TextView
-                android:id="@+id/details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:text="Medical Aid Details"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/receiptEdit" />
+                <CheckBox
+                    android:id="@+id/gopChk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:onClick="gopClk"
+                    android:text="G.O.P"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicalaidChk" />
 
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="150dp"
-                android:layout_height="42dp"
-                android:gravity="center"
-                android:text="Name"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toStartOf="@id/nameEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/details" />
+                <TextView
+                    android:id="@+id/receipt"
+                    android:layout_width="150dp"
+                    android:layout_height="42dp"
+                    android:gravity="center"
+                    android:text="Receipt Number"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toStartOf="@id/receiptEdit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gopChk" />
 
-            <EditText
-                android:id="@+id/nameEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint= "Name"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/name"
-                app:layout_constraintTop_toBottomOf="@+id/details" />
+                <EditText
+                    android:id="@+id/receiptEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint= "Type No. Here.."
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/receipt"
+                    app:layout_constraintTop_toBottomOf="@+id/gopChk" />
 
-            <TextView
-                android:id="@+id/plan"
-                android:layout_width="150dp"
-                android:layout_height="42dp"
-                android:gravity="center"
-                android:text="Plan"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toStartOf="@id/planEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameEdit" />
+                <TextView
+                    android:id="@+id/details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="Medical Aid Details"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/receiptEdit" />
 
-            <EditText
-                android:id="@+id/planEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint= "Type No. Here.."
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/plan"
-                app:layout_constraintTop_toBottomOf="@+id/nameEdit" />
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="150dp"
+                    android:layout_height="42dp"
+                    android:gravity="center"
+                    android:text="Name"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toStartOf="@id/nameEdit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/details" />
 
-            <TextView
-                android:id="@+id/number"
-                android:layout_width="150dp"
-                android:layout_height="42dp"
-                android:gravity="center"
-                android:text="Receipt Number"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toStartOf="@id/numberEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/planEdit" />
+                <EditText
+                    android:id="@+id/nameEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint= "Name"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/name"
+                    app:layout_constraintTop_toBottomOf="@+id/details" />
 
-            <EditText
-                android:id="@+id/numberEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint= "Type No. Here.."
-                android:inputType="number"
-                android:textSize="15sp"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/number"
-                app:layout_constraintTop_toBottomOf="@+id/planEdit" />
+                <TextView
+                    android:id="@+id/plan"
+                    android:layout_width="150dp"
+                    android:layout_height="42dp"
+                    android:gravity="center"
+                    android:text="Plan"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toStartOf="@id/planEdit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nameEdit" />
 
-            <TextView
-                android:id="@+id/member"
-                android:layout_width="150dp"
-                android:layout_height="42dp"
-                android:gravity="center"
-                android:text="Main Member"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toStartOf="@id/memberEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/numberEdit" />
+                <EditText
+                    android:id="@+id/planEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint= "Type No. Here.."
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/plan"
+                    app:layout_constraintTop_toBottomOf="@+id/nameEdit" />
 
-            <EditText
-                android:id="@+id/memberEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint= "Name"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/member"
-                app:layout_constraintTop_toBottomOf="@+id/numberEdit" />
-        </android.support.constraint.ConstraintLayout>
+                <TextView
+                    android:id="@+id/number"
+                    android:layout_width="150dp"
+                    android:layout_height="42dp"
+                    android:gravity="center"
+                    android:text="Receipt Number"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toStartOf="@id/numberEdit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/planEdit" />
+
+                <EditText
+                    android:id="@+id/numberEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint= "Type No. Here.."
+                    android:inputType="number"
+                    android:textSize="15sp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/number"
+                    app:layout_constraintTop_toBottomOf="@+id/planEdit" />
+
+                <TextView
+                    android:id="@+id/member"
+                    android:layout_width="150dp"
+                    android:layout_height="42dp"
+                    android:gravity="center"
+                    android:text="Main Member"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toStartOf="@id/memberEdit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/numberEdit" />
+
+                <EditText
+                    android:id="@+id/memberEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint= "Name"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/member"
+                    app:layout_constraintTop_toBottomOf="@+id/numberEdit" />
+            </android.support.constraint.ConstraintLayout>
+        </RelativeLayout>
+
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
