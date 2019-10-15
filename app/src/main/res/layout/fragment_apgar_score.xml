@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/back"
-    tools:context=".PainScore">
+    tools:context=".PainScore"
+    android:padding="15dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,55 +18,52 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.constraint.ConstraintLayout
+            <RelativeLayout
+                android:id="@+id/logoContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true">
 
                 <ImageView
                     android:id="@+id/imageView18"
-                    android:layout_width="200dp"
-                    android:layout_height="191dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_width="184dp"
+                    android:layout_height="150dp"
                     android:src="@drawable/logo"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
 
                 <CheckBox
-                    android:id="@+id/chkNA"
+                    android:id="@+id/notApplicableCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="76dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:text="Not Applicable"
-                    android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toStartOf="@id/imageView18"
+                    android:layout_toLeftOf="@id/imageView18" />
 
+            </RelativeLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/textView58"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginLeft="31dp"
-                    android:layout_marginTop="75dp"
                     android:text="Activity"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView18" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/editAct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="75dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
                     android:background="@null"
                     android:ems="10"
                     android:hint="e.g 1"
@@ -73,14 +71,15 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imageView18" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/textView61"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"/>
 
                 <TextView
                     android:id="@+id/textView59"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginLeft="31dp"
                     android:layout_marginTop="15dp"
                     android:text="Pulse Rate"
                     android:textColor="@color/white"
@@ -92,8 +91,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
                     android:background="@null"
                     android:ems="10"
                     android:hint="e.g 1"
@@ -101,14 +98,15 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editAct" />
+                    app:layout_constraintTop_toBottomOf="@+id/editAct"
+                    app:layout_constraintStart_toEndOf="@id/textView61"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"/>
 
                 <TextView
                     android:id="@+id/textView60"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginLeft="31dp"
                     android:layout_marginTop="15dp"
                     android:text="Grimace"
                     android:textColor="@color/white"
@@ -120,8 +118,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
                     android:background="@null"
                     android:ems="10"
                     android:hint="e.g 1"
@@ -129,14 +125,15 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editPulseRate" />
+                    app:layout_constraintTop_toBottomOf="@+id/editPulseRate"
+                    app:layout_constraintStart_toEndOf="@id/textView61"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"/>
 
                 <TextView
                     android:id="@+id/textView61"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginLeft="31dp"
                     android:layout_marginTop="15dp"
                     android:text="Appearance(Skin Colour)"
                     android:textColor="@color/white"
@@ -148,8 +145,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
                     android:background="@null"
                     android:ems="10"
                     android:hint="e.g 1"
@@ -157,14 +152,15 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editGrim" />
+                    app:layout_constraintTop_toBottomOf="@+id/editGrim"
+                    app:layout_constraintStart_toEndOf="@id/textView61"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp" />
 
                 <TextView
                     android:id="@+id/textView62"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
-                    android:layout_marginLeft="31dp"
                     android:layout_marginTop="15dp"
                     android:text="Respiration"
                     android:textColor="@color/white"
@@ -176,8 +172,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
                     android:background="@null"
                     android:ems="10"
                     android:hint="e.g 1"
@@ -185,7 +179,10 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editAppearance" />
+                    app:layout_constraintTop_toBottomOf="@+id/editAppearance"
+                    app:layout_constraintStart_toEndOf="@id/textView61"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"/>
 
                 <ImageView
                     android:id="@+id/imageView20"
@@ -205,11 +202,7 @@
                     android:id="@+id/apgarScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="285dp"
-                    android:layout_marginLeft="285dp"
                     android:layout_marginTop="28dp"
-                    android:layout_marginEnd="286dp"
-                    android:layout_marginRight="286dp"
                     android:text="APGAR Score"
                     android:textColor="@color/white"
                     android:textSize="18sp"

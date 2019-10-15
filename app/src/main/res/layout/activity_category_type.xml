@@ -15,8 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -25,14 +24,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/reportTime"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
                     android:background="#ba1f04"
                     android:drawableRight="@android:drawable/arrow_down_float"
                     android:onClick="expandableButton1"
-                    android:paddingRight="10dp"
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp"
                     android:text="ACSA"
-                    android:textColor="#fff" />
+                    android:textColor="#fff"
+                    android:drawableEnd="@android:drawable/arrow_down_float" />
 
 
                 <HorizontalScrollView
@@ -40,8 +39,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/expBut1"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp">
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -242,12 +241,11 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/sideScroll0"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
                     android:background="#E1066DA1"
                     android:drawableRight="@android:drawable/arrow_down_float"
                     android:onClick="expandableButton2"
-                    android:paddingRight="10dp"
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp"
                     android:text="Events"
                     android:textColor="#fff" />
 
@@ -256,8 +254,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/expandableButton2"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp">
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -515,12 +513,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/sideScroll1"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
                     android:background="#10a106"
                     android:drawableRight="@android:drawable/arrow_down_float"
                     android:onClick="expandableButton3"
-                    android:paddingRight="10dp"
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp"
                     android:text="PRIMARY/IFT/HT"
                     android:textColor="#fff" />
 
@@ -529,8 +526,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/expandableButton3"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp">
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"

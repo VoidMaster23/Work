@@ -5,7 +5,8 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/back">
+    android:background="@mipmap/back"
+    android:padding="15dp">
 
 
     <ScrollView
@@ -18,6 +19,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <RelativeLayout
                 android:id="@+id/logoContainer"
                 android:layout_width="match_parent"
@@ -43,686 +45,844 @@
                     android:layout_alignParentRight="true" />
 
             </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@id/logoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="50dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ventilator Settings"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/lpm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Fi02/LPM"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/title" />
+
+                <EditText
+                    android:id="@+id/lpmEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="First Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/lpm"
+                    android:textColor="@color/white"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp" />
+
+                <EditText
+                    android:id="@+id/lpmTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/lpm"
+                    android:textColor="@color/white"
+                    android:background="@drawable/cell_shape"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/lpmEdit"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/lpmEdit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Second Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/lpmEdit"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/lpmTime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/lpmEdit1"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/lpmEdit1"
+                    android:layout_below="@+id/lpmEdit"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/lpmEdit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Third Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/lpmEdit1"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/lpmTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/lpmEdit2"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/lpmEdit2"
+                    android:layout_below="@+id/lpmEdit1"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/tidal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Tidal Volume"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/lpmTime2" />
+
+                <EditText
+                    android:id="@+id/tidalEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="First Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/tidal"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/tidalTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/tidalEdit"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tidalEdit"
+                    android:layout_below="@+id/tidal"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/tidalEdit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Second Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/tidalEdit"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/tidalTime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/tidalEdit1"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tidalEdit1"
+                    android:layout_below="@+id/tidalEdit"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/tidalEdit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Third Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/tidalEdit1"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/tidalTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/tidalEdit2"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/tidalEdit2"
+                    android:layout_below="@+id/tidalEdit1"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/spontaneous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Spontaneous TV"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/tidalTime2" />
+
+                <EditText
+                    android:id="@+id/spontaneousEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="First Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/spontaneous"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/spontaneousTime"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/spontaneousEdit"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/spontaneousEdit"
+                    android:layout_below="@+id/spontaneous"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/spontaneousEdit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Second Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/spontaneousEdit"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/spontaneousTime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/spontaneousEdit1"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/spontaneousEdit1"
+                    android:layout_below="@+id/spontaneousEdit"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/spontaneousEdit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Third Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/spontaneousEdit1"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/spontaneousTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/spontaneousEdit2"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/spontaneousEdit2"
+                    android:layout_below="@+id/spontaneousEdit1"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/vent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Vent Mode (SIMV/CMV/CPAP/IPPV)"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/spontaneousTime2"
+                    />
+
+                <EditText
+                    android:id="@+id/ventEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="First Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/vent"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/ventTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/ventEdit"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/ventEdit"
+                    android:layout_below="@+id/vent"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/ventEdit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Second Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/ventEdit"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/ventTime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/ventEdit1"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/ventEdit1"
+                    android:layout_below="@+id/ventEdit"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/ventEdit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Third Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/ventEdit1"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/ventTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/ventEdit2"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/ventEdit2"
+                    android:layout_below="@+id/ventEdit1"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Vent Rate"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/ventTime2" />
+
+                <EditText
+                    android:id="@+id/rateEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="First Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/rate"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/rateTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/rateEdit"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/rateEdit"
+                    android:layout_below="@+id/rate"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/rateEdit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Second Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/rateEdit"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/rateTime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/rateEdit1"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/rateEdit1"
+                    android:layout_below="@+id/rateEdit"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/rateEdit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Third Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/rateEdit1"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/rateTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/rateEdit2"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/rateEdit2"
+                    android:layout_below="@+id/rateEdit1"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/peep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="PEEP"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/rateTime2" />
+
+                <EditText
+                    android:id="@+id/peepEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="First Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/peep"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/peepTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/peepEdit"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/peepEdit"
+                    android:layout_below="@+id/peep"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/peepEdit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Second Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/peepEdit"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/peepTime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/peepEdit1"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/peepEdit1"
+                    android:layout_below="@+id/peepEdit"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/peepEdit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Third Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/peepEdit1"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/peepTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/peepEdit2"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/peepEdit2"
+                    android:layout_below="@+id/peepEdit1"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <TextView
+                    android:id="@+id/ratio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="I.E. Ratio"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/peepTime2" />
+
+                <EditText
+                    android:id="@+id/ratioEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="First Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/ratio"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/ratioTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/ratioEdit"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/ratioEdit"
+                    android:layout_below="@+id/ratio"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/ratioEdit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Second Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/ratioEdit"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/ratioTime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/ratioEdit1"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/ratioEdit1"
+                    android:layout_below="@+id/ratioEdit"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+                <EditText
+                    android:id="@+id/ratioEdit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Third Measurement"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_below="@+id/ratioEdit1"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/ratioTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_shape"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="textPersonName"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@id/ratioEdit2"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@id/ratioEdit2"
+                    android:layout_below="@+id/ratioEdit1"
+                    android:textColor="@color/white"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"/>
+
+
+            </RelativeLayout>
+
         </RelativeLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="50dp"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
-
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="209dp"
-                android:layout_height="191dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo" />
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ventilator Settings"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-            <CheckBox
-                android:id="@+id/notApplicable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="76dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:text="Not Applicable"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/lpm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Fi02/LPM"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
-
-            <EditText
-                android:id="@+id/lpmEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="First Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/lpmTime"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lpm"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/lpmTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/lpmEdit"
-                app:layout_constraintTop_toBottomOf="@+id/lpm"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/lpmEdit1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Second Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/lpmTime1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lpmEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/lpmTime1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/lpmEdit1"
-                app:layout_constraintTop_toBottomOf="@+id/lpmEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/lpmEdit2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Third Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/lpmTime2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lpmEdit1"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/lpmTime2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/lpmEdit2"
-                app:layout_constraintTop_toBottomOf="@+id/lpmEdit1"
-                android:textColor="@color/white"/>
-
-            <TextView
-                android:id="@+id/tidal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tidal Volume"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lpmTime2"
-                />
-
-            <EditText
-                android:id="@+id/tidalEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="First Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/tidalTime"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tidal"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/tidalTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tidalEdit"
-                app:layout_constraintTop_toBottomOf="@+id/tidal"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/tidalEdit1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Second Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/tidalTime1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tidalEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/tidalTime1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tidalEdit1"
-                app:layout_constraintTop_toBottomOf="@+id/tidalEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/tidalEdit2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Third Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/tidalTime2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tidalEdit1"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/tidalTime2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tidalEdit2"
-                app:layout_constraintTop_toBottomOf="@+id/tidalEdit1"
-                android:textColor="@color/white"/>
-
-            <TextView
-                android:id="@+id/spontaneous"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Spontaneous TV"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tidalTime2" />
-
-            <EditText
-                android:id="@+id/spontaneousEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="First Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/spontaneousTime"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spontaneous"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/spontaneousTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/spontaneousEdit"
-                app:layout_constraintTop_toBottomOf="@+id/spontaneous"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/spontaneousEdit1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Second Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/spontaneousTime1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spontaneousEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/spontaneousTime1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/spontaneousEdit1"
-                app:layout_constraintTop_toBottomOf="@+id/spontaneousEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/spontaneousEdit2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Third Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/spontaneousTime2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spontaneousEdit1"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/spontaneousTime2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/spontaneousEdit2"
-                app:layout_constraintTop_toBottomOf="@+id/spontaneousEdit1"
-                android:textColor="@color/white"/>
-
-            <TextView
-                android:id="@+id/vent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Vent Mode (SIMV/CMV/CPAP/IPPV)"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spontaneousTime2"
-                />
-
-            <EditText
-                android:id="@+id/ventEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="First Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/ventTime"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/vent"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/ventTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ventEdit"
-                app:layout_constraintTop_toBottomOf="@+id/vent"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/ventEdit1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Second Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/ventTime1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ventEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/ventTime1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ventEdit1"
-                app:layout_constraintTop_toBottomOf="@+id/ventEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/ventEdit2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Third Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/ventTime2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ventEdit1"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/ventTime2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ventEdit2"
-                app:layout_constraintTop_toBottomOf="@+id/ventEdit1"
-                android:textColor="@color/white"/>
-
-            <TextView
-                android:id="@+id/rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Vent Rate"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ventTime2" />
-
-            <EditText
-                android:id="@+id/rateEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="First Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/rateTime"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rate"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/rateTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/rateEdit"
-                app:layout_constraintTop_toBottomOf="@+id/rate"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/rateEdit1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Second Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/rateTime1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rateEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/rateTime1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/rateEdit1"
-                app:layout_constraintTop_toBottomOf="@+id/rateEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/rateEdit2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Third Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/rateTime2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rateEdit1"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/rateTime2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/rateEdit2"
-                app:layout_constraintTop_toBottomOf="@+id/rateEdit1"
-                android:textColor="@color/white"/>
-
-            <TextView
-                android:id="@+id/peep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PEEP"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rateTime2" />
-
-            <EditText
-                android:id="@+id/peepEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="First Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/peepTime"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/peep"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/peepTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/peepEdit"
-                app:layout_constraintTop_toBottomOf="@+id/peep"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/peepEdit1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Second Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/peepTime1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/peepEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/peepTime1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/peepEdit1"
-                app:layout_constraintTop_toBottomOf="@+id/peepEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/peepEdit2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Third Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/peepTime2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/peepEdit1"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/peepTime2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/peepEdit2"
-                app:layout_constraintTop_toBottomOf="@+id/peepEdit1"
-                android:textColor="@color/white"/>
-
-            <TextView
-                android:id="@+id/ratio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I.E. Ratio"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/peepTime2" />
-
-            <EditText
-                android:id="@+id/ratioEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="First Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/ratioTime"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ratio"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/ratioTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ratioEdit"
-                app:layout_constraintTop_toBottomOf="@+id/ratio"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/ratioEdit1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Second Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/ratioTime1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ratioEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/ratioTime1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ratioEdit1"
-                app:layout_constraintTop_toBottomOf="@+id/ratioEdit"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/ratioEdit2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Third Measurement"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/ratioTime2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ratioEdit1"
-                android:textColor="@color/white"/>
-
-            <EditText
-                android:id="@+id/ratioTime2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Time"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ratioEdit2"
-                app:layout_constraintTop_toBottomOf="@+id/ratioEdit1"
-                android:textColor="@color/white"/>
-
-
-        </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

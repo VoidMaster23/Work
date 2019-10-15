@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/back"
-    tools:context=".PrimarySurvey" >
+    tools:context=".PrimarySurvey"
+    android:padding="15dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,12 +24,13 @@
                 <RelativeLayout
                     android:id="@+id/logoContainer"
                     android:layout_width="match_parent"
-                    android:layout_height="172dp">
+                    android:layout_height="150dp"
+                    android:layout_alignParentTop="true">
 
                     <ImageView
                         android:id="@+id/imageView12"
-                        android:layout_width="194dp"
-                        android:layout_height="172dp"
+                        android:layout_width="184dp"
+                        android:layout_height="150dp"
                         android:src="@drawable/logo"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true" />
@@ -42,9 +44,9 @@
                         android:textColor="@color/white"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginEnd="15dp"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="15dp" />
+                        android:layout_toStartOf="@id/imageView12"
+                        android:layout_toLeftOf="@id/imageView12" />
 
                 </RelativeLayout>
 
@@ -294,7 +296,6 @@
                     android:layout_alignLeft="@id/chkOcc"
                     android:text="&lt; 2 Seconds"
                     android:textColor="@color/white" />
-
 
             </RelativeLayout>
         </LinearLayout>

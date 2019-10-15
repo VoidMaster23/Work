@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/back"
     tools:context=".WoundCare"
-    android:padding="36dp">
+    android:padding="15dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -39,7 +39,9 @@
                     android:textColor="@color/white"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:layout_toStartOf="@id/imageView12"
+                    android:layout_toLeftOf="@id/imageView12" />
 
             </RelativeLayout>
 

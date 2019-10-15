@@ -59,7 +59,7 @@ public class SampleHistory extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sample_history, container, false);
 
-        imageView14 = (ImageView)view.findViewById( R.id.imageView14 );
+        imageView14 = (ImageView)view.findViewById( R.id.imageView12 );
         chkNA = (CheckBox)view.findViewById( R.id.chkNA );
         lblSigns = (TextView)view.findViewById( R.id.lblSigns );
         edtSigns = (EditText)view.findViewById( R.id.edtSigns );

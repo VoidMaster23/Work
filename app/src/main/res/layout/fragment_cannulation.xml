@@ -20,8 +20,8 @@
                 android:id="@+id/logoContainer"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:paddingEnd="30dp"
-                android:paddingStart="30dp">
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp">
 
                 <ImageView
                     android:id="@+id/imageView12"
@@ -40,7 +40,9 @@
                     android:textColor="@color/white"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:layout_toStartOf="@id/imageView12"
+                    android:layout_toLeftOf="@id/imageView12" />
 
             </RelativeLayout>
 

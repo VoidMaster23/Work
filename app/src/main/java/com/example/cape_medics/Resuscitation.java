@@ -66,7 +66,7 @@ public class Resuscitation extends Fragment {
         minutes = 3;
         sec = 60;
         textView = view.findViewById(R.id.countDown);
-        imageView19 = (ImageView)view.findViewById(R.id.imageView19);
+        imageView19 = (ImageView)view.findViewById(R.id.imageView12);
         chkNA = (CheckBox)view.findViewById( R.id.chkNA );
         btnStart = (Button)view.findViewById( R.id.btnStart );
         btnStop = (Button)view.findViewById( R.id.btnStop );

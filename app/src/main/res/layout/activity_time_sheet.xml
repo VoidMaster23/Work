@@ -6,8 +6,7 @@
     android:background="@mipmap/back"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp">
+    android:padding="15dp">
 
     <Space
         android:layout_width="match_parent"

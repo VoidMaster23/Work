@@ -204,8 +204,6 @@
                         android:id="@+id/helpChk"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="72dp"
-                        android:layout_marginRight="72dp"
                         android:onClick="helpClk"
                         android:text="Refused Help"
                         android:textColor="@color/white"

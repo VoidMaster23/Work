@@ -39,7 +39,7 @@ public class Death extends Fragment {
         View view = inflater.inflate(R.layout.activity_death,container,false);
 
 
-
+/*
         death = new JSONObject();
 
         send = view.findViewById(R.id.send);
@@ -126,11 +126,11 @@ public class Death extends Fragment {
 
         try {
             CategoryType = new JSONArray(getActivity().getIntent().getStringExtra("Category Type"));
-        }catch (Exception e) {}
+        }catch (Exception e) {}*/
 
         return view;
     }
-
+/*
     public void removeStringPropertys(String code, Cache cache, Context context){
         //use this method to remove all string caches
         cache = new Cache(context);
@@ -194,7 +194,7 @@ public class Death extends Fragment {
 
 
 
-    }
+    }*/
 
 
 

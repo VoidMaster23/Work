@@ -1,514 +1,499 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@mipmap/back"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:scrollbars="vertical">
 
-    <ScrollView
-        android:id="@+id/scroll0"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="horizontal|vertical">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
+            android:id="@+id/logoContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
+            android:layout_height="150dp">
 
-            <RelativeLayout
-                android:id="@+id/logoContainer"
-                android:layout_width="match_parent"
-                android:layout_height="150dp">
-
-                <ImageView
-                    android:id="@+id/imageView12"
-                    android:layout_width="184dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/logo"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true" />
-
-                <CheckBox
-                    android:id="@+id/notApplicableCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Not Applicable"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Declaration of Death"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/logoContainer" />
-
-
-            <RelativeLayout
-                android:id="@+id/formContainer"
-                android:layout_below="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="31dp"
-                    android:text="Location where deceased was found"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_centerHorizontal="true"/>
-
-                <EditText
-                    android:id="@+id/locationEdit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:ems="10"
-                    android:hint="location"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/location" />
-
-                <TextView
-                    android:id="@+id/time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Time of examination"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/locationEdit" />
-
-                <EditText
-                    android:id="@+id/timeEdit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/time" />
-
-                <TextView
-                    android:id="@+id/place"
-                    android:layout_below="@id/timeEdit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Place"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_centerHorizontal="true" />
-
-                <EditText
-                    android:id="@+id/placeEdit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:ems="10"
-                    android:hint="Place"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/place" />
-
-                <TextView
-                    android:id="@+id/date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Date"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/placeEdit" />
-
-                <EditText
-                    android:id="@+id/dateEdit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:ems="10"
-                    android:hint="Date"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/date" />
-
-
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Full Name"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/dateEdit" />
-
-                <EditText
-                    android:id="@+id/nameEdit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:ems="10"
-                    android:hint="Full Name"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/name" />
-
-                <TextView
-                    android:id="@+id/post"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ex Officio (Post Held)"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/nameEdit" />
-
-                <EditText
-                    android:id="@+id/postEdit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:ems="10"
-                    android:hint="Post"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/post" />
-
-                <TextView
-                    android:id="@+id/time2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Time"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/postEdit" />
-
-                <EditText
-                    android:id="@+id/timeEdit2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/time2" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/findings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Clinical FIndings"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/formContainer" />
-
-            <TextView
-                android:id="@+id/pulse"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Carotid Pulse"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="184dp"
+                android:layout_height="150dp"
+                android:src="@drawable/logo"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/findings"
                 android:layout_alignParentLeft="true" />
 
             <CheckBox
-                android:id="@+id/leftChk"
+                android:id="@+id/notApplicableCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Left"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/findings" />
-
-            <CheckBox
-                android:id="@+id/rightChk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Right"
+                android:text="Not Applicable"
+                android:textSize="18sp"
+                android:textColor="@color/white"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@+id/findings"
-                android:layout_alignParentRight="true" />
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_toStartOf="@id/imageView12"
+                android:layout_toLeftOf="@id/imageView12" />
 
-
-            <TextView
-                android:id="@+id/breathing"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Breathing"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/pulse" />
-
-            <CheckBox
-                android:id="@+id/breathingChkYes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes"
-                android:layout_below="@+id/leftChk"
-                android:layout_alignStart="@+id/leftChk"
-                android:layout_alignLeft="@+id/leftChk" />
-
-            <CheckBox
-                android:id="@+id/breathingChkNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No"
-                android:layout_below="@+id/rightChk"
-                android:layout_alignStart="@id/rightChk"
-                android:layout_alignLeft="@id/rightChk" />
-
-
-            <TextView
-                android:id="@+id/doll"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Doll Eye Movements"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/breathing" />
-
-            <CheckBox
-                android:id="@+id/dollChkYes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes"
-                android:layout_alignStart="@+id/leftChk"
-                android:layout_alignLeft="@+id/leftChk"
-                android:layout_below="@id/breathingChkYes" />
-
-            <CheckBox
-                android:id="@+id/dollChkNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No"
-                android:layout_alignStart="@id/rightChk"
-                android:layout_alignLeft="@id/rightChk"
-                android:layout_below="@id/breathingChkNo" />
-
-            <TextView
-                android:id="@+id/ecgLbl"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="ECG Straight Line"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/doll" />
-
-            <CheckBox
-                android:id="@+id/ecgChkYes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes"
-                android:layout_alignStart="@+id/leftChk"
-                android:layout_alignLeft="@+id/leftChk"
-                android:layout_below="@id/dollChkYes" />
-
-            <CheckBox
-                android:id="@+id/ecgChkNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No"
-                android:layout_alignStart="@id/rightChk"
-                android:layout_alignLeft="@id/rightChk"
-                android:layout_below="@id/dollChkNo" />
-
-            <TextView
-                android:id="@+id/dilated"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Bilateral Fixed Dilated Pupils"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_below="@+id/ecgLbl"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true" />
-
-            <CheckBox
-                android:id="@+id/dilatedChkYes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yes"
-                android:layout_alignStart="@+id/leftChk"
-                android:layout_alignLeft="@+id/leftChk"
-                android:layout_below="@id/ecgChkYes" />
-
-            <CheckBox
-                android:id="@+id/dilatedChkNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No"
-                android:layout_alignStart="@id/rightChk"
-                android:layout_alignLeft="@id/rightChk"
-                android:layout_below="@id/ecgChkNo" />
-
-            <TextView
-                android:id="@+id/statement1"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="**  I read this statement before I sign it"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/dilated" />
-
-            <TextView
-                android:id="@+id/statement2"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="**  I know and understand the content of this \n      declaration"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/statement1" />
-
-            <TextView
-                android:id="@+id/statement3"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="**  I have no objection to taking the prescribed oath"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/statement2" />
-
-            <TextView
-                android:id="@+id/statement4"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="**  I Consider the prescribed oath to be binding on my \n     concience."
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/statement3" />
-
-            <TextView
-                android:id="@+id/declaration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="I HEREBY SWEAR THAT THE ABOVE STATEMENT WAS TAKEN BY ME AND THAT THE DEPONENT HAS ACKNOWLEDGED THAT HE KNOWS AND UNDERSTANDS THE CONTENTS OF THIS STATEMENT. THIS STATEMENT WAS SWORN TO BEFORE ME AND THE DEPONENTS SIGNATURE WAS PLACED THEREON IN MY PRESENCE"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textAlignment="center"
-                android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/statement4" />
-
-
-            <TextView
-                android:id="@+id/signature"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Signature (Commissioner of Oaths)"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/declaration" />
-
-            <Button
-                android:id="@+id/signatureButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/loginshape"
-                android:onClick="Go"
-                android:text="Sign"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/signature" />
-
-            <Button
-                android:id="@+id/send"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/loginshape"
-                android:onClick="Send"
-                android:text="Send"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/signatureButton" />
         </RelativeLayout>
-    </ScrollView>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Declaration of Death"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/logoContainer" />
 
 
+        <RelativeLayout
+            android:id="@+id/formContainer"
+            android:layout_below="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:text="Location where deceased was found"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"/>
+
+            <EditText
+                android:id="@+id/locationEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:ems="10"
+                android:hint="location"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/location" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time of examination"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/locationEdit" />
+
+            <EditText
+                android:id="@+id/timeEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:ems="10"
+                android:hint="hh:mm"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/time" />
+
+            <TextView
+                android:id="@+id/place"
+                android:layout_below="@id/timeEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Place"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true" />
+
+            <EditText
+                android:id="@+id/placeEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:ems="10"
+                android:hint="Place"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/place" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/placeEdit" />
+
+            <EditText
+                android:id="@+id/dateEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:ems="10"
+                android:hint="Date"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/date" />
+
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Name"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/dateEdit" />
+
+            <EditText
+                android:id="@+id/nameEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:ems="10"
+                android:hint="Full Name"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/name" />
+
+            <TextView
+                android:id="@+id/post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ex Officio (Post Held)"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/nameEdit" />
+
+            <EditText
+                android:id="@+id/postEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:ems="10"
+                android:hint="Post"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/post" />
+
+            <TextView
+                android:id="@+id/time2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/postEdit" />
+
+            <EditText
+                android:id="@+id/timeEdit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:ems="10"
+                android:hint="hh:mm"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/time2" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/findings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clinical FIndings"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/formContainer" />
+
+        <TextView
+            android:id="@+id/pulse"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Carotid Pulse"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/findings"
+            android:layout_alignParentLeft="true" />
+
+        <CheckBox
+            android:id="@+id/leftChk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Left"
+            android:layout_below="@+id/findings"
+            android:layout_toEndOf="@id/pulse"
+            android:layout_toRightOf="@id/pulse"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp" />
+
+        <CheckBox
+            android:id="@+id/rightChk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Right"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/findings"
+            android:layout_alignParentRight="true" />
+
+
+        <TextView
+            android:id="@+id/breathing"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Breathing"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/pulse" />
+
+        <CheckBox
+            android:id="@+id/breathingChkYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:layout_below="@+id/leftChk"
+            android:layout_alignStart="@+id/leftChk"
+            android:layout_alignLeft="@+id/leftChk" />
+
+        <CheckBox
+            android:id="@+id/breathingChkNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:layout_below="@+id/rightChk"
+            android:layout_alignStart="@id/rightChk"
+            android:layout_alignLeft="@id/rightChk" />
+
+
+        <TextView
+            android:id="@+id/doll"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Doll Eye Movements"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/breathing" />
+
+        <CheckBox
+            android:id="@+id/dollChkYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:layout_alignStart="@+id/leftChk"
+            android:layout_alignLeft="@+id/leftChk"
+            android:layout_below="@id/breathingChkYes" />
+
+        <CheckBox
+            android:id="@+id/dollChkNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:layout_alignStart="@id/rightChk"
+            android:layout_alignLeft="@id/rightChk"
+            android:layout_below="@id/breathingChkNo" />
+
+        <TextView
+            android:id="@+id/ecgLbl"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="ECG Straight Line"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/doll" />
+
+        <CheckBox
+            android:id="@+id/ecgChkYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:layout_alignStart="@+id/leftChk"
+            android:layout_alignLeft="@+id/leftChk"
+            android:layout_below="@id/dollChkYes"/>
+
+        <CheckBox
+            android:id="@+id/ecgChkNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:layout_alignStart="@id/rightChk"
+            android:layout_alignLeft="@id/rightChk"
+            android:layout_below="@id/dollChkNo"  />
+
+        <TextView
+            android:id="@+id/dilated"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Bilateral Fixed Dilated Pupils"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/ecgLbl"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true" />
+
+        <CheckBox
+            android:id="@+id/dilatedChkYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:layout_alignStart="@+id/leftChk"
+            android:layout_alignLeft="@+id/leftChk"
+            android:layout_below="@id/ecgChkYes"/>
+
+        <CheckBox
+            android:id="@+id/dilatedChkNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:layout_alignStart="@id/rightChk"
+            android:layout_alignLeft="@id/rightChk"
+            android:layout_below="@id/ecgChkNo" />
+
+        <TextView
+            android:id="@+id/statement1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="**  I read this statement before I sign it"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/dilated" />
+
+        <TextView
+            android:id="@+id/statement2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="**  I know and understand the content of this \n      declaration"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/statement1" />
+
+        <TextView
+            android:id="@+id/statement3"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="**  I have no objection to taking the prescribed oath"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/statement2" />
+
+        <TextView
+            android:id="@+id/statement4"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="**  I Consider the prescribed oath to be binding on my \n     concience."
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/statement3" />
+
+        <TextView
+            android:id="@+id/declaration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="I HEREBY SWEAR THAT THE ABOVE STATEMENT WAS TAKEN BY ME AND THAT THE DEPONENT HAS ACKNOWLEDGED THAT HE KNOWS AND UNDERSTANDS THE CONTENTS OF THIS STATEMENT. THIS STATEMENT WAS SWORN TO BEFORE ME AND THE DEPONENTS SIGNATURE WAS PLACED THEREON IN MY PRESENCE"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/statement4" />
+
+
+        <TextView
+            android:id="@+id/signature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Signature (Commissioner of Oaths)"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/declaration" />
+
+        <Button
+            android:id="@+id/signatureButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/loginshape"
+            android:onClick="Go"
+            android:text="Sign"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/signature" />
+
+        <Button
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/loginshape"
+            android:onClick="Send"
+            android:text="Send"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/signatureButton" />
+    </RelativeLayout>
+
+</ScrollView>

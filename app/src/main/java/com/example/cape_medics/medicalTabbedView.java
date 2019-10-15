@@ -20,7 +20,7 @@ public class medicalTabbedView extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    public static int int_items = 34;
+    public static int int_items = 33;
 
 
     public static MedicalFormCalls medicalFormCalls;
@@ -285,9 +285,9 @@ public class medicalTabbedView extends AppCompatActivity {
                 case 28: return "Crew Details";
                 case 29: return "Accompanying Practitioner";
                 case 30: return "Items Handed Over";
-                case 31: return "Handover/Disposal";
-                case 32: return "Notes";
-                case 33: return "Death";
+               // case 31: return "Handover/Disposal";
+                case 31: return "Notes";
+                case 32: return "Death";
 
 
 
