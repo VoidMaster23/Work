@@ -23,40 +23,40 @@ public class medicalTabbedView extends AppCompatActivity {
     public static int int_items = 34;
 
 
-    private MedicalFormCalls medicalFormCalls;
-    private PatientDetails patientDetails;
-    private PrimarySurvey primarySurvey;
-    private PresentingCondition presentingCondition;
-    private SampleHistory sampleHistory;
-    private VitalSigns vitalSigns;
-    private AirwayBreathing airwayBreathing;
-    private AirwayAdjunct airwayAdjunct;
-    private Resuscitation resuscitation;
-    private CardiacMonitoring cardiacMonitoring;
-    private Cannulation cannulation;
-    private DrugsAdministered drugsAdministered;
-    private InjuryMatrix injuryMatrix;
-    private ComaScore comaScore;
-    private WoundCare woundCare;
-    private Burns burns;
-    private PainScore score;
-    private Stroke stroke;
-    private ApgarScore apgarScore;
-    private BLSAid blsAid;
-    private Treatment treatment;
-    private VentilatorSettings ventilatorSettings;
-    private EmployerDetails employerDetails;
-    private PaymentMethod paymentMethod;
-    private GuaranteeOfPayment payment;
-    private RefusalofCare refusalofCare;
-    private Mobility mobility;
-    private Disposal disposal;
-    private CrewDetails crewDetails;
-    private AcompPrac acompPrac;
-    private ItemsHanded handed;
-    private Handoff_frag handoff_frag;
-    private Notes notes;
-    private Death death;
+    public static MedicalFormCalls medicalFormCalls;
+    public static PatientDetails patientDetails;
+    public static PrimarySurvey primarySurvey;
+    public static PresentingCondition presentingCondition;
+    public static SampleHistory sampleHistory;
+    public static VitalSigns vitalSigns;
+    public static AirwayBreathing airwayBreathing;
+    public static AirwayAdjunct airwayAdjunct;
+    public static Resuscitation resuscitation;
+    public static CardiacMonitoring cardiacMonitoring;
+    public static Cannulation cannulation;
+    public static DrugsAdministered drugsAdministered;
+    public static InjuryMatrix injuryMatrix;
+    public static ComaScore comaScore;
+    public static WoundCare woundCare;
+    public static Burns burns;
+    public static PainScore score;
+    public static Stroke stroke;
+    public static ApgarScore apgarScore;
+    public static BLSAid blsAid;
+    public static Treatment treatment;
+    public static VentilatorSettings ventilatorSettings;
+    public static EmployerDetails employerDetails;
+    public static PaymentMethod paymentMethod;
+    public static GuaranteeOfPayment payment;
+    public static RefusalofCare refusalofCare;
+    public static Mobility mobility;
+    public static Disposal disposal;
+    public static CrewDetails crewDetails;
+    public static AcompPrac acompPrac;
+    public static ItemsHanded handed;
+    public static Handoff_frag handoff_frag;
+    public static Notes notes;
+    public static Death death;
     Cache cache;
 
 
@@ -134,26 +134,7 @@ public class medicalTabbedView extends AppCompatActivity {
 
 
                     case "Death": {
-                        map.put("Call Details", medicalFormCalls.createJson());
-                        map.put("Patient Details", patientDetails.createJson());
-                        map.put("Primary Survey",primarySurvey.createJson());
-                        map.put("Presenting Condition", presentingCondition.createJson());
-                        map.put("Sample History",sampleHistory.createJson());
-                        map.put("Vital Signs",vitalSigns.createJson());
-                        map.put("Airway & Breathing Management", airwayBreathing.createJson());
-                        map.put("Airway Adjunct", airwayAdjunct.createJson());
-                        map.put("Resuscitation", resuscitation.createJson());
-                        map.put("Cannulation", cannulation.createJson());
-                        map.put("Drugs Administered",drugsAdministered.createJson());
-                        map.put("Injury Matrix",injuryMatrix.createJson());
-                        map.put("Cardiac Monitoring", cardiacMonitoring.createJson());
-                        map.put("Glasgow Coma Score", comaScore.createJson());
-                        map.put("Wound Care", woundCare.createJson());
-                        map.put("Burns", burns.createJson());
-                        map.put("Pain Score", score.createJson());
-                        map.put("Stroke",stroke.createJson());
-                        map.put("APGAR Score", apgarScore.createJson());
-
+                       
                         Log.i("HERE", "I made it ");
 
                     }

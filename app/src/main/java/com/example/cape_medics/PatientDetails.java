@@ -110,15 +110,16 @@ public class PatientDetails extends Fragment {
         if(saved != null ){
             try {
                 load = new JSONObject(saved);
-                edtName.setText(patientDetails.getString("Full_name"));
-                edtSurname.setText(patientDetails.getString("Surname"));
-                edtDOB.setText(patientDetails.getString("DOB"));
-                edtID.setText(patientDetails.getString("ID"));
-                edtEmail.setText(patientDetails.getString("Email"));
-                edtPhone.setText(patientDetails.getString("Contact"));
-                edtAlt.setText(patientDetails.getString("Alt"));
-                edtAddress1.setText(patientDetails.getString("Address"));
-                edtRef.setText(patientDetails.getString("Reference_Number"));
+
+                edtName.setText(load.getString("Full_name"));
+                edtSurname.setText(load.getString("Surname"));
+                edtDOB.setText(load.getString("DOB"));
+                edtID.setText(load.getString("ID"));
+                edtEmail.setText(load.getString("Email"));
+                edtPhone.setText(load.getString("Contact"));
+                edtAlt.setText(load.getString("Alt"));
+                edtAddress1.setText(load.getString("Address"));
+                edtRef.setText(load.getString("Reference_Number"));
 
                 Iterator<String> keys = load.keys();
                 while(keys.hasNext()) {

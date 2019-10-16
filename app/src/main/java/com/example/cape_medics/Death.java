@@ -8,6 +8,7 @@ import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,9 +77,49 @@ public class Death extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    createJson();
+                    medicalTabbedView.map.put("Call Details", medicalTabbedView.medicalFormCalls.createJson());
+                    medicalTabbedView.map.put("Patient Details", medicalTabbedView.patientDetails.createJson());
+                    medicalTabbedView.map.put("Primary Survey",medicalTabbedView.primarySurvey.createJson());
+                    medicalTabbedView.map.put("Presenting Condition", medicalTabbedView.presentingCondition.createJson());
+                    medicalTabbedView.map.put("Sample History",medicalTabbedView.sampleHistory.createJson());
+                    medicalTabbedView.map.put("Vital Signs",medicalTabbedView.vitalSigns.createJson());
+                    medicalTabbedView.map.put("Airway & Breathing Management", medicalTabbedView.airwayBreathing.createJson());
+                    medicalTabbedView.map.put("Airway Adjunct", medicalTabbedView.airwayAdjunct.createJson());
+                    medicalTabbedView.map.put("Resuscitation", medicalTabbedView.resuscitation.createJson());
+                    medicalTabbedView.map.put("Cannulation", medicalTabbedView.cannulation.createJson());
+                    medicalTabbedView.map.put("Drugs Administered",medicalTabbedView.drugsAdministered.createJson());
+                    medicalTabbedView.map.put("Injury Matrix",medicalTabbedView.injuryMatrix.createJson());
+                    medicalTabbedView.map.put("Cardiac Monitoring", medicalTabbedView.cardiacMonitoring.createJson());
+                    medicalTabbedView.map.put("Glasgow Coma Score", medicalTabbedView.comaScore.createJson());
+                    medicalTabbedView.map.put("Wound Care", medicalTabbedView.woundCare.createJson());
+                    medicalTabbedView.map.put("Burns", medicalTabbedView.burns.createJson());
+                    medicalTabbedView.map.put("Pain Score", medicalTabbedView.score.createJson());
+                    medicalTabbedView.map.put("Stroke",medicalTabbedView.stroke.createJson());
+                    medicalTabbedView.map.put("APGAR Score", medicalTabbedView.apgarScore.createJson());
+                    medicalTabbedView.map.put("BLS/ILS Aid",medicalTabbedView.blsAid.createJson());
+                    medicalTabbedView.map.put("Treatment",medicalTabbedView.treatment.createJson());
+                    medicalTabbedView.map.put("Ventilator Settings",medicalTabbedView.ventilatorSettings.createJson());
+                    medicalTabbedView.map.put("Employers Details",medicalTabbedView.employerDetails.createJson());
+                    medicalTabbedView.map.put("Payment Method",medicalTabbedView.paymentMethod.createJson());
+                    medicalTabbedView.map.put("Guarantee of payment",medicalTabbedView.payment.createJson());
+                    medicalTabbedView.map.put("Refusal of care",medicalTabbedView.refusalofCare.createJson());
+                    medicalTabbedView.map.put("Mobility",medicalTabbedView.mobility.createJson());
+                    medicalTabbedView.map.put("Disposal",medicalTabbedView.disposal.createJson());
+                    medicalTabbedView.map.put("Crew Details", medicalTabbedView.crewDetails.createJson());
+                    medicalTabbedView.map.put("Accompanying Practitioner", medicalTabbedView.acompPrac.createJson());
+                    medicalTabbedView.map.put("Items Handed over", medicalTabbedView.handed.createJson());
+                    medicalTabbedView.map.put("Handover/disposal",medicalTabbedView.handoff_frag.createJson());
+                    medicalTabbedView.map.put("Notes",medicalTabbedView.notes.createJson());
+                    medicalTabbedView.map.put("Death",createJson());
+                    Log.i("MEDICAL DATA",medicalTabbedView.map.toString());
+
                     Intent i = new Intent(getContext(), Home_Screen_Crew.class);
+                    i.putExtra("first","false");
+                    i.putExtra("code",Home_Screen_Crew.code);
+
                     startActivity(i);
+                    
+                    
                 }catch (Exception e){}
             }
         });

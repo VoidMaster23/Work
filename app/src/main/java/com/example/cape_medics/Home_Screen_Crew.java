@@ -65,8 +65,8 @@ public class Home_Screen_Crew extends AppCompatActivity {
     String responseServer;
     String url;
     Cache cache;
-    String first;
-    String code;
+    static String first;
+    static String code;
     boolean connected;
 
 

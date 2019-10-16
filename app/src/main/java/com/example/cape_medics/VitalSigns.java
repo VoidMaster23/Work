@@ -311,41 +311,41 @@ Button button1,button2,button3, button4;
         if(saved != null ){
             try {
                 load = new JSONObject(saved);
-                edtTime1.setText(vitalSigns.getString("Time1"));
-                edtPulse1.setText(vitalSigns.getString("Pulse1"));
-                edtBp1.setText(vitalSigns.getString("BP1"));
-                edtSpo1.setText(vitalSigns.getString("spo21"));
-                edtResp1.setText(vitalSigns.getString("resp1"));
-                edtHgt1.setText(vitalSigns.getString("hgt1"));
-                edtCO21.setText(vitalSigns.getString("co21"));
-                edtFlow1.setText(vitalSigns.getString("peak1"));
+                edtTime1.setText(load.getString("Time1"));
+                edtPulse1.setText(load.getString("Pulse1"));
+                edtBp1.setText(load.getString("BP1"));
+                edtSpo1.setText(load.getString("spo21"));
+                edtResp1.setText(load.getString("resp1"));
+                edtHgt1.setText(load.getString("hgt1"));
+                edtCO21.setText(load.getString("co21"));
+                edtFlow1.setText(load.getString("peak1"));
 
-                edtTime2.setText(vitalSigns.getString("Time2"));
-                edtPulse2.setText(vitalSigns.getString("Pulse2"));
-                edtBp2.setText(vitalSigns.getString("BP2"));
-                edtSpo2.setText(vitalSigns.getString("spo22"));
-                edtResp2.setText(vitalSigns.getString("resp2"));
-                edtHgt2.setText(vitalSigns.getString("hgt2"));
-                edtCO22.setText(vitalSigns.getString("co22"));
-                edtFlow2.setText(vitalSigns.getString("peak2"));
+                edtTime2.setText(load.getString("Time2"));
+                edtPulse2.setText(load.getString("Pulse2"));
+                edtBp2.setText(load.getString("BP2"));
+                edtSpo2.setText(load.getString("spo22"));
+                edtResp2.setText(load.getString("resp2"));
+                edtHgt2.setText(load.getString("hgt2"));
+                edtCO22.setText(load.getString("co22"));
+                edtFlow2.setText(load.getString("peak2"));
 
-                edtTime3.setText(vitalSigns.getString("Time3"));
-                edtPulse3.setText(vitalSigns.getString("Pulse3"));
-                edtBp3.setText(vitalSigns.getString("BP3"));
-                edtSpo3.setText(vitalSigns.getString("spo23"));
-                edtResp3.setText(vitalSigns.getString("resp3"));
-                edtHgt3.setText(vitalSigns.getString("hgt3"));
-                edtCO23.setText(vitalSigns.getString("co23"));
-                edtFlow3.setText(vitalSigns.getString("peak3"));
+                edtTime3.setText(load.getString("Time3"));
+                edtPulse3.setText(load.getString("Pulse3"));
+                edtBp3.setText(load.getString("BP3"));
+                edtSpo3.setText(load.getString("spo23"));
+                edtResp3.setText(load.getString("resp3"));
+                edtHgt3.setText(load.getString("hgt3"));
+                edtCO23.setText(load.getString("co23"));
+                edtFlow3.setText(load.getString("peak3"));
 
-                edtTime4.setText(vitalSigns.getString("Time4"));
-                edtPulse4.setText(vitalSigns.getString("Pulse4"));
-                edtBp4.setText(vitalSigns.getString("BP4"));
-                edtSpo4.setText(vitalSigns.getString("spo24"));
-                edtResp4.setText(vitalSigns.getString("resp4"));
-                edtHgt4.setText(vitalSigns.getString("hgt4"));
-                edtCO24.setText(vitalSigns.getString("co24"));
-                edtFlow4.setText(vitalSigns.getString("peak4"));
+                edtTime4.setText(load.getString("Time4"));
+                edtPulse4.setText(load.getString("Pulse4"));
+                edtBp4.setText(load.getString("BP4"));
+                edtSpo4.setText(load.getString("spo24"));
+                edtResp4.setText(load.getString("resp4"));
+                edtHgt4.setText(load.getString("hgt4"));
+                edtCO24.setText(load.getString("co24"));
+                edtFlow4.setText(load.getString("peak4"));
 
                 Iterator<String> keys = load.keys();
                 while(keys.hasNext()) {

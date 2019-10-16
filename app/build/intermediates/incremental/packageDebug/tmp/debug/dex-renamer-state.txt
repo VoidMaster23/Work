@@ -1,4 +1,4 @@
-#Sun Oct 06 14:10:57 CAT 2019
+#Wed Oct 16 07:26:24 CAT 2019
 base.0=C\:\\Users\\test\\Downloads\\Merged1\\Cape_Medics\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
 path.0=classes.dex
 renamed.0=classes.dex

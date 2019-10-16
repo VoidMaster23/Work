@@ -109,7 +109,7 @@ public class PresentingCondition extends Fragment{
         if(saved != null ){
             try {
                 load = new JSONObject(saved);
-                edtPrimary.setText(presentingConditon.getString("Primary"));
+                edtPrimary.setText(load.getString("Primary"));
                 Iterator<String> keys = load.keys();
                 while(keys.hasNext()) {
                     String key = keys.next();
