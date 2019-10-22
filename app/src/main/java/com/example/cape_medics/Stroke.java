@@ -49,9 +49,9 @@ public class Stroke extends Fragment {
 
         imageView18 = view.findViewById( R.id.imageView18 );
         chkNA = view.findViewById( R.id.chkNA );
-        checkBox4 = view.findViewById( R.id.checkBox4 );
-        checkBox5 = view.findViewById( R.id.checkBox5 );
-        checkBox6 = view.findViewById( R.id.checkBox6 );
+        //checkBox4 = view.findViewById( R.id.checkBox4 );
+        //checkBox5 = view.findViewById( R.id.checkBox5 );
+        //checkBox6 = view.findViewById( R.id.checkBox6 );
         textView55 = view.findViewById( R.id.textView55 );
         editDoorDrug = view.findViewById( R.id.editDoorDrug );
         //textView56 = (TextView)view.findViewById( R.id.textView56 );

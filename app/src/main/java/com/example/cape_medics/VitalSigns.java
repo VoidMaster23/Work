@@ -206,8 +206,8 @@ public class VitalSigns extends Fragment {
         lblFlow1 = view.findViewById( R.id.lblFlow1 );
         edtFlow1 = view.findViewById( R.id.edtFlow1 );
         lblPearl1 = view.findViewById( R.id.lblPearl1 );
-        chkLeft1 = view.findViewById( R.id.chkLeft1 );
-        chkRight1 = view.findViewById( R.id.chkRight1 );
+        //chkLeft1 = view.findViewById( R.id.chkLeft1 );
+        //chkRight1 = view.findViewById( R.id.chkRight1 );
         lblPupSize1 = view.findViewById( R.id.lblPupSize1 );
         lblPupLeft1 = view.findViewById( R.id.lblPupLeft1 );
         lblPupRight1 = view.findViewById( R.id.lblPupRight1 );
@@ -294,6 +294,34 @@ public class VitalSigns extends Fragment {
         spnLeftSize4 = view.findViewById( R.id.spnLeftSize4 );
         spnRightSize4 = view.findViewById( R.id.spnRightSize4 );
 
+        epl_yes.setOnClickListener(v -> {
+            epl_yes.setBackgroundResource(R.drawable.orangeshape);
+            epl_no.setBackgroundResource(R.drawable.whiteshape);
+
+            leftEyes[0] = "Yes";
+        });
+
+        epl_no.setOnClickListener(v -> {
+            epl_no.setBackgroundResource(R.drawable.orangeshape);
+            epl_yes.setBackgroundResource(R.drawable.whiteshape);
+
+            leftEyes[0] = "No";
+        });
+
+        epr_yes.setOnClickListener(v -> {
+            epr_yes.setBackgroundResource(R.drawable.orangeshape);
+            epr_no.setBackgroundResource(R.drawable.whiteshape);
+
+            rightEyes[0] = "Yes";
+        });
+
+        epr_no.setOnClickListener(v -> {
+            epr_no.setBackgroundResource(R.drawable.orangeshape);
+            epr_yes.setBackgroundResource(R.drawable.whiteshape);
+
+            rightEyes[0] = "No";
+        });
+
         checkBoxList = Arrays.asList(chkLeft1,chkLeft2,chkLeft3,chkLeft4,chkRight1,chkRight2,chkRight3,chkRight4);
         cache = new Cache(getContext());
         saved = cache.getStringProperty("vitalSigns");
@@ -360,6 +388,9 @@ public class VitalSigns extends Fragment {
     }
 
 
+    final String[] leftEyes = {"No"};
+    final String[] rightEyes = {"No"};
+
     public JSONObject createJson(){
 
         vitalSigns = new JSONObject();
@@ -372,10 +403,8 @@ public class VitalSigns extends Fragment {
         String hgt1 = edtHgt1.getText().toString();
         String co21 = edtCO21.getText().toString();
         String peak1 = edtFlow1.getText().toString();
-        final String[] leftEyes = {"No"};
-        final String[] rightEyes = {"No"};
 
-        String checkedLeft1 = null;
+        /*String checkedLeft1 = null;
         if (chkLeft1.isChecked()){
             checkedLeft1 = chkLeft1.getText().toString();
         }
@@ -383,35 +412,9 @@ public class VitalSigns extends Fragment {
         String checkedRight1 = null;
         if(chkRight1.isChecked()){
             checkedRight1 = chkRight1.getText().toString();
-        }
+        }*/
 
-        epl_yes.setOnClickListener(v -> {
-            epl_yes.setBackgroundResource(R.drawable.orangeshape);
-            epl_no.setBackgroundResource(R.drawable.whiteshape);
 
-            leftEyes[0] = "Yes";
-        });
-
-        epl_no.setOnClickListener(v -> {
-            epl_no.setBackgroundResource(R.drawable.orangeshape);
-            epl_yes.setBackgroundResource(R.drawable.whiteshape);
-
-            leftEyes[0] = "No";
-        });
-
-        epr_yes.setOnClickListener(v -> {
-            epr_yes.setBackgroundResource(R.drawable.orangeshape);
-            epr_no.setBackgroundResource(R.drawable.whiteshape);
-
-            rightEyes[0] = "Yes";
-        });
-
-        epr_no.setOnClickListener(v -> {
-            epr_no.setBackgroundResource(R.drawable.orangeshape);
-            epr_yes.setBackgroundResource(R.drawable.whiteshape);
-
-            rightEyes[0] = "No";
-        });
 
         try{
             vitalSigns.put("Time1",time1);

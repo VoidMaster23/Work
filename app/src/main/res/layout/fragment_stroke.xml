@@ -83,7 +83,6 @@
                         android:layout_width="40dp"
                         android:layout_height="20dp"
                         android:text="N"
-                        android:textColor="@color/white"
                         android:background="@drawable/orangeshape"
                         android:layout_toEndOf="@id/fd_btnYes"
                         android:layout_toRightOf="@id/fd_btnYes"/>
@@ -126,7 +125,6 @@
                         android:layout_width="40dp"
                         android:layout_height="20dp"
                         android:text="N"
-                        android:textColor="@color/white"
                         android:background="@drawable/orangeshape"
                         android:layout_toEndOf="@id/aw_btnYes"
                         android:layout_toRightOf="@id/aw_btnYes"/>
@@ -169,7 +167,6 @@
                         android:layout_width="40dp"
                         android:layout_height="20dp"
                         android:text="N"
-                        android:textColor="@color/white"
                         android:background="@drawable/orangeshape"
                         android:layout_toEndOf="@id/sd_btnYes"
                         android:layout_toRightOf="@id/sd_btnYes"/>

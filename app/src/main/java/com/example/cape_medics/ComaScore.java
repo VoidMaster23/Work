@@ -154,7 +154,7 @@ public class ComaScore extends Fragment {
                 tScore = "Revised Trauma Score: "+traumaScore()+"/12";
                 trauma.setText(tScore);
 
-                eyeStr = eyeResp[i];
+               //eyeStr = eyeResp[i];
             }
 
             @Override
@@ -172,7 +172,7 @@ public class ComaScore extends Fragment {
                 tScore = "Revised Trauma Score: "+traumaScore()+"/12";
                 trauma.setText(tScore);
 
-                eyeStr = eyeResp[i];
+                //eyeStr = eyeResp[i];
             }
 
             @Override
@@ -190,7 +190,7 @@ public class ComaScore extends Fragment {
                 tScore = "Revised Trauma Score: "+traumaScore()+"/12";
                 trauma.setText(tScore);
 
-                eyeStr = eyeResp[i];
+                //eyeStr = eyeResp[i];
             }
 
             @Override

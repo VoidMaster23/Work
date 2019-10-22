@@ -76,203 +76,20 @@
     <last-search-timestamp>1571732730862</last-search-timestamp>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04a64f25-d398-46c7-b38d-0fdc39d39caa" name="Default" comment="linking java with changes">
+    <list default="true" id="04a64f25-d398-46c7-b38d-0fdc39d39caa" name="Default" comment="updating changes">
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-af/values-af.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-am/values-am.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ar/values-ar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-as/values-as.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-az/values-az.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-b+sr+Latn/values-b+sr+Latn.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-be/values-be.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-bg/values-bg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-bn/values-bn.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-bs/values-bs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ca/values-ca.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-cs/values-cs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-da/values-da.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-de/values-de.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-el/values-el.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rAU/values-en-rAU.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rCA/values-en-rCA.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rGB/values-en-rGB.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rIN/values-en-rIN.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rXC/values-en-rXC.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-es-rUS/values-es-rUS.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-es/values-es.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-et/values-et.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-eu/values-eu.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fa/values-fa.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fi/values-fi.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fr-rCA/values-fr-rCA.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fr/values-fr.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-gl/values-gl.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-gu/values-gu.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hi/values-hi.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hr/values-hr.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hu/values-hu.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hy/values-hy.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-in/values-in.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-is/values-is.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-it/values-it.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-iw/values-iw.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ja/values-ja.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ka/values-ka.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-kk/values-kk.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-km/values-km.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-kn/values-kn.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ko/values-ko.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ky/values-ky.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-large-v4/values-large-v4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ldltr-v21/values-ldltr-v21.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-lo/values-lo.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-lt/values-lt.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-lv/values-lv.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-mk/values-mk.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ml/values-ml.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-mn/values-mn.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-mr/values-mr.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ms/values-ms.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-my/values-my.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-nb/values-nb.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ne/values-ne.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-nl/values-nl.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-or/values-or.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pa/values-pa.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pl/values-pl.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-port/values-port.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rBR/values-pt-rBR.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rPT/values-pt-rPT.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt/values-pt.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ro/values-ro.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ru/values-ru.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-si/values-si.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sk/values-sk.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sl/values-sl.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sq/values-sq.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sr/values-sr.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sv/values-sv.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw/values-sw.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ta/values-ta.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-te/values-te.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-th/values-th.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-tl/values-tl.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-tr/values-tr.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-uk/values-uk.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ur/values-ur.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-uz/values-uz.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v17/values-v17.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v18/values-v18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v22/values-v22.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v25/values-v25.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v26/values-v26.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v28/values-v28.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-vi/values-vi.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v21/values-watch-v21.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-xlarge-v4/values-xlarge-v4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rCN/values-zh-rCN.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rHK/values-zh-rHK.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zu/values-zu.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant_app_manifest/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant_app_manifest/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/ALSAMB_PAED.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/ALSRV.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/ALS_ICU_AMB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/AcompPrac.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/AirwayAdjunct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/AirwayBreathing.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Ambulance.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/ApgarScore.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/BLSAid.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/BroadCast.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/BroadCastMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Burns.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Cache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Cannulation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/CardiacMonitoring.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/ChooseBroadCast.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/ComaScore.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/CrewDetails.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/CustomAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/DashBoard.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Death.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Disposal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/DrugsAdministered.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/EmployerDetails.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/FileData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/FireEngine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/FireSelect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/FireSkid.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/FragmentOne.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/FragmentThree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/FragmentTwo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/GuaranteeOfPayment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Handoff_frag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Home_Screen_Crew.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Home_Screen_Manager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/ILSAMB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/InjuryMatrix.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Login_Page.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Math.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/MedicalForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/MedicalFormCalls.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/MedicalFormMain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Mobility.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Notes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/PainScore.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/PatientDetails.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/PaymentMethod.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/PresentingCondition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/PrimarySurvey.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/RefusalofCare.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Resuscitation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/SampleHistory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Signature.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/StartedShift.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Stroke.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/SwapShift.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/TimeSheet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Time_Sheet2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/Treatment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/VehicleCheckList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/VentilatorSettings.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/ViewAttendance.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/ViewAttendanceCrew.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/VitalSigns.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/WoundCare.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/categoryType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cape_medics/medicalTabbedView.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Cannulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Cannulation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/ComaScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/ComaScore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/PainScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/PainScore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Stroke.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Stroke.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/VitalSigns.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/VitalSigns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/medicalTabbedView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/medicalTabbedView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_cannulation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_cannulation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_stroke.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_stroke.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -309,7 +126,36 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/ComaScore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-79">
+              <caret line="192" column="18" selection-start-line="192" selection-start-column="18" selection-end-line="192" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Stroke.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="379">
+              <caret line="61" column="49" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_stroke.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="168" column="40" selection-start-line="168" selection-start-column="40" selection-end-line="168" selection-end-column="40" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -422,7 +268,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_blsaid.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_treatment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_ventilator_settings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_stroke.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_guarantee_of_payment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_refusalof_care.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/GuaranteeOfPayment.java" />
@@ -441,12 +286,13 @@
         <option value="$PROJECT_DIR$/app/src/main/java/cape_medics/VitalSigns.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_vital_signs.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/medicalTabbedView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/VitalSigns.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Stroke.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/PainScore.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/ComaScore.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Cannulation.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_cannulation.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Cannulation.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/VitalSigns.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/ComaScore.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Stroke.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_stroke.xml" />
       </list>
     </option>
   </component>
@@ -728,7 +574,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571733314596</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="updating changes">
+      <created>1571735495417</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1571735495417</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -742,6 +595,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="1" />
@@ -762,7 +616,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32914045" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5026652" side_tool="true" weight="0.32502708" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49671772" weight="0.32899022" />
-      <window_info anchor="bottom" id="Build" order="10" sideWeight="0.48865354" visible="true" weight="0.33152762" />
+      <window_info anchor="bottom" id="Build" order="10" sideWeight="0.48865354" weight="0.33152762" />
       <window_info active="true" anchor="bottom" id="Messages" order="11" sideWeight="0.4989059" visible="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Logcat" order="12" sideWeight="0.49562362" weight="0.38786566" />
       <window_info anchor="bottom" id="Flutter Performance" order="13" side_tool="true" />
@@ -774,7 +628,7 @@
       <window_info anchor="right" id="Theme Preview" order="4" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Gradle" order="6" weight="0.32932165" />
-      <window_info anchor="right" id="Preview" order="7" weight="0.3075693" />
+      <window_info active="true" anchor="right" id="Preview" order="7" visible="true" weight="0.3075693" />
       <window_info anchor="right" id="Flutter Inspector" order="8" />
       <window_info anchor="right" id="Flutter Outline" order="9" weight="0.32932165" />
       <window_info anchor="right" id="Assistant" order="10" weight="0.32942432" />
@@ -874,16 +728,10 @@
     <MESSAGE value="final designs" />
     <MESSAGE value="responsive sizes" />
     <MESSAGE value="linking java with changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="linking java with changes" />
+    <MESSAGE value="updating changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating changes" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Cache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="30" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/cape_medics/FireSkid.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -942,13 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
           <caret line="174" column="50" lean-forward="true" selection-end-line="536" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/VitalSigns.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="25" column="22" lean-forward="true" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1031,21 +872,6 @@
           <caret line="106" column="68" lean-forward="true" selection-start-line="106" selection-start-column="68" selection-end-line="106" selection-end-column="68" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Stroke.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_stroke.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="75" column="40" lean-forward="true" selection-start-line="75" selection-start-column="40" selection-end-line="75" selection-end-column="40" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/cape_medics/StartedShift.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1134,13 +960,6 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/cape_medics/MedicalForm.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/ComaScore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="767">
-          <caret line="260" column="5" selection-start-line="260" selection-start-column="5" selection-end-line="260" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/cape_medics/ComaScore.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="695">
@@ -1152,13 +971,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Cannulation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="86" column="50" lean-forward="true" selection-start-line="86" selection-start-column="50" selection-end-line="86" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -1209,6 +1021,52 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="562">
           <caret line="146" column="50" selection-start-line="146" selection-start-column="50" selection-end-line="146" selection-end-column="50" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Home_Screen_Crew.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="153" selection-start-line="153" selection-end-line="153" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/VitalSigns.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="391" column="38" selection-start-line="391" selection-start-column="38" selection-end-line="391" selection-end-column="38" />
+          <folding>
+            <element signature="e#12272#15070#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Cannulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-287">
+          <caret line="155" column="10" selection-start-line="155" selection-start-column="10" selection-end-line="155" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/ComaScore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-79">
+          <caret line="192" column="18" selection-start-line="192" selection-start-column="18" selection-end-line="192" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/cape_medics/Stroke.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="61" column="49" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_stroke.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="168" column="40" selection-start-line="168" selection-start-column="40" selection-end-line="168" selection-end-column="40" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
