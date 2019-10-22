@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <CheckBox
+                <TextView
                     android:id="@+id/checkBox4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
 
                 </RelativeLayout>
 
-                <CheckBox
+                <TextView
                     android:id="@+id/checkBox5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
                     android:textColor="@color/white"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/checkBox4"
-                    android:layout_alignParentLeft="true" />
+                    android:layout_alignParentLeft="true"/>
 
                 <RelativeLayout
                     android:layout_alignStart="@id/facialDroopContainer"
@@ -133,7 +133,7 @@
 
                 </RelativeLayout>
 
-                <CheckBox
+                <TextView
                     android:id="@+id/checkBox6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -193,7 +193,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginLeft="55dp"
-                    android:layout_marginTop="130dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginEnd="53dp"
                     android:layout_marginRight="53dp"
                     android:background="@null"
@@ -203,7 +203,7 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     android:layout_toEndOf="@+id/textView55"
-                    android:layout_below="@+id/checkBox4"
+                    android:layout_below="@+id/checkBox6"
                     android:layout_toRightOf="@+id/textView55" />
 
                 <TextView

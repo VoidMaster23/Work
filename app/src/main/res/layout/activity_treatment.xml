@@ -23,22 +23,195 @@
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp">
 
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/linearLayout4"
+            <RelativeLayout
+                android:id="@+id/logoContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="150dp">
 
                 <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="212dp"
-                    android:layout_height="169dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.035"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/logo" />
-            </android.support.constraint.ConstraintLayout>
+                    android:id="@+id/imageView12"
+                    android:layout_width="184dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/logo"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true" />
+
+                <CheckBox
+                    android:id="@+id/notApplicableCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Not Applicable"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toStartOf="@id/imageView12"
+                    android:layout_toLeftOf="@id/imageView12" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/s.o.a.p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/logoContainer">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="S.O.A.P"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subjective - What patient is telling you)"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="normal"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Objective - Obs + Tools"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="normal"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Assessment - Diff Dx)"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="normal"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Plan of action - Treatment plan)"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="normal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/diagnosis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diagnosis"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/s.o.a.p" />
+
+            <EditText
+                android:id="@+id/diagnosisEdit"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:layout_marginBottom="4dp"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="Type Here.."
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/diagnosis" />
+
+            <TextView
+                android:id="@+id/mechemisn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mechemisn"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/diagnosisEdit" />
+
+            <EditText
+                android:id="@+id/mechmisnEdit"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:layout_marginBottom="4dp"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="Type Here.."
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mechemisn" />
+
+            <TextView
+                android:id="@+id/inj_illness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Injuty / Illness / Nspet"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mechmisnEdit" />
+
+            <EditText
+                android:id="@+id/inj_illnessEdit"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:layout_marginBottom="4dp"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="Type Here.."
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inj_illness" />
+
+            <TextView
+                android:id="@+id/signs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Signs"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inj_illnessEdit" />
+
+            <EditText
+                android:id="@+id/signsEdit"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:layout_marginBottom="4dp"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="Type Here.."
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inj_illness" />
 
             <TextView
                 android:id="@+id/title"
@@ -50,7 +223,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo" />
+                app:layout_constraintTop_toBottomOf="@+id/signsEdit" />
 
             <TextView
                 android:id="@+id/examination"
@@ -118,34 +291,6 @@
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/other2" />
-
-            <TextView
-                android:id="@+id/diagnosis"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Diagnosis"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/otherEdit" />
-
-
-            <EditText
-                android:id="@+id/diagnosisEdit"
-                android:layout_width="400dp"
-                android:layout_height="400dp"
-                android:layout_marginBottom="4dp"
-                android:ems="10"
-                android:gravity="top"
-                android:hint="Type Here.."
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="parent"
-                app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/diagnosis" />
 
         </LinearLayout>
     </ScrollView>
