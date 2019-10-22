@@ -53,7 +53,6 @@ public class medicalTabbedView extends AppCompatActivity {
     public static Disposal disposal;
     public static CrewDetails crewDetails;
     public static AcompPrac acompPrac;
-    public static ItemsHanded handed;
     public static Handoff_frag handoff_frag;
     public static Notes notes;
     public static Death death;

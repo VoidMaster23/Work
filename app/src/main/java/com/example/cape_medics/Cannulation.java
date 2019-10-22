@@ -20,10 +20,12 @@ import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import org.json.JSONObject;
 
 
+
+
 public class Cannulation extends Fragment {
-private ExpandableRelativeLayout expLay1, expLay2;
-private Button button1, button2;
-private Spinner spn1,spn2;
+    private ExpandableRelativeLayout expLay1, expLay2;
+    private Button button1, button2;
+    private Spinner spn, spn1,spn2;
 
 
     private CheckBox chkNA;
@@ -59,12 +61,15 @@ private Spinner spn1,spn2;
     private TextView lblVol2;
     private EditText edtVol2;
     private TextView lblFluid2;
+    private Button btnAtt1, btnAtt2, btnAtt3, btnAtt4;
     String fluidType1;
     String fluidType2;
 
     JSONObject cannulation;
 
     private String[] fluid = {"Saline 0.9%","Ringers Lactate","Colloids","Plasma","Whole Blood"};
+
+    private String[] size = {"14","16","18","20","22","24"};
 
 
     public Cannulation() {
@@ -83,33 +88,40 @@ private Spinner spn1,spn2;
 
         button1 = view.findViewById(R.id.btnCan1);
         button2 = view.findViewById(R.id.btnCan2);
+        btnAtt1 = view.findViewById(R.id.btnAtt1);
+        btnAtt2 = view.findViewById(R.id.btnAtt2);
+        btnAtt3 = view.findViewById(R.id.btnAtt3);
+        btnAtt4 = view.findViewById(R.id.btnAtt4);
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                expLay1.toggle();
-            }
-        });
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                expLay2.toggle();
-            }
-        });
+        Init();
 
+        spn = view.findViewById(R.id.sizeSpin1);
         spn1 = view.findViewById(R.id.canSpin1);
         spn2 = view.findViewById(R.id.canSpin2);
 
-        ArrayAdapter a1 = new ArrayAdapter(getContext(),R.layout.custom_spinner,fluid);
-        ArrayAdapter a2 = new ArrayAdapter(getContext(),R.layout.custom_spinner,fluid);
+        ArrayAdapter a1 = new ArrayAdapter(getContext(), R.layout.custom_spinner,fluid);
+        ArrayAdapter a2 = new ArrayAdapter(getContext(), R.layout.custom_spinner,fluid);
+        ArrayAdapter a = new ArrayAdapter(getContext(), R.layout.custom_spinner,size);
 
-
+        a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         a1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         a2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        spn.setAdapter(a);
         spn1.setAdapter(a1);
         spn2.setAdapter(a2);
 
+        spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                fluidType2 = size[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         spn1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -121,17 +133,17 @@ private Spinner spn1,spn2;
 
             }
         });
-spn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        fluidType2 = fluid[i];
-    }
+        spn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                fluidType2 = fluid[i];
+            }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-    }
-});
+            }
+        });
 
         chkNA = view.findViewById( R.id.chkNA );
 
@@ -140,7 +152,6 @@ spn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
         lblTim1 = view.findViewById( R.id.lblTim1 );
         edtTim1 = view.findViewById( R.id.edtTim1 );
         lblSize1 = view.findViewById( R.id.lblSize1 );
-        edtSize1 = view.findViewById( R.id.edtSize1 );
         lblAtt1 = view.findViewById( R.id.lblAtt1 );
         edtAtt1 = view.findViewById( R.id.edtAtt1 );
         lblSite1 = view.findViewById( R.id.lblSite1 );
@@ -168,13 +179,55 @@ spn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
         return view;
     }
 
+    private void Init(){
+
+        button1.setOnClickListener(view1 -> expLay1.toggle());
+        button2.setOnClickListener(view12 -> expLay2.toggle());
+
+        btnAtt1.setOnClickListener(v -> {
+            btnAtt1.setBackgroundResource(R.drawable.orangeshape);
+            btnAtt2.setBackgroundResource(R.drawable.whiteshape);
+            btnAtt3.setBackgroundResource(R.drawable.whiteshape);
+            btnAtt4.setBackgroundResource(R.drawable.whiteshape);
+
+            attemps = 1;
+        });
+
+        btnAtt2.setOnClickListener(v -> {
+            btnAtt1.setBackgroundResource(R.drawable.whiteshape);
+            btnAtt2.setBackgroundResource(R.drawable.orangeshape);
+            btnAtt3.setBackgroundResource(R.drawable.whiteshape);
+            btnAtt4.setBackgroundResource(R.drawable.whiteshape);
+
+            attemps = 2;
+        });
+
+        btnAtt3.setOnClickListener(v -> {
+            btnAtt1.setBackgroundResource(R.drawable.whiteshape);
+            btnAtt2.setBackgroundResource(R.drawable.whiteshape);
+            btnAtt3.setBackgroundResource(R.drawable.orangeshape);
+            btnAtt4.setBackgroundResource(R.drawable.whiteshape);
+
+            attemps = 3;
+        });
+
+        btnAtt4.setOnClickListener(v -> {
+            btnAtt1.setBackgroundResource(R.drawable.whiteshape);
+            btnAtt2.setBackgroundResource(R.drawable.whiteshape);
+            btnAtt3.setBackgroundResource(R.drawable.whiteshape);
+            btnAtt4.setBackgroundResource(R.drawable.orangeshape);
+
+            attemps = 4;
+        });
+    }
+
+    int attemps = 1;
+
     public JSONObject createJson(){
 
         cannulation = new JSONObject();
 
         String time1 = edtTim1.getText().toString();
-        String size1 = edtSize1.getText().toString();
-        String attempt1 = edtAtt1.getText().toString();
         String site1 = edtSite1.getText().toString();
         String rate1 = edtRate1.getText().toString();
         String volume1 = edtVol1.getText().toString();
@@ -184,8 +237,7 @@ spn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
         try{
 
             cannulation.put("Time1",time1);
-            cannulation.put("Size1",size1);
-            cannulation.put("Attempt1",attempt1);
+            cannulation.put("Attempt1",attemps);
             cannulation.put("Site1",site1);
             cannulation.put("Rate1",rate1);
             cannulation.put("Volume1",volume1);
