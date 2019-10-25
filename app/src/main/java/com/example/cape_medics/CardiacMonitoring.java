@@ -39,7 +39,7 @@ public class CardiacMonitoring extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_cardiac_monitoring, container, false);
         imageView18 = (ImageView)view.findViewById( R.id.imageView18 );
-        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
+        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox );
         textView13 = (TextView)view.findViewById( R.id.textView13 );
         chk3Lead = (CheckBox)view.findViewById( R.id.chk3Lead );
         chk5Lead = (CheckBox)view.findViewById( R.id.chk5Lead );

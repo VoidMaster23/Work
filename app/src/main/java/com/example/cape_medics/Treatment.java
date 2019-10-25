@@ -26,7 +26,7 @@ public class Treatment extends Fragment {
         examination = view.findViewById(R.id.examinationEdit);
         otherProviders = view.findViewById(R.id.otherEdit);
         diagnosis = view.findViewById(R.id.diagnosisEdit);
-        chkNA = view.findViewById( R.id.notApplicableCheckBox2);
+        chkNA = view.findViewById( R.id.notApplicableCheckBox);
         chkNA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

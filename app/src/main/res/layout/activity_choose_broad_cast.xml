@@ -6,12 +6,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/back"
     android:orientation="vertical"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp">
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="57dp" />
+    android:padding="15dp">
 
     <ImageView
         android:id="@+id/imageView6"

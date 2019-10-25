@@ -6,14 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/back"
-    tools:context=".FireSkid">
+    tools:context=".FireSkid"
+    android:padding="15dp">
 
     <HorizontalScrollView
         android:id="@+id/sideScroll0"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp">
+        android:layout_height="match_parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="wrap_content"
@@ -1123,40 +1122,40 @@
                         android:orientation="vertical"
                         app:layout_constraintTop_toBottomOf="@+id/header2">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
-
-                        <CheckBox
-                            android:id="@+id/waterSpritzer"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Water Spritzers"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                        <TextView
-                            android:id="@+id/waterSpritzerQty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" QTY: 2"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            <CheckBox
+                                android:id="@+id/waterSpritzer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Water Spritzers"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                        <EditText
-                            android:id="@+id/waterSpritzerComment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/waterSpritzerQty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 2"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/waterSpritzerComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"

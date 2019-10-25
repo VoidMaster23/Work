@@ -69,7 +69,7 @@ JSONObject primarySurvery;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_primary_survey, container, false);
-        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
+        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox );
         lblTime = (TextView)view.findViewById( R.id.lblTime );
         edtTime = (EditText)view.findViewById( R.id.edtTime );
         textView14 = (TextView)view.findViewById( R.id.textView14 );

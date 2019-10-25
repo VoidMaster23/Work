@@ -133,7 +133,7 @@ spn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
     }
 });
 
-        chkNA = view.findViewById( R.id.chkNA );
+        chkNA = view.findViewById( R.id.notApplicableCheckBox);
         chkNA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,9 +148,8 @@ spn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
         lblTim1 = view.findViewById( R.id.lblTim1 );
         edtTim1 = view.findViewById( R.id.edtTim1 );
         lblSize1 = view.findViewById( R.id.lblSize1 );
-        edtSize1 = view.findViewById( R.id.edtSize1 );
         lblAtt1 = view.findViewById( R.id.lblAtt1 );
-        edtAtt1 = view.findViewById( R.id.edtAtt1 );
+     //   edtAtt1 = view.findViewById( R.id.edtAtt1 );
         lblSite1 = view.findViewById( R.id.lblSite1 );
         edtSite1 = view.findViewById( R.id.edtSite1 );
         lblRate1 = view.findViewById( R.id.lblRate1 );

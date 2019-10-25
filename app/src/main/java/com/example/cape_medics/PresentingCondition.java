@@ -70,7 +70,7 @@ public class PresentingCondition extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_presenting_condition, container, false);
-        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
+        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox );
         lblPrimary = (TextView)view.findViewById( R.id.lblPrimary );
         edtPrimary = (EditText)view.findViewById( R.id.edtPrimary );
         textView19 = (TextView)view.findViewById( R.id.textView19 );

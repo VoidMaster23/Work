@@ -148,7 +148,7 @@ public class DrugsAdministered extends Fragment {
         drugspn6 = view.findViewById(R.id.drugNameSpn6);
 
         imageView18 = (ImageView)view.findViewById( R.id.imageView18 );
-        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
+        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox);
         chkNA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Oct 20 00:11:53 CAT 2019
+#Fri Oct 25 22:09:19 CAT 2019
 1.base=C\:\\Users\\test\\Downloads\\Merged1\\Cape_Medics\\app\\build\\intermediates\\merged_assets\\debug\\out
 2.path=drugs.txt
 0.baseType=DIRECTORY

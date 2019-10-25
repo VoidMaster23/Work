@@ -78,6 +78,7 @@ public class Death extends Fragment {
             public void onClick(View v) {
 
                 try {
+
                     medicalTabbedView.map.put("Call Details", medicalTabbedView.medicalFormCalls.createJson());
                     medicalTabbedView.map.put("Patient Details", medicalTabbedView.patientDetails.createJson());
                     medicalTabbedView.map.put("Primary Survey",medicalTabbedView.primarySurvey.createJson());

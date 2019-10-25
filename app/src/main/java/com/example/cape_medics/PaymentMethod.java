@@ -126,6 +126,18 @@ public class PaymentMethod extends Fragment {
                 if(cash.isChecked()){
                     receipt.setVisibility(View.VISIBLE);
                     receiptEdit.setVisibility(View.VISIBLE);
+
+                    name.setVisibility(View.INVISIBLE);
+                    nameEdit.setVisibility(View.INVISIBLE);
+
+                    member.setVisibility(View.INVISIBLE);
+                    memberEdit.setVisibility(View.INVISIBLE);
+
+                    number.setVisibility(View.INVISIBLE);
+                    numberEdit.setVisibility(View.INVISIBLE);
+
+                    plan.setVisibility(View.INVISIBLE);
+                    planEdit.setVisibility(View.INVISIBLE);
                 }
                 else{
                     receipt.setVisibility(View.INVISIBLE);
@@ -204,6 +216,18 @@ public class PaymentMethod extends Fragment {
                 if(credit.isChecked()){
                     receipt.setVisibility(View.VISIBLE);
                     receiptEdit.setVisibility(View.VISIBLE);
+
+                    name.setVisibility(View.INVISIBLE);
+                    nameEdit.setVisibility(View.INVISIBLE);
+
+                    member.setVisibility(View.INVISIBLE);
+                    memberEdit.setVisibility(View.INVISIBLE);
+
+                    number.setVisibility(View.INVISIBLE);
+                    numberEdit.setVisibility(View.INVISIBLE);
+
+                    plan.setVisibility(View.INVISIBLE);
+                    planEdit.setVisibility(View.INVISIBLE);
                 }
                 else{
                     receipt.setVisibility(View.INVISIBLE);

@@ -7,11 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,14 +23,18 @@ import org.json.JSONObject;
 
 public class PainScore extends Fragment {
 
-    ImageView imageView;
     EditText pre, post1, post2, hosp;
+
+    private Spinner spnPre, spnPost1,spnPost2,spnHosp;
     Button show;
 
-    TextView textView1, textView2, textView3, textView4;
-    RelativeLayout painLay;
+    TextView textView1, textView2, textView3, textView4;;
 
     JSONObject painScore;
+
+    String sizeType;
+
+    private String[] size = {"1","2","3","4","5","6","7","8","9","10"};
     
     public CheckBox chkNA;
 
@@ -42,14 +49,79 @@ public class PainScore extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pain_score, container, false);
 
-        imageView = view.findViewById(R.id.imgPain);
+//        imageView = view.findViewById(R.id.imgPain);
 
 
 
-        pre = view.findViewById(R.id.editPre);
-        post1 = view.findViewById(R.id.editPost5);
-        post2 = view.findViewById(R.id.editPost10);
-        hosp = view.findViewById(R.id.editAtHosp);
+        spnPre = view.findViewById(R.id.editPre);
+        spnPost1 = view.findViewById(R.id.editPost5);
+        spnPost2 = view.findViewById(R.id.editPost10);
+        spnHosp = view.findViewById(R.id.editAtHosp);
+
+        ArrayAdapter a = new ArrayAdapter(getContext(), R.layout.custom_spinner,size);
+        ArrayAdapter a1 = new ArrayAdapter(getContext(), R.layout.custom_spinner,size);
+        ArrayAdapter a2 = new ArrayAdapter(getContext(), R.layout.custom_spinner,size);
+        ArrayAdapter a3 = new ArrayAdapter(getContext(), R.layout.custom_spinner,size);
+
+        a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        a1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        a2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        a3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+
+        spnPre.setAdapter(a);
+        spnPost1.setAdapter(a1);
+        spnPost2.setAdapter(a2);
+        spnHosp.setAdapter(a3);
+
+        spnPre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                sizeType = size[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spnPost1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                sizeType = size[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spnPost2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                sizeType = size[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spnHosp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                sizeType = size[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         textView1 = view.findViewById(R.id.textView51);
         textView2 = view.findViewById(R.id.textView52);
@@ -66,7 +138,7 @@ public class PainScore extends Fragment {
         });
 
         //show = view.findViewById(R.id.btnPainScale);
-        painLay = view.findViewById(R.id.relLayPain);
+        //painLay = view.findViewById(R.id.relLayPain);
 
         /* show.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,34 +165,6 @@ public class PainScore extends Fragment {
                 }
             }
         });*/
-
-
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (imageView.getVisibility() == View.VISIBLE){
-                    pre.setVisibility(View.VISIBLE);
-                    post1.setVisibility(View.VISIBLE);
-                    post2.setVisibility(View.VISIBLE);
-                    hosp.setVisibility(View.VISIBLE);
-
-                    textView1.setVisibility(View.VISIBLE);
-                    textView2.setVisibility(View.VISIBLE);
-                    textView3.setVisibility(View.VISIBLE);
-                    textView4.setVisibility(View.VISIBLE);
-
-                    show.setVisibility(View.VISIBLE);
-
-                    painLay.setBackground(getResources().getDrawable(R.mipmap.back));
-                    show.setVisibility(View.VISIBLE);
-                    imageView.setVisibility(View.INVISIBLE);
-
-
-
-
-                }
-            }
-        });
 
 
 
@@ -153,27 +197,16 @@ public class PainScore extends Fragment {
     public boolean validate() {
         boolean valid = true;
 
-        String preStr = pre.getText().toString();
-        String post5Str = post1.getText().toString();
-        String post10Str = post2.getText().toString();
-        String hospStr = hosp.getText().toString();
+        String preStr = spnPre.getSelectedItem().toString();
+        String post5Str = spnPost1.getSelectedItem().toString();
+        String post10Str = spnPost2.getSelectedItem().toString();
+        String hospStr = spnHosp.getSelectedItem().toString();
 
         if (preStr.isEmpty() || post5Str.isEmpty() || post10Str.isEmpty() || hospStr.isEmpty()) {
             valid = false;
             Toast.makeText(getContext(), "Please record pain scores", Toast.LENGTH_SHORT).show();
         }
 
-        if (valid){
-            try {
-                int preint = Integer.parseInt(preStr);
-                int post5int = Integer.parseInt(post5Str);
-                int post10int = Integer.parseInt(post10Str);
-                int hospint = Integer.parseInt(hospStr);
-            } catch (Exception e) {
-                valid = false;
-                Toast.makeText(getContext(), "Please ensure that all pain score values entered are digits", Toast.LENGTH_SHORT).show();
-            }
-    }
         return valid;
     }
 

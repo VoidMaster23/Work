@@ -38,7 +38,7 @@ public class EmployerDetails extends Fragment {
         contactPerson = view.findViewById(R.id.personEdit);
         contactNumber = view.findViewById(R.id.numberEdit);
 
-        chkNA = view.findViewById( R.id.notApplicableCheckBox2);
+        chkNA = view.findViewById( R.id.notApplicableCheckBox);
         chkNA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

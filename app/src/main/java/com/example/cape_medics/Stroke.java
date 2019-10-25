@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,7 +30,7 @@ public class Stroke extends Fragment {
     private EditText editCasualty;
 
     JSONObject stroke;
-
+    private Button fd_btnYes, fd_btnNo, aw_btnYes, aw_btnNo, sd_btnYes, sd_btnNo;
 
 
 
@@ -45,15 +46,13 @@ public class Stroke extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_stroke, container, false);
 
         imageView18 = (ImageView)view.findViewById( R.id.imageView18 );
-        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
-        checkBox4 = (CheckBox)view.findViewById( R.id.checkBox4 );
-        checkBox5 = (CheckBox)view.findViewById( R.id.checkBox5 );
-        checkBox6 = (CheckBox)view.findViewById( R.id.checkBox6 );
+        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox );
+
         textView55 = (TextView)view.findViewById( R.id.textView55 );
         editDoorDrug = (EditText)view.findViewById( R.id.editDoorDrug );
-        //textView56 = (TextView)view.findViewById( R.id.textView56 );
+
         editStrokeUnit = (EditText)view.findViewById( R.id.editStrokeUnit );
-        //textView57 = (TextView)view.findViewById( R.id.textView57 );
+
         editCasualty = (EditText)view.findViewById( R.id.editCasualty );
         chkNA.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,19 +63,90 @@ public class Stroke extends Fragment {
             }
         });
 
-       return view;
+        fd_btnYes = view.findViewById(R.id.fd_btnYes);
+        fd_btnNo = view.findViewById(R.id.fd_btnNo);
+        aw_btnYes = view.findViewById(R.id.aw_btnYes);
+        aw_btnNo = view.findViewById(R.id.aw_btnNo);
+        sd_btnYes = view.findViewById(R.id.sd_btnYes);
+        sd_btnNo = view.findViewById(R.id.sd_btnNo);
+
+        Init();
+
+        return view;
+    }
+
+    String facial = "No", arm = "No", speech = "No";
+
+    private void Init(){
+
+        fd_btnYes.setOnClickListener(new  View.OnClickListener(){
+            @Override
+            public void onClick(View  view) {
+
+                    fd_btnYes.setBackgroundResource(R.drawable.orangeshape);
+                    fd_btnNo.setBackgroundResource(R.drawable.whiteshape);
+
+                    facial = "yes";
+
+        }});
+
+        fd_btnNo.setOnClickListener(new  View.OnClickListener(){
+            @Override
+            public void onClick(View  view) {
+                fd_btnYes.setBackgroundResource(R.drawable.whiteshape);
+                fd_btnNo.setBackgroundResource(R.drawable.orangeshape);
+
+                facial = "No";
+            }
+        });
+
+        aw_btnYes.setOnClickListener(new  View.OnClickListener(){
+            @Override
+            public void onClick(View  view) {
+            aw_btnYes.setBackgroundResource(R.drawable.orangeshape);
+            aw_btnNo.setBackgroundResource(R.drawable.whiteshape);
+
+            arm = "Yes";
+        }});
+
+        aw_btnNo.setOnClickListener(new  View.OnClickListener(){
+            @Override
+            public void onClick(View  view) {
+            aw_btnYes.setBackgroundResource(R.drawable.whiteshape);
+            aw_btnNo.setBackgroundResource(R.drawable.orangeshape);
+
+            arm = "No";
+        }});
+
+        sd_btnYes.setOnClickListener(new  View.OnClickListener(){
+            @Override
+            public void onClick(View  view) {
+            sd_btnYes.setBackgroundResource(R.drawable.orangeshape);
+            sd_btnNo.setBackgroundResource(R.drawable.whiteshape);
+
+            speech = "Yes";
+        }});
+
+        sd_btnNo.setOnClickListener(new  View.OnClickListener(){
+            @Override
+            public void onClick(View  view) {
+            sd_btnYes.setBackgroundResource(R.drawable.whiteshape);
+            sd_btnNo.setBackgroundResource(R.drawable.orangeshape);
+
+            speech = "No";
+        }});
     }
 
     public JSONObject createJson(){
 
         stroke = new JSONObject();
 
-        String facial = null;
-        String arm = null;
-        String speech = null;
-        if(checkBox4.isChecked()) facial = checkBox4.getText().toString();
-        if(checkBox5.isChecked()) arm = checkBox5.getText().toString();
-        if(checkBox6.isChecked()) speech = checkBox6.getText().toString();
+        //String facial = null;
+        //String arm = null;
+        //String speech = null;
+        //if(checkBox4.isChecked()) facial = checkBox4.getText().toString();
+        //if(checkBox5.isChecked()) arm = checkBox5.getText().toString();
+        //if(checkBox6.isChecked()) speech = checkBox6.getText().toString();
 
         String door = editDoorDrug.getText().toString();
         String strokeStr = editStrokeUnit.getText().toString();
@@ -98,13 +168,4 @@ public class Stroke extends Fragment {
 
         return stroke;
     }
-
-    public boolean validate(){
-        boolean valid = true;
-
-
-
-        return valid;
-    }
-
 }

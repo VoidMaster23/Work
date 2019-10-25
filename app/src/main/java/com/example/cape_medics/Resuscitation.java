@@ -70,7 +70,7 @@ public class Resuscitation extends Fragment {
         sec = 60;
         textView = view.findViewById(R.id.countDown);
         imageView19 = (ImageView)view.findViewById(R.id.imageView12);
-        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
+        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox );
         btnStart = (Button)view.findViewById( R.id.btnStart );
         btnStop = (Button)view.findViewById( R.id.btnStop );
         btnReset = (Button)view.findViewById( R.id.btnReset );

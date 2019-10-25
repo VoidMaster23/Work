@@ -112,7 +112,7 @@ public class MedicalFormCalls extends Fragment {
         checkBox10 = view.findViewById( R.id.checkBox10 );
         checkBox11 = view.findViewById( R.id.checkBox11 );
         checkBox12 = view.findViewById( R.id.checkBox12 );
-        checkBox14 = view.findViewById( R.id.checkbox14 );
+        checkBox14 = view.findViewById( R.id.checkBox14 );
         checkBox3 = view.findViewById( R.id.notApplicableCheckBox );
         freeT = view.findViewById(R.id.freeTime);
         freeK = view.findViewById(R.id.free_edit);

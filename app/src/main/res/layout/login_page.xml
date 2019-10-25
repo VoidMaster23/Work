@@ -7,7 +7,7 @@
     android:background="@mipmap/back"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="36dp">
+    android:padding="15dp">
 
     <ScrollView
         android:layout_width="match_parent"

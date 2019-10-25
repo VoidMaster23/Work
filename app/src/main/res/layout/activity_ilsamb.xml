@@ -5,28 +5,27 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/back">
+    android:background="@mipmap/back"
+    android:padding="15dp">
 
     <HorizontalScrollView
         android:id="@+id/sideScroll0"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp">
+        android:layout_height="match_parent">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
             <ScrollView
                 android:id="@+id/scroll0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbars="horizontal|vertical">
+                android:scrollbars="vertical">
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/logo"
@@ -253,7 +252,7 @@
                                 android:textColor="@color/white"
                                 android:textSize="16sp" />
 
-                            </LinearLayout>
+                        </LinearLayout>
 
 
                         <LinearLayout
@@ -5016,493 +5015,493 @@
                                 android:textSize="16sp" />
                         </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
-
-                        <CheckBox
-                            android:id="@+id/canulla22"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="22G IV CANULLA"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                        <TextView
-                            android:id="@+id/canulla22Qty"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/canulla22"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="22G IV CANULLA"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/canulla22Qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 4"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/canulla22Comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text=" QTY: 4"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                        <EditText
-                            android:id="@+id/canulla22Comment"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/canulla24"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="24G IV CANULLA"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/canulla24Qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 4"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/canulla24Comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
+                            <CheckBox
+                                android:id="@+id/admin60"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="60 DROP ADMIN SET"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                        <CheckBox
-                            android:id="@+id/canulla24"
-                            android:layout_width="wrap_content"
+                            <TextView
+                                android:id="@+id/admin60Qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 4"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/admin60Comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="24G IV CANULLA"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                        <TextView
-                            android:id="@+id/canulla24Qty"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/admin20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="20 DROP ADMIN SET"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/admin20Qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 2"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/admin20Comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text=" QTY: 4"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                        <EditText
-                            android:id="@+id/canulla24Comment"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/admin15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="15 DROP ADMIN SET"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/admin15Qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 2"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/admin15Comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
+                            <CheckBox
+                                android:id="@+id/admin10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="10 DROP ADMIN SET"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                        <CheckBox
-                            android:id="@+id/admin60"
-                            android:layout_width="wrap_content"
+                            <TextView
+                                android:id="@+id/admin10Qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 2"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/admin10Comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="60 DROP ADMIN SET"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                        <TextView
-                            android:id="@+id/admin60Qty"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/webcol"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="WEBCOL"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/webcolQty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 23"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/webcolComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text=" QTY: 4"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                        <EditText
-                            android:id="@+id/admin60Comment"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/tegaderm"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="TEGADERM"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tegadermQty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 4"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/tegadermComment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                        <CheckBox
-                            android:id="@+id/admin20"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/syringe20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SYRINGES 20ML"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/syringe20Qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 4"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/syringe20Comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="20 DROP ADMIN SET"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                        <TextView
-                            android:id="@+id/admin20Qty"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/syringe10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SYRINGES 10ML"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/syringe10Qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 4"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/syringe10Comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text=" QTY: 2"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                        <EditText
-                            android:id="@+id/admin20Comment"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/syringe5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SYRINGES 5ML"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/syringe5Qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 4"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/syringe5Comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                        <CheckBox
-                            android:id="@+id/admin15"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/syringe3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SYRINGES 3ML"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/syringe3Qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 4"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/syringe3Comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="15 DROP ADMIN SET"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                        <TextView
-                            android:id="@+id/admin15Qty"
-                            android:layout_width="wrap_content"
+                            <CheckBox
+                                android:id="@+id/needle18"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="18G HYPODERMIC NEEDLE"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/needle18Qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 5"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/needle18Comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text=" QTY: 2"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/header1">
 
-                        <EditText
-                            android:id="@+id/admin15Comment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                            <CheckBox
+                                android:id="@+id/needle21"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="21G HYPODERMIC NEEDLE"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
+                            <TextView
+                                android:id="@+id/needle21Qty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" QTY: 10"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
 
-                        <CheckBox
-                            android:id="@+id/admin10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10 DROP ADMIN SET"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <TextView
-                            android:id="@+id/admin10Qty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" QTY: 2"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/admin10Comment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
-
-                        <CheckBox
-                            android:id="@+id/webcol"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="WEBCOL"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <TextView
-                            android:id="@+id/webcolQty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" QTY: 23"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/webcolComment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
-
-                        <CheckBox
-                            android:id="@+id/tegaderm"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TEGADERM"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <TextView
-                            android:id="@+id/tegadermQty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" QTY: 4"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/tegadermComment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
-
-                        <CheckBox
-                            android:id="@+id/syringe20"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="SYRINGES 20ML"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <TextView
-                            android:id="@+id/syringe20Qty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" QTY: 4"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/syringe20Comment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
-
-                        <CheckBox
-                            android:id="@+id/syringe10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="SYRINGES 10ML"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <TextView
-                            android:id="@+id/syringe10Qty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" QTY: 4"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/syringe10Comment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
-
-                        <CheckBox
-                            android:id="@+id/syringe5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="SYRINGES 5ML"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <TextView
-                            android:id="@+id/syringe5Qty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" QTY: 4"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/syringe5Comment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
-
-                        <CheckBox
-                            android:id="@+id/syringe3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="SYRINGES 3ML"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <TextView
-                            android:id="@+id/syringe3Qty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" QTY: 4"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/syringe3Comment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
-
-                        <CheckBox
-                            android:id="@+id/needle18"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="18G HYPODERMIC NEEDLE"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <TextView
-                            android:id="@+id/needle18Qty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" QTY: 5"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/needle18Comment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/header1">
-
-                        <CheckBox
-                            android:id="@+id/needle21"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="21G HYPODERMIC NEEDLE"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-                        <TextView
-                            android:id="@+id/needle21Qty"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=" QTY: 10"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/needle21Comment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:ems="10"
-                            android:hint="Comments"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                            <EditText
+                                android:id="@+id/needle21Comment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:ems="10"
+                                android:hint="Comments"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -5763,6 +5762,9 @@
 
                 </android.support.constraint.ConstraintLayout>
             </ScrollView>
+
         </android.support.constraint.ConstraintLayout>
+
     </HorizontalScrollView>
+
 </android.support.constraint.ConstraintLayout>

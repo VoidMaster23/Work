@@ -84,7 +84,7 @@
                             android:isScrollContainer="true"
                             android:padding="15dp"
                             app:ael_duration="400"
-                            app:ael_expanded="false"
+                            app:ael_expanded="true"
                             app:ael_interpolator="accelerateDecelerate"
                             app:ael_orientation="vertical">
 
@@ -120,21 +120,14 @@
                                 android:text="Size"
                                 android:textColor="@color/white" />
 
-                            <EditText
-                                android:id="@+id/edtSize1"
-                                android:layout_width="wrap_content"
+                            <Spinner
+                                android:id="@+id/sizeSpin1"
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/edtTim1"
                                 android:layout_alignLeft="@+id/edtTim1"
                                 android:layout_marginTop="10dp"
-                                android:layout_toRightOf="@id/lblTim1"
-                                android:background="@null"
-                                android:ems="10"
-                                android:gravity="top"
-                                android:hint="size"
-                                android:inputType="textPersonName"
-                                android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:layout_toRightOf="@id/lblTim1" />
 
                             <TextView
                                 android:id="@+id/lblAtt1"
@@ -145,7 +138,57 @@
                                 android:text="Attempts"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <RelativeLayout
+                                android:id="@+id/edtAtt1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:orientation="horizontal"
+                                android:layout_below="@+id/sizeSpin1"
+                                android:layout_alignLeft="@+id/edtTim1"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTim1"
+                                android:layout_toEndOf="@id/lblTim1"
+                                android:layout_alignStart="@+id/edtTim1">
+
+                                <Button
+                                    android:id="@+id/btnAtt1"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:text="1"
+                                    android:background="@drawable/orangeshape"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true" />
+
+                                <Button
+                                    android:id="@+id/btnAtt2"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:text="2"
+                                    android:background="@drawable/whiteshape"
+                                    android:layout_toEndOf="@id/btnAtt1"
+                                    android:layout_toRightOf="@id/btnAtt1"/>
+
+                                <Button
+                                    android:id="@+id/btnAtt3"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:text="3"
+                                    android:background="@drawable/whiteshape"
+                                    android:layout_toEndOf="@id/btnAtt2"
+                                    android:layout_toRightOf="@id/btnAtt2"/>
+
+                                <Button
+                                    android:id="@+id/btnAtt4"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:text="4"
+                                    android:background="@drawable/whiteshape"
+                                    android:layout_toEndOf="@id/btnAtt3"
+                                    android:layout_toRightOf="@id/btnAtt3"/>
+
+                            </RelativeLayout>
+
+                            <!--EditText
                                 android:id="@+id/edtAtt1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -159,7 +202,7 @@
                                 android:hint="e.g 1"
                                 android:inputType="textPersonName"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="14sp" /-->
 
                             <TextView
                                 android:id="@+id/lblSite1"
@@ -264,7 +307,6 @@
                     android:id="@+id/btnCan2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:background="#E1066DA1"
                     android:drawableRight="@android:drawable/arrow_down_float"
                     android:paddingRight="10dp"

@@ -60,7 +60,7 @@ public class SampleHistory extends Fragment {
         View view = inflater.inflate(R.layout.fragment_sample_history, container, false);
 
         imageView14 = (ImageView)view.findViewById( R.id.imageView12 );
-        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
+        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox );
         lblSigns = (TextView)view.findViewById( R.id.lblSigns );
         edtSigns = (EditText)view.findViewById( R.id.edtSigns );
         edtAllergies = (EditText)view.findViewById( R.id.edtAllergies );

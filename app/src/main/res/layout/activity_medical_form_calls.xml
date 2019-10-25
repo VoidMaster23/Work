@@ -548,13 +548,17 @@
                 android:layout_alignLeft="@id/textView5" />
 
             <CheckBox
-                android:id="@+id/checkbox14"
+                android:id="@+id/checkBox14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/timeOfDeathText"
+                android:layout_below="@+id/timeOfDeathText"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="25dp"
                 android:text="No PT"
-                android:textColor="@color/white" />
-
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_alignParentLeft="true" />
         </RelativeLayout>
     </ScrollView>
 

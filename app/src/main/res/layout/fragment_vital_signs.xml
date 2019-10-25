@@ -322,7 +322,7 @@
                                 android:text="Eyes - Pearl"
                                 android:textColor="@color/white" />
 
-                            <CheckBox
+                            <TextView
                                 android:id="@+id/chkLeft1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -334,23 +334,82 @@
                                 android:text="Left"
                                 android:textColor="@color/white" />
 
-                            <CheckBox
-                                android:id="@+id/chkRight1"
+                            <RelativeLayout
+                                android:id="@+id/edtAtt1"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="20dp"
                                 android:layout_below="@id/edtFlow1"
                                 android:layout_alignTop="@id/lblPearl1"
                                 android:layout_marginLeft="15dp"
                                 android:layout_marginTop="-6dp"
                                 android:layout_toRightOf="@id/chkLeft1"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/epl_yes"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:background="@drawable/whiteshape"
+                                    android:text="Y" />
+
+                                <Button
+                                    android:id="@+id/epl_no"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_toEndOf="@id/epl_yes"
+                                    android:layout_toRightOf="@id/epl_yes"
+                                    android:background="@drawable/orangeshape"
+                                    android:text="N" />
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/chkRight1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/chkLeft1"
+                                android:layout_alignStart="@id/chkLeft1"
+                                android:layout_alignLeft="@id/chkLeft1"
+                                android:layout_marginTop="16dp"
                                 android:text="Right"
                                 android:textColor="@color/white" />
+
+                            <RelativeLayout
+                                android:id="@+id/edtAtt2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_alignStart="@id/edtAtt1"
+                                android:layout_alignLeft="@id/edtAtt1"
+                                android:layout_alignTop="@id/chkRight1"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/epr_yes"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:background="@drawable/whiteshape"
+                                    android:text="Y" />
+
+                                <Button
+                                    android:id="@+id/epr_no"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_toEndOf="@id/epr_yes"
+                                    android:layout_toRightOf="@id/epr_yes"
+                                    android:background="@drawable/orangeshape"
+                                    android:text="N" />
+
+                            </RelativeLayout>
 
                             <TextView
                                 android:id="@+id/lblPupSize1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/chkLeft1"
+                                android:layout_below="@id/edtAtt2"
                                 android:layout_marginTop="10dp"
                                 android:text="Pupil Size"
                                 android:textColor="@color/white"
