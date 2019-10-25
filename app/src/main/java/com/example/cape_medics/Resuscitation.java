@@ -20,7 +20,7 @@ import org.json.JSONObject;
 
 public class Resuscitation extends Fragment {
     private ImageView imageView19;
-    private CheckBox chkNA;
+    public CheckBox chkNA;
     private TextView countDown;
     private Button btnStart;
     private Button btnStop;
@@ -43,6 +43,9 @@ public class Resuscitation extends Fragment {
     private TextView textView30;
     private EditText edtDrugIssue;
     private CheckBox chkWitness;
+    private EditText rosc;
+    private EditText firstPush;
+
 
     JSONObject resicitation;
 
@@ -89,8 +92,17 @@ public class Resuscitation extends Fragment {
         textView30 = (TextView)view.findViewById( R.id.textView30 );
         edtDrugIssue = (EditText)view.findViewById( R.id.edtDrugIssue );
         chkWitness = (CheckBox)view.findViewById( R.id.chkWitness );
+        rosc = view.findViewById(R.id.rosceditTextView);
+        firstPush = view.findViewById(R.id.edtDrugIssue);
 
-
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
 
         final CountDownTimer timer = new CountDownTimer(180000,1000){
@@ -191,6 +203,8 @@ public class Resuscitation extends Fragment {
 
         String start = edtStartCPR.getText().toString();
         String end  = edtEndCPR.getText().toString();
+        String roscT = rosc.getText().toString();
+        String timeP = firstPush.getText().toString();
 
 
         try{
@@ -199,10 +213,64 @@ public class Resuscitation extends Fragment {
             resicitation.put("CPR Details",cpr);
             resicitation.put("Start",start);
             resicitation.put("End",end);
+            resicitation.put("ROSC", roscT);
+            resicitation.put("Time 1st drug pushed", timeP);
         }catch (Exception e){
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     return resicitation;
+    }
+
+    public boolean validate(){
+        boolean valid = true;
+        String provided = null;
+
+        if(chkBystander.isChecked()){
+            provided = chkBystander.getText().toString();
+        }else if(chkEms.isChecked()){
+            provided = chkEms.getText().toString();
+        }else if(chkFirst.isChecked()){
+            provided = chkFirst.getText().toString();
+        }else if(chkOther.isChecked()){
+            provided = chkOther.getText().toString();
+        }
+
+        String items = null;
+
+        if (chkPads.isChecked()){
+            items = chkPads.getText().toString();
+        }else if(chkPaddles.isChecked()){
+            items = chkPaddles.getText().toString();
+        }
+
+
+        String cpr = null;
+        if(chkCPRo.isChecked()){
+            cpr = chkCPRo.getText().toString();
+        }else if(chkIncAirway.isChecked()){
+            cpr = chkIncAirway.getText().toString();
+
+        }
+
+
+        String start = edtStartCPR.getText().toString();
+        String end  = edtEndCPR.getText().toString();
+        String roscT = rosc.getText().toString();
+        String timeP = firstPush.getText().toString();
+
+
+        if(provided.isEmpty() || items.isEmpty() || cpr.isEmpty() || start.isEmpty() || end.isEmpty() || roscT.isEmpty() || timeP.isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(),"Please make sure resuscitation has been filled in", Toast.LENGTH_SHORT).show();
+        }
+
+        String reg = MedicalFormCalls.toMatch;
+        if(!start.matches(reg) || !end.matches(reg) || !roscT.matches(reg) || timeP.matches(reg)){
+            valid = false;
+            Toast.makeText(getContext(),"Please make sure times are in hh:mm format", Toast.LENGTH_SHORT).show();
+        }
+
+        return valid;
     }
 
 }

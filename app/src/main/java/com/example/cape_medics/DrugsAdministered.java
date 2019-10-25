@@ -41,7 +41,7 @@ public class DrugsAdministered extends Fragment {
 
   String[] drugs;
     private ImageView imageView18;
-    private CheckBox chkNA;
+    public CheckBox chkNA;
     private ScrollView drugScrl1;
     private TextView drugTime1;
     private EditText edtDrugTime1;
@@ -149,6 +149,14 @@ public class DrugsAdministered extends Fragment {
 
         imageView18 = (ImageView)view.findViewById( R.id.imageView18 );
         chkNA = (CheckBox)view.findViewById( R.id.chkNA );
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
         drugScrl1 = (ScrollView)view.findViewById( R.id.drugScrl1 );
         drugTime1 = (TextView)view.findViewById( R.id.drugTime1 );
         edtDrugTime1 = (EditText)view.findViewById( R.id.edtDrugTime1 );

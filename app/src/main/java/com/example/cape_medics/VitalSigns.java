@@ -29,7 +29,7 @@ public class VitalSigns extends Fragment {
  ExpandableRelativeLayout expandableRelativeLayout1, expandableRelativeLayout2,expandableRelativeLayout3, expandableRelativeLayout4;
 Button button1,button2,button3, button4;
     private ImageView imageView15;
-    private CheckBox chkNA;
+    public CheckBox chkNA;
     private Button expBut1;
     private ScrollView scrl1;
     private ExpandableRelativeLayout expLay1;
@@ -304,6 +304,15 @@ Button button1,button2,button3, button4;
         lblPupRight4 = (TextView)view.findViewById( R.id.lblPupRight4 );
         spnLeftSize4 = (Spinner)view.findViewById( R.id.spnLeftSize4 );
         spnRightSize4 = (Spinner)view.findViewById( R.id.spnRightSize4 );
+
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         checkBoxList = Arrays.asList(chkLeft1,chkLeft2,chkLeft3,chkLeft4,chkRight1,chkRight2,chkRight3,chkRight4);
         cache = new Cache(getContext());

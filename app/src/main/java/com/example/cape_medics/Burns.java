@@ -34,7 +34,7 @@ public class Burns extends Fragment {
 
     Button calc;
 
-    CheckBox adult, child;
+    CheckBox adult, child, chkNA;
     String bType, bDress, bInhale, burnDeg;
     JSONObject burns;
 
@@ -55,6 +55,16 @@ public class Burns extends Fragment {
         burn = view.findViewById(R.id.degree);
         adult = view.findViewById(R.id.chkAdult);
         child = view.findViewById(R.id.chkChild);
+
+        chkNA = view.findViewById( R.id.notApplicableCheckBox );
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         ArrayAdapter a1 = new ArrayAdapter(getContext(),R.layout.custom_checked_list,burnType);
         ArrayAdapter a2 = new ArrayAdapter(getContext(),R.layout.custom_checked_list,treatment);

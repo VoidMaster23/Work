@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class ComaScore extends Fragment {
     JSONObject comaScore;
 
     String eyeStr, verbStr, motorStr;
+    CheckBox chkNA;
 
     public ComaScore() {
         // Required empty public constructor
@@ -48,6 +50,16 @@ public class ComaScore extends Fragment {
 
         gcs = view.findViewById(R.id.lblGCS);
         trauma  = view.findViewById(R.id.lblTrauma);
+
+        chkNA = view.findViewById( R.id.notApplicableCheckBox );
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         eye = view.findViewById(R.id.spnEyeResponse);
         verb = view.findViewById(R.id.spnVerbalResponse);

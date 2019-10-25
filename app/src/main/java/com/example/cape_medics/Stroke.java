@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 public class Stroke extends Fragment {
     private ImageView imageView18;
-    private CheckBox  chkNA;
+    public CheckBox  chkNA;
     private CheckBox checkBox4;
     private CheckBox checkBox5;
     private CheckBox checkBox6;
@@ -55,6 +55,14 @@ public class Stroke extends Fragment {
         editStrokeUnit = (EditText)view.findViewById( R.id.editStrokeUnit );
         //textView57 = (TextView)view.findViewById( R.id.textView57 );
         editCasualty = (EditText)view.findViewById( R.id.editCasualty );
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
        return view;
     }
@@ -89,6 +97,14 @@ public class Stroke extends Fragment {
         }
 
         return stroke;
+    }
+
+    public boolean validate(){
+        boolean valid = true;
+
+
+
+        return valid;
     }
 
 }

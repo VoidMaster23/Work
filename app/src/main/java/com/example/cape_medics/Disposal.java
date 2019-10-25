@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class Disposal extends Fragment {
     JSONObject disposal;
     String hospital_home_familyGP, ambulance_car_ownTransport, advice_refusedHelp_refusedSign_returnedToWork;
-    CheckBox home, hospital, family;
+    CheckBox home, hospital, family,chkNA;
     CheckBox ambulance, car, own;
     CheckBox advice, help, sign, Return;
 
@@ -31,6 +31,16 @@ public class Disposal extends Fragment {
         ambulance = view.findViewById(R.id.ambulanceChk);
         car = view.findViewById(R.id.carChk);
         own = view.findViewById(R.id.ownChk);
+
+        chkNA = view.findViewById( R.id.notApplicableCheckBox);
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         advice = view.findViewById(R.id.adviceChk);
         help = view.findViewById(R.id.helpChk);

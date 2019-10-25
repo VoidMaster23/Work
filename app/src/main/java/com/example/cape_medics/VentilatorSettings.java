@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import org.json.JSONObject;
@@ -15,6 +16,7 @@ public class VentilatorSettings extends Fragment {
 
     EditText lpm, lpm1, lpm2, tidal, tidal1, tidal2, tv, tv1, tv2, ventMode, ventMode1, ventMode2,ventRate, ventRate1, ventRate2,peep,peep1,peep2,ratio,ratio1,ratio2;
     EditText lpmTime,lpmTime1,lpmTime2,tidalTime,tidalTime1,tidalTime2,tvTime,tvTime1,tvTime2,ventModeTime,ventModeTime1,ventModeTime2,ventRateTime,ventRateTime1,ventRateTime2,peepTime,peepTime1,peepTime2,ratioTime,ratioTime1,ratioTime2;
+    CheckBox chkNA;
 
     public VentilatorSettings(){}
 
@@ -72,8 +74,19 @@ public class VentilatorSettings extends Fragment {
         ratioTime1 = view.findViewById(R.id.ratioTime1);
         ratioTime2 = view.findViewById(R.id.ratioTime2);
 
+        chkNA = view.findViewById( R.id.notApplicableCheckBox);
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         return view;
+
+
     }
 
     public JSONObject createJson(){

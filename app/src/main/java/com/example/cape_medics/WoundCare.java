@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ public class WoundCare extends Fragment {
     String woundStr, treatStr, barrierStr;
 
     JSONObject woundCare;
-
+    public CheckBox chkNA;
     public WoundCare() {
         // Required empty public constructor
     }
@@ -41,6 +42,16 @@ public class WoundCare extends Fragment {
         lisWound = view.findViewById(R.id.woundType);
         lisTreat = view.findViewById(R.id.treatedWith);
         lisBarrier = view.findViewById(R.id.barrier);
+
+        chkNA = view.findViewById( R.id.notApplicableCheckBox );
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         ArrayAdapter a1 = new ArrayAdapter(getContext(),R.layout.custom_checked_list,woundType);
         ArrayAdapter a2 = new ArrayAdapter(getContext(),R.layout.custom_checked_list,treatedWith);

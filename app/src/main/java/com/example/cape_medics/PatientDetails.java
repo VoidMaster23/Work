@@ -53,11 +53,13 @@ public class PatientDetails extends Fragment {
     private CheckBox chkFemale;
     private TextView lblRef;
     private EditText edtRef;
+    public CheckBox chkNa;
     JSONObject patientDetails;
     List<CheckBox> checkBoxList;
     JSONObject load;
     Cache cache;
     String saved;
+    static String toMatch = "^((((0?[1-9]|[12]\\d|3[01])[\\.\\-\\/](0?[13578]|1[02])[\\.\\-\\/]((1[6-9]|[2-9]\\d)?\\d{2}))|((0?[1-9]|[12]\\d|30)[\\.\\-\\/](0?[13456789]|1[012])[\\.\\-\\/]((1[6-9]|[2-9]\\d)?\\d{2}))|((0?[1-9]|1\\d|2[0-8])[\\.\\-\\/]0?2[\\.\\-\\/]((1[6-9]|[2-9]\\d)?\\d{2}))|(29[\\.\\-\\/]0?2[\\.\\-\\/]((1[6-9]|[2-9]\\d)?(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)|00)))|(((0[1-9]|[12]\\d|3[01])(0[13578]|1[02])((1[6-9]|[2-9]\\d)?\\d{2}))|((0[1-9]|[12]\\d|30)(0[13456789]|1[012])((1[6-9]|[2-9]\\d)?\\d{2}))|((0[1-9]|1\\d|2[0-8])02((1[6-9]|[2-9]\\d)?\\d{2}))|(2902((1[6-9]|[2-9]\\d)?(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)|00))))$";
 
 
     public PatientDetails() {
@@ -103,6 +105,17 @@ public class PatientDetails extends Fragment {
         lblRef = (TextView)view.findViewById( R.id.lblRef );
         edtRef = (EditText)view.findViewById( R.id.edtRef );
         checkBoxList = Arrays.asList(chkAdult,chkChild,chkBaby,chkAsian,chkBlack,chkWhite,chkMale,chkFemale,chkColored);
+        chkNa = view.findViewById(R.id.notApplicableCheckBox);
+
+
+        chkNa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNa.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
 
         cache = new Cache(getContext());
@@ -217,6 +230,108 @@ public class PatientDetails extends Fragment {
 
         return patientDetails;
 
+    }
+
+    public boolean validate(){
+        boolean valid  = true;
+
+        //details
+        String name = edtName.getText().toString();
+        String surname =edtSurname.getText().toString();
+        String DOB = edtDOB.getText().toString();
+        String ID = edtID.getText().toString();
+        String email = edtEmail.getText().toString();
+        String contact = edtPhone.getText().toString();
+        String alt = edtAlt.getText().toString();
+        String address = edtAddress1.getText().toString() +"\n"+edtAddress2.getText().toString() +"\n"+edtAddress3.getText().toString();
+        String ref = edtRef.getText().toString();
+
+        if(name.isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(),"Please make sure all patient details are filled in", Toast.LENGTH_SHORT).show();
+        }
+
+        if(valid){
+            if(surname.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Please make sure all patient details are filled in", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(DOB.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Please make sure all patient details are filled in", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(ID.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Please make sure all patient details are filled in", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(email.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Please make sure all patient details are filled in", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(contact.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Please make sure all patient details are filled in", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(alt.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Please make sure all patient details are filled in", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(address.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Please make sure all patient details are filled in", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(ref.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Please make sure all patient details are filled in", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(!DOB.matches(toMatch)){
+                valid = false;
+                Toast.makeText(getContext(),"Please make the date is in dd/mm/yyy format", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid) {
+            boolean allChecked = false;
+            for (CheckBox b : checkBoxList) {
+                if (b.isChecked()) {
+                    allChecked = true;
+                }
+            }
+
+            if(!allChecked){
+                valid = false;
+                Toast.makeText(getContext(),"Please make sure all patient details are filled in", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+
+
+        return valid;
     }
 
     }

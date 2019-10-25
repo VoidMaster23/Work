@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 public class CardiacMonitoring extends Fragment {
     private ImageView imageView18;
-    private CheckBox chkNA;
+    public CheckBox chkNA;
     private TextView textView13;
     private CheckBox chk3Lead;
     private CheckBox chk5Lead;
@@ -47,6 +47,15 @@ public class CardiacMonitoring extends Fragment {
         chkRhythm = (CheckBox)view.findViewById( R.id.chkRhythm );
         chkCardio = (CheckBox)view.findViewById( R.id.chkCardio );
         chkPacing = (CheckBox)view.findViewById( R.id.chkPacing );
+
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
         return view;
     }
 

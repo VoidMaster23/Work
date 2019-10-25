@@ -21,7 +21,7 @@ import java.util.List;
 
 
 public class PresentingCondition extends Fragment{
-    private CheckBox chkNA;
+    public CheckBox chkNA;
     private TextView lblPrimary;
     private EditText edtPrimary;
     private TextView textView19;
@@ -102,6 +102,14 @@ public class PresentingCondition extends Fragment{
         chkMusc = (CheckBox)view.findViewById( R.id.chkMusc );
         chkObs = (CheckBox)view.findViewById( R.id.chkObs );
         chkDeliver = (CheckBox)view.findViewById( R.id.chkDeliver );
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         checkBoxList = Arrays.asList(chkCardiac,chkAssault,chkChest,chkLessTwo,chkMoreTwo,chkAst,chkCopd,chkHead,chkAb,chkPen,chkVomit,chkFract,chkConvulse,chkMva,chkStroke,chkDrown,chkDiabetes,chkBurn,chkHypo,chkGun,chkHyper,chkInhale,chkAlcohol,chkMusc,chkDrugs,chkObs,chkFirstAid,chkDeliver);
         cache = new Cache(getContext());
@@ -213,6 +221,30 @@ public class PresentingCondition extends Fragment{
         cache.setStringProperty("presentingConditon",presentingConditon.toString());
 
         return presentingConditon;
+    }
+
+    public boolean validate(){
+        boolean valid = true;
+
+        if(edtPrimary.getText().toString().isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(),"Please enter the name of the primary presenting the complaint", Toast.LENGTH_SHORT).show();
+        }
+
+        if(valid){
+            boolean allEmpty = true;
+            for(CheckBox b : checkBoxList){
+                if(b.isChecked()){
+                    allEmpty = false;
+                    break;
+                }
+            }
+            if(allEmpty){
+                valid = false;
+                Toast.makeText(getContext(),"Please select a medical condition", Toast.LENGTH_SHORT).show();
+            }
+        }
+        return valid;
     }
 
 }

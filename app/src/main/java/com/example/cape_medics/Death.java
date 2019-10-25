@@ -39,7 +39,7 @@ public class Death extends Fragment {
         View view = inflater.inflate(R.layout.activity_death,container,false);
 
 
-/*
+
         death = new JSONObject();
 
         send = view.findViewById(R.id.send);
@@ -76,6 +76,7 @@ public class Death extends Fragment {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 try {
                     medicalTabbedView.map.put("Call Details", medicalTabbedView.medicalFormCalls.createJson());
                     medicalTabbedView.map.put("Patient Details", medicalTabbedView.patientDetails.createJson());
@@ -107,7 +108,6 @@ public class Death extends Fragment {
                     medicalTabbedView.map.put("Disposal",medicalTabbedView.disposal.createJson());
                     medicalTabbedView.map.put("Crew Details", medicalTabbedView.crewDetails.createJson());
                     medicalTabbedView.map.put("Accompanying Practitioner", medicalTabbedView.acompPrac.createJson());
-                    medicalTabbedView.map.put("Items Handed over", medicalTabbedView.handed.createJson());
                     medicalTabbedView.map.put("Handover/disposal",medicalTabbedView.handoff_frag.createJson());
                     medicalTabbedView.map.put("Notes",medicalTabbedView.notes.createJson());
                     medicalTabbedView.map.put("Death",createJson());
@@ -126,11 +126,10 @@ public class Death extends Fragment {
 
         try {
             CategoryType = new JSONArray(getActivity().getIntent().getStringExtra("Category Type"));
-        }catch (Exception e) {}*/
+        }catch (Exception e) {}
 
         return view;
     }
-/*
     public void removeStringPropertys(String code, Cache cache, Context context){
         //use this method to remove all string caches
         cache = new Cache(context);
@@ -194,7 +193,7 @@ public class Death extends Fragment {
 
 
 
-    }*/
+    }
 
 
 

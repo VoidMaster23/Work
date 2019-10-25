@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -18,6 +19,7 @@ public class Handoff_frag extends Fragment {
     EditText destination,name,quality,service;
     ListView itemsHanded;
     JSONObject items;
+    CheckBox chkNA;
 
     public Handoff_frag() {
         // Required empty public constructor
@@ -32,6 +34,16 @@ public class Handoff_frag extends Fragment {
         name = view.findViewById(R.id.nameEdit);
         quality = view.findViewById(R.id.regEdit);
         service = view.findViewById(R.id.serviceEdit);
+
+        chkNA = view.findViewById( R.id.notApplicableCheckBox);
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         itemsHanded = view.findViewById(R.id.items);
         itemsHanded.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);

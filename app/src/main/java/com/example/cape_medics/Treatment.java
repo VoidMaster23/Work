@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import org.json.JSONObject;
@@ -13,6 +14,7 @@ import org.json.JSONObject;
 public class Treatment extends Fragment {
     EditText examination, otherProviders, diagnosis;
     JSONObject treatment;
+    CheckBox chkNA;
     public Treatment(){
 
     }
@@ -24,6 +26,15 @@ public class Treatment extends Fragment {
         examination = view.findViewById(R.id.examinationEdit);
         otherProviders = view.findViewById(R.id.otherEdit);
         diagnosis = view.findViewById(R.id.diagnosisEdit);
+        chkNA = view.findViewById( R.id.notApplicableCheckBox2);
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         return view;
     }

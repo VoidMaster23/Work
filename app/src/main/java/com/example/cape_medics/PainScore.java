@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -27,6 +28,8 @@ public class PainScore extends Fragment {
     RelativeLayout painLay;
 
     JSONObject painScore;
+    
+    public CheckBox chkNA;
 
     public PainScore() {
         // Required empty public constructor
@@ -52,6 +55,15 @@ public class PainScore extends Fragment {
         textView2 = view.findViewById(R.id.textView52);
         textView3 = view.findViewById(R.id.textView53);
         textView4 = view.findViewById(R.id.textView54);
+        chkNA = view.findViewById( R.id.notApplicableCheckBox );
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         //show = view.findViewById(R.id.btnPainScale);
         painLay = view.findViewById(R.id.relLayPain);
@@ -136,6 +148,33 @@ public class PainScore extends Fragment {
         }
 
         return painScore;
+    }
+    
+    public boolean validate() {
+        boolean valid = true;
+
+        String preStr = pre.getText().toString();
+        String post5Str = post1.getText().toString();
+        String post10Str = post2.getText().toString();
+        String hospStr = hosp.getText().toString();
+
+        if (preStr.isEmpty() || post5Str.isEmpty() || post10Str.isEmpty() || hospStr.isEmpty()) {
+            valid = false;
+            Toast.makeText(getContext(), "Please record pain scores", Toast.LENGTH_SHORT).show();
+        }
+
+        if (valid){
+            try {
+                int preint = Integer.parseInt(preStr);
+                int post5int = Integer.parseInt(post5Str);
+                int post10int = Integer.parseInt(post10Str);
+                int hospint = Integer.parseInt(hospStr);
+            } catch (Exception e) {
+                valid = false;
+                Toast.makeText(getContext(), "Please ensure that all pain score values entered are digits", Toast.LENGTH_SHORT).show();
+            }
+    }
+        return valid;
     }
 
 }

@@ -31,6 +31,7 @@ public class InjuryMatrix extends Fragment {
     String[] causes;
     String[] injuryType = {"Abrasion","Amputation","Blunt Injury","Burn","Crushing Injury","Dislocation/Fracture","Gunshot Wound","Laceration","Pain","Puncture/Stab","Tissue Swelling"};
     String[] bodyPart = {"Head","Face","Neck","Chest","Back","Abdomen","Pelvic/Genitalia","Upper Extremity","Lower Extremity"};
+    public CheckBox chkNA;
 
     private TextView textView31;
     private Spinner spinner2;
@@ -65,6 +66,15 @@ public class InjuryMatrix extends Fragment {
         spinner2 = (Spinner)view.findViewById( R.id.spinner2 );
         spinner3 = (Spinner)view.findViewById( R.id.spinner3 );
         spinner7 = (Spinner)view.findViewById( R.id.spinner7 );
+        chkNA = view.findViewById( R.id.notApplicableCheckBox );
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         String filename = null;
 

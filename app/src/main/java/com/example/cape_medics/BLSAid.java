@@ -18,7 +18,7 @@ public class BLSAid extends Fragment {
     ListView items;
     ListView items2;
     JSONObject BLS_ILSAidtoPatient;
-    CheckBox oralAirway, needleCrich, O2Mask, eti, sga, nasalInt, manuelDefib, ioTherapy, ngt;
+    CheckBox oralAirway, needleCrich, O2Mask, eti, sga, nasalInt, manuelDefib, ioTherapy, ngt, chkNA;
     EditText oralAirwayEdit, needleCrichEdit, O2MaskEdit, etiEdit,sgaEdit,nasalIntEdit, manuelDefibEdit, ioTherapyEdit,ngtEdit;
 
     public BLSAid(){
@@ -50,6 +50,15 @@ public class BLSAid extends Fragment {
         ioTherapyEdit = view.findViewById(R.id.ioEdit);
         ngt = view.findViewById(R.id.ngtChk);
         ngtEdit = view.findViewById(R.id.ngtEdit);
+        chkNA = view.findViewById( R.id.notApplicableCheckBox );
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         items.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         items2.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);

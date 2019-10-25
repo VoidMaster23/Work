@@ -19,7 +19,7 @@ import java.util.HashMap;
 public class medicalTabbedView extends AppCompatActivity {
 
     private TabLayout tabLayout;
-    private ViewPager viewPager;
+    public static ViewPager viewPager;
     public static int int_items = 33;
 
 
@@ -53,10 +53,11 @@ public class medicalTabbedView extends AppCompatActivity {
     public static Disposal disposal;
     public static CrewDetails crewDetails;
     public static AcompPrac acompPrac;
-    public static ItemsHanded handed;
+
     public static Handoff_frag handoff_frag;
     public static Notes notes;
     public static Death death;
+    public static int current;
     Cache cache;
 
 
@@ -127,24 +128,7 @@ public class medicalTabbedView extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
-
-
-                switch (tabNames[i]){
-
-
-                    case "Death": {
-
-                        Log.i("HERE", "I made it ");
-
-                    }
-
-
-
-
-
-
-
-                }
+                current = i;
             }
 
             @Override
@@ -156,6 +140,7 @@ public class medicalTabbedView extends AppCompatActivity {
             public void onPageScrollStateChanged(int i) {
 
             }
+
         });
 
     }

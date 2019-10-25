@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ public class ApgarScore extends Fragment {
     EditText activity, pulse, grim, look, breathe;
     Button calc;
     TextView textView;
+    public CheckBox chkNA;
 
     JSONObject apgarScore;
 
@@ -41,6 +43,16 @@ public class ApgarScore extends Fragment {
 
         textView = view.findViewById(R.id.apgarScore);
         calc = view.findViewById(R.id.btnCalcapgar);
+
+        chkNA = view.findViewById( R.id.notApplicableCheckBox );
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         calc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +81,13 @@ public class ApgarScore extends Fragment {
         return apgarScore;
     }
 
+
+    public boolean validate(){
+        boolean valid = true;
+
+        return valid;
+
+    }
 
 
 }

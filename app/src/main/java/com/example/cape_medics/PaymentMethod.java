@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -16,7 +17,7 @@ public class PaymentMethod extends Fragment {
     JSONObject paymentMethod;
     TextView receipt, name, plan, number, member;
     EditText receiptEdit, nameEdit, planEdit, numberEdit, memberEdit;
-    CheckBox medicalaid, account, cash, credit, gop;
+    CheckBox medicalaid, account, cash, credit, gop,chkNA;
 
     public PaymentMethod(){}
 
@@ -44,6 +45,17 @@ public class PaymentMethod extends Fragment {
         planEdit = view.findViewById(R.id.planEdit);
         numberEdit = view.findViewById(R.id.numberEdit);
         memberEdit = view.findViewById(R.id.memberEdit);
+
+        chkNA = view.findViewById( R.id.notApplicableCheckBox);
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
+
 
         medicalaid.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +86,9 @@ public class PaymentMethod extends Fragment {
 
                     plan.setVisibility(View.VISIBLE);
                     planEdit.setVisibility(View.VISIBLE);
+
+                    receipt.setVisibility(View.INVISIBLE);
+                    receiptEdit.setVisibility(View.INVISIBLE);
 
                 }
                 else{
@@ -148,6 +163,8 @@ public class PaymentMethod extends Fragment {
 
                     plan.setVisibility(View.VISIBLE);
                     planEdit.setVisibility(View.VISIBLE);
+                    receipt.setVisibility(View.INVISIBLE);
+                    receiptEdit.setVisibility(View.INVISIBLE);
 
                 }
                 else{
@@ -226,6 +243,9 @@ public class PaymentMethod extends Fragment {
                     plan.setVisibility(View.VISIBLE);
                     planEdit.setVisibility(View.VISIBLE);
 
+                    receipt.setVisibility(View.INVISIBLE);
+                    receiptEdit.setVisibility(View.INVISIBLE);
+
                 }
                 else{
                     name.setVisibility(View.INVISIBLE);
@@ -251,46 +271,97 @@ public class PaymentMethod extends Fragment {
         if (medicalaid.isChecked()){
             try{
                 paymentMethod.put("Medical Aid",  medicalaid.getText().toString());
-                paymentMethod.put("Name",  nameEdit);
-                paymentMethod.put("Plan",  planEdit);
-                paymentMethod.put("Receipt Number",  receiptEdit);
-                paymentMethod.put("Main Member",  memberEdit);
+                paymentMethod.put("Name",  nameEdit.getText().toString());
+                paymentMethod.put("Plan",  planEdit.getText().toString());
+                paymentMethod.put("Receipt Number",  numberEdit.getText().toString());
+                paymentMethod.put("Main Member",  memberEdit.getText().toString());
             }catch(Exception e){}
         }
         if (account.isChecked()) {
             try{
                 paymentMethod.put("Account",  account.getText().toString());
-                paymentMethod.put("Name",  nameEdit);
-                paymentMethod.put("Plan",  planEdit);
-                paymentMethod.put("Receipt Number",  receiptEdit);
-                paymentMethod.put("Main Member",  memberEdit);
+                paymentMethod.put("Name",  nameEdit.getText().toString());
+                paymentMethod.put("Plan",  planEdit.getText().toString());
+                paymentMethod.put("Receipt Number",  numberEdit.getText().toString());
+                paymentMethod.put("Main Member",  memberEdit.getText().toString());
             }catch(Exception e){}
         }
         if (cash.isChecked()){
             try{
                 paymentMethod.put("Cash",  cash.getText().toString());
-                paymentMethod.put("Receipt Number",  receiptEdit);
+                paymentMethod.put("Receipt Number",  receiptEdit.getText().toString());
             }catch(Exception e){}
         }
         if (credit.isChecked()){
             try{
                 paymentMethod.put("Credit Card/EFT",  credit.getText().toString());
-                paymentMethod.put("Receipt Number",  receiptEdit);
+                paymentMethod.put("Receipt Number",  receiptEdit.getText().toString());
             }catch(Exception e){}
         }
         if (gop.isChecked()){
             try{
                 paymentMethod.put("G.O.P",  gop.getText().toString());
-                paymentMethod.put("Name",  nameEdit);
-                paymentMethod.put("Plan",  planEdit);
-                paymentMethod.put("Receipt Number",  receiptEdit);
-                paymentMethod.put("Main Member",  memberEdit);
+                paymentMethod.put("Name",  nameEdit.getText().toString());
+                paymentMethod.put("Plan",  planEdit.getText().toString());
+                paymentMethod.put("Receipt Number",  numberEdit.getText().toString());
+                paymentMethod.put("Main Member",  memberEdit.getText().toString());
             }catch(Exception e){}
         }
 
         return paymentMethod;
     }
 
+
+    public boolean validate(){
+        boolean valid = true;
+
+        if(medicalaid.isChecked() || gop.isChecked() ||account.isChecked()){
+
+            if(nameEdit.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Please enter payment method details",Toast.LENGTH_SHORT).show();
+            }
+
+            if (valid){
+                if(planEdit.getText().toString().isEmpty()){
+                    valid = false;
+                    Toast.makeText(getContext(),"Please enter payment method details",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+            if (valid){
+                if(planEdit.getText().toString().isEmpty()){
+                    valid = false;
+                    Toast.makeText(getContext(),"Please enter payment method details",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+            if (valid){
+                if(numberEdit.getText().toString().isEmpty()){
+                    valid = false;
+                    Toast.makeText(getContext(),"Please enter payment method details",Toast.LENGTH_SHORT).show();
+                }
+
+                if (valid){
+                    if(memberEdit.getText().toString().isEmpty()){
+                        valid = false;
+                        Toast.makeText(getContext(),"Please enter payment method details",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }
+
+        if(cash.isChecked() || credit.isChecked()){
+            if(receiptEdit.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Please enter payment method details",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        return valid;
+    }
 
 
 

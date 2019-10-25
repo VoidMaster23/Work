@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class RefusalofCare extends Fragment {
     Button go1, go2;
     JSONObject refusalOfCare;
-    CheckBox seen, treated, examined, option1, option2, option3, option4;
+    CheckBox seen, treated, examined, option1, option2, option3, option4,chkNA;
     EditText name,contactNumber;
     String observationType, option,statement;
     public RefusalofCare(){}
@@ -35,6 +35,15 @@ public class RefusalofCare extends Fragment {
         option3 = view.findViewById(R.id.thirdChk);
         option4 = view.findViewById(R.id.fourthChk);
         contactNumber = view.findViewById(R.id.contactEdit);
+        chkNA = view.findViewById( R.id.notApplicableCheckBox);
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         go1 = view.findViewById(R.id.signatureButton);
         go2 = view.findViewById(R.id.witnessButton);

@@ -1,6 +1,7 @@
 package com.example.cape_medics;
 
 import android.content.Intent;
+import android.preference.CheckBoxPreference;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import org.json.JSONObject;
@@ -16,6 +18,8 @@ public class CrewDetails extends Fragment {
     Button go;
     JSONObject crewDetails;
     EditText crew1, hpcsa1, crew2, hpcsa2, crew3, hpcsa3;
+    CheckBox chkNA;
+
     public CrewDetails (){}
 
     @Override
@@ -29,6 +33,15 @@ public class CrewDetails extends Fragment {
         hpcsa2 = view.findViewById(R.id.hpcsa2Edit);
         crew3 = view.findViewById(R.id.crew3Edit);
         hpcsa3 = view.findViewById(R.id.hpcsa3Edit);
+        chkNA = view.findViewById( R.id.notApplicableCheckBox);
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         go = view.findViewById(R.id.signatureButton);
 

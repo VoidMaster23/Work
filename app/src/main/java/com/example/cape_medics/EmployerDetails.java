@@ -9,12 +9,13 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
 public class EmployerDetails extends Fragment {
     JSONObject employerDetails;
-    CheckBox iod;
+    CheckBox iod,chkNA;
     TextView workmesn;
     EditText workmensEdit, company,address,address1,address2,email,contactPerson,contactNumber;
 
@@ -36,6 +37,18 @@ public class EmployerDetails extends Fragment {
         email = view.findViewById(R.id.emailEdit);
         contactPerson = view.findViewById(R.id.personEdit);
         contactNumber = view.findViewById(R.id.numberEdit);
+
+        chkNA = view.findViewById( R.id.notApplicableCheckBox2);
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
+
+
 
 
         iod.setOnClickListener(new View.OnClickListener() {
@@ -64,14 +77,41 @@ public class EmployerDetails extends Fragment {
             }catch(Exception e){}
         }
         try{
-            employerDetails.put("Company Name", company.toString());
-            employerDetails.put("Address", address.toString()+" "+address1.toString()+" "+address2.toString());
-            employerDetails.put("Email", email.toString());
-            employerDetails.put("Contact Person", contactPerson.toString());
-            employerDetails.put("Contact Number", contactNumber.toString());
+            employerDetails.put("Company Name", company.getText().toString());
+            employerDetails.put("Address", address.getText().toString()+" "+address1.getText().toString()+" "+address2.getText().toString());
+            employerDetails.put("Email", email.getText().toString());
+            employerDetails.put("Contact Person", contactPerson.getText().toString());
+            employerDetails.put("Contact Number", contactNumber.getText().toString());
         }catch(Exception e){}
 
         return employerDetails;
+    }
+
+    public boolean validate(){
+        boolean valid = true;
+
+        if(iod.isChecked() && workmensEdit.getText().toString().isEmpty()){
+            valid  = false;
+            Toast.makeText(getContext(),"Please fill in all the employer details", Toast.LENGTH_SHORT).show();
+        }
+
+        if(valid){
+            if(company.getText().toString().isEmpty()){
+                valid  = false;
+                Toast.makeText(getContext(),"Please fill in all the employer details", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        String ad = address.getText().toString()+" "+address1.getText().toString()+" "+address2.getText().toString();
+        if(valid){
+            if(ad.isEmpty()){
+                valid  = false;
+                Toast.makeText(getContext(),"Please fill in all the employer details", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+        return valid;
     }
 
 

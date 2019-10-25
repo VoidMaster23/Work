@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public class Mobility extends Fragment {
     CheckBox stretcher, wheelchair, walking, crutches;
-    CheckBox neck, scoop, spinal, vacuum;
+    CheckBox neck, scoop, spinal, vacuum,chkNA;
     String transportMethod, supportDevice;
     JSONObject mobility;
 
@@ -37,6 +37,16 @@ public class Mobility extends Fragment {
         scoop = view.findViewById(R.id.scoopChk);
         spinal = view.findViewById(R.id.spinalChk);
         vacuum = view.findViewById(R.id.vacuumChk);
+
+        chkNA = view.findViewById( R.id.notApplicableCheckBox);
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         stretcher.setOnClickListener(new View.OnClickListener() {
             @Override

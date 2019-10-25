@@ -126,7 +126,8 @@ public class SwapShift extends AppCompatActivity {
             super.onPostExecute(aVoid);
             Toast.makeText(getApplicationContext(), responseServer, Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
-            i.putExtra("first","not");
+            i.putExtra("first","false");
+            i.putExtra("code",Home_Screen_Crew.code);
             startActivity(i);
 
 

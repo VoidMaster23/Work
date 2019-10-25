@@ -95,8 +95,17 @@ JSONObject primarySurvery;
         textView18 = (TextView)view.findViewById( R.id.textView18 );
         chkTwoPlus = (CheckBox)view.findViewById( R.id.chkTwoPlus );
         chkTwoMinus = (CheckBox)view.findViewById( R.id.chkTwoMinus );
-        checkBoxList = Arrays.asList(chkNA,chkAbnormal,chkAbsent,chkClear,chkOcc,chkNoisy,chkSpine,chkRadial,chkBrachial,chkCarotid,chkFemoral,chkHigh,chkLow,chkMed,chSix,chkZero,chkNormal,chkTwoMinus,chkTwoPlus);
+        checkBoxList = Arrays.asList(chkAbnormal,chkAbsent,chkClear,chkOcc,chkNoisy,chkSpine,chkRadial,chkBrachial,chkCarotid,chkFemoral,chkHigh,chkLow,chkMed,chSix,chkZero,chkNormal,chkTwoMinus,chkTwoPlus);
 
+
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
         cache = new Cache(getContext());
         saved = cache.getStringProperty("primarySurvery");
         if(saved != null ){
@@ -203,6 +212,80 @@ JSONObject primarySurvery;
         cache.setStringProperty("primarySurvery",primarySurvery.toString());
 
         return primarySurvery;
+    }
+
+    public boolean validate(){
+        boolean valid = true;
+
+        String time = edtTime.getText().toString();
+
+        if(time.isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(),"Please enter a primary survey time",Toast.LENGTH_SHORT).show();
+        }
+
+        if(valid){
+            if(!time.matches(MedicalFormCalls.toMatch)){
+                valid = false;
+                Toast.makeText(getContext(),"Please enter a primary survey time in hh:mm format",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            boolean allEmpty = true;
+            boolean firstEmpty = true, secondEmpty = true, thirdEmpty = true, fifthEmpty = true, fourthEmpty = true;
+            for(int i  = 0; i < checkBoxList.size(); i++){
+
+
+
+                if(checkBoxList.get(i).isChecked() && i < 4){
+                    firstEmpty = false;
+                    allEmpty = false;
+                }
+
+                if(checkBoxList.get(i).isChecked() && i >= 4 && i < 9 ){
+                    secondEmpty = false;
+                    allEmpty = false;
+                }
+
+                if(checkBoxList.get(i).isChecked() && i >= 9 && i < 14 ){
+                    thirdEmpty = false;
+                    allEmpty = false;
+                }
+
+                if(checkBoxList.get(i).isChecked() && i >= 14 && i < 16 ){
+                    fourthEmpty = false;
+                    allEmpty = false;
+                }
+                if(checkBoxList.get(i).isChecked() && i >= 16){
+                    fifthEmpty = false;
+                    allEmpty = false;
+                }
+
+            }
+            if(allEmpty){
+                valid = false;
+                Toast.makeText(getContext(),"Please fill in primary survey", Toast.LENGTH_SHORT).show();
+            }else if(firstEmpty){
+                valid = false;
+                Toast.makeText(getContext(),"Please check the patient airway", Toast.LENGTH_SHORT).show();
+            }else if(secondEmpty){
+                valid = false;
+                Toast.makeText(getContext(),"Please check the patient respiration rate", Toast.LENGTH_SHORT).show();
+            }else if(thirdEmpty){
+                valid = false;
+                Toast.makeText(getContext(),"Please check the patient pulse", Toast.LENGTH_SHORT).show();
+            }else if(fourthEmpty){
+                valid = false;
+                Toast.makeText(getContext(),"Please check the patient  respiration rate", Toast.LENGTH_SHORT).show();
+            }else if(fifthEmpty){
+                valid = false;
+                Toast.makeText(getContext(),"Please check the patient cap refill", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        return valid;
     }
 
 

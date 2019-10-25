@@ -25,7 +25,7 @@ import java.util.List;
 
 public class SampleHistory extends Fragment {
     private ImageView imageView14;
-    private CheckBox chkNA;
+    public CheckBox chkNA;
     private TextView lblSigns;
     private EditText edtSigns;
     private EditText edtAllergies;
@@ -74,6 +74,15 @@ public class SampleHistory extends Fragment {
         lblIntake = (TextView)view.findViewById( R.id.lblIntake );
         lblEvents = (TextView)view.findViewById( R.id.lblEvents );
 
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
+
         sampleHistory = new JSONObject();
         myOBJ = new JSONObject();
         cache = new Cache(getContext());
@@ -81,12 +90,12 @@ public class SampleHistory extends Fragment {
         if(saved != null ){
             try {
                 load = new JSONObject(saved);
-                edtSigns.setText(sampleHistory.getString("Signs"));
-                edtAllergies.setText(sampleHistory.getString("Allergies"));
-                edtMedication.setText(sampleHistory.getString("Medications"));
-                edtPast.setText(sampleHistory.getString("Past"));
-                edtIntake.setText(sampleHistory.getString("Last"));
-                edtEvents.setText(sampleHistory.getString("Events"));
+                edtSigns.setText(load.getString("Signs"));
+                edtAllergies.setText(load.getString("Allergies"));
+                edtMedication.setText(load.getString("Medications"));
+                edtPast.setText(load.getString("Past"));
+                edtIntake.setText(load.getString("Last"));
+                edtEvents.setText(load.getString("Events"));
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -129,6 +138,28 @@ public class SampleHistory extends Fragment {
         Log.i("Called","Summon");
         cache.setStringProperty("sampleHistory",sampleHistory.toString());
         return sampleHistory;
+    }
+
+    public boolean validate(){
+        boolean valid = true;
+        String signs = edtSigns.getText().toString();
+        String allergies = edtAllergies.getText().toString();
+        String medication = edtMedication.getText().toString();
+        String past = edtPast.getText().toString();
+        String last = edtIntake.getText().toString();
+        String events = edtEvents.getText().toString();
+
+
+        if(signs.isEmpty() || allergies.isEmpty() || medication.isEmpty() || past.isEmpty() || last.isEmpty() || events.isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(),"Please make sure all sample history details have been entered", Toast.LENGTH_SHORT).show();
+
+        }
+
+
+
+
+        return valid;
     }
 
 

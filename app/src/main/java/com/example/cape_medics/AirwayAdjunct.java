@@ -31,6 +31,7 @@ JSONObject airwayAdjunct;
 String category;
 String numAttempt;
 String posChk;
+public CheckBox chkNA;
 
 Integer[] attempt = {1,2,3,4};
 String[] pos = {"Auscultation","ETCO2"};
@@ -55,6 +56,16 @@ String[] pos = {"Auscultation","ETCO2"};
         myList1.add("S-CRICH");
 
         list = view.findViewById(R.id.airway);
+        chkNA = view.findViewById(R.id.notApplicableCheckBox);
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
+
         checkBox = view.findViewById(R.id.chkAchieved);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),R.layout.custom_checked_list,myList1);
 

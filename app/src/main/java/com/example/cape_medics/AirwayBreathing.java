@@ -25,6 +25,7 @@ public class AirwayBreathing extends Fragment {
     ListView listView;
     JSONObject airwayBreathing;
     String management;
+    public CheckBox chkNA;
     public AirwayBreathing() {
         // Required empty public constructor
     }
@@ -52,6 +53,7 @@ public class AirwayBreathing extends Fragment {
 
         listView = view.findViewById(R.id.listView);
 
+
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -60,6 +62,16 @@ public class AirwayBreathing extends Fragment {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
                 management = text.getText().toString();
                 text.toggle();
+            }
+        });
+
+        chkNA = view.findViewById(R.id.notApplicableCheckBox);
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
             }
         });
 

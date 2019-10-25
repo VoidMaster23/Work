@@ -26,7 +26,7 @@ private Button button1, button2;
 private Spinner spn1,spn2;
 
 
-    private CheckBox chkNA;
+    public CheckBox chkNA;
     private ScrollView canscrl1;
 
     private TextView lblTim1;
@@ -134,6 +134,14 @@ spn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 });
 
         chkNA = view.findViewById( R.id.chkNA );
+        chkNA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chkNA.isChecked()){
+                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
 
         canscrl1 = view.findViewById( R.id.canscrl1 );
 
