@@ -1,5 +1,6 @@
 package com.example.cape_medics;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -59,6 +61,7 @@ public class medicalTabbedView extends AppCompatActivity {
     public static Death death;
     public static int current;
     Cache cache;
+    static String code, authorisation;
 
 
     static HashMap<String,JSONObject> map;
@@ -76,6 +79,12 @@ public class medicalTabbedView extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
+
+        Intent i = getIntent();
+
+        code = i.getStringExtra("code");
+        authorisation = i.getStringExtra("Authorisation");
+        Log.i("Authorisation",""+authorisation);
 
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
 

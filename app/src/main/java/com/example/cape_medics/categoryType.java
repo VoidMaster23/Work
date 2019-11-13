@@ -3,6 +3,7 @@ package com.example.cape_medics;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.CheckBox;
@@ -37,7 +38,7 @@ public class categoryType extends AppCompatActivity {
     JSONObject eventDetails;
 
     JSONObject primary;
-    String callType_primary, saved;
+    String callType_primary, saved, authorisation;
 
     JSONObject CategoryType;
 
@@ -100,6 +101,10 @@ public class categoryType extends AppCompatActivity {
         String DateTime = dateFormat.format(date);
         String Date = DateTime.substring(0,10);
         dateView.setText(Date);
+
+        Intent i = getIntent();
+        authorisation = i.getStringExtra("Authorisation");
+        Log.i("AuthorisationCategory",""+authorisation);
 
         saved = cache.getStringProperty("categoryType"+code);
         if ( saved != null){
@@ -230,11 +235,13 @@ public class categoryType extends AppCompatActivity {
         cache.setStringProperty("categoryType"+code, CategoryType.toString());
 
         //sends JSONArray to
-        Intent intent= new Intent(getApplicationContext(), Death.class);
+        Intent intent= new Intent(getApplicationContext(), medicalTabbedView.class);
         intent.putExtra("Category Type", CategoryType.toString());
+        intent.putExtra("code", code);
+        intent.putExtra("Authorisation",authorisation);
+        Log.i("Authorisation1",""+authorisation);
 
-        Intent i = new Intent(getApplicationContext(), medicalTabbedView.class);
-        startActivity(i);
+        startActivity(intent);
     }
 
 

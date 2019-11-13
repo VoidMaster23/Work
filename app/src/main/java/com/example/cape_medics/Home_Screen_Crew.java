@@ -118,6 +118,7 @@ public class Home_Screen_Crew extends AppCompatActivity {
             authorisation = bundle.getString("Authorisation");
             cache.setStringProperty("authorisation"+code, authorisation);
 
+
             id = bundle.getInt("Crew ID");
             cache.setStringProperty("id"+code, Integer.toString(id));
 
@@ -329,6 +330,8 @@ public class Home_Screen_Crew extends AppCompatActivity {
     public void MedRec(View v){
     Intent i = new Intent(getApplicationContext(), categoryType.class);
     i.putExtra("code",code);
+    i.putExtra("Authorisation",authorisation);
+        Log.i("AuthorisationHomeSend",""+authorisation);
     startActivity(i);
 
     }

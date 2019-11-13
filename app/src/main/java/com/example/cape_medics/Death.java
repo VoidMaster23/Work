@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -16,20 +19,39 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ScheduledExecutorService;
+
+import static android.support.v4.content.ContextCompat.getSystemService;
 
 public class Death extends Fragment {
     JSONArray CategoryType;
     Button send, go;
-    JSONObject death;
+    JSONObject death, response;
     EditText location, time, place, date, name, post, time2;
     CheckBox carotidPulseLeft, carotidPulseRight, breathingYes, breathingNo, eyeYes, eyeNo, ecgYes, ecgNo, pupilsYes, pupilsNo;
-    String carotidPulse, breathing, dollEyeMovements, ecgStraightLine, bilateralFixedDilatedPupils;
+    String carotidPulse, breathing, dollEyeMovements, ecgStraightLine, bilateralFixedDilatedPupils, responseServer;
     private static final String IMAGE_DIRECTORY = "/Pictures";
+    String url;
+    boolean connected;
+    Cache cache;
+    ScheduledExecutorService scheduledExecutorService;
 
     public Death(){}
 
@@ -37,7 +59,8 @@ public class Death extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_death,container,false);
-
+        url = "http://capemedicstestserver-com.stackstaging.com/apktest/.php";
+        cache = new Cache(getContext());
 
 
         death = new JSONObject();
@@ -76,54 +99,36 @@ public class Death extends Fragment {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               // boolean flag = medicalTabbedView.medicalFormCalls.validate() && medicalTabbedView.patientDetails.validate() && medicalTabbedView.primarySurvey.validate() && medicalTabbedView.presentingCondition.validate()
+                      //  && medicalTabbedView.presentingCondition.validate() && medicalTabbedView.sampleHistory.validate() &&  medicalTabbedView.resuscitation.validate() && medicalTabbedView.score.validate()
+                     //   && medicalTabbedView.apgarScore.validate() && medicalTabbedView.employerDetails.validate() && medicalTabbedView.paymentMethod.validate() && medicalTabbedView.payment.validate();
+             //Add this later
 
-                try {
-
-                    medicalTabbedView.map.put("Call Details", medicalTabbedView.medicalFormCalls.createJson());
-                    medicalTabbedView.map.put("Patient Details", medicalTabbedView.patientDetails.createJson());
-                    medicalTabbedView.map.put("Primary Survey",medicalTabbedView.primarySurvey.createJson());
-                    medicalTabbedView.map.put("Presenting Condition", medicalTabbedView.presentingCondition.createJson());
-                    medicalTabbedView.map.put("Sample History",medicalTabbedView.sampleHistory.createJson());
-                    medicalTabbedView.map.put("Vital Signs",medicalTabbedView.vitalSigns.createJson());
-                    medicalTabbedView.map.put("Airway & Breathing Management", medicalTabbedView.airwayBreathing.createJson());
-                    medicalTabbedView.map.put("Airway Adjunct", medicalTabbedView.airwayAdjunct.createJson());
-                    medicalTabbedView.map.put("Resuscitation", medicalTabbedView.resuscitation.createJson());
-                    medicalTabbedView.map.put("Cannulation", medicalTabbedView.cannulation.createJson());
-                    medicalTabbedView.map.put("Drugs Administered",medicalTabbedView.drugsAdministered.createJson());
-                    medicalTabbedView.map.put("Injury Matrix",medicalTabbedView.injuryMatrix.createJson());
-                    medicalTabbedView.map.put("Cardiac Monitoring", medicalTabbedView.cardiacMonitoring.createJson());
-                    medicalTabbedView.map.put("Glasgow Coma Score", medicalTabbedView.comaScore.createJson());
-                    medicalTabbedView.map.put("Wound Care", medicalTabbedView.woundCare.createJson());
-                    medicalTabbedView.map.put("Burns", medicalTabbedView.burns.createJson());
-                    medicalTabbedView.map.put("Pain Score", medicalTabbedView.score.createJson());
-                    medicalTabbedView.map.put("Stroke",medicalTabbedView.stroke.createJson());
-                    medicalTabbedView.map.put("APGAR Score", medicalTabbedView.apgarScore.createJson());
-                    medicalTabbedView.map.put("BLS/ILS Aid",medicalTabbedView.blsAid.createJson());
-                    medicalTabbedView.map.put("Treatment",medicalTabbedView.treatment.createJson());
-                    medicalTabbedView.map.put("Ventilator Settings",medicalTabbedView.ventilatorSettings.createJson());
-                    medicalTabbedView.map.put("Employers Details",medicalTabbedView.employerDetails.createJson());
-                    medicalTabbedView.map.put("Payment Method",medicalTabbedView.paymentMethod.createJson());
-                    medicalTabbedView.map.put("Guarantee of payment",medicalTabbedView.payment.createJson());
-                    medicalTabbedView.map.put("Refusal of care",medicalTabbedView.refusalofCare.createJson());
-                    medicalTabbedView.map.put("Mobility",medicalTabbedView.mobility.createJson());
-                    medicalTabbedView.map.put("Disposal",medicalTabbedView.disposal.createJson());
-                    medicalTabbedView.map.put("Crew Details", medicalTabbedView.crewDetails.createJson());
-                    medicalTabbedView.map.put("Accompanying Practitioner", medicalTabbedView.acompPrac.createJson());
-                    medicalTabbedView.map.put("Handover/disposal",medicalTabbedView.handoff_frag.createJson());
-                    medicalTabbedView.map.put("Notes",medicalTabbedView.notes.createJson());
-                    medicalTabbedView.map.put("Death",createJson());
-                    Log.i("MEDICAL DATA",medicalTabbedView.map.toString());
-
+                ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                    //we are connected to a network
+                    connected = true;
+                }
+                else connected = false;
+                if (connected) {
+                    Death.AsyncT send = new Death.AsyncT();
+                    send.execute();
                     Intent i = new Intent(getContext(), Home_Screen_Crew.class);
-                    i.putExtra("first","false");
-                    i.putExtra("code",Home_Screen_Crew.code);
-
+                    //scheduledExecutorService.shutdown();
+                    i.putExtra("code",medicalTabbedView.code);
+                    i.putExtra("first","not");
+                    i.putExtra("authorisation",medicalTabbedView.authorisation);
                     startActivity(i);
-                    
-                    
-                }catch (Exception e){}
+                }
+                else {
+                    Toast.makeText(getContext(), "Please establish an internet connection", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
+
+
 
         try {
             CategoryType = new JSONArray(getActivity().getIntent().getStringExtra("Category Type"));
@@ -194,6 +199,87 @@ public class Death extends Fragment {
 
 
 
+    }
+
+
+    class AsyncT extends AsyncTask<Void, Void , Void>{
+        @Override
+        protected Void doInBackground(Void... voids){
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url);
+
+            try {
+                if (true) {
+                    medicalTabbedView.map.put("Call Details", medicalTabbedView.medicalFormCalls.createJson());
+                    medicalTabbedView.map.put("Patient Details", medicalTabbedView.patientDetails.createJson());
+                    medicalTabbedView.map.put("Primary Survey", medicalTabbedView.primarySurvey.createJson());
+                    medicalTabbedView.map.put("Presenting Condition", medicalTabbedView.presentingCondition.createJson());
+                    medicalTabbedView.map.put("Sample History", medicalTabbedView.sampleHistory.createJson());
+                    medicalTabbedView.map.put("Vital Signs", medicalTabbedView.vitalSigns.createJson());
+                    medicalTabbedView.map.put("Airway & Breathing Management", medicalTabbedView.airwayBreathing.createJson());
+                    medicalTabbedView.map.put("Airway Adjunct", medicalTabbedView.airwayAdjunct.createJson());
+                    medicalTabbedView.map.put("Resuscitation", medicalTabbedView.resuscitation.createJson());
+                    medicalTabbedView.map.put("Cannulation", medicalTabbedView.cannulation.createJson());
+                    medicalTabbedView.map.put("Drugs Administered", medicalTabbedView.drugsAdministered.createJson());
+                    medicalTabbedView.map.put("Injury Matrix", medicalTabbedView.injuryMatrix.createJson());
+                    medicalTabbedView.map.put("Cardiac Monitoring", medicalTabbedView.cardiacMonitoring.createJson());
+                    medicalTabbedView.map.put("Glasgow Coma Score", medicalTabbedView.comaScore.createJson());
+                    medicalTabbedView.map.put("Wound Care", medicalTabbedView.woundCare.createJson());
+                    medicalTabbedView.map.put("Burns", medicalTabbedView.burns.createJson());
+                    medicalTabbedView.map.put("Pain Score", medicalTabbedView.score.createJson());
+                    medicalTabbedView.map.put("Stroke", medicalTabbedView.stroke.createJson());
+                    medicalTabbedView.map.put("APGAR Score", medicalTabbedView.apgarScore.createJson());
+                    medicalTabbedView.map.put("BLS/ILS Aid", medicalTabbedView.blsAid.createJson());
+                    medicalTabbedView.map.put("Treatment", medicalTabbedView.treatment.createJson());
+                    medicalTabbedView.map.put("Ventilator Settings", medicalTabbedView.ventilatorSettings.createJson());
+                    medicalTabbedView.map.put("Employers Details", medicalTabbedView.employerDetails.createJson());
+                    medicalTabbedView.map.put("Payment Method", medicalTabbedView.paymentMethod.createJson());
+                    medicalTabbedView.map.put("Guarantee of payment", medicalTabbedView.payment.createJson());
+                    medicalTabbedView.map.put("Refusal of care", medicalTabbedView.refusalofCare.createJson());
+                    medicalTabbedView.map.put("Mobility", medicalTabbedView.mobility.createJson());
+                    medicalTabbedView.map.put("Disposal", medicalTabbedView.disposal.createJson());
+                    medicalTabbedView.map.put("Crew Details", medicalTabbedView.crewDetails.createJson());
+                    medicalTabbedView.map.put("Accompanying Practitioner", medicalTabbedView.acompPrac.createJson());
+                    medicalTabbedView.map.put("Handover/disposal", medicalTabbedView.handoff_frag.createJson());
+                    medicalTabbedView.map.put("Notes", medicalTabbedView.notes.createJson());
+                    medicalTabbedView.map.put("Death", createJson());
+                    Log.i("MEDICAL DATA", medicalTabbedView.map.toString());
+
+                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                    nameValuePairs.add(new BasicNameValuePair("req", medicalTabbedView.map.toString()));
+
+                    Log.e("mainToPost", "mainToPost" + nameValuePairs.toString());
+
+                    // Use UrlEncodedFormEntity to send in proper format which we need
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                    // Execute HTTP Post Request
+                    HttpResponse response = httpclient.execute(httppost);
+                    InputStream inputStream = response.getEntity().getContent();
+                    Login_Page.InputStreamToStringExample str = new Login_Page.InputStreamToStringExample();
+                    responseServer = str.getStringFromInputStream(inputStream);
+                    Log.e("response", "cake -----" + responseServer);
+
+
+
+                }
+            }catch (Exception e){e.printStackTrace();}
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            try {
+                response = new JSONObject(responseServer);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            Toast.makeText(getContext(), "sent", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

@@ -393,15 +393,15 @@ Button button1,button2,button3, button4;
         String co21 = edtCO21.getText().toString();
         String peak1 = edtFlow1.getText().toString();
 
-        String checkedLeft1 = null;
-        if (chkLeft1.isChecked()){
-            checkedLeft1 = chkLeft1.getText().toString();
-        }
+        //String checkedLeft1 = null;
+        //if (chkLeft1.isChecked()){
+        //    checkedLeft1 = chkLeft1.getText().toString();
+        //}
 
-        String checkedRight1 = null;
-        if(chkRight1.isChecked()){
-            checkedRight1 = chkRight1.getText().toString();
-        }
+       // String checkedRight1 = null;
+        //if(chkRight1.isChecked()){
+        //    checkedRight1 = chkRight1.getText().toString();
+        //}
 
         try{
             vitalSigns.put("Time1",time1);
