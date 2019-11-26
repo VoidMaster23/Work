@@ -1,5 +1,7 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -22,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -36,7 +39,7 @@ public class VitalSigns extends Fragment {
     private ScrollView scrl1;
     private ExpandableRelativeLayout expLay1;
     private TextView lblTime1;
-    private EditText edtTime1;
+    private TextView edtTime1;
     private TextView lblPulse1;
     private EditText edtPulse1;
     private TextView lblBp1;
@@ -63,7 +66,7 @@ public class VitalSigns extends Fragment {
     private ScrollView scrl2;
     private ExpandableRelativeLayout expLay2;
     private TextView lblTime2;
-    private EditText edtTime2;
+    private TextView edtTime2;
     private TextView lblPulse2;
     private EditText edtPulse2;
     private TextView lblBp2;
@@ -90,7 +93,7 @@ public class VitalSigns extends Fragment {
     private ScrollView scrl3;
     private ExpandableRelativeLayout expLay3;
     private TextView lblTime3;
-    private EditText edtTime3;
+    private TextView edtTime3;
     private TextView lblPulse3;
     private EditText edtPulse3;
     private TextView lblBp3;
@@ -116,7 +119,7 @@ public class VitalSigns extends Fragment {
     private Button expBut4;
     private ExpandableRelativeLayout expLay4;
     private TextView lblTime4;
-    private EditText edtTime4;
+    private TextView edtTime4;
     private TextView lblPulse4;
     private EditText edtPulse4;
     private TextView lblBp4;
@@ -322,6 +325,8 @@ public class VitalSigns extends Fragment {
             rightEyes[0] = "No";
         });
 
+        TimePicker();
+
         checkBoxList = Arrays.asList(chkLeft1,chkLeft2,chkLeft3,chkLeft4,chkRight1,chkRight2,chkRight3,chkRight4);
         cache = new Cache(getContext());
         saved = cache.getStringProperty("vitalSigns");
@@ -385,6 +390,39 @@ public class VitalSigns extends Fragment {
         }
 
         return view;
+    }
+
+    Context mContext;
+    private void TimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        mContext = getActivity();
+
+        edtTime1.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtTime1.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtTime2.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtTime2.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtTime3.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtTime3.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtTime4.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtTime4.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
     }
 
 

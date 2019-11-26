@@ -1,5 +1,7 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,7 +21,7 @@ import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 
 import org.json.JSONObject;
 
-
+import java.util.Calendar;
 
 
 public class Cannulation extends Fragment {
@@ -32,7 +34,7 @@ public class Cannulation extends Fragment {
     private ScrollView canscrl1;
 
     private TextView lblTim1;
-    private EditText edtTim1;
+    private TextView edtTim1;
     private TextView lblSize1;
     private EditText edtSize1;
     private TextView lblAtt1;
@@ -49,7 +51,7 @@ public class Cannulation extends Fragment {
     private ScrollView canscrl2;
 
     private TextView lblTim2;
-    private EditText edtTim2;
+    private TextView edtTim2;
     private TextView lblSize2;
     private EditText edtSize2;
     private TextView lblAtt2;
@@ -176,8 +178,32 @@ public class Cannulation extends Fragment {
         edtVol2 = view.findViewById( R.id.edtVol2 );
         lblFluid2 = view.findViewById( R.id.lblFluid2 );
 
+        TimePicker();
+
         return view;
     }
+
+    Context mContext;
+    private void TimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        mContext = getActivity();
+
+        edtTim1.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtTim1.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtTim2.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtTim2.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+    }
+
 
     private void Init(){
 

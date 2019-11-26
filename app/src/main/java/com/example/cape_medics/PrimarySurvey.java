@@ -1,5 +1,6 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,7 +25,7 @@ import java.util.List;
 public class PrimarySurvey extends Fragment {
     private CheckBox chkNA;
     private TextView lblTime;
-    private EditText edtTime;
+    private TextView edtTime;
     private TextView textView14;
     private CheckBox chkClear;
     private CheckBox chkOcc;
@@ -71,7 +73,7 @@ JSONObject primarySurvery;
         View view = inflater.inflate(R.layout.fragment_primary_survey, container, false);
         chkNA = (CheckBox)view.findViewById( R.id.chkNA );
         lblTime = (TextView)view.findViewById( R.id.lblTime );
-        edtTime = (EditText)view.findViewById( R.id.edtTime );
+        edtTime = view.findViewById( R.id.edtTime );
         textView14 = (TextView)view.findViewById( R.id.textView14 );
         chkClear = (CheckBox)view.findViewById( R.id.chkClear );
         chkOcc = (CheckBox)view.findViewById( R.id.chkOcc );
@@ -97,6 +99,8 @@ JSONObject primarySurvery;
         chkTwoMinus = (CheckBox)view.findViewById( R.id.chkTwoMinus );
         checkBoxList = Arrays.asList(chkNA,chkAbnormal,chkAbsent,chkClear,chkOcc,chkNoisy,chkSpine,chkRadial,chkBrachial,chkCarotid,chkFemoral,chkHigh,chkLow,chkMed,chSix,chkZero,chkNormal,chkTwoMinus,chkTwoPlus);
 
+        TimePicker();
+
         cache = new Cache(getContext());
         saved = cache.getStringProperty("primarySurvery");
         if(saved != null ){
@@ -121,6 +125,21 @@ JSONObject primarySurvery;
             }
         }
         return view;
+    }
+
+    Context mContext;
+    private void TimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        mContext = getActivity();
+
+        edtTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtTime.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
     }
 
 

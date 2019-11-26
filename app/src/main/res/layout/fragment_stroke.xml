@@ -186,19 +186,17 @@
                     android:layout_below="@+id/checkBox6"
                     android:layout_alignParentLeft="true" />
 
-                <EditText
+                <TextView
                     android:id="@+id/editDoorDrug"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="55dp"
                     android:layout_marginLeft="55dp"
                     android:layout_marginTop="30dp"
-                    android:layout_marginEnd="53dp"
-                    android:layout_marginRight="53dp"
-                    android:background="@null"
-                    android:ems="10"
-                    android:hint="hh:mm"
-                    android:inputType="textPersonName"
+                    android:background="@drawable/round_shape"
+                    android:hint="Pick Time"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     android:layout_toEndOf="@+id/textView55"

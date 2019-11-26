@@ -1,9 +1,13 @@
 package com.example.cape_medics;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -14,17 +18,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.Calendar;
+import java.util.Objects;
 
 public class Death extends Fragment {
     JSONArray CategoryType;
     Button send, go;
     JSONObject death;
-    EditText location, time, place, date, name, post, time2;
+    TextView time, date, time2;
+    EditText location, place, name, post;
     CheckBox carotidPulseYes, carotidPulseNo, breathingYes, breathingNo, eyeYes, eyeNo, ecgYes, ecgNo, pupilsYes, pupilsNo;
     String carotidPulse, breathing, dollEyeMovements, ecgStraightLine, bilateralFixedDilatedPupils;
     private static final String IMAGE_DIRECTORY = "/Pictures";
@@ -60,6 +68,10 @@ public class Death extends Fragment {
         ecgNo = view.findViewById(R.id.ecgChkNo);
         pupilsYes = view.findViewById(R.id.dilatedChkYes);
         pupilsNo = view.findViewById(R.id.dilatedChkNo);
+
+        TimePicker();
+        DatePicker();
+
         CategoryType = new JSONArray();
 
         go.setOnClickListener(new View.OnClickListener() {
@@ -127,6 +139,56 @@ public class Death extends Fragment {
         }catch (Exception e) {}
 
         return view;
+    }
+
+    Context mContext;
+    private void TimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        mContext = getActivity();
+
+        time.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> time.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        time2.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> time2.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+    }
+
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+    public void DatePicker(){
+
+        mContext = getActivity();
+
+        date.setOnClickListener(view -> {
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog dialog = new DatePickerDialog(
+                    mContext,
+                    android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                    mDateSetListener,
+                    year,month,day);
+            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+        });
+
+        mDateSetListener = (datePicker, year, month, day) -> {
+            month = month + 1;
+            Log.d("tag", "onDateSet: dd/mm/yyyy: " + day + "/" + month + "/" + year);
+
+            String ddate = day + "/" + month + "/" + year;
+            date.setText(ddate);
+        };
     }
 
     public void removeStringPropertys(String code, Cache cache, Context context){

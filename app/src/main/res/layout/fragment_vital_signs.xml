@@ -101,22 +101,19 @@
                                 android:text="Time"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/edtTime1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="35dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginEnd="42dp"
-                                android:layout_marginRight="42dp"
-                                android:background="@null"
-                                android:ems="10"
+                                android:background="@drawable/round_shape"
                                 android:gravity="top"
-                                android:hint="hh:mm"
-                                android:inputType="textPersonName"
+                                android:hint="Pick Time"
                                 android:paddingTop="5dp"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:layout_alignLeft="@id/edtPulse1"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"/>
 
                             <TextView
                                 android:id="@+id/lblPulse1"
@@ -509,22 +506,19 @@
                                 android:text="Time"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/edtTime2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="35dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginEnd="42dp"
-                                android:layout_marginRight="42dp"
-                                android:background="@null"
-                                android:ems="10"
+                                android:background="@drawable/round_shape"
                                 android:gravity="top"
-                                android:hint="hh:mm"
-                                android:inputType="textPersonName"
+                                android:hint="Pick Time"
                                 android:paddingTop="5dp"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:layout_alignLeft="@id/edtPulse2"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"/>
 
                             <TextView
                                 android:id="@+id/lblPulse2"
@@ -858,22 +852,19 @@
                                 android:text="Time"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/edtTime3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="35dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginEnd="42dp"
-                                android:layout_marginRight="42dp"
-                                android:background="@null"
-                                android:ems="10"
+                                android:background="@drawable/round_shape"
                                 android:gravity="top"
-                                android:hint="hh:mm"
-                                android:inputType="textPersonName"
+                                android:hint="Pick Time"
                                 android:paddingTop="5dp"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:layout_alignLeft="@id/edtPulse3"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"/>
 
                             <TextView
                                 android:id="@+id/lblPulse3"
@@ -1206,22 +1197,19 @@
                                 android:text="Time"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/edtTime4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="35dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginEnd="42dp"
-                                android:layout_marginRight="42dp"
-                                android:background="@null"
-                                android:ems="10"
+                                android:background="@drawable/round_shape"
                                 android:gravity="top"
-                                android:hint="hh:mm"
-                                android:inputType="textPersonName"
+                                android:hint="Pick Time"
                                 android:paddingTop="5dp"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:layout_alignLeft="@id/edtPulse4"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"/>
 
                             <TextView
                                 android:id="@+id/lblPulse4"

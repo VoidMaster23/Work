@@ -250,14 +250,14 @@
                         android:textColor="@color/white"
                         app:layout_constraintStart_toStartOf="parent" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/edtStartCPR"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="17dp"
-                        android:ems="10"
-                        android:hint="hh:mm"
-                        android:inputType="textPersonName"
+                        android:layout_marginTop="26dp"
+                        android:textAlignment="center"
+                        android:hint="Pick Time"
+                        android:background="@drawable/round_shape"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -270,20 +270,20 @@
                         android:id="@+id/textView29"
                         android:layout_width="wrap_content"
                         android:layout_height="18dp"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="17dp"
                         android:text="CPR Discontinued"
                         android:textColor="@color/white"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_below="@+id/textView28" />
+                        android:layout_below="@+id/edtStartCPR" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/edtEndCPR"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="17dp"
-                        android:ems="10"
-                        android:hint="hh:mm"
-                        android:inputType="textPersonName"
+                        android:textAlignment="center"
+                        android:hint="Pick Time"
+                        android:background="@drawable/round_shape"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -297,20 +297,20 @@
                         android:id="@+id/roscTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="18dp"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="17dp"
                         android:text="ROSC"
                         android:textColor="@color/white"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_below="@+id/textView29" />
+                        android:layout_below="@+id/edtEndCPR" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rosceditTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="17dp"
-                        android:ems="10"
-                        android:hint="hh:mm"
-                        android:inputType="textPersonName"
+                        android:textAlignment="center"
+                        android:hint="Pick Time"
+                        android:background="@drawable/round_shape"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:layout_below="@+id/edtEndCPR"
@@ -323,20 +323,20 @@
                         android:id="@+id/textView30"
                         android:layout_width="wrap_content"
                         android:layout_height="18dp"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="17dp"
                         android:text="Time 1st Drug Pushed"
                         android:textColor="@color/white"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_below="@+id/roscTextView" />
+                        android:layout_below="@+id/rosceditTextView" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/edtDrugIssue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="17dp"
-                        android:ems="10"
-                        android:hint="hh:mm"
-                        android:inputType="textPersonName"
+                        android:textAlignment="center"
+                        android:hint="Pick Time"
+                        android:background="@drawable/round_shape"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:layout_toEndOf="@id/textView30"

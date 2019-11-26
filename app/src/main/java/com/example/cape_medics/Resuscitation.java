@@ -1,5 +1,6 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONObject;
+
+import java.util.Calendar;
 
 
 public class Resuscitation extends Fragment {
@@ -37,11 +40,11 @@ public class Resuscitation extends Fragment {
     private CheckBox chkCPRo;
     private CheckBox chkIncAirway;
     private TextView textView28;
-    private EditText edtStartCPR;
+    private TextView edtStartCPR;
     private TextView textView29;
-    private EditText edtEndCPR;
+    private TextView edtEndCPR,rosceditTextView;
     private TextView textView30;
-    private EditText edtDrugIssue;
+    private TextView edtDrugIssue;
     private CheckBox chkWitness;
 
     JSONObject resicitation;
@@ -83,15 +86,15 @@ public class Resuscitation extends Fragment {
         chkCPRo = (CheckBox)view.findViewById( R.id.chkCPRo );
         chkIncAirway = (CheckBox)view.findViewById( R.id.chkIncAirway );
         textView28 = (TextView)view.findViewById( R.id.textView28 );
-        edtStartCPR = (EditText)view.findViewById( R.id.edtStartCPR );
-        textView29 = (TextView)view.findViewById( R.id.textView29 );
-        edtEndCPR = (EditText)view.findViewById( R.id.edtEndCPR );
-        textView30 = (TextView)view.findViewById( R.id.textView30 );
-        edtDrugIssue = (EditText)view.findViewById( R.id.edtDrugIssue );
+        edtStartCPR = view.findViewById( R.id.edtStartCPR );
+        textView29 = view.findViewById( R.id.textView29 );
+        edtEndCPR = view.findViewById( R.id.edtEndCPR );
+        rosceditTextView = view.findViewById( R.id.rosceditTextView );
+        textView30 = view.findViewById( R.id.textView30 );
+        edtDrugIssue = view.findViewById( R.id.edtDrugIssue );
         chkWitness = (CheckBox)view.findViewById( R.id.chkWitness );
 
-
-
+        TimePicker();
 
         final CountDownTimer timer = new CountDownTimer(180000,1000){
             @Override
@@ -153,6 +156,39 @@ public class Resuscitation extends Fragment {
         });
 
         return view;
+    }
+
+    Context mContext;
+    private void TimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        mContext = getActivity();
+
+        edtStartCPR.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtStartCPR.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtEndCPR.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtEndCPR.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        rosceditTextView.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> rosceditTextView.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtDrugIssue.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtDrugIssue.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
     }
 
 

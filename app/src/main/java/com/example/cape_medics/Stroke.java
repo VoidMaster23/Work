@@ -1,5 +1,6 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
 public class Stroke extends Fragment {
     private ImageView imageView18;
     private CheckBox  chkNA;
@@ -23,7 +26,7 @@ public class Stroke extends Fragment {
     private CheckBox checkBox5;
     private CheckBox checkBox6;
     private TextView textView55;
-    private EditText editDoorDrug;
+    private TextView editDoorDrug;
     private TextView textView56;
     private EditText editStrokeUnit;
 
@@ -65,11 +68,28 @@ public class Stroke extends Fragment {
         Casualty_btnYes = view.findViewById(R.id.Casualty_btnYes);
         Casualty_btnNo = view.findViewById(R.id.Casualty_btnNo);
 
+        TimePicker();
 
         Init();
 
         return view;
     }
+
+    Context mContext;
+    private void TimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        mContext = getActivity();
+
+        editDoorDrug.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> editDoorDrug.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+    }
+
 
     String facial = "No", arm = "No", speech = "No", casualty = "No";
 

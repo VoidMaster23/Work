@@ -1,5 +1,7 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -27,26 +30,19 @@ public class MedicalFormCalls extends Fragment {
     private ImageView imageView9;
     private TextView textView5;
     private TextView KMs;
-    private TextView received;
-    private EditText callreceivedTime;
+    private TextView received,callreceivedTime,calldispachedTime,callEnRouteTime,callArrivedTime,calldepartTime, callHospitalArriveTime, callHandoverTime,freeTime,timeOfDeathedit ;
     private EditText callreceived;
     private TextView dispached;
-    private EditText calldispachedTime;
     private EditText calldispached;
     private TextView enRoute;
-    private EditText callEnRouteTime;
     private EditText callEnRoute;
     private TextView arrived;
-    private EditText callArrivedTime;
     private EditText callArrived;
     private TextView depart;
-    private EditText calldepartTime;
     private EditText calldepart;
     private TextView hospitalArrive;
-    private EditText callHospitalArriveTime;
     private EditText callHospitalArrive;
     private TextView handover;
-    private EditText callHandoverTime;
     private EditText callHandover;
     private TextView textView6;
     private CheckBox checkBox8;
@@ -85,26 +81,30 @@ public class MedicalFormCalls extends Fragment {
         textView5 = view.findViewById( R.id.textView5 );
         KMs = view.findViewById( R.id.KMs );
         received = view.findViewById( R.id.received );
-        callreceivedTime = view.findViewById( R.id.callreceivedTime );
         callreceived = view.findViewById( R.id.callreceived );
         dispached = view.findViewById( R.id.dispached );
-        calldispachedTime = view.findViewById( R.id.calldispachedTime );
         calldispached = view.findViewById( R.id.calldispached );
         enRoute = view.findViewById( R.id.enRoute );
-        callEnRouteTime = view.findViewById( R.id.callEnRouteTime );
         callEnRoute = view.findViewById( R.id.callEnRoute );
         arrived = view.findViewById( R.id.arrived );
-        callArrivedTime = view.findViewById( R.id.callArrivedTime );
         callArrived = view.findViewById( R.id.callArrived );
         depart = view.findViewById( R.id.depart );
-        calldepartTime = view.findViewById( R.id.calldepartTime );
         calldepart = view.findViewById( R.id.calldepart );
         hospitalArrive = view.findViewById( R.id.hospitalArrive );
-        callHospitalArriveTime = view.findViewById( R.id.callHospitalArriveTime );
         callHospitalArrive = view.findViewById( R.id.callHospitalArrive );
         handover = view.findViewById( R.id.handover );
-        callHandoverTime = view.findViewById( R.id.callHandoverTime );
         callHandover = view.findViewById( R.id.callHandover );
+
+        callreceivedTime = view.findViewById( R.id.callreceivedTime );
+        calldispachedTime = view.findViewById( R.id.calldispachedTime );
+        callEnRouteTime = view.findViewById( R.id.callEnRouteTime );
+        callArrivedTime = view.findViewById( R.id.callArrivedTime );
+        calldepartTime = view.findViewById( R.id.calldepartTime );
+        callHospitalArriveTime = view.findViewById( R.id.callHospitalArriveTime );
+        callHandoverTime = view.findViewById( R.id.callHandoverTime );
+        freeTime = view.findViewById( R.id.freeTime );
+        timeOfDeathedit = view.findViewById( R.id.timeOfDeathedit );
+
         textView6 = view.findViewById( R.id.textView6 );
         checkBox8 = view.findViewById( R.id.checkBox8 );
         checkBox9 = view.findViewById( R.id.checkBox9 );
@@ -114,6 +114,8 @@ public class MedicalFormCalls extends Fragment {
         //checkBox13 = view.findViewById( R.id.checkBox13 );
         checkBox3 = view.findViewById( R.id.notApplicableCheckBox );
         callDetails = new JSONObject();
+
+        TimePicker();
 
         checkBoxList = Arrays.asList(checkBox8,checkBox9,checkBox10,checkBox11,checkBox12,checkBox13,checkBox3);
         cache = new Cache(getContext());
@@ -154,6 +156,72 @@ public class MedicalFormCalls extends Fragment {
             }
         }
         return view;
+
+    }
+
+    Context mContext;
+    private void TimePicker()
+    {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        mContext = getActivity();
+
+        callreceivedTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> callreceivedTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        calldispachedTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> calldispachedTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        callEnRouteTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> callEnRouteTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        callArrivedTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> callArrivedTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        calldepartTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> calldepartTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        callHospitalArriveTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> callHospitalArriveTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        callHandoverTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> callHandoverTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        freeTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> freeTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        timeOfDeathedit.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), (view1, hourOfDay, minute1) -> timeOfDeathedit.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
     }
 
 

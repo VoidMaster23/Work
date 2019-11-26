@@ -1148,6 +1148,7 @@ public class ILSAMB extends AppCompatActivity {
         });
 
     }
+
     private void TableSync()
     {
         root = findViewById(R.id.content);
