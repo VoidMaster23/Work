@@ -1207,6 +1207,19 @@ public class ILSAMB extends AppCompatActivity {
             HttpPost httppost = new HttpPost(url);
 
             try {
+                //Accessing the Table Data
+                JSONObject tableData = new JSONObject();
+
+                for (Row row : vehicleTableArrayList)
+                {
+                    JSONObject rowData = new JSONObject();
+                    rowData.put("QTY",row.getQty());
+                    rowData.put("CHECKED", row.getChecked());
+                    rowData.put("COMMENT",row.getComment());
+
+                    tableData.put(row.getDescription(),rowData.toString());
+                }//
+
                 ils_amb.put("Ambulance_Type", "ILS Ambulance");
                 ils_amb.put("Vehicle_Type", "Ambulance");
                 ils_amb.put("Vehicle Number", VehicleNumber.getSelectedItem().toString());
@@ -1215,6 +1228,8 @@ public class ILSAMB extends AppCompatActivity {
                 ils_amb.put("Checked By", checkedBy.toString());
                 ils_amb.put("Inspection Date", Date);
                 ils_amb.put("Inspection Time", inspectionTime.toString());
+                //Accessing the Table Data
+                ils_amb.put("Vehicle", tableData.toString());
 
                 for (int i = 0; i<checkBoxList.size();i++) {
                     if (checkBoxList.get(i) != null) {
@@ -2686,6 +2701,9 @@ public class ILSAMB extends AppCompatActivity {
         return valid;
     }
 
+    //Accessing the Table Data
+    ArrayList<Row> vehicleTableArrayList = new ArrayList<>();
+
     private View getVehicleTable(){
 
         // create table
@@ -2812,6 +2830,8 @@ public class ILSAMB extends AppCompatActivity {
             String st = _list[i];
             Row item = new Row(this, st, "1", i == 9? fuelLevelSpinnerOptions : qtySpinnerOptions, "OKAY", i == 9? "FULL   3/4   1/2   1/4": i == 17? "dd/mm/yyyy": i == 18? "CA 757-267":"No COMMENT","Comment here" , i, parentWidth);
 
+            //Accessing the Table Data
+            vehicleTableArrayList.add(item);
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
             tableContent.addView(item.getRow());

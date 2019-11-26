@@ -5,15 +5,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.text.Editable;
-import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,24 +18,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.cape_medics.R;
 
 public class Row implements AdapterView.OnItemSelectedListener {
 
-    private String response_car;
+    private String description;
     private String qty;
     private String checked;
     private String comment;
-
-    public String getCommentHint() {
-        return commentHint;
-    }
-
-    public void setCommentHint(String commentHint) {
-        this.commentHint = commentHint;
-    }
 
     private String commentHint;
     private final Context context;
@@ -48,10 +35,10 @@ public class Row implements AdapterView.OnItemSelectedListener {
     private int parentWidth;
     private TableRow row;
 
-    public Row(Context context, String response_car, String qty, String[] qtySpinnerItems, String checked, String comment, String commentHint, int position, int parentWidth)
+    public Row(Context context, String description, String qty, String[] qtySpinnerItems, String checked, String comment, String commentHint, int position, int parentWidth)
     {
         this.context = context;
-        this.response_car = response_car;
+        this.description = description;
         this.qty = qty;
         this.qtySpinnerItems = qtySpinnerItems;
         this.checked = checked;
@@ -62,12 +49,12 @@ public class Row implements AdapterView.OnItemSelectedListener {
         createView();
     }
 
-    public String getResponse_car() {
-        return response_car;
+    public String getDescription() {
+        return description;
     }
 
-    public void setResponse_car(String response_car) {
-        this.response_car = response_car;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getQty() {
@@ -94,6 +81,14 @@ public class Row implements AdapterView.OnItemSelectedListener {
         this.comment = comment;
     }
 
+    public String getCommentHint() {
+        return commentHint;
+    }
+
+    public void setCommentHint(String commentHint) {
+        this.commentHint = commentHint;
+    }
+
     private static final int WrapContent = ViewGroup.LayoutParams.WRAP_CONTENT;
     private static final int MatchParent = ViewGroup.LayoutParams.MATCH_PARENT;
 
@@ -118,7 +113,7 @@ public class Row implements AdapterView.OnItemSelectedListener {
         response.setGravity(Gravity.CENTER_VERTICAL);
         TableRow.LayoutParams responseParams = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
 
-        response.setText(this.response_car);
+        response.setText(this.description);
         response.setTextColor(Color.WHITE);
         response.setAllCaps(true);
         response.setBackgroundResource(R.drawable.cell_shape);
