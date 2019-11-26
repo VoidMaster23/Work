@@ -717,6 +717,8 @@
                     android:text="Pick Time"
                     android:textColor="@color/white"
                     android:textSize="14sp"
+                    android:background="@drawable/round_shape"
+                    android:padding="10dp"
                     android:layout_marginBottom="10dp"/>
 
                 <Button

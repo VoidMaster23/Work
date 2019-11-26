@@ -1,6 +1,8 @@
 package com.example.cape_medics;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -44,7 +46,7 @@ public class TimeSheet extends AppCompatActivity {
     Spinner jobType;
     Spinner unitType;
     Spinner serviceProvided;
-    EditText callTime;
+    TextView callTime;
     EditText jobName;
     EditText Location;
     JSONObject timeSheet, response;
@@ -92,6 +94,23 @@ public class TimeSheet extends AppCompatActivity {
         serviceProvided.setAdapter(ServiceProvidedAdapter);
         //callTime.setAdapter(CallTimeAdapter);
         DatePicker();
+        TimePicker();
+    }
+
+    Context mContext=this;
+
+    private void TimePicker()
+    {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        callTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> callTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
     }
 
     private TextView mDisplayDate;
@@ -118,9 +137,9 @@ public class TimeSheet extends AppCompatActivity {
 
         mDateSetListener = (datePicker, year, month, day) -> {
             month = month + 1;
-            Log.d("tag", "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+            Log.d("tag", "onDateSet: dd/mm/yyy: " + day + "/" + month + "/" + year);
 
-            String date = month + "/" + day + "/" + year;
+            String date = day + "/" + month + "/" + year;
             mDisplayDate.setText(date);
         };
     }

@@ -1,6 +1,7 @@
 package com.example.cape_medics;
 
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -21,9 +22,10 @@ import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
-public class categoryType extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+public class categoryType extends AppCompatActivity{
     ExpandableRelativeLayout expandableLayout1, expandableLayout2, expandableLayout3, expandableLayout4, expandableLayout5;
     CheckBox ortia,ctia,ksia,inemergency,airemergency,organtransfer,landemergency,airtransfer,acsastaff,otherstakeholder;
     CheckBox publicpassenger, film, event, cticc, gcc, firstaid, prf, gccstaff, other, publicPatron, home2hospital;
@@ -44,6 +46,8 @@ public class categoryType extends AppCompatActivity implements TimePickerDialog.
     String callType_primary, saved;
 
     JSONObject CategoryType;
+
+    Context mContext=this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,18 +119,21 @@ public class categoryType extends AppCompatActivity implements TimePickerDialog.
             }
         }
 
-        reportTime.setOnClickListener(view -> {
-            DialogFragment timePickerFragment = new TimePickerFragment();
-            timePickerFragment.setCancelable(false);
-            timePickerFragment.show(getSupportFragmentManager(), "timePicker");
-        });
-
+        TimePicker();
     }
 
+    private void TimePicker()
+    {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
 
-    @Override
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        reportTime.setText("Hour = " + hourOfDay + " Minute = " + minute);
+        reportTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> reportTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
     }
 
     public void expandableButton1(View view) {

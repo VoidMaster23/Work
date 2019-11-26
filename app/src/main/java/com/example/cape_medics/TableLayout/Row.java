@@ -32,13 +32,23 @@ public class Row implements AdapterView.OnItemSelectedListener {
     private String qty;
     private String checked;
     private String comment;
+
+    public String getCommentHint() {
+        return commentHint;
+    }
+
+    public void setCommentHint(String commentHint) {
+        this.commentHint = commentHint;
+    }
+
+    private String commentHint;
     private final Context context;
     private final String[] qtySpinnerItems;
     private int position;
     private int parentWidth;
     private TableRow row;
 
-    public Row(Context context, String response_car, String qty, String[] qtySpinnerItems, String checked, String comment, int position, int parentWidth)
+    public Row(Context context, String response_car, String qty, String[] qtySpinnerItems, String checked, String comment, String commentHint, int position, int parentWidth)
     {
         this.context = context;
         this.response_car = response_car;
@@ -46,6 +56,7 @@ public class Row implements AdapterView.OnItemSelectedListener {
         this.qtySpinnerItems = qtySpinnerItems;
         this.checked = checked;
         this.comment = comment;
+        this.commentHint = commentHint;
         this.position = position;
         this.parentWidth = parentWidth;
         createView();
@@ -198,6 +209,7 @@ public class Row implements AdapterView.OnItemSelectedListener {
         // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         input.setText(initialComment);
+        input.setHint(this.commentHint);
         builder.setView(input);
 
         // Set up the buttons

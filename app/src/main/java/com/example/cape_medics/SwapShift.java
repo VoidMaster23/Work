@@ -85,9 +85,9 @@ public class SwapShift extends AppCompatActivity {
 
         mDateSetListener = (datePicker, year, month, day) -> {
             month = month + 1;
-            Log.d("tag", "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+            Log.d("tag", "onDateSet: dd/mm/yyy: " + day + "/" + month + "/" + year);
 
-            String date = month + "/" + day + "/" + year;
+            String date = day + "/" + month + "/" + year;
             mDisplayDate.setText(date);
         };
     }

@@ -24,7 +24,6 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".TableLayout.TableLayoutActivity">
         </activity>
-        <activity android:name=".TableLayout.TableActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"

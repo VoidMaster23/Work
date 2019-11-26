@@ -69,7 +69,9 @@
         android:textSize="18sp"
         android:layout_toEndOf="@id/textView3"
         android:layout_below="@+id/spinner"
-        android:layout_toRightOf="@id/textView2" />
+        android:layout_toRightOf="@id/textView2"
+        android:background="@drawable/round_shape"
+        android:padding="10dp"/>
 
     <LinearLayout
         android:id="@+id/check"

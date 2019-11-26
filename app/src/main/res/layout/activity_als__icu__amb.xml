@@ -168,13 +168,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_below="@+id/dateView" />
 
-                <EditText
+                <TextView
                     android:id="@+id/timeEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:ems="10"
-                    android:hint="hh:mm"
+                    android:hint="Pick time"
                     android:inputType="textPersonName"
                     android:textColor="@color/white"
                     android:textSize="16sp"
@@ -182,7 +182,9 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignStart="@id/driverEdit"
                     android:layout_alignLeft="@id/driverEdit"
-                    android:layout_below="@+id/dateView" />
+                    android:layout_below="@+id/dateView"
+                    android:background="@drawable/round_shape"
+                    android:padding="10dp"/>
 
             </RelativeLayout>
 

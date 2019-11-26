@@ -1,5 +1,6 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,7 +16,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -32,7 +32,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cape_medics.TableLayout.Row;
-import com.example.cape_medics.TableLayout.TableActivity;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -53,6 +52,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -62,7 +62,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ILSAMB extends AppCompatActivity {
     Spinner VehicleNumber;
-    TextView dateView;
+    private TextView dateView,inspectionTime;
     List<CheckBox> checkBoxList;
     List<EditText> commentList;
     JSONObject ils_amb,response, save, load;
@@ -71,7 +71,7 @@ public class ILSAMB extends AppCompatActivity {
     boolean connected;
     ScheduledExecutorService scheduledExecutorService1;
 
-    private  EditText driver, controller, checkedBy, inspectionTime;
+    private  EditText driver, controller, checkedBy;
 
     private HorizontalScrollView sideScroll0;
     private ScrollView scroll0;
@@ -1039,13 +1039,6 @@ public class ILSAMB extends AppCompatActivity {
         url = "http://capemedicstestserver-com.stackstaging.com/apktest/vehicleChecklist.php";
 
         ImageView logo = findViewById(R.id.logo);
-        logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), TableActivity.class);
-                startActivity(intent);
-            }
-        });
 
         driver.requestFocus();
         String[] vehicleNumber = {"MED 1","MED 2","MED 3","MED 4","MED 5","MED 6","MED 7","MED 8","MED 9","MED 10","MED 11","MED 12","MED 13","MED 14","MED 15","MED 16","MED 17","MED 18","MED 19","MED 20","MED 21","MED 22","MED 23","MED 24"};
@@ -1137,8 +1130,24 @@ public class ILSAMB extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "saved" + controller.getText().toString(), Toast.LENGTH_SHORT).show();
 
         TableSync();
+        TimePicker();
     }
 
+    Context mContext=this;
+
+    private void TimePicker()
+    {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        inspectionTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> inspectionTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+    }
     private void TableSync()
     {
         root = findViewById(R.id.content);
@@ -2796,11 +2805,12 @@ public class ILSAMB extends AppCompatActivity {
         };
 
         String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Need Repair"};
+        String[] fuelLevelSpinnerOptions = new String[]{"Full", "3/4", "1/2", "1/4", "Empty"};
 
         for(int i = 0; i < _list.length; i++)
         {
             String st = _list[i];
-            Row item = new Row(this, st, "1", qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, "1", i == 9? fuelLevelSpinnerOptions : qtySpinnerOptions, "OKAY", i == 9? "FULL   3/4   1/2   1/4":"No COMMENT","Comment here" , i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
@@ -2952,7 +2962,7 @@ public class ILSAMB extends AppCompatActivity {
         {
             String st = _list[i];
             String qtyst = _qtylist[i];
-            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
@@ -3091,7 +3101,7 @@ public class ILSAMB extends AppCompatActivity {
         {
             String st = _list[i];
             String qtyst = _qtylist[i];
-            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
@@ -3231,7 +3241,7 @@ public class ILSAMB extends AppCompatActivity {
         {
             String st = _list[i];
             String qtyst = _qtylist[i];
-            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
@@ -3369,7 +3379,7 @@ public class ILSAMB extends AppCompatActivity {
         {
             String st = _list[i];
             String qtyst = _qtylist[i];
-            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
@@ -3507,7 +3517,7 @@ public class ILSAMB extends AppCompatActivity {
         {
             String st = _list[i];
             String qtyst = _qtylist[i];
-            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT","Comment here", i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
@@ -3646,7 +3656,7 @@ public class ILSAMB extends AppCompatActivity {
         {
             String st = _list[i];
             String qtyst = _qtylist[i];
-            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT","Comment here", i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());

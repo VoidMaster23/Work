@@ -34,7 +34,6 @@
         android:usesCleartextTraffic="true" >
         <activity android:name="com.example.cape_medics.TableLayout.TableLayoutActivity" >
         </activity>
-        <activity android:name="com.example.cape_medics.TableLayout.TableActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"

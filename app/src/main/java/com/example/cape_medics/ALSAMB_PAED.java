@@ -1,5 +1,6 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -48,6 +49,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -57,7 +59,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ALSAMB_PAED extends AppCompatActivity {
     Spinner VehicleNumber;
-    TextView dateView;
+    TextView dateView,inspectionTime;
     List<CheckBox> checkBoxList;
     List<EditText> commentList;
     JSONObject als_amb_paed, response, save, load;
@@ -66,7 +68,7 @@ public class ALSAMB_PAED extends AppCompatActivity {
     boolean connected;
     ScheduledExecutorService scheduledExecutorService;
 
-    private  EditText driver, controller, checkedBy, inspectionTime;
+    private  EditText driver, controller, checkedBy;
 
     private CheckBox air;
     private EditText airComment;
@@ -1587,8 +1589,24 @@ public class ALSAMB_PAED extends AppCompatActivity {
 
 
         TableSync();
+        TimePicker();
     }
 
+    Context mContext=this;
+
+    private void TimePicker()
+    {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        inspectionTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> inspectionTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+    }
     private void TableSync()
     {
         root = findViewById(R.id.content);
@@ -3882,11 +3900,12 @@ public class ALSAMB_PAED extends AppCompatActivity {
         };
 
         String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Need Repair"};
+        String[] fuelLevelSpinnerOptions = new String[]{"Full", "3/4", "1/2", "1/4", "Empty"};
 
         for(int i = 0; i < _list.length; i++)
         {
             String st = _list[i];
-            Row item = new Row(this, st, "1", qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, "1", i == 9? fuelLevelSpinnerOptions : qtySpinnerOptions, "OKAY", i == 9? "FULL   3/4   1/2   1/4":"No COMMENT","Comment here" , i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
@@ -4038,7 +4057,7 @@ public class ALSAMB_PAED extends AppCompatActivity {
         {
             String st = _list[i];
             String qtyst = _qtylist[i];
-            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
@@ -4177,7 +4196,7 @@ public class ALSAMB_PAED extends AppCompatActivity {
         {
             String st = _list[i];
             String qtyst = _qtylist[i];
-            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
@@ -4317,7 +4336,7 @@ public class ALSAMB_PAED extends AppCompatActivity {
         {
             String st = _list[i];
             String qtyst = _qtylist[i];
-            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
@@ -4455,7 +4474,7 @@ public class ALSAMB_PAED extends AppCompatActivity {
         {
             String st = _list[i];
             String qtyst = _qtylist[i];
-            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
@@ -4593,7 +4612,7 @@ public class ALSAMB_PAED extends AppCompatActivity {
         {
             String st = _list[i];
             String qtyst = _qtylist[i];
-            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT","Comment here", i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
@@ -4732,7 +4751,7 @@ public class ALSAMB_PAED extends AppCompatActivity {
         {
             String st = _list[i];
             String qtyst = _qtylist[i];
-            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT","Comment here", i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
