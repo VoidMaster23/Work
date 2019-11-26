@@ -128,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="33dp"
                 android:layout_marginTop="15dp"
-                android:text="Dispached"
+                android:text="Despatched"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"

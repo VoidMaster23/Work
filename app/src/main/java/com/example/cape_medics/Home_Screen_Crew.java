@@ -273,13 +273,9 @@ public class Home_Screen_Crew extends AppCompatActivity {
     }
 
 
-    public void Dash(View v) {
-        Intent i = new Intent(getApplicationContext(), DashBoard.class);
-        i.putExtra("broadcasts",broadcasts);
-        i.putExtra("jobs",jobs);
-        startActivity(i);
-    }
 
+
+    //check in works and is done
     public void CheckIn(View v) {
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
@@ -319,6 +315,8 @@ public class Home_Screen_Crew extends AppCompatActivity {
         Log.i("JSON",checkin.toString());
     }
 
+
+    //to do
     public void vehicle(View v){
 
         Intent i = new Intent(getApplicationContext(),VehicleCheckList.class);
@@ -327,32 +325,60 @@ public class Home_Screen_Crew extends AppCompatActivity {
 
     }
 
+    //to do
     public void MedRec(View v){
     Intent i = new Intent(getApplicationContext(), categoryType.class);
     i.putExtra("code",code);
     i.putExtra("Authorisation",authorisation);
-        Log.i("AuthorisationHomeSend",""+authorisation);
+
     startActivity(i);
 
     }
 
+
+
+//    going to sort out all the othe buttons today
+//    26 Nov 2019
+//
+
+    //this is basically done, just need to make sure that everything works and might need to add an end shift functionality.
     public void TimeSheet(View v){
         Intent i = new Intent(getApplicationContext(), TimeSheet.class);
+        i.putExtra("code",code);
+        i.putExtra("Authorisation",authorisation);
         startActivity(i);
 
     }
 
+    //this is done now
     public void Attendance (View v){
         Intent i = new Intent(getApplicationContext(), ViewAttendance.class);
+        i.putExtra("code",code);
+        i.putExtra("Authorisation",authorisation);
         startActivity(i);
 
     }
+
+
 
     public void BroadCast (View v){
         Intent i = new Intent(getApplicationContext(), ChooseBroadCast.class);
         startActivity(i);
 
     }
+
+
+// this is done now
+    public void Dash(View v) {
+        Intent i = new Intent(getApplicationContext(), DashBoard.class);
+        i.putExtra("broadcasts",broadcasts);
+        i.putExtra("jobs",jobs);
+        i.putExtra("code",code);
+        i.putExtra("Authorisation",authorisation);
+        startActivity(i);
+    }
+
+    //end of 26 november update
 
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -468,7 +494,8 @@ public class Home_Screen_Crew extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            Toast.makeText(getApplicationContext(), checkin.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Check-in complete!", Toast.LENGTH_SHORT).show();
+            checkinbtn.setEnabled(false);
         }
     }
 

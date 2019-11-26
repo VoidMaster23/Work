@@ -1,23 +1,36 @@
 package com.example.cape_medics;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.cape_medics.TableLayout.Row;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -39,9 +52,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -51,12 +66,12 @@ import java.util.regex.Pattern;
 public class FireSkid extends AppCompatActivity {
     JSONObject fireSkid, response, save, load;
     Spinner skid, fuelSpinner;
-    TextView dateView;
+    TextView dateView,licenceExpire;
     CheckBox air,antennae,battery,body,brake,branding,dashboard,emergency,exhaust,oil,fuelLevel,headlights,leftIndicator,rightIndicator,back,front,jack,leds,licence,plates,radio,rear,reverse,side,siren,spare,tread,pressure,windows,windscreen,waterSpritzer,c02,dcp,fuelFunnel,awgPencil,falseSpindles,layflat25,short65,duraflex38,afff,boltCutter,wireCutter,crowBar,hondaKey,hondaPump,highPump,rakeHoe,bushBeater,jerryCan,softSuction,strainer,towRope,meterStandpipe,standpipeKey,blankCoupling65,blankCoupling25,trafficCones,bobejaan,toolbox,shovel;
     EditText airComment,antennaeComment,batteryComment,bodyComment,brakeComment,brandingComment,dashboardComment,emergencyComment,exhaustComment,oilComment,fuelLevelComment,headlightsComment,leftIndicatorComment,rightIndicatorComment,backComment,frontComment,jackComment,ledsComment,licenceComment,platesComment,radioComment,rearComment,reverseComment,sideComment,sirenComment,spareComment,treadComment,pressureComment,windowsComment,windscreenComment,waterSpritzerComment,c02Comment,dcpComment,fuelFunnelComment,awgPencilComment,falseSpindlesComment,layflat25Comment,short65Comment,duraflex38Comment,afffComment,boltCutterComment,wireCutterComment,crowBarComment,hondaKeyComment,hondaPumpComment,highPumpComment,rakeHoeComment,bushBeaterComment,jerryCanComment,softSuctionComment,strainerComment,towRopeComment,meterStandpipeComment,standpipeKeyComment,blankCoupling65Comment,blankCoupling25Comment,trafficConesComment,bobejaanComment,toolboxComment,shovelComment;
     List<CheckBox> checkBoxList;
     List<EditText> commentList;
-    EditText licenceExpire,driver,mileage,oils,reg,location,producion,crew;
+    EditText driver,mileage,oils,reg,location,producion,crew;
     String Date, responseServer, url;
     boolean connected;
     ScheduledExecutorService scheduledExecutorService;
@@ -94,8 +109,8 @@ public class FireSkid extends AppCompatActivity {
         skid = findViewById(R.id.vehicleNumberSpinner);
         fuelSpinner = findViewById(R.id.fuelSpinner);
         dateView = findViewById(R.id.dateView);
-        air = findViewById(R.id.air); antennae = findViewById(R.id.antennae); battery= findViewById(R.id.battery);body= findViewById(R.id.body);brake= findViewById(R.id.brake);branding = findViewById(R.id.branding);dashboard = findViewById(R.id.dashboard);emergency = findViewById(R.id.emergency);exhaust = findViewById(R.id.exhaust);oil = findViewById(R.id.oil);fuelLevel = findViewById(R.id.fuelLevel);headlights = findViewById(R.id.headlights);leftIndicator = findViewById(R.id.leftIndicator);rightIndicator = findViewById(R.id.rightIndicator);back = findViewById(R.id.back);front = findViewById(R.id.front);jack = findViewById(R.id.jack);leds = findViewById(R.id.leds);licence = findViewById(R.id.licence);plates = findViewById(R.id.plates);radio = findViewById(R.id.radio);rear = findViewById(R.id.rear);reverse = findViewById(R.id.reverse);side = findViewById(R.id.side);siren = findViewById(R.id.siren);spare = findViewById(R.id.spare);tread = findViewById(R.id.tread);pressure = findViewById(R.id.pressure);windows = findViewById(R.id.windows);windscreen = findViewById(R.id.windscreen);waterSpritzer = findViewById(R.id.waterSpritzer);c02 = findViewById(R.id.c02);dcp = findViewById(R.id.dcp);fuelFunnel = findViewById(R.id.fuelFunnel);awgPencil = findViewById(R.id.awgPencil);falseSpindles = findViewById(R.id.falseSpindles);layflat25 = findViewById(R.id.layflat25);short65 = findViewById(R.id.short65);duraflex38 = findViewById(R.id.duraflex38);afff = findViewById(R.id.afff);boltCutter = findViewById(R.id.boltCutter);wireCutter = findViewById(R.id.wireCutter);crowBar = findViewById(R.id.crowBar);hondaKey = findViewById(R.id.hondaKey);hondaPump = findViewById(R.id.hondaPump);highPump = findViewById(R.id.highPump);rakeHoe = findViewById(R.id.rakeHoe);bushBeater = findViewById(R.id.bushBeater);jerryCan = findViewById(R.id.jerryCan);softSuction = findViewById(R.id.softSuction);strainer = findViewById(R.id.strainer);towRope = findViewById(R.id.towRope);meterStandpipe = findViewById(R.id.meterStandpipe);standpipeKey = findViewById(R.id.standpipeKey);blankCoupling65 = findViewById(R.id.blankCoupling65);blankCoupling25 = findViewById(R.id.blankCoupling25);trafficCones = findViewById(R.id.trafficCones);bobejaan = findViewById(R.id.bobejaan);toolbox = findViewById(R.id.toolbox);shovel = findViewById(R.id.shovel);
-        airComment = findViewById(R.id.airComment); antennaeComment = findViewById(R.id.antennaeComment); batteryComment = findViewById(R.id.batteryComment);bodyComment= findViewById(R.id.bodyComment);brakeComment = findViewById(R.id.brakeComment);brandingComment = findViewById(R.id.brandingComment);dashboardComment = findViewById(R.id.dashboardComment);emergencyComment = findViewById(R.id.emergencyComment);exhaustComment = findViewById(R.id.exhaustComment);oilComment = findViewById(R.id.oilComment);fuelLevelComment = findViewById(R.id.fuelLevelComment);headlightsComment = findViewById(R.id.headlightsComment);leftIndicatorComment = findViewById(R.id.leftIndicatorComment);rightIndicatorComment = findViewById(R.id.rightIndicatorComment);backComment = findViewById(R.id.backComment);frontComment = findViewById(R.id.frontComment);jackComment = findViewById(R.id.jackComment);ledsComment = findViewById(R.id.ledsComment);licenceComment = findViewById(R.id.licenceComment);platesComment = findViewById(R.id.platesComment);radioComment = findViewById(R.id.radioComment);rearComment = findViewById(R.id.rearComment);reverseComment = findViewById(R.id.reverseComment);sideComment = findViewById(R.id.sideComment);sirenComment = findViewById(R.id.sirenComment);spareComment = findViewById(R.id.spareComment);treadComment = findViewById(R.id.treadComment);pressureComment = findViewById(R.id.pressureComment);windowsComment = findViewById(R.id.windowsComment);windscreenComment = findViewById(R.id.windscreenComment);waterSpritzerComment = findViewById(R.id.waterSpritzerComment);c02Comment = findViewById(R.id.c02Comment);dcpComment = findViewById(R.id.dcpComment);fuelFunnelComment = findViewById(R.id.fuelFunnelComment);awgPencilComment = findViewById(R.id.awgPencilComment);falseSpindlesComment = findViewById(R.id.falseSpindlesComment);layflat25Comment = findViewById(R.id.layflat25Comment);short65Comment = findViewById(R.id.short65Comment);duraflex38Comment = findViewById(R.id.duraflex38Comment);afffComment = findViewById(R.id.afffComment);boltCutterComment = findViewById(R.id.boltCutterComment);wireCutterComment = findViewById(R.id.wireCutterComment);crowBarComment = findViewById(R.id.crowBarComment);hondaKeyComment = findViewById(R.id.hondaKeyComment);hondaPumpComment = findViewById(R.id.hondaPumpComment);highPumpComment = findViewById(R.id.highPumpComment);rakeHoeComment = findViewById(R.id.rakeHoeComment);bushBeaterComment = findViewById(R.id.bushBeaterComment);jerryCanComment = findViewById(R.id.jerryCanComment);softSuctionComment = findViewById(R.id.softSuctionComment);strainerComment = findViewById(R.id.strainerComment);towRopeComment = findViewById(R.id.towRopeComment);meterStandpipeComment = findViewById(R.id.meterStandpipeComment);standpipeKeyComment = findViewById(R.id.standpipeKeyComment);blankCoupling65Comment = findViewById(R.id.blankCoupling65Comment);blankCoupling25Comment = findViewById(R.id.blankCoupling25Comment);trafficConesComment = findViewById(R.id.trafficConesComment);bobejaanComment = findViewById(R.id.bobejaanComment);toolboxComment = findViewById(R.id.toolboxComment);shovelComment = findViewById(R.id.shovelComment);
+        //air = findViewById(R.id.air); antennae = findViewById(R.id.antennae); battery= findViewById(R.id.battery);body= findViewById(R.id.body);brake= findViewById(R.id.brake);branding = findViewById(R.id.branding);dashboard = findViewById(R.id.dashboard);emergency = findViewById(R.id.emergency);exhaust = findViewById(R.id.exhaust);oil = findViewById(R.id.oil);fuelLevel = findViewById(R.id.fuelLevel);headlights = findViewById(R.id.headlights);leftIndicator = findViewById(R.id.leftIndicator);rightIndicator = findViewById(R.id.rightIndicator);back = findViewById(R.id.back);front = findViewById(R.id.front);jack = findViewById(R.id.jack);leds = findViewById(R.id.leds);licence = findViewById(R.id.licence);plates = findViewById(R.id.plates);radio = findViewById(R.id.radio);rear = findViewById(R.id.rear);reverse = findViewById(R.id.reverse);side = findViewById(R.id.side);siren = findViewById(R.id.siren);spare = findViewById(R.id.spare);tread = findViewById(R.id.tread);pressure = findViewById(R.id.pressure);windows = findViewById(R.id.windows);windscreen = findViewById(R.id.windscreen);waterSpritzer = findViewById(R.id.waterSpritzer);c02 = findViewById(R.id.c02);dcp = findViewById(R.id.dcp);fuelFunnel = findViewById(R.id.fuelFunnel);awgPencil = findViewById(R.id.awgPencil);falseSpindles = findViewById(R.id.falseSpindles);layflat25 = findViewById(R.id.layflat25);short65 = findViewById(R.id.short65);duraflex38 = findViewById(R.id.duraflex38);afff = findViewById(R.id.afff);boltCutter = findViewById(R.id.boltCutter);wireCutter = findViewById(R.id.wireCutter);crowBar = findViewById(R.id.crowBar);hondaKey = findViewById(R.id.hondaKey);hondaPump = findViewById(R.id.hondaPump);highPump = findViewById(R.id.highPump);rakeHoe = findViewById(R.id.rakeHoe);bushBeater = findViewById(R.id.bushBeater);jerryCan = findViewById(R.id.jerryCan);softSuction = findViewById(R.id.softSuction);strainer = findViewById(R.id.strainer);towRope = findViewById(R.id.towRope);meterStandpipe = findViewById(R.id.meterStandpipe);standpipeKey = findViewById(R.id.standpipeKey);blankCoupling65 = findViewById(R.id.blankCoupling65);blankCoupling25 = findViewById(R.id.blankCoupling25);trafficCones = findViewById(R.id.trafficCones);bobejaan = findViewById(R.id.bobejaan);toolbox = findViewById(R.id.toolbox);shovel = findViewById(R.id.shovel);
+        //airComment = findViewById(R.id.airComment); antennaeComment = findViewById(R.id.antennaeComment); batteryComment = findViewById(R.id.batteryComment);bodyComment= findViewById(R.id.bodyComment);brakeComment = findViewById(R.id.brakeComment);brandingComment = findViewById(R.id.brandingComment);dashboardComment = findViewById(R.id.dashboardComment);emergencyComment = findViewById(R.id.emergencyComment);exhaustComment = findViewById(R.id.exhaustComment);oilComment = findViewById(R.id.oilComment);fuelLevelComment = findViewById(R.id.fuelLevelComment);headlightsComment = findViewById(R.id.headlightsComment);leftIndicatorComment = findViewById(R.id.leftIndicatorComment);rightIndicatorComment = findViewById(R.id.rightIndicatorComment);backComment = findViewById(R.id.backComment);frontComment = findViewById(R.id.frontComment);jackComment = findViewById(R.id.jackComment);ledsComment = findViewById(R.id.ledsComment);licenceComment = findViewById(R.id.licenceComment);platesComment = findViewById(R.id.platesComment);radioComment = findViewById(R.id.radioComment);rearComment = findViewById(R.id.rearComment);reverseComment = findViewById(R.id.reverseComment);sideComment = findViewById(R.id.sideComment);sirenComment = findViewById(R.id.sirenComment);spareComment = findViewById(R.id.spareComment);treadComment = findViewById(R.id.treadComment);pressureComment = findViewById(R.id.pressureComment);windowsComment = findViewById(R.id.windowsComment);windscreenComment = findViewById(R.id.windscreenComment);waterSpritzerComment = findViewById(R.id.waterSpritzerComment);c02Comment = findViewById(R.id.c02Comment);dcpComment = findViewById(R.id.dcpComment);fuelFunnelComment = findViewById(R.id.fuelFunnelComment);awgPencilComment = findViewById(R.id.awgPencilComment);falseSpindlesComment = findViewById(R.id.falseSpindlesComment);layflat25Comment = findViewById(R.id.layflat25Comment);short65Comment = findViewById(R.id.short65Comment);duraflex38Comment = findViewById(R.id.duraflex38Comment);afffComment = findViewById(R.id.afffComment);boltCutterComment = findViewById(R.id.boltCutterComment);wireCutterComment = findViewById(R.id.wireCutterComment);crowBarComment = findViewById(R.id.crowBarComment);hondaKeyComment = findViewById(R.id.hondaKeyComment);hondaPumpComment = findViewById(R.id.hondaPumpComment);highPumpComment = findViewById(R.id.highPumpComment);rakeHoeComment = findViewById(R.id.rakeHoeComment);bushBeaterComment = findViewById(R.id.bushBeaterComment);jerryCanComment = findViewById(R.id.jerryCanComment);softSuctionComment = findViewById(R.id.softSuctionComment);strainerComment = findViewById(R.id.strainerComment);towRopeComment = findViewById(R.id.towRopeComment);meterStandpipeComment = findViewById(R.id.meterStandpipeComment);standpipeKeyComment = findViewById(R.id.standpipeKeyComment);blankCoupling65Comment = findViewById(R.id.blankCoupling65Comment);blankCoupling25Comment = findViewById(R.id.blankCoupling25Comment);trafficConesComment = findViewById(R.id.trafficConesComment);bobejaanComment = findViewById(R.id.bobejaanComment);toolboxComment = findViewById(R.id.toolboxComment);shovelComment = findViewById(R.id.shovelComment);
 
         checkBoxList = Arrays.asList(air,antennae,battery,body,brake,branding,dashboard,emergency,exhaust,oil,fuelLevel,headlights,leftIndicator,rightIndicator,back,front,jack,leds,licence,plates,radio,rear,reverse,side,siren,spare,tread,pressure,windows,windscreen,waterSpritzer,c02,dcp,fuelFunnel,awgPencil,falseSpindles,layflat25,short65,duraflex38,afff,boltCutter,wireCutter,crowBar,hondaKey,hondaPump,highPump,rakeHoe,bushBeater,jerryCan,softSuction,strainer,towRope,meterStandpipe,standpipeKey,blankCoupling65,blankCoupling25,trafficCones,bobejaan,toolbox,shovel);
         commentList = Arrays.asList(airComment,antennaeComment,batteryComment,bodyComment,brakeComment,brandingComment,dashboardComment,emergencyComment,exhaustComment,oilComment,fuelLevelComment,headlightsComment,leftIndicatorComment,rightIndicatorComment,backComment,frontComment,jackComment,ledsComment,licenceComment,platesComment,radioComment,rearComment,reverseComment,sideComment,sirenComment,spareComment,treadComment,pressureComment,windowsComment,windscreenComment,waterSpritzerComment,c02Comment,dcpComment,fuelFunnelComment,awgPencilComment,falseSpindlesComment,layflat25Comment,short65Comment,duraflex38Comment,afffComment,boltCutterComment,wireCutterComment,crowBarComment,hondaKeyComment,hondaPumpComment,highPumpComment,rakeHoeComment,bushBeaterComment,jerryCanComment,softSuctionComment,strainerComment,towRopeComment,meterStandpipeComment,standpipeKeyComment,blankCoupling65Comment,blankCoupling25Comment,trafficConesComment,bobejaanComment,toolboxComment,shovelComment);
@@ -201,9 +216,36 @@ public class FireSkid extends AppCompatActivity {
             }
         },30,30, TimeUnit.SECONDS);
 
+        TableSync();
+        DatePicker();
+    }
 
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
+    public void DatePicker(){
 
+        licenceExpire.setOnClickListener(view -> {
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog dialog = new DatePickerDialog(
+                    FireSkid.this,
+                    android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                    mDateSetListener,
+                    year,month,day);
+            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+        });
+
+        mDateSetListener = (datePicker, year, month, day) -> {
+            month = month + 1;
+            Log.d("tag", "onDateSet: dd/mm/yyy: " + day + "/" + month + "/" + year);
+
+            String date = day + "/" + month + "/" + year;
+            licenceExpire.setText(date);
+        };
     }
 
     public void Send(View v){
@@ -894,6 +936,301 @@ public class FireSkid extends AppCompatActivity {
         return valid;
     }
 
+    private static final int WrapContent = ViewGroup.LayoutParams.WRAP_CONTENT;
+    private static final int MatchParent = ViewGroup.LayoutParams.MATCH_PARENT;
+    private RelativeLayout root,root2;
 
+
+    private void TableSync()
+    {
+        root = findViewById(R.id.content);
+        root2 = findViewById(R.id.content2);
+
+        View table = getVehicleTable();
+        View table2 = getEquipmentTable();
+
+        root.addView(table);
+        root2.addView(table2);
+    }
+
+    private View getVehicleTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("Response Car M05");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"AIRCONDITIONER","ANTENNAE\'S","BATTERY SECURED","BODY WORK","BRAKE LIGHTS","BRANDING","DASHBOARD LIGHTS",
+                "EMERGENCY LIGHTS","EXHAUST","FUEL LEVEL","HEADLIGHTS","INDICATORS LEFT","INDICATORS RIGHT","INTERIOR LIGHT BACK","INTERIOR LIGHT FRONT",
+                "JACK AND TOOLS","LED'S","LICENSE DISK X2 & EXP DATE","NUMBER PLATES","RADIO CD","REAR VIEW MIRROR","REVERSE LIGHTS","SIDE MIRRORS","SIREN",
+                "SPARE WHEEL","TYRE THREAD","TYRE PRESSURE","WINDOWS","WINDSCREEN"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Need Repair","Resupply"};
+        String[] fuelLevelSpinnerOptions = new String[]{"Full", "3/4", "1/2", "1/4", "Empty"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            Row item = new Row(this, st, "1", i == 9? fuelLevelSpinnerOptions : qtySpinnerOptions, "OKAY", i == 9? "FULL   3/4   1/2   1/4": i == 17? "dd/mm/yyyy": i == 18? "CA 757-267":"No COMMENT","Comment here" , i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getEquipmentTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"Water Spritzers","Co2 Extingushers","DCP Extingushers","Fuel Funnel","Gekka AWG Pencil Nozzel","False Spindles (1 med and 1 Lg)",
+                "25mm Layflat (30 Meters)","65mmShort Length","65mm Duraflex 30m","5L AFFF","Bolt Cutter","Wire Cutter",
+                "Crowbar","Honda Pump Key","Pump Honda/Davey","Pump High Pressure","Rake Hoe","Bush Beater","5L Jerry Can",
+                "Soft Suction Hose 5m","Strainer","Tow Rope","Meter Standpipe ","Standpipe Key and Bar","65mm Blank coupling",
+                "25mm gekka blank coupling","Traffic Cones","Bobejaan Spanner","Toolbox","Shovel"
+        };
+
+        String[] _qtylist = new String[]{"2","2","2","1","2","2","2","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","4","1","1","1"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Need Repair", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
 
 }

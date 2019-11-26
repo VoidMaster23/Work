@@ -37,6 +37,9 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+        <activity android:name="com.example.cape_medics.TableLayout.TableLayoutActivity" >
+        </activity>
+        <activity android:name="com.example.cape_medics.TableLayout.TableActivity" />
         <activity android:name="com.example.cape_medics.Time_Sheet2" />
         <activity android:name="com.example.cape_medics.VehicleCheckList" />
         <activity android:name="com.example.cape_medics.Ambulance" />

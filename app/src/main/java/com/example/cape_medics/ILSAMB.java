@@ -1,25 +1,37 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.cape_medics.TableLayout.Row;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -40,6 +52,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -49,7 +62,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ILSAMB extends AppCompatActivity {
     Spinner VehicleNumber;
-    TextView dateView;
+    private TextView dateView,inspectionTime;
     List<CheckBox> checkBoxList;
     List<EditText> commentList;
     JSONObject ils_amb,response, save, load;
@@ -58,7 +71,7 @@ public class ILSAMB extends AppCompatActivity {
     boolean connected;
     ScheduledExecutorService scheduledExecutorService1;
 
-    private  EditText driver, controller, checkedBy, inspectionTime;
+    private  EditText driver, controller, checkedBy;
 
     private HorizontalScrollView sideScroll0;
     private ScrollView scroll0;
@@ -523,6 +536,11 @@ public class ILSAMB extends AppCompatActivity {
     private EditText multiPackComment;
     private Button next;
 
+    private static final int WrapContent = ViewGroup.LayoutParams.WRAP_CONTENT;
+    private static final int MatchParent = ViewGroup.LayoutParams.MATCH_PARENT;
+    private RelativeLayout root,root2,root3,root4,root5,root6,root7,root8,root9;
+
+
     /**
      * Find the Views in the layout<br />
      * <br />
@@ -530,7 +548,7 @@ public class ILSAMB extends AppCompatActivity {
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     private void findViews() {
-        sideScroll0 = (HorizontalScrollView)findViewById( R.id.sideScroll0 );
+        /*sideScroll0 = (HorizontalScrollView)findViewById( R.id.sideScroll0 );
         scroll0 = (ScrollView)findViewById( R.id.scroll0 );
         air = (CheckBox)findViewById( R.id.air );
         airComment = (EditText)findViewById( R.id.airComment );
@@ -990,8 +1008,7 @@ public class ILSAMB extends AppCompatActivity {
         vommitComment = (EditText)findViewById( R.id.vommitComment );
         multiPack = (CheckBox)findViewById( R.id.multiPack );
         multiPackQty = (TextView)findViewById( R.id.multiPackQty );
-        multiPackComment = (EditText)findViewById( R.id.multiPackComment );
-        next = (Button)findViewById( R.id.next );
+        multiPackComment = (EditText)findViewById( R.id.multiPackComment );*/
 
     }
 
@@ -1018,7 +1035,10 @@ public class ILSAMB extends AppCompatActivity {
         checkedBy = findViewById(R.id.checkedEdit);
         inspectionTime = findViewById(R.id.timeEdit);
         dateView = findViewById(R.id.dateView);
+        next = (Button)findViewById( R.id.next );
         url = "http://capemedicstestserver-com.stackstaging.com/apktest/vehicleChecklist.php";
+
+        ImageView logo = findViewById(R.id.logo);
 
         driver.requestFocus();
         String[] vehicleNumber = {"MED 1","MED 2","MED 3","MED 4","MED 5","MED 6","MED 7","MED 8","MED 9","MED 10","MED 11","MED 12","MED 13","MED 14","MED 15","MED 16","MED 17","MED 18","MED 19","MED 20","MED 21","MED 22","MED 23","MED 24"};
@@ -1108,11 +1128,56 @@ public class ILSAMB extends AppCompatActivity {
             }
         },30,30, TimeUnit.SECONDS);
         Toast.makeText(getApplicationContext(), "saved" + controller.getText().toString(), Toast.LENGTH_SHORT).show();
+
+        TableSync();
+        TimePicker();
+    }
+
+    Context mContext=this;
+
+    private void TimePicker()
+    {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        inspectionTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> inspectionTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+    }
+    private void TableSync()
+    {
+        root = findViewById(R.id.content);
+        root2 = findViewById(R.id.content2);
+        root3 = findViewById(R.id.content3);
+        root4 = findViewById(R.id.content4);
+        root5 = findViewById(R.id.content5);
+        root6 = findViewById(R.id.content6);
+        //root7 = findViewById(R.id.content7);
+
+        View table = getVehicleTable();
+        View table2 = getEquipmentTable();
+        View table3 = getDisposableTable();
+        View table4 = getDrugTable();
+        View table5 = getIlsDrugTable();
+        View table6 = getDocumentationTable();
+        //View table7 = getDiagnosticsTable();
+
+        root.addView(table);
+        root2.addView(table2);
+        root3.addView(table3);
+        root4.addView(table4);
+        root5.addView(table5);
+        root6.addView(table6);
+        //root7.addView(table7);
     }
 
     public void Send(View v){
 
-        if(validate()) {
+        if(validInfo()) {
             ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                     connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
@@ -1248,1381 +1313,1023 @@ public class ILSAMB extends AppCompatActivity {
 
     }
 
-    public boolean validate(){
-
-        //check if the edits at the to are empty
-        boolean valid = true;
-
-        if(driver.getText().toString().isEmpty()){
-            Toast.makeText(getApplicationContext(),"Please Enter the Driver's name ", Toast.LENGTH_SHORT).show();
-            valid = false;
-        }else if(controller.getText().toString().isEmpty()){
-            Toast.makeText(getApplicationContext(),"Please Enter the Controller's name ", Toast.LENGTH_SHORT).show();
-            valid = false;
-        }else if(checkedBy.getText().toString().isEmpty()){
-            Toast.makeText(getApplicationContext(),"Please Enter the checker's name ", Toast.LENGTH_SHORT).show();
-            valid = false;
-        }else if(inspectionTime.getText().toString().isEmpty()){
-            Toast.makeText(getApplicationContext(),"Please Enter the inspection time ", Toast.LENGTH_SHORT).show();
-            valid = false;
-        }
-
-        if (valid){
-            try {
-                String time = inspectionTime.getText().toString();
-                time = time.trim();
-                DateFormat sdf = new SimpleDateFormat("hh:mm");
-                Date date = sdf.parse(time);
-            }catch (Exception e){
-                Toast.makeText(getApplicationContext(),"Please ensure that the inspection time is in 24 hour format", Toast.LENGTH_SHORT).show();
-                valid = false;
-            }
-        }
-
-        // Vehicle
-
-        if(valid){
-            if (!air.isChecked() && airComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that air conditioner is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!antennae.isChecked() && antennaeComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that antennae is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!battery.isChecked() && batteryComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that battery secured is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!body.isChecked() && bodyComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that body work is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!brake.isChecked() && brakeComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that brake lights is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!branding.isChecked() && brandingComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that branding is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!dashboard.isChecked() && dashboard.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that dashboard lights is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!emergency.isChecked() && emergencyComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that emergency is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!exhaust.isChecked() && exhaustComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that exhaust is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!oil.isChecked() && oilComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that oil level is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!fuel.isChecked() && fuelComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that fuel level is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!headlights.isChecked() && headlightsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that headlights is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!leftIndicator.isChecked() && leftIndicatorComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that left indicator is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!rightIndicator.isChecked() && rightIndicatorComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that right indicator is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!back.isChecked() && backComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that interior light back is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!front.isChecked() && frontComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that interior light front is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!jack.isChecked() && jackComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that jack and tools is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!licence.isChecked() && licenceComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that licence is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!leds.isChecked() && ledsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that LED lights is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!plates.isChecked() && platesComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that number plates is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!radio.isChecked() && radioComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that radio is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!rear.isChecked() && rear.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that rear view mirror is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!reverse.isChecked() && reverseComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that reverse lights is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!side.isChecked() && sideComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that side mirror is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!siren.isChecked() && sirenComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that siren is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!spare.isChecked() && spareComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that spare wheel is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!tread.isChecked() && treadComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that tyre tread is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!pressure.isChecked() && pressureComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that tyre pressure is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!windows.isChecked() && windowsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that windows is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!windscreen.isChecked() && windscreenComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that windscreen is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-
-        //Equipment 1
-
-        if(valid){
-            if (!ecgLbl.isChecked() && ecgComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that ECG is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-
-        if(valid){
-            if (!adultEcg.isChecked() && adultEcgComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that adult ECG is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!childEcg.isChecked() && childEcgComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that paed ECG is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!spareBattery.isChecked() && spareBatteryComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that spare battery is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!spareEcg.isChecked() && spareEcgComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that spare ecg is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!oximeter.isChecked() && oximeterComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that pulse oximeter is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!suctionUnit.isChecked() && suctionUnitComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that suction unit is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!suctionReservoir.isChecked() && suctionReservoirComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that suction reservoir is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!chargingCable.isChecked() && chargingCableComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that charging cable is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-
-        if(valid){
-            if (!suctionTubing.isChecked() && suctionTubingComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that suction tubing is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!softSuction.isChecked() && softSuctionComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that soft suction catheters is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!adultSuction.isChecked() && adultSuctionComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that adult suction catheters is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!paedSuction.isChecked() && paedSuctionComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that paed suction catheters is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!stretcher.isChecked() && stretcherComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that stretcher is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!straps.isChecked() && strapsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that stretcher straps is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!mattress.isChecked() && mattressComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that stretcher matress is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!sheet.isChecked() && sheetComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that sheet is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!pillow.isChecked() && pillowComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that pillow is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!pillowCase.isChecked() && pillowCaseComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that pillow case is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!blanket.isChecked() && blanketComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that blanket is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!other.isChecked() && otherComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that other is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!adultKed.isChecked() && adultKedComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that adult KED is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!childKed.isChecked() && childKedComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that child KED is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!adultSplint.isChecked() && adultSplintComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that adult traction splint is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!scoopStretcher.isChecked() && scoopStretcher.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that scoop stretcher is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!spinalBoard.isChecked() && spinalBoardComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that spinal board is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!headBlocks.isChecked() && headBlocksComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that head blocks is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!basePlate.isChecked() && basePlateComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that base plate is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!spiderHarness.isChecked() && spiderHarnessComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that spider harness is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!headStraps.isChecked() && headStrapsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that head straps is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!zipStretcher.isChecked() && zipStretcherComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that zip stretcher is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!longSplints.isChecked() && longSplints.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that long splints is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!shortSplints.isChecked() && shortSplintsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that short splints is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!adultCollar.isChecked() && adultCollarComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that c-collar(adult) is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!childCollar.isChecked() && childCollarComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that c-collar(paed) is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!fireExtinguisher.isChecked() && fireExtinguisherComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that fire extinguisher is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!rescueHelmet.isChecked() && rescueHelmet.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that rescue helmet is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!roadCones.isChecked() && roadConesComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that collapsble road cones is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!reflectorVests.isChecked() && reflectorVestsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that body work is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!body.isChecked() && bodyComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that body work is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!wasteBin.isChecked() && wasteBinComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that waste bin is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!medicalWaste.isChecked() && medicalWasteComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that medical waste bag is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!sharpsBin.isChecked() && sharpsBinComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that bo is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!body.isChecked() && bodyComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that body work is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!gloves.isChecked() && glovesComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that gloves(extra) is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-
-        //Disposables
-
-        if(valid){
-            if (!portableOxygen.isChecked() && portableOxygenComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that portable oxygen is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!pinRegulator.isChecked() && pinRegulatorComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that pin index regulator is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!oxygenMainline.isChecked() && oxygenMainlineComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that oxygen mainline is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!oxygenFlowMeter.isChecked() && oxygenFlowMeterComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that oxygen flow meter is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!bullNose.isChecked() && bullNoseComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that bullnose regulator is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!aed.isChecked() && aedComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that AED is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!adultDefibPads.isChecked() && adultDefibPadsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that adult defib pads is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
 
-        }
-
-        if(valid){
-            if (!childDefibPads.isChecked() && childDefibPadsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that paed defib pads is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!defibGel.isChecked() && defibGelComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that defib gel is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-
-        //Drugs Bag
-
-        if(valid){
-            if (!asprin.isChecked() && asprinComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that asprin is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!gtn.isChecked() && gtnComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that gtn is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!dextrose.isChecked() && dextroseComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that dextrose is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!glucose.isChecked() && glucoseComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that oral glucose is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-
-        if(valid){
-            if (!fenoterol.isChecked() && fenoterolComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that fenoterol is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!bromide.isChecked() && bromideComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that ipratropium bromide is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        //ILS Drug Pouch
-
-        if(valid){
-            if (!bigPlasters.isChecked() && bigPlastersComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that big platers is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!smallPlasters.isChecked() && smallPlastersComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that small plasters is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!cetrimide.isChecked() && cetrimide.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that cetrimide is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-
-        if(valid){
-            if (!elastoplast.isChecked() && elastoplastComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that elastoplast is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        //Documentation
-
-        if(valid){
-            if (!prf.isChecked() && prfComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that PRF Book is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!doa.isChecked() && doaComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that DOA Book is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!gop.isChecked() && gopComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that GOP Forms is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-
-        //Equipment
-        if(valid){
-            if (!torniquet.isChecked() && torniquetComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that torniquet is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!glucometer.isChecked() && glucometerComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that glucometer is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!gloves2.isChecked() && gloves2Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that gloves is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!bp.isChecked() && bpComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that bp cuff is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!stethoscope.isChecked() && stethoscopeComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that stethoscope is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!rescueScissors.isChecked() && rescueScissorsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that rescue scissors is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!thermometer.isChecked() && thermometerComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that thermometer is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!pupilTorch.isChecked() && pupilTorchComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that pupul torch is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!testStrips.isChecked() && testStripsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that test strips is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!lancets.isChecked() && lancetsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that lancets is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!sats.isChecked() && satsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that sats probe is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!adultMask.isChecked() && adultMaskComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that adult venturi mask is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!adultRebreather.isChecked() && adultRebreatherComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that adult rebreather is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!adultNebulizer.isChecked() && adultNebulizerComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that adult nebulizer is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!adultNasal.isChecked() && adultNasalComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that adult nasal cannula is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!childMask.isChecked() && childMaskComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that child venturi mask is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!childRebreather.isChecked() && childRebreatherComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that child rebreather is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!childNebuliser.isChecked() && childNebuliserComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that child nebulizer is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!childNasal.isChecked() && childNasalComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that child nasal cannula is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!traumaPads.isChecked() && traumaPadsComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that trauma pads is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!traumaDressing100.isChecked() && traumaDressing100Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that trauma dressing 75x100mm is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!traumaDressing200.isChecked() && traumaDressing200Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that trauma dressing 150x200mm is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!bandage75.isChecked() && bandage75Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that conforming bandage 75mm is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!bandage50.isChecked() && bandage50Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that conforming bandage 50mm is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!stretchBandage.isChecked() && stretchBandageComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that stretch bandage 200x300mm is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!elastoplast.isChecked() && elastoplastComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that conforming elastoplast is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!adultBvm.isChecked() && adultBvmComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that adult bvm is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!childBvm.isChecked() && childBvmComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that child bvm is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!infantBvm.isChecked() && infantBvmComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that infant bvm is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!tube000.isChecked() && tube000Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that op tube 000 is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!tube00.isChecked() && tube00Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that op tube 00 is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!tube0.isChecked() && tube0Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that op tube 0 is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!tube1.isChecked() && tube1Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that op tube 1 is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!tube2.isChecked() && tube2Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that op tube 2 is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!tube3.isChecked() && tube3Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that op tube 3 is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!tube4.isChecked() && tube4Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that op tube 4 is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!tube5.isChecked() && tube5Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that op tube 5 is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!maternity.isChecked() && maternityComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that maternity pack is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!needleCric.isChecked() && needleCricComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that needle cric pack is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!ringers1000.isChecked() && ringers1000Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that ringers 1000ml is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!sodiumChloride.isChecked() && sodiumChlorideComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that sodium chloride is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!colloid.isChecked() && colloidComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that colloid is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-
-        if(valid){
-            if (!canulla14.isChecked() && canulla14Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that 14g IV cannula is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!canulla16.isChecked() && canulla16Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that 16g IV cannula is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!canulla18.isChecked() && canulla18Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that 18g IV cannula is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!canulla20.isChecked() && canulla20Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that 20g IV cannula is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!canulla22.isChecked() && canulla22Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that 22g IV cannula is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!canulla24.isChecked() && canulla24Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that 24g IV cannula is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!admin60.isChecked() && admin60Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that 60 drop admin set is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-
-        if(valid){
-            if (!admin20.isChecked() && admin20Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that 20 drop admin set is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!admin15.isChecked() && admin15Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that 15 drop admin set is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!admin10.isChecked() && admin10Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that 10 drop admin set is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!webcol.isChecked() && webcol.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that webcol is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!tegaderm.isChecked() && tegadermComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that tegaderm is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!syringe20.isChecked() && syringe20Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that syringes 20ml is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!syringe10.isChecked() && syringe10Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that syringes 10ml is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
 
-        if(valid){
-            if (!syringe5.isChecked() && syringe5Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that syringes 5ml is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
+    private View getVehicleTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("Response Car M05");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
 
-        }
-
-        if(valid){
-            if (!syringe3.isChecked() && syringe3Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that syringes 3ml is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!needle18.isChecked() && needle18Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that 18g hypodermic needle is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!needle21.isChecked() && needle21Comment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that 21g hypodermic needle is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!tongue.isChecked() && tongueComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that tongue depressors is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!micropore.isChecked() && microporeComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that micropore is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!spaceBlanket.isChecked() && spaceBlanketComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that space blanket is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!gauze.isChecked() && gauzeComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that gauze is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!triBandages.isChecked() && triBandagesComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that triangular bandages is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-
-        if(valid){
-            if (!vommit.isChecked() && vommitComment.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure vomit bags is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        if(valid){
-            if (!multiPack.isChecked() && multiPack.getText().toString().isEmpty()){
-                valid = false;
-                Toast.makeText(getApplicationContext(),"Please ensure that burnshield multipack is checked or the comment is filled in ", Toast.LENGTH_SHORT).show();
-            }
-
-        }
+        headingRow.addView(heading2,heading2Params);
 
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
 
+        table.addView(headingRow);
 
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
 
-        return valid;
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"AIRCONDITIONER","ANTENNAE\'S","BATTERY SECURED","BODY WORK","BRAKE LIGHTS","BRANDING","DASHBOARD LIGHTS",
+                "EMERGENCY LIGHTS","EXHAUST","FUEL LEVEL","HEADLIGHTS","INDICATORS LEFT","INDICATORS RIGHT","INTERIOR LIGHT BACK","INTERIOR LIGHT FRONT",
+                "JACK AND TOOLS","LED'S","LICENSE DISK X2 & EXP DATE","NUMBER PLATES","RADIO CD","REAR VIEW MIRROR","REVERSE LIGHTS","SIDE MIRRORS","SIREN",
+                "SPARE WHEEL","TYRE THREAD","TYRE PRESSURE","WINDOWS","WINDSCREEN"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Need Repair"};
+        String[] fuelLevelSpinnerOptions = new String[]{"Full", "3/4", "1/2", "1/4", "Empty"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            Row item = new Row(this, st, "1", i == 9? fuelLevelSpinnerOptions : qtySpinnerOptions, "OKAY", i == 9? "FULL   3/4   1/2   1/4":"No COMMENT","Comment here" , i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getEquipmentTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"LAERDAL SUCTION UNIT+TUBING","YANKUAR CATHETER AND SOFT TIP","ECG MONITOR + ELECTRODES+ DEFIB PADS","SMALL CERVICAL COLLARS",
+                "LARGE CERVICAL COLLARS","LONG KRAMER WIRE SPLINTS","SHORT KRAMER WIRE SPLINTS","REGULATOR PIN INDEX CM1201","PORTABLE 02 HC012094",
+                "SHARPS CONTAINER 1228","REFLECTIVE VESTS","RESCUE HELMET","LINEN SAVERS","FIRE EXTINGUISHER","KED ADULT","ADULT TRACTION SPLINT",
+                "EMERGENCY TRIANGLE","ROAD CONES","TORNIQUET","GLUCOMETER","GLOVES","BP CUFF","STETHOSCOPE","RESCUE SCISSORS","THERMOMETER","PUPIL TORCH","TEST STRIPS","LANCETS",
+                "SATS PROBE","VENTURI MASK ADULT","REBREATHER MASK ADULT","NEBULIZER MASK ADULT","NASAL CANNULA ADULT","VENTURI MASK CHILD","REBREATHER MASK CHILD","NEBULISER MASK CHILD",
+                "NASAL CANNULA CHILD","TRAUMA PADS","TRAUMA DRESSING 75X100MM","TRAUMA DRESSING 150X200MM","CONFORMING BANDAGE 75MM","CONFORMING BANDAGE 50MM","STRECTH BANDAGE 200X300MM",
+                "ELASTOPLAST","BVM ADULT+RESERVOIR","BVM CHILD+RESERVOIR","BVM INFANT+RESERVOIR","MAGILLES ADULT","MAGILLES PAED","OP TUBE SIZE 000","OP TUBE SIZE 00","OP TUBE SIZE 0",
+                "OP TUBE SIZE 1","OP TUBE SIZE 2","OP TUBE SIZE 3","OP TUBE SIZE 4","OP TUBE SIZE 5","LMA 5","LMA 4","LMA 3","LMA 2","LMA 1","UVC PACK","MATERNITY PACK","NEEDLE CRIC PACK",
+                "NG TUBE","SURGICAL AIRWAY PACK","URINARY CATHETER","URINE BAG","SUTURE PACK","SPIROMETER","RINGERS 1000ML","SODIUM CHLORIDE 0,9% 200ML","16G JELCO","18G JELCO","20G JELCO","22G JELCO",
+                "24G JELCO","60 DROP ADMIN SET","20 DROP ADMIN SET","15 DROP ADMIN SET","10 DROP ADMIN SET","WEBCOL","TEGADERM","SYRINGES 20ML","SYRINGES 10ML","SYRINGES 5ML","SYRINGES 3ML","18G HYPODERMIC NEEDLE",
+                "21G HYPODERMIC NEEDLE","LARYNGOSOPE HANDLE","LARYNGOSOPE BLADE 4","LARYNGOSOPE BLADE 3","LARYNGOSOPE BLADE 2","LARYNGOSOPE BLADE 1","LARYNGOSOPE BLADE 0","ET 2.5","ET 3.0",
+                "ET 3.5","ET 4.0","ET 4.5","ET 5.0","ET 5.5","ET 6.0","ET 6.5","ET 7.0","ET 7.5","ET 8.0","ET 8.5","TONGUE DEPRESSORS","PEAD TUBE HOLDERS","TUBE TAPE","BATTERIES (SPARE)","MICROPORE",
+                "PEEP VALVE","SPACE BLANKET","GAUZE","TRIANGULAR BANDAGES","VOMMIT BAGS","BURNSHIELD MULTIPACK","OTHER"
+        };
+
+        String[] _qtylist = new String[]{"1","1","1","1","2","2","1","1","1","2","1","1","1","1","1","1","*","*","*","*","*","*","1","1","1","1","1","1","1","1","1","25","1","2","2","2","2","2","2","2","2","10",
+                "2","2","2","2","2","3","1","1","1","*","*","2","2","2","2","2","2","2","2","1","1","1","1","1","1","1","1","1","1","1","1","2","1","1","2","4","4","4","4","4","4",
+                "2","2","2","23","4","4","4","4","4","5","10","1","1","1","1","1","1","2","2","2","2","2","2","2","2","2","2","2","2","2","8","2","2","1","1","1","2","6","2","2","1"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Need Repair", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getDisposableTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"Portable Oxygen Cyliner","Pin index regulator","Oxygen Cylindar Key/Spanner","Oxygen Mainline Cylinder",
+                "Oxygen flow meter","Bullnose/Pin Index regulator","AED (Charge working)","Defib pads - adult","Defib pads - paed","Defib gel"
+        };
+
+        String[] _qtylist = new String[]{"2","1","1","1","2","1","1","1","1","1"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Need Repair", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getDrugTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"ASPRIN","GTN","CLOPIDOGREL","ADENOSINE","AMIODARONE","LIGNOCAINE2%(SYSTEMIC)","ADRENALINE","ATROPINE","MAG. SULPHATE",
+                "CALCIUM CHLORIDE","SODA BIC 8.5%","THIAMINE(IM/SC)","DIAZEPAM","MIDAZOLAM","PROMETHAZINE","ACTIVATED CHARCOAL","FLUMAZENIL","NALOXONE",
+                "MORPHINE","DEXTROSE 50%","ORAL GLUCOSE","FENOTEROL","IPRATROPRIUM BROMIDE","CORTICOSTERIODS","FUROSEMIDE","METACLOPRAMIDE","BUSCOPAN"
+        };
+
+        String[] _qtylist = new String[]{"6","1","8","3","3","2","10","4","3","2","1","1","2","2","2","1","1","4","2","2","2","3","3","3","3","4","2"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getIlsDrugTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"DEXTROSE 50%","FENETROL","IPRATROPIUM BROMIDE","DISPRIN","BIG PLASTERS","SMALL PLASTERS","CETRIMIDE 1% BOTTLE","GLUCOGEL","ELASTOPLAST",
+        };
+
+        String[] _qtylist = new String[]{"1","3","3","6","5","10","1","2","1"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getDocumentationTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"PRF BOOK","DOA BOOK","GOP FORMS"
+        };
+
+        String[] _qtylist = new String[]{"1","1","5"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT","Comment here", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getDiagnosticsTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"TORNIQUET","GLUCOMETER","GLOVES","BP CUFF","STETHOSCOPE","RESCUE SCISSORS","THERMOMETER","PUPIL TORCH","TEST STRIPS",
+                "LANCETS","SATS PROBE"
+        };
+
+        String[] _qtylist = new String[]{"1","1","1","1","1","1","1","1","1","25","1"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT","Comment here", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
     }
 
 
+    public boolean validInfo(){
+        boolean valid = true;
 
+        if(driver.getText().toString().isEmpty()){
+            valid = false;
+            Toast.makeText(getApplicationContext(),"Please Enter the Driver's Name",Toast.LENGTH_SHORT).show();
+        }
 
+        if(valid){
+            if(controller.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please Enter the Controller's Name",Toast.LENGTH_SHORT).show();
+            }
+        }
 
+        if(valid){
+            if(inspectionTime.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please Enter the Inspection Time",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(checkedBy.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please Enter the Inspector's Name",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        return valid;
+
+    }
 }

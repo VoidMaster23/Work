@@ -3,6 +3,7 @@ package com.example.cape_medics;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -21,7 +22,7 @@ public class ViewAttendanceCrew extends AppCompatActivity {
     ListView Crew;
     List<Map<String, String>> data;
     Map<String, String> datum;
-    String jobName, info, attendance;
+    String jobName, info, attendance, authorisation;
     JSONObject response, jobInfo;
     String code;
 
@@ -37,6 +38,7 @@ public class ViewAttendanceCrew extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         code = bundle.getString("code");
         jobName = bundle.getString("job");
+        authorisation = bundle.getString("Authorisation");
         info = bundle.getString("names");
 
         try {
@@ -82,6 +84,8 @@ public class ViewAttendanceCrew extends AppCompatActivity {
     public void Done (View v){
         Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
         i.putExtra("first","not");
+        i.putExtra("Authorisation",authorisation);
+        Log.i("Auth", authorisation);
         i.putExtra("code",code);
         startActivity(i);
     }

@@ -41,7 +41,7 @@ public class ViewAttendance extends AppCompatActivity {
     Spinner unitType;
     ListView Jobs;
     String job;
-    String unit, code;
+    String unit, code, authorisation;
     JSONObject viewAttendance;
     String url, responseServer;
     JSONObject response;
@@ -58,7 +58,9 @@ public class ViewAttendance extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null)
         {
+
             code = bundle.getString("code");
+            authorisation = bundle.getString("Authorisation");
         }
         viewAttendance = new JSONObject();
         jobType = findViewById(R.id.spinner9);
@@ -146,6 +148,7 @@ public class ViewAttendance extends AppCompatActivity {
                 i.putExtra("job", String.valueOf(Jobs.getItemAtPosition(position)));
                 i.putExtra("names", responseServer);
                 i.putExtra("code",code);
+                i.putExtra("Authorisation",authorisation);
                 startActivity(i);
             }
         });

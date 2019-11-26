@@ -330,6 +330,23 @@
                         android:layout_alignLeft="@id/chkAssault"
                         android:text="Delivery"
                         android:textColor="@color/white" />
+
+                    <CheckBox
+                        android:id="@+id/chkphy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/chkFirstAid"
+                        android:text="Physciatric/Anxiety\n disorders"
+                        android:textColor="@color/white" />
+
+                    <CheckBox
+                        android:id="@+id/chkOthers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/chkDeliver"
+                        android:layout_alignLeft="@id/chkAssault"
+                        android:text="Other/Unknown"
+                        android:textColor="@color/white" />
                 </RelativeLayout>
 
             </RelativeLayout>

@@ -56,7 +56,7 @@ public class BroadCast extends AppCompatActivity {
     String responseString;
     List CrewName;
     String url, code;
-    String responseServer;
+    String responseServer, authorisation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +74,7 @@ public class BroadCast extends AppCompatActivity {
         jobName = bundle.getString("job");
         responseString = bundle.getString("names");
         code = bundle.getString("code");
+        authorisation = bundle.getString("Authorisation");
         try {
             response = new JSONObject(responseString);
             String item = response.getString(jobName);
@@ -225,6 +226,7 @@ public class BroadCast extends AppCompatActivity {
             Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
             i.putExtra("first","not");
             i.putExtra("code", code);
+            i.putExtra("Authorisation",authorisation);
             Toast.makeText(getApplicationContext(),"Message Sent!", Toast.LENGTH_SHORT).show();
             startActivity(i);
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cape_medics"
+    android:targetSandboxVersion="1"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -36,6 +37,9 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+        <activity android:name="com.example.cape_medics.TableLayout.TableLayoutActivity" >
+        </activity>
+        <activity android:name="com.example.cape_medics.TableLayout.TableActivity" />
         <activity android:name="com.example.cape_medics.Time_Sheet2" />
         <activity android:name="com.example.cape_medics.VehicleCheckList" />
         <activity android:name="com.example.cape_medics.Ambulance" />

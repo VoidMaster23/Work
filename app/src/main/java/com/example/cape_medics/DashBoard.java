@@ -26,7 +26,7 @@ public class DashBoard extends AppCompatActivity {
     ListView CurrentJobs;
     ListView PastJobs;
     ListView Broadcasts;
-    String jobs,broadcasts;
+    String jobs,broadcasts,authorisation,code;
 
     List JobList;
     List BroadcastList;
@@ -40,6 +40,8 @@ public class DashBoard extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         broadcasts = bundle.getString("broadcasts");
+        code = bundle.getString("code");
+        authorisation = bundle.getString("Authorisation");
         jobs = bundle.getString("jobs");
         JobList = new ArrayList<String>();
         BroadcastList = new ArrayList<String>();
@@ -114,6 +116,8 @@ public class DashBoard extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent i = new Intent(getApplicationContext(), SwapShift.class);
                                 i.putExtra("job", String.valueOf(CurrentJobs.getItemAtPosition(position)));
+                                i.putExtra("code",code);
+                                i.putExtra("Authorisation",authorisation);
                                 startActivity(i);
                             }
                         }).show();

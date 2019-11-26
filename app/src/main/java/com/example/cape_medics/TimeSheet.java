@@ -1,6 +1,11 @@
 package com.example.cape_medics;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +15,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -31,23 +38,30 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class TimeSheet extends AppCompatActivity {
     Spinner jobType;
     Spinner unitType;
     Spinner serviceProvided;
-    EditText callTime;
+    TextView callTime;
     EditText jobName;
     EditText Location;
     JSONObject timeSheet, response;
-    String responseServer,url;
+    String responseServer,url,code,authorisation;
+    String jobN, loc, callT, jobT, unit, service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_sheet);
+
+        Bundle bundle = getIntent().getExtras();
+        code = bundle.getString("code");
+        authorisation = bundle.getString("Authorisation");
 
         timeSheet = new JSONObject();
         jobName = findViewById(R.id.editText);
@@ -85,15 +99,68 @@ public class TimeSheet extends AppCompatActivity {
         unitType.setAdapter(UnitTypeAdapter);
         serviceProvided.setAdapter(ServiceProvidedAdapter);
         //callTime.setAdapter(CallTimeAdapter);
+        DatePicker();
+        TimePicker();
+    }
+
+    Context mContext=this;
+
+    private void TimePicker()
+    {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        callTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> callTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
 
     }
 
+    private TextView mDisplayDate;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+
+    public void DatePicker(){
+
+        mDisplayDate = findViewById(R.id.tvDate);
+
+        mDisplayDate.setOnClickListener(view -> {
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog dialog = new DatePickerDialog(
+                    TimeSheet.this,
+                    android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                    mDateSetListener,
+                    year,month,day);
+            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+        });
+
+        mDateSetListener = (datePicker, year, month, day) -> {
+            month = month + 1;
+            Log.d("tag", "onDateSet: dd/mm/yyy: " + day + "/" + month + "/" + year);
+
+            String date = day + "/" + month + "/" + year;
+            mDisplayDate.setText(date);
+        };
+    }
+
     public void StartShift(View v){
+        jobN = jobName.getText().toString();
+        loc = Location.getText().toString();
+        callT = callTime.getText().toString();
+        jobT = jobType.getSelectedItem().toString();
+        unit = unitType.getSelectedItem().toString();
+        service = serviceProvided.getSelectedItem().toString();
+
         AsyncT send = new AsyncT();
         send.execute();
 
-        Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
-        startActivity(i);
     }
 
     public void Cancel(View v){
@@ -101,79 +168,6 @@ public class TimeSheet extends AppCompatActivity {
         startActivity(i);
     }
 
-    /*public String[] TimeCreator(){
-        String Final = "";
-        String min = "";
-        String h = "";
-        String d = "";
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        String DateTime = dateFormat.format(date);
-        String Date = DateTime.substring(0,10);
-        String Time = DateTime.substring(11,16);
-
-        String[] TimeArray = Time.split(":");
-        String[] DateArray = Date.split("/");
-        int minutes = Integer.parseInt(TimeArray[1]);
-        int hours = Integer.parseInt(TimeArray[0]);
-        int days = Integer.parseInt(DateArray[2]);
-
-        //initial rounding
-        if (minutes<15){
-            minutes = 15;
-            min = "15";
-        }
-        else if (minutes<30){
-            minutes = 30;
-            min = "30";
-        }
-        else if (minutes<45){
-            minutes = 45;
-            min = "45";
-        }
-        else{
-            minutes = 0;
-            min = "00";
-        }
-
-        Time = TimeArray[0]+":"+min;
-        Final = Final + "CallTime: "+Time+"-"+Date;
-
-        for(int i=0;i<96;i++){
-            minutes+=15;
-            if(minutes == 60){
-                minutes = 0;
-                hours+=1;
-                if (hours>9) {
-                    h = Integer.toString(hours);
-                }
-                else{
-                    h = Integer.toString(hours);
-                    h = "0"+h;
-                }
-                min = "00";
-            }
-            if(hours == 24){
-                minutes = 0;
-                hours = 0;
-                min = "00";
-                h = "00";
-                days+= 1;
-                if (days>9) {
-                    d = Integer.toString(days);
-                }
-                else{
-                    d = Integer.toString(days);
-                    d = "0"+h;
-                }
-            }
-
-        }
-
-
-
-        return null;
-    }*/
 
     class AsyncT extends AsyncTask<Void, Void, Void> {
         @Override
@@ -183,12 +177,12 @@ public class TimeSheet extends AppCompatActivity {
 
             try {
 
-                timeSheet.put("Job Name",jobName.getText().toString());
-                timeSheet.put("Location",Location.getText().toString());
-                timeSheet.put("Call Time",callTime.getText().toString());
-                timeSheet.put("Job Type",jobType.getSelectedItem().toString());
-                timeSheet.put("Unit Type",unitType.getSelectedItem().toString());
-                timeSheet.put("Service Provided",serviceProvided.getSelectedItem().toString());
+                timeSheet.put("Job Name",jobN);
+                timeSheet.put("Location",loc);
+                timeSheet.put("Call Time", callT);
+                timeSheet.put("Job Type",jobT);
+                timeSheet.put("Unit Type", unit);
+                timeSheet.put("Service Provided",service);
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
                 nameValuePairs.add(new BasicNameValuePair("req", timeSheet.toString()));
@@ -217,8 +211,14 @@ public class TimeSheet extends AppCompatActivity {
             super.onPostExecute(aVoid);
 
             try {
-                response = new JSONObject(responseServer);
-            } catch (JSONException e) {
+                Toast.makeText(getApplicationContext(), responseServer, Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
+                i.putExtra("first","not");
+                i.putExtra("code",code);
+                i.putExtra("Authorisation",authorisation);
+                startActivity(i);
+
+            } catch (Exception e) {
                 e.printStackTrace();
             }
            /* if (response.length() < 3) {

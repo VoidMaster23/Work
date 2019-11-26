@@ -1,15 +1,19 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
+import com.example.cape_medics.DateAndTimePicker.TimePickerFragment;
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 
 import org.json.JSONArray;
@@ -18,17 +22,18 @@ import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
-public class categoryType extends AppCompatActivity {
+public class categoryType extends AppCompatActivity{
     ExpandableRelativeLayout expandableLayout1, expandableLayout2, expandableLayout3, expandableLayout4, expandableLayout5;
     CheckBox ortia,ctia,ksia,inemergency,airemergency,organtransfer,landemergency,airtransfer,acsastaff,otherstakeholder;
     CheckBox publicpassenger, film, event, cticc, gcc, firstaid, prf, gccstaff, other, publicPatron, home2hospital;
     CheckBox facility2facility, house, office, publicVenue;
-    EditText callLocation, name, company, organiser, callLocation2, callLocation3, reportTime;
+    EditText callLocation, name, company, organiser, callLocation2, callLocation3;
     Cache cache;
 
-    TextView dateView;
+    TextView dateView, reportTime;
 
     JSONObject acsa, load;
     String airport,callType_acsa,general_acsa,code ;
@@ -38,9 +43,11 @@ public class categoryType extends AppCompatActivity {
     JSONObject eventDetails;
 
     JSONObject primary;
-    String callType_primary, saved, authorisation;
+    String callType_primary, saved;
 
     JSONObject CategoryType;
+
+    Context mContext=this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,10 +109,6 @@ public class categoryType extends AppCompatActivity {
         String Date = DateTime.substring(0,10);
         dateView.setText(Date);
 
-        Intent i = getIntent();
-        authorisation = i.getStringExtra("Authorisation");
-        Log.i("AuthorisationCategory",""+authorisation);
-
         saved = cache.getStringProperty("categoryType"+code);
         if ( saved != null){
             try {
@@ -116,7 +119,20 @@ public class categoryType extends AppCompatActivity {
             }
         }
 
+        TimePicker();
+    }
 
+    private void TimePicker()
+    {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        reportTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> reportTime.setText(hourOfDay + ":" + minute1),hour,minute,android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
 
     }
 
@@ -235,14 +251,11 @@ public class categoryType extends AppCompatActivity {
         cache.setStringProperty("categoryType"+code, CategoryType.toString());
 
         //sends JSONArray to
-        Intent intent= new Intent(getApplicationContext(), medicalTabbedView.class);
+        Intent intent= new Intent(getApplicationContext(), Death.class);
         intent.putExtra("Category Type", CategoryType.toString());
-        intent.putExtra("code", code);
-        intent.putExtra("Authorisation",authorisation);
-        Log.i("Authorisation1",""+authorisation);
 
-        startActivity(intent);
+        Intent i = new Intent(getApplicationContext(), medicalTabbedView.class);
+        startActivity(i);
     }
-
 
 }

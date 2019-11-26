@@ -47,7 +47,7 @@ public class ChooseBroadCast extends AppCompatActivity {
     String job, code;
     String unit;
     JSONObject chooseBroadcast;
-    String url;
+    String url,authorisation;
     String responseServer;
     JSONObject response;
     List currentJobs;
@@ -64,6 +64,7 @@ public class ChooseBroadCast extends AppCompatActivity {
         if (bundle != null)
         {
             code = bundle.getString("code");
+            authorisation = bundle.getString("Authorisation");
         }
 
         chooseBroadcast = new JSONObject();
@@ -152,6 +153,7 @@ public class ChooseBroadCast extends AppCompatActivity {
                 i.putExtra("job", String.valueOf(Jobs.getItemAtPosition(position)));
                 i.putExtra("names", responseServer);
                 i.putExtra("code", code);
+                i.putExtra("Authorisation",authorisation);
                 startActivity(i);
             }
         });
