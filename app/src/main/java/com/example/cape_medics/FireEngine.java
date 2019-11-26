@@ -1227,7 +1227,7 @@ public class FireEngine extends AppCompatActivity {
         for(int i = 0; i < _list.length; i++)
         {
             String st = _list[i];
-            Row item = new Row(this, st, "1", i == 9? fuelLevelSpinnerOptions : qtySpinnerOptions, "OKAY", i == 9? "FULL   3/4   1/2   1/4":"No COMMENT","Comment here" , i, parentWidth);
+            Row item = new Row(this, st, "1", i == 9? fuelLevelSpinnerOptions : qtySpinnerOptions, "OKAY", i == 9? "FULL   3/4   1/2   1/4": i == 17? "dd/mm/yyyy": i == 18? "CA 757-267":"No COMMENT","Comment here" , i, parentWidth);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
