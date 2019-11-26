@@ -1,6 +1,9 @@
 package com.example.cape_medics;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,7 +11,9 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -27,13 +32,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 public class SwapShift extends AppCompatActivity {
     JSONObject swapShift;
-    EditText date;
     EditText name;
     CheckBox early;
+
     CheckBox late;
     String jobName;
     String url;
@@ -45,12 +52,44 @@ public class SwapShift extends AppCompatActivity {
         setContentView(R.layout.activity_swap);
         swapShift = new JSONObject();
         url = "http://capemedicstestserver-com.stackstaging.com/apktest/dashboard.php";
-        date = findViewById(R.id.editText);
         name = findViewById(R.id.spinner);
         early = findViewById(R.id.checkBox);
         late = findViewById(R.id.checkBox2);
         Bundle bundle = getIntent().getExtras();
         jobName = bundle.getString("job");
+
+        DatePicker();
+    }
+
+    private TextView mDisplayDate;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+
+    public void DatePicker(){
+
+        mDisplayDate = findViewById(R.id.tvDate);
+
+        mDisplayDate.setOnClickListener(view -> {
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog dialog = new DatePickerDialog(
+                    SwapShift.this,
+                    android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                    mDateSetListener,
+                    year,month,day);
+            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+        });
+
+        mDateSetListener = (datePicker, year, month, day) -> {
+            month = month + 1;
+            Log.d("tag", "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+
+            String date = month + "/" + day + "/" + year;
+            mDisplayDate.setText(date);
+        };
     }
 
     public void Send (View v){
@@ -94,7 +133,7 @@ public class SwapShift extends AppCompatActivity {
 
                 swapShift.put("Job_Name",jobName);
                 swapShift.put("Name",name.getText().toString() );
-                swapShift.put("Date", date.getText().toString());
+                swapShift.put("Date", mDisplayDate.getText().toString());
 
 
 
@@ -110,7 +149,7 @@ public class SwapShift extends AppCompatActivity {
                 HttpResponse response = httpclient.execute(httppost);
                 InputStream inputStream = response.getEntity().getContent();
                 Login_Page.InputStreamToStringExample str = new Login_Page.InputStreamToStringExample();
-                responseServer = str.getStringFromInputStream(inputStream);
+                responseServer = Login_Page.InputStreamToStringExample.getStringFromInputStream(inputStream);
                 Log.e("response", "cake -----" + responseServer);
 
 

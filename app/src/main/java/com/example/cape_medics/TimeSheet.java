@@ -1,6 +1,9 @@
 package com.example.cape_medics;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -31,8 +35,10 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class TimeSheet extends AppCompatActivity {
     Spinner jobType;
@@ -85,7 +91,38 @@ public class TimeSheet extends AppCompatActivity {
         unitType.setAdapter(UnitTypeAdapter);
         serviceProvided.setAdapter(ServiceProvidedAdapter);
         //callTime.setAdapter(CallTimeAdapter);
+        DatePicker();
+    }
 
+    private TextView mDisplayDate;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+
+    public void DatePicker(){
+
+        mDisplayDate = findViewById(R.id.tvDate);
+
+        mDisplayDate.setOnClickListener(view -> {
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog dialog = new DatePickerDialog(
+                    TimeSheet.this,
+                    android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                    mDateSetListener,
+                    year,month,day);
+            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+        });
+
+        mDateSetListener = (datePicker, year, month, day) -> {
+            month = month + 1;
+            Log.d("tag", "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+
+            String date = month + "/" + day + "/" + year;
+            mDisplayDate.setText(date);
+        };
     }
 
     public void StartShift(View v){

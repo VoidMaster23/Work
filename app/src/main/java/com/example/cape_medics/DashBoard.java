@@ -96,28 +96,18 @@ public class DashBoard extends AppCompatActivity {
         Broadcasts.setAdapter(broadcasts);
 
 
-        CurrentJobs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+        CurrentJobs.setOnItemClickListener((parent, view, position, id) -> {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                builder.setTitle("Swap Shift")
-                        .setMessage("Do you want to swap this job shift with someone?")
-                        .setPositiveButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        })
-                        .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(getApplicationContext(), SwapShift.class);
-                                i.putExtra("job", String.valueOf(CurrentJobs.getItemAtPosition(position)));
-                                startActivity(i);
-                            }
-                        }).show();
-            }
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+            builder.setTitle("Swap Shift")
+                    .setMessage("Do you want to swap this job shift with someone?")
+                    .setPositiveButton("No", (dialog, which) -> dialog.cancel())
+                    .setNegativeButton("Yes", (dialog, which) -> {
+                        Intent i = new Intent(getApplicationContext(), SwapShift.class);
+                        i.putExtra("job", String.valueOf(CurrentJobs.getItemAtPosition(position)));
+                        startActivity(i);
+                    })
+                    .show();
         });
 
         //json stuff broad cast

@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,7 +25,7 @@ public class Death extends Fragment {
     Button send, go;
     JSONObject death;
     EditText location, time, place, date, name, post, time2;
-    CheckBox carotidPulseLeft, carotidPulseRight, breathingYes, breathingNo, eyeYes, eyeNo, ecgYes, ecgNo, pupilsYes, pupilsNo;
+    CheckBox carotidPulseYes, carotidPulseNo, breathingYes, breathingNo, eyeYes, eyeNo, ecgYes, ecgNo, pupilsYes, pupilsNo;
     String carotidPulse, breathing, dollEyeMovements, ecgStraightLine, bilateralFixedDilatedPupils;
     private static final String IMAGE_DIRECTORY = "/Pictures";
 
@@ -39,7 +37,7 @@ public class Death extends Fragment {
         View view = inflater.inflate(R.layout.activity_death,container,false);
 
 
-/*
+
         death = new JSONObject();
 
         send = view.findViewById(R.id.send);
@@ -52,8 +50,8 @@ public class Death extends Fragment {
         post = view.findViewById(R.id.postEdit);
         time2 = view.findViewById(R.id.timeEdit2);
 
-        carotidPulseLeft = view.findViewById(R.id.leftChk);
-        carotidPulseRight = view.findViewById(R.id.rightChk);
+        carotidPulseYes = view.findViewById(R.id.leftChk);
+        carotidPulseNo = view.findViewById(R.id.rightChk);
         breathingYes = view.findViewById(R.id.breathingChkYes);
         breathingNo = view.findViewById(R.id.breathingChkNo);
         eyeYes = view.findViewById(R.id.dollChkYes);
@@ -107,7 +105,7 @@ public class Death extends Fragment {
                     medicalTabbedView.map.put("Disposal",medicalTabbedView.disposal.createJson());
                     medicalTabbedView.map.put("Crew Details", medicalTabbedView.crewDetails.createJson());
                     medicalTabbedView.map.put("Accompanying Practitioner", medicalTabbedView.acompPrac.createJson());
-                    medicalTabbedView.map.put("Items Handed over", medicalTabbedView.handed.createJson());
+                    //medicalTabbedView.map.put("Items Handed over", medicalTabbedView.handed.createJson());
                     medicalTabbedView.map.put("Handover/disposal",medicalTabbedView.handoff_frag.createJson());
                     medicalTabbedView.map.put("Notes",medicalTabbedView.notes.createJson());
                     medicalTabbedView.map.put("Death",createJson());
@@ -126,11 +124,11 @@ public class Death extends Fragment {
 
         try {
             CategoryType = new JSONArray(getActivity().getIntent().getStringExtra("Category Type"));
-        }catch (Exception e) {}*/
+        }catch (Exception e) {}
 
         return view;
     }
-/*
+
     public void removeStringPropertys(String code, Cache cache, Context context){
         //use this method to remove all string caches
         cache = new Cache(context);
@@ -140,8 +138,8 @@ public class Death extends Fragment {
     public JSONObject createJson (){
 
         //carotid pulse
-        if(carotidPulseLeft.isChecked()) carotidPulse = carotidPulseLeft.getText().toString();
-        if(carotidPulseRight.isChecked()) carotidPulse = carotidPulseRight.getText().toString();
+        if(carotidPulseYes.isChecked()) carotidPulse = carotidPulseYes.getText().toString();
+        if(carotidPulseNo.isChecked()) carotidPulse = carotidPulseNo.getText().toString();
 
         //breathing
         if(breathingNo.isChecked()) breathing = breathingNo.getText().toString();
@@ -194,11 +192,5 @@ public class Death extends Fragment {
 
 
 
-    }*/
-
-
-
-
-
-
+    }
 }

@@ -136,13 +136,6 @@ public class medicalTabbedView extends AppCompatActivity {
                         Log.i("HERE", "I made it ");
 
                     }
-
-
-
-
-
-
-
                 }
             }
 

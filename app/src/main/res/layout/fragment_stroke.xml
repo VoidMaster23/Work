@@ -39,7 +39,9 @@
                     android:textColor="@color/white"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:layout_toStartOf="@id/imageView12"
+                    android:layout_toLeftOf="@id/imageView12" />
 
             </RelativeLayout>
 
@@ -255,22 +257,37 @@
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/checkBoxStroke" />
 
-                <EditText
+                <RelativeLayout
                     android:id="@+id/editCasualty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="53dp"
-                    android:layout_marginRight="53dp"
-                    android:background="@null"
-                    android:ems="10"
-                    android:hint="yes/no"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:layout_alignStart="@id/editDoorDrug"
-                    android:layout_below="@+id/checkBoxStroke"
-                    android:layout_alignLeft="@id/editDoorDrug" />
+                    android:layout_alignStart="@id/facialDroopContainer"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_toEndOf="@id/checkBox6"
+                    android:layout_toRightOf="@id/checkBox6"
+                    android:layout_alignTop="@id/checkBoxCasualty"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignLeft="@id/facialDroopContainer">
+
+                    <Button
+                        android:id="@+id/Casualty_btnYes"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:text="Y"
+                        android:background="@drawable/whiteshape"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true" />
+
+                    <Button
+                        android:id="@+id/Casualty_btnNo"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:text="N"
+                        android:background="@drawable/orangeshape"
+                        android:layout_toEndOf="@id/Casualty_btnYes"
+                        android:layout_toRightOf="@id/Casualty_btnYes"/>
+
+                </RelativeLayout>
 
             </RelativeLayout>
         </LinearLayout>

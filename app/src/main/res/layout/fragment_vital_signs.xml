@@ -65,7 +65,8 @@
                     android:textColor="#fff"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="OnClick" />
 
                 <ScrollView
                     android:id="@+id/scrl1"

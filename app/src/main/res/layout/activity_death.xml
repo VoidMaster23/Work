@@ -256,7 +256,7 @@
             android:id="@+id/leftChk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Left"
+            android:text="Yes"
             android:layout_below="@+id/findings"
             android:layout_toEndOf="@id/pulse"
             android:layout_toRightOf="@id/pulse"
@@ -267,7 +267,7 @@
             android:id="@+id/rightChk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Right"
+            android:text="No"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/findings"
             android:layout_alignParentRight="true" />

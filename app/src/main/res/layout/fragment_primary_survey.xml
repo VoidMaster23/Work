@@ -244,7 +244,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/chkAbsent"
                     android:layout_alignLeft="@id/lblTime"
-                    android:text="Respiration Rate"
+                    android:text="Descriptive"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />

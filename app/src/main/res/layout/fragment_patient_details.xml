@@ -286,7 +286,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@id/chkAdult"
                     android:layout_marginLeft="25dp"
-                    android:layout_toRightOf="@id/chkAdult"
+                    android:layout_alignLeft="@id/chkColored"
                     android:text="Child/Juvenile"
                     android:textColor="@color/white" />
 
@@ -294,9 +294,9 @@
                     android:id="@+id/chkBaby"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/chkAdult"
-                    android:layout_marginLeft="25dp"
-                    android:layout_toRightOf="@id/chkChild"
+                    android:layout_alignLeft="@id/lblName"
+                    android:layout_below="@id/chkAdult"
+                    android:layout_marginTop="10dp"
                     android:text="Newborn Baby"
                     android:textColor="@color/white" />
 
@@ -304,7 +304,7 @@
                     android:id="@+id/textView22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/chkAdult"
+                    android:layout_below="@id/chkBaby"
                     android:layout_alignLeft="@id/textView21"
                     android:text="Race"
                     android:textColor="@color/white"

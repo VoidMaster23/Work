@@ -2,22 +2,32 @@ package com.example.cape_medics;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.cape_medics.TableLayout.Row;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -730,6 +740,10 @@ public class ALS_ICU_AMB extends AppCompatActivity {
     private EditText multiPackComment;
     private Button next;
 
+    private static final int WrapContent = ViewGroup.LayoutParams.WRAP_CONTENT;
+    private static final int MatchParent = ViewGroup.LayoutParams.MATCH_PARENT;
+    private RelativeLayout root,root2,root3,root4,root5,root6,root7,root8,root9;
+
     /**
      * Find the Views in the layout<br />
      * <br />
@@ -737,677 +751,676 @@ public class ALS_ICU_AMB extends AppCompatActivity {
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     private void findViews() {
-        air = (CheckBox)findViewById( R.id.air );
-        antennae = (CheckBox)findViewById( R.id.antennae );
-        battery = (CheckBox)findViewById( R.id.battery );
-        body = (CheckBox)findViewById( R.id.body );
-        brake = (CheckBox)findViewById( R.id.brake );
-        branding = (CheckBox)findViewById( R.id.branding );
-        dashboard = (CheckBox)findViewById( R.id.dashboard );
-        emergency = (CheckBox)findViewById( R.id.emergency );
-        exhaust = (CheckBox)findViewById( R.id.exhaust );
-        oil = (CheckBox)findViewById( R.id.oil );
-        fuel = (CheckBox)findViewById( R.id.fuel );
-        headlights = (CheckBox)findViewById( R.id.headlights );
-        leftIndicator = (CheckBox)findViewById( R.id.leftIndicator );
-        rightIndicator = (CheckBox)findViewById( R.id.rightIndicator );
-        back = (CheckBox)findViewById( R.id.back );
-        front = (CheckBox)findViewById( R.id.front );
-        jack = (CheckBox)findViewById( R.id.jack );
-        leds = (CheckBox)findViewById( R.id.leds );
-        licence = (CheckBox)findViewById( R.id.licence );
-        plates = (CheckBox)findViewById( R.id.plates );
-        radio = (CheckBox)findViewById( R.id.radio );
-        rear = (CheckBox)findViewById( R.id.rear );
-        reverse = (CheckBox)findViewById( R.id.reverse );
-        side = (CheckBox)findViewById( R.id.side );
-        siren = (CheckBox)findViewById( R.id.siren );
-        spare = (CheckBox)findViewById( R.id.spare );
-        tread = (CheckBox)findViewById( R.id.tread );
-        pressure = (CheckBox)findViewById( R.id.pressure );
-        windows = (CheckBox)findViewById( R.id.windows );
-        windscreen = (CheckBox)findViewById( R.id.windscreen );
-        airComment = (EditText)findViewById( R.id.airComment );
-        antennaeComment = (EditText)findViewById( R.id.antennaeComment );
-        batteryComment = (EditText)findViewById( R.id.batteryComment );
-        bodyComment = (EditText)findViewById( R.id.bodyComment );
-        brakeComment = (EditText)findViewById( R.id.brakeComment );
-        brandingComment = (EditText)findViewById( R.id.brandingComment );
-        dashboardComment = (EditText)findViewById( R.id.dashboardComment );
-        emergencyComment = (EditText)findViewById( R.id.emergencyComment );
-        exhaustComment = (EditText)findViewById( R.id.exhaustComment );
-        oilComment = (EditText)findViewById( R.id.oilComment );
-        fuelComment = (EditText)findViewById( R.id.fuelComment );
-        headlightsComment = (EditText)findViewById( R.id.headlightsComment );
-        leftIndicatorComment = (EditText)findViewById( R.id.leftIndicatorComment );
-        rightIndicatorComment = (EditText)findViewById( R.id.rightIndicatorComment );
-        backComment = (EditText)findViewById( R.id.backComment );
-        frontComment = (EditText)findViewById( R.id.frontComment );
-        jackComment = (EditText)findViewById( R.id.jackComment );
-        ledsComment = (EditText)findViewById( R.id.ledsComment );
-        licenceComment = (EditText)findViewById( R.id.licenceComment );
-        platesComment = (EditText)findViewById( R.id.platesComment );
-        radioComment = (EditText)findViewById( R.id.radioComment );
-        rearComment = (EditText)findViewById( R.id.rearComment );
-        reverseComment = (EditText)findViewById( R.id.reverseComment );
-        sideComment = (EditText)findViewById( R.id.sideComment );
-        sirenComment = (EditText)findViewById( R.id.sirenComment );
-        spareComment = (EditText)findViewById( R.id.spareComment );
-        treadComment = (EditText)findViewById( R.id.treadComment );
-        pressureComment = (EditText)findViewById( R.id.pressureComment );
-        windowsComment = (EditText)findViewById( R.id.windowsComment );
-        windscreenComment = (EditText)findViewById( R.id.windscreenComment );
-        ecg = (CheckBox)findViewById( R.id.ecg );
-        ecgQty = (TextView)findViewById( R.id.ecgQty );
-        ecgComment = (EditText)findViewById( R.id.ecgComment );
-        adultEcg = (CheckBox)findViewById( R.id.adultEcg );
-        adultEcgQty = (TextView)findViewById( R.id.adultEcgQty );
-        adultEcgComment = (EditText)findViewById( R.id.adultEcgComment );
-        childEcg = (CheckBox)findViewById( R.id.childEcg );
-        childEcgQty = (TextView)findViewById( R.id.childEcgQty );
-        childEcgComment = (EditText)findViewById( R.id.childEcgComment );
-        spareBattery = (CheckBox)findViewById( R.id.spareBattery );
-        spareBatteryQty = (TextView)findViewById( R.id.spareBatteryQty );
-        spareBatteryComment = (EditText)findViewById( R.id.spareBatteryComment );
-        spareEcg = (CheckBox)findViewById( R.id.spareEcg );
-        spareEcgQty = (TextView)findViewById( R.id.spareEcgQty );
-        spareEcgComment = (EditText)findViewById( R.id.spareEcgComment );
-        oximeter = (CheckBox)findViewById( R.id.oximeter );
-        oximeterQty = (TextView)findViewById( R.id.oximeterQty );
-        oximeterComment = (EditText)findViewById( R.id.oximeterComment );
-        suctionUnit = (CheckBox)findViewById( R.id.suctionUnit );
-        suctionUnitQty = (TextView)findViewById( R.id.suctionUnitQty );
-        suctionUnitComment = (EditText)findViewById( R.id.suctionUnitComment );
-        suctionReservoir = (CheckBox)findViewById( R.id.suctionReservoir );
-        suctionReservoirQty = (TextView)findViewById( R.id.suctionReservoirQty );
-        suctionReservoirComment = (EditText)findViewById( R.id.suctionReservoirComment );
-        chargingCable = (CheckBox)findViewById( R.id.chargingCable );
-        chargingCableQty = (TextView)findViewById( R.id.chargingCableQty );
-        chargingCableComment = (EditText)findViewById( R.id.chargingCableComment );
-        suctionTubing = (CheckBox)findViewById( R.id.suctionTubing );
-        suctionTubingQty = (TextView)findViewById( R.id.suctionTubingQty );
-        suctionTubingComment = (EditText)findViewById( R.id.suctionTubingComment );
-        softSuction = (CheckBox)findViewById( R.id.softSuction );
-        softSuctionQty = (TextView)findViewById( R.id.softSuctionQty );
-        softSuctionComment = (EditText)findViewById( R.id.softSuctionComment );
-        adultSuction = (CheckBox)findViewById( R.id.adultSuction );
-        adultSuctionQty = (TextView)findViewById( R.id.adultSuctionQty );
-        adultSuctionComment = (EditText)findViewById( R.id.adultSuctionComment );
-        paedSuction = (CheckBox)findViewById( R.id.paedSuction );
-        paedSuctionQty = (TextView)findViewById( R.id.paedSuctionQty );
-        paedSuctionComment = (EditText)findViewById( R.id.paedSuctionComment );
-        ventilatorKit = (CheckBox)findViewById( R.id.ventilatorKit );
-        ventilatorKitQty = (TextView)findViewById( R.id.ventilatorKitQty );
-        ventilatorKitComment = (EditText)findViewById( R.id.ventilatorKitComment );
-        circuitHose = (CheckBox)findViewById( R.id.circuitHose );
-        circuitHoseQty = (TextView)findViewById( R.id.circuitHoseQty );
-        circuitHoseComment = (EditText)findViewById( R.id.circuitHoseComment );
-        circuitHoseFilter = (CheckBox)findViewById( R.id.circuitHoseFilter );
-        circuitHoseFilterQty = (TextView)findViewById( R.id.circuitHoseFilterQty );
-        circuitHoseFilterComment = (EditText)findViewById( R.id.circuitHoseFilterComment );
-        co2Attachment = (CheckBox)findViewById( R.id.co2Attachment );
-        co2AttachmentQty = (TextView)findViewById( R.id.co2AttachmentQty );
-        co2AttachmentComment = (EditText)findViewById( R.id.co2AttachmentComment );
-        oxygenCylinder = (CheckBox)findViewById( R.id.oxygenCylinder );
-        oxygenCylinderQty = (TextView)findViewById( R.id.oxygenCylinderQty );
-        oxygenCylinderComment = (EditText)findViewById( R.id.oxygenCylinderComment );
-        oxygenGauge = (CheckBox)findViewById( R.id.oxygenGauge );
-        oxygenGaugeQty = (TextView)findViewById( R.id.oxygenGaugeQty );
-        oxygenGaugeComment = (EditText)findViewById( R.id.oxygenGaugeComment );
-        oxygenCylinderKey = (CheckBox)findViewById( R.id.oxygenCylinderKey );
-        oxygenCylinderKeyQty = (TextView)findViewById( R.id.oxygenCylinderKeyQty );
-        oxygenCylinderKeyComment = (EditText)findViewById( R.id.oxygenCylinderKeyComment );
-        syringePump = (CheckBox)findViewById( R.id.syringePump );
-        syringePumpQty = (TextView)findViewById( R.id.syringePumpQty );
-        syringePumpComment = (EditText)findViewById( R.id.syringePumpComment );
-        powerCable = (CheckBox)findViewById( R.id.powerCable );
-        powerCableQty = (TextView)findViewById( R.id.powerCableQty );
-        powerCableComment = (EditText)findViewById( R.id.powerCableComment );
-        fiftySyringe = (CheckBox)findViewById( R.id.fiftySyringe );
-        fiftySyringeQty = (TextView)findViewById( R.id.fiftySyringeQty );
-        fiftySyringeComment = (EditText)findViewById( R.id.fiftySyringeComment );
-        microbore = (CheckBox)findViewById( R.id.microbore );
-        microboreQty = (TextView)findViewById( R.id.microboreQty );
-        microboreComment = (EditText)findViewById( R.id.microboreComment );
-        stretcher = (CheckBox)findViewById( R.id.stretcher );
-        stretcherQty = (TextView)findViewById( R.id.stretcherQty );
-        stretcherComment = (EditText)findViewById( R.id.stretcherComment );
-        straps = (CheckBox)findViewById( R.id.straps );
-        strapsQty = (TextView)findViewById( R.id.strapsQty );
-        strapsComment = (EditText)findViewById( R.id.strapsComment );
-        mattress = (CheckBox)findViewById( R.id.mattress );
-        mattressQty = (TextView)findViewById( R.id.mattressQty );
-        mattressComment = (EditText)findViewById( R.id.mattressComment );
-        sheet = (CheckBox)findViewById( R.id.sheet );
-        sheetQty = (TextView)findViewById( R.id.sheetQty );
-        sheetComment = (EditText)findViewById( R.id.sheetComment );
-        pillow = (CheckBox)findViewById( R.id.pillow );
-        pillowQty = (TextView)findViewById( R.id.pillowQty );
-        pillowComment = (EditText)findViewById( R.id.pillowComment );
-        pillowCase = (CheckBox)findViewById( R.id.pillowCase );
-        pillowCaseQty = (TextView)findViewById( R.id.pillowCaseQty );
-        pillowCaseComment = (EditText)findViewById( R.id.pillowCaseComment );
-        blanket = (CheckBox)findViewById( R.id.blanket );
-        blanketQty = (TextView)findViewById( R.id.blanketQty );
-        blanketComment = (EditText)findViewById( R.id.blanketComment );
-        other = (CheckBox)findViewById( R.id.other );
-        otherQty = (TextView)findViewById( R.id.otherQty );
-        otherComment = (EditText)findViewById( R.id.otherComment );
-        adultKed = (CheckBox)findViewById( R.id.adultKed );
-        adultKedQty = (TextView)findViewById( R.id.adultKedQty );
-        adultKedComment = (EditText)findViewById( R.id.adultKedComment );
-        childKed = (CheckBox)findViewById( R.id.childKed );
-        childKedQty = (TextView)findViewById( R.id.childKedQty );
-        childKedComment = (EditText)findViewById( R.id.childKedComment );
-        adultSplint = (CheckBox)findViewById( R.id.adultSplint );
-        adultSplintQty = (TextView)findViewById( R.id.adultSplintQty );
-        adultSplintComment = (EditText)findViewById( R.id.adultSplintComment );
-        scoopStretcher = (CheckBox)findViewById( R.id.scoopStretcher );
-        scoopStretcherQty = (TextView)findViewById( R.id.scoopStretcherQty );
-        scoopStretcherComment = (EditText)findViewById( R.id.scoopStretcherComment );
-        spinalBoard = (CheckBox)findViewById( R.id.spinalBoard );
-        spinalBoardQty = (TextView)findViewById( R.id.spinalBoardQty );
-        spinalBoardComment = (EditText)findViewById( R.id.spinalBoardComment );
-        headBlocks = (CheckBox)findViewById( R.id.headBlocks );
-        headBlocksQty = (TextView)findViewById( R.id.headBlocksQty );
-        headBlocksComment = (EditText)findViewById( R.id.headBlocksComment );
-        basePlate = (CheckBox)findViewById( R.id.basePlate );
-        basePlateQty = (TextView)findViewById( R.id.basePlateQty );
-        basePlateComment = (EditText)findViewById( R.id.basePlateComment );
-        spiderHarness = (CheckBox)findViewById( R.id.spiderHarness );
-        spiderHarnessQty = (TextView)findViewById( R.id.spiderHarnessQty );
-        spiderHarnessComment = (EditText)findViewById( R.id.spiderHarnessComment );
-        headStraps = (CheckBox)findViewById( R.id.headStraps );
-        headStrapsQty = (TextView)findViewById( R.id.headStrapsQty );
-        headStrapsComment = (EditText)findViewById( R.id.headStrapsComment );
-        zipStretcher = (CheckBox)findViewById( R.id.zipStretcher );
-        zipStretcherBoardQty = (TextView)findViewById( R.id.zipStretcherBoardQty );
-        zipStretcherComment = (EditText)findViewById( R.id.zipStretcherComment );
-        longSplints = (CheckBox)findViewById( R.id.longSplints );
-        longSplintsQty = (TextView)findViewById( R.id.longSplintsQty );
-        longSplintsComment = (EditText)findViewById( R.id.longSplintsComment );
-        shortSplints = (CheckBox)findViewById( R.id.shortSplints );
-        shortSplintsQty = (TextView)findViewById( R.id.shortSplintsQty );
-        shortSplintsComment = (EditText)findViewById( R.id.shortSplintsComment );
-        adultCollar = (CheckBox)findViewById( R.id.adultCollar );
-        adultCollarQty = (TextView)findViewById( R.id.adultCollarQty );
-        adultCollarComment = (EditText)findViewById( R.id.adultCollarComment );
-        childCollar = (CheckBox)findViewById( R.id.childCollar );
-        childCollarQty = (TextView)findViewById( R.id.childCollarQty );
-        childCollarComment = (EditText)findViewById( R.id.childCollarComment );
-        fireExtinguisher = (CheckBox)findViewById( R.id.fireExtinguisher );
-        fireExtinguisherQty = (TextView)findViewById( R.id.fireExtinguisherQty );
-        fireExtinguisherComment = (EditText)findViewById( R.id.fireExtinguisherComment );
-        rescueHelmet = (CheckBox)findViewById( R.id.rescueHelmet );
-        rescueHelmetQty = (TextView)findViewById( R.id.rescueHelmetQty );
-        rescueHelmetComment = (EditText)findViewById( R.id.rescueHelmetComment );
-        roadCones = (CheckBox)findViewById( R.id.roadCones );
-        roadConesQty = (TextView)findViewById( R.id.roadConesQty );
-        roadConesComment = (EditText)findViewById( R.id.roadConesComment );
-        reflectorVests = (CheckBox)findViewById( R.id.reflectorVests );
-        reflectorVestsQty = (TextView)findViewById( R.id.reflectorVestsQty );
-        reflectorVestsComment = (EditText)findViewById( R.id.reflectorVestsComment );
-        wasteBin = (CheckBox)findViewById( R.id.wasteBin );
-        wasteBinQty = (TextView)findViewById( R.id.wasteBinQty );
-        wasteBinComment = (EditText)findViewById( R.id.wasteBinComment );
-        medicalWaste = (CheckBox)findViewById( R.id.medicalWaste );
-        medicalWasteQty = (TextView)findViewById( R.id.medicalWasteQty );
-        medicalWasteComment = (EditText)findViewById( R.id.medicalWasteComment );
-        sharpsBin = (CheckBox)findViewById( R.id.sharpsBin );
-        sharpsBinQty = (TextView)findViewById( R.id.sharpsBinQty );
-        sharpsBinComment = (EditText)findViewById( R.id.sharpsBinComment );
-        bodyBag = (CheckBox)findViewById( R.id.bodyBag );
-        bodyBagQty = (TextView)findViewById( R.id.bodyBagQty );
-        bodyBagComment = (EditText)findViewById( R.id.bodyBagComment );
-        gloves = (CheckBox)findViewById( R.id.gloves );
-        glovesQty = (TextView)findViewById( R.id.glovesQty );
-        glovesComment = (EditText)findViewById( R.id.glovesComment );
-        portableOxygen = (CheckBox)findViewById( R.id.portableOxygen );
-        portableOxygenQty = (TextView)findViewById( R.id.portableOxygenQty );
-        portableOxygenComment = (EditText)findViewById( R.id.portableOxygenComment );
-        pinRegulator = (CheckBox)findViewById( R.id.pinRegulator );
-        pinRegulatorQty = (TextView)findViewById( R.id.pinRegulatorQty );
-        pinRegulatorComment = (EditText)findViewById( R.id.pinRegulatorComment );
-        oxygenMainline = (CheckBox)findViewById( R.id.oxygenMainline );
-        oxygenMainlineQty = (TextView)findViewById( R.id.oxygenMainlineQty );
-        oxygenMainlineComment = (EditText)findViewById( R.id.oxygenMainlineComment );
-        oxygenFlowMeter = (CheckBox)findViewById( R.id.oxygenFlowMeter );
-        oxygenFlowMeterQty = (TextView)findViewById( R.id.oxygenFlowMeterQty );
-        oxygenFlowMeterComment = (EditText)findViewById( R.id.oxygenFlowMeterComment );
-        bullNose = (CheckBox)findViewById( R.id.bullNose );
-        bullNoseQty = (TextView)findViewById( R.id.bullNoseQty );
-        bullNoseComment = (EditText)findViewById( R.id.bullNoseComment );
-        aed = (CheckBox)findViewById( R.id.aed );
-        aedQty = (TextView)findViewById( R.id.aedQty );
-        aedComment = (EditText)findViewById( R.id.aedComment );
-        adultDefibPads = (CheckBox)findViewById( R.id.adultDefibPads );
-        adultDefibPadsQty = (TextView)findViewById( R.id.adultDefibPadsQty );
-        adultDefibPadsComment = (EditText)findViewById( R.id.adultDefibPadsComment );
-        childDefibPads = (CheckBox)findViewById( R.id.childDefibPads );
-        childDefibPadsQty = (TextView)findViewById( R.id.childDefibPadsQty );
-        childDefibPadsComment = (EditText)findViewById( R.id.childDefibPadsComment );
-        defibGel = (CheckBox)findViewById( R.id.defibGel );
-        defibGelQty = (TextView)findViewById( R.id.defibGelQty );
-        defibGelComment = (EditText)findViewById( R.id.defibGelComment );
-        asprin = (CheckBox)findViewById( R.id.asprin );
-        asprinQty = (TextView)findViewById( R.id.asprinQty );
-        asprinComment = (EditText)findViewById( R.id.asprinComment );
-        gtn = (CheckBox)findViewById( R.id.gtn );
-        gtnQty = (TextView)findViewById( R.id.gtnQty );
-        gtnComment = (EditText)findViewById( R.id.gtnComment );
-        clopidogrel = (CheckBox)findViewById( R.id.clopidogrel );
-        clopidogrelQty = (TextView)findViewById( R.id.clopidogrelQty );
-        clopidogrelComment = (EditText)findViewById( R.id.clopidogrelComment );
-        adenosine = (CheckBox)findViewById( R.id.adenosine );
-        adenosineQty = (TextView)findViewById( R.id.adenosineQty );
-        adenosineComment = (EditText)findViewById( R.id.adenosineComment );
-        amiodarone = (CheckBox)findViewById( R.id.amiodarone );
-        amiodaroneQty = (TextView)findViewById( R.id.amiodaroneQty );
-        amiodaroneComment = (EditText)findViewById( R.id.amiodaroneComment );
-        lignocaine = (CheckBox)findViewById( R.id.lignocaine );
-        lignocaineQty = (TextView)findViewById( R.id.lignocaineQty );
-        lignocaineComment = (EditText)findViewById( R.id.lignocaineComment );
-        adrenaline = (CheckBox)findViewById( R.id.adrenaline );
-        adrenalineQty = (TextView)findViewById( R.id.adrenalineQty );
-        adrenalineComment = (EditText)findViewById( R.id.adrenalineComment );
-        atropine = (CheckBox)findViewById( R.id.atropine );
-        atropineQty = (TextView)findViewById( R.id.atropineQty );
-        atropineComment = (EditText)findViewById( R.id.atropineComment );
-        magnesium = (CheckBox)findViewById( R.id.magnesium );
-        magnesiumQty = (TextView)findViewById( R.id.magnesiumQty );
-        magnesiumComment = (EditText)findViewById( R.id.magnesiumComment );
-        calcium = (CheckBox)findViewById( R.id.calcium );
-        calciumQty = (TextView)findViewById( R.id.calciumQty );
-        calciumComment = (EditText)findViewById( R.id.calciumComment );
-        soda = (CheckBox)findViewById( R.id.soda );
-        sodaQty = (TextView)findViewById( R.id.sodaQty );
-        sodaComment = (EditText)findViewById( R.id.sodaComment );
-        thiamine = (CheckBox)findViewById( R.id.thiamine );
-        thiamineQty = (TextView)findViewById( R.id.thiamineQty );
-        thiamineComment = (EditText)findViewById( R.id.thiamineComment );
-        diazepam = (CheckBox)findViewById( R.id.diazepam );
-        diazepamQty = (TextView)findViewById( R.id.diazepamQty );
-        diazepamComment = (EditText)findViewById( R.id.diazepamComment );
-        midazolam = (CheckBox)findViewById( R.id.midazolam );
-        midazolamQty = (TextView)findViewById( R.id.midazolamQty );
-        midazolamComment = (EditText)findViewById( R.id.midazolamComment );
-        promethazine = (CheckBox)findViewById( R.id.promethazine );
-        promethazineQty = (TextView)findViewById( R.id.promethazineQty );
-        promethazineComment = (EditText)findViewById( R.id.promethazineComment );
-        activatedCharcoal = (CheckBox)findViewById( R.id.activatedCharcoal );
-        activatedCharcoalQty = (TextView)findViewById( R.id.activatedCharcoalQty );
-        activatedCharcoalComment = (EditText)findViewById( R.id.activatedCharcoalComment );
-        flumazenil = (CheckBox)findViewById( R.id.flumazenil );
-        flumazenilQty = (TextView)findViewById( R.id.flumazenilQty );
-        flumazenilComment = (EditText)findViewById( R.id.flumazenilComment );
-        naloxone = (CheckBox)findViewById( R.id.naloxone );
-        naloxoneQty = (TextView)findViewById( R.id.naloxoneQty );
-        naloxoneComment = (EditText)findViewById( R.id.naloxoneComment );
-        morphine = (CheckBox)findViewById( R.id.morphine );
-        morphineQty = (TextView)findViewById( R.id.morphineQty );
-        morphineComment = (EditText)findViewById( R.id.morphineComment );
-        dextrose = (CheckBox)findViewById( R.id.dextrose );
-        dextroseQty = (TextView)findViewById( R.id.dextroseQty );
-        dextroseComment = (EditText)findViewById( R.id.dextroseComment );
-        glucose = (CheckBox)findViewById( R.id.glucose );
-        glucoseQty = (TextView)findViewById( R.id.glucoseQty );
-        glucoseComment = (EditText)findViewById( R.id.glucoseComment );
-        fenoterol = (CheckBox)findViewById( R.id.fenoterol );
-        fenoterolQty = (TextView)findViewById( R.id.fenoterolQty );
-        fenoterolComment = (EditText)findViewById( R.id.fenoterolComment );
-        bromide = (CheckBox)findViewById( R.id.bromide );
-        bromideQty = (TextView)findViewById( R.id.bromideQty );
-        bromideComment = (EditText)findViewById( R.id.bromideComment );
-        corticosteriods = (CheckBox)findViewById( R.id.corticosteriods );
-        corticosteriodsQty = (TextView)findViewById( R.id.corticosteriodsQty );
-        corticosteriodsComment = (EditText)findViewById( R.id.corticosteriodsComment );
-        furosemide = (CheckBox)findViewById( R.id.furosemide );
-        furosemideQty = (TextView)findViewById( R.id.furosemideQty );
-        furosemideComment = (EditText)findViewById( R.id.furosemideComment );
-        metaclopramide = (CheckBox)findViewById( R.id.metaclopramide );
-        metaclopramideQty = (TextView)findViewById( R.id.metaclopramideQty );
-        metaclopramideComment = (EditText)findViewById( R.id.metaclopramideComment );
-        buscopan = (CheckBox)findViewById( R.id.buscopan );
-        buscopanQty = (TextView)findViewById( R.id.buscopanQty );
-        buscopanComment = (EditText)findViewById( R.id.buscopanComment );
-        bigPlasters = (CheckBox)findViewById( R.id.bigPlasters );
-        bigPlastersQty = (TextView)findViewById( R.id.bigPlastersQty );
-        bigPlastersComment = (EditText)findViewById( R.id.bigPlastersComment );
-        smallPlasters = (CheckBox)findViewById( R.id.smallPlasters );
-        smallPlastersQty = (TextView)findViewById( R.id.smallPlastersQty );
-        smallPlastersComment = (EditText)findViewById( R.id.smallPlastersComment );
-        cetrimide = (CheckBox)findViewById( R.id.cetrimide );
-        cetrimideQty = (TextView)findViewById( R.id.cetrimideQty );
-        cetrimideComment = (EditText)findViewById( R.id.cetrimideComment );
-        elastoplastRoll = (CheckBox)findViewById( R.id.elastoplastRoll );
-        elastoplastRollQty = (TextView)findViewById( R.id.elastoplastRollQty );
-        elastoplastRollComment = (EditText)findViewById( R.id.elastoplastRollComment );
-        prf = (CheckBox)findViewById( R.id.prf );
-        prfQty = (TextView)findViewById( R.id.prfQty );
-        prfComment = (EditText)findViewById( R.id.prfComment );
-        doa = (CheckBox)findViewById( R.id.doa );
-        doaQty = (TextView)findViewById( R.id.doaQty );
-        doaComment = (EditText)findViewById( R.id.doaComment );
-        gop = (CheckBox)findViewById( R.id.gop );
-        gopQty = (TextView)findViewById( R.id.gopQty );
-        gopComment = (EditText)findViewById( R.id.gopComment );
-        torniquet = (CheckBox)findViewById( R.id.torniquet );
-        torniquetQty = (TextView)findViewById( R.id.torniquetQty );
-        torniquetComment = (EditText)findViewById( R.id.torniquetComment );
-        glucometer = (CheckBox)findViewById( R.id.glucometer );
-        glucometerQty = (TextView)findViewById( R.id.glucometerQty );
-        glucometerComment = (EditText)findViewById( R.id.glucometerComment );
-        gloves2 = (CheckBox)findViewById( R.id.gloves2 );
-        gloves2Qty = (TextView)findViewById( R.id.gloves2Qty );
-        gloves2Comment = (EditText)findViewById( R.id.gloves2Comment );
-        bp = (CheckBox)findViewById( R.id.bp );
-        bpQty = (TextView)findViewById( R.id.bpQty );
-        bpComment = (EditText)findViewById( R.id.bpComment );
-        stethoscope = (CheckBox)findViewById( R.id.stethoscope );
-        stethoscopeQty = (TextView)findViewById( R.id.stethoscopeQty );
-        stethoscopeComment = (EditText)findViewById( R.id.stethoscopeComment );
-        rescueScissors = (CheckBox)findViewById( R.id.rescueScissors );
-        rescueScissorsQty = (TextView)findViewById( R.id.rescueScissorsQty );
-        rescueScissorsComment = (EditText)findViewById( R.id.rescueScissorsComment );
-        thermometer = (CheckBox)findViewById( R.id.thermometer );
-        thermometerQty = (TextView)findViewById( R.id.thermometerQty );
-        thermometerComment = (EditText)findViewById( R.id.thermometerComment );
-        pupilTorch = (CheckBox)findViewById( R.id.pupilTorch );
-        pupilTorchQty = (TextView)findViewById( R.id.pupilTorchQty );
-        pupilTorchComment = (EditText)findViewById( R.id.pupilTorchComment );
-        testStrips = (CheckBox)findViewById( R.id.testStrips );
-        testStripsQty = (TextView)findViewById( R.id.testStripsQty );
-        testStripsComment = (EditText)findViewById( R.id.testStripsComment );
-        lancets = (CheckBox)findViewById( R.id.lancets );
-        lancetsQty = (TextView)findViewById( R.id.lancetsQty );
-        lancetsComment = (EditText)findViewById( R.id.lancetsComment );
-        sats = (CheckBox)findViewById( R.id.sats );
-        satsQty = (TextView)findViewById( R.id.satsQty );
-        satsComment = (EditText)findViewById( R.id.satsComment );
-        adultMask = (CheckBox)findViewById( R.id.adultMask );
-        adultMaskQty = (TextView)findViewById( R.id.adultMaskQty );
-        adultMaskComment = (EditText)findViewById( R.id.adultMaskComment );
-        adultRebreather = (CheckBox)findViewById( R.id.adultRebreather );
-        adultRebreatherQty = (TextView)findViewById( R.id.adultRebreatherQty );
-        adultRebreatherComment = (EditText)findViewById( R.id.adultRebreatherComment );
-        adultNebulizer = (CheckBox)findViewById( R.id.adultNebulizer );
-        adultNebulizerQty = (TextView)findViewById( R.id.adultNebulizerQty );
-        adultNebulizerComment = (EditText)findViewById( R.id.adultNebulizerComment );
-        adultNasal = (CheckBox)findViewById( R.id.adultNasal );
-        adultNasalQty = (TextView)findViewById( R.id.adultNasalQty );
-        adultNasalComment = (EditText)findViewById( R.id.adultNasalComment );
-        childMask = (CheckBox)findViewById( R.id.childMask );
-        childMaskQty = (TextView)findViewById( R.id.childMaskQty );
-        childMaskComment = (EditText)findViewById( R.id.childMaskComment );
-        childRebreather = (CheckBox)findViewById( R.id.childRebreather );
-        childRebreatherQty = (TextView)findViewById( R.id.childRebreatherQty );
-        childRebreatherComment = (EditText)findViewById( R.id.childRebreatherComment );
-        childNebuliser = (CheckBox)findViewById( R.id.childNebuliser );
-        childNebuliserQty = (TextView)findViewById( R.id.childNebuliserQty );
-        childNebuliserComment = (EditText)findViewById( R.id.childNebuliserComment );
-        childNasal = (CheckBox)findViewById( R.id.childNasal );
-        childNasalQty = (TextView)findViewById( R.id.childNasalQty );
-        childNasalComment = (EditText)findViewById( R.id.childNasalComment );
-        traumaPads = (CheckBox)findViewById( R.id.traumaPads );
-        traumaPadsQty = (TextView)findViewById( R.id.traumaPadsQty );
-        traumaPadsComment = (EditText)findViewById( R.id.traumaPadsComment );
-        traumaDressing100 = (CheckBox)findViewById( R.id.traumaDressing100 );
-        traumaDressing100Qty = (TextView)findViewById( R.id.traumaDressing100Qty );
-        traumaDressing100Comment = (EditText)findViewById( R.id.traumaDressing100Comment );
-        traumaDressing200 = (CheckBox)findViewById( R.id.traumaDressing200 );
-        traumaDressing200Qty = (TextView)findViewById( R.id.traumaDressing200Qty );
-        traumaDressing200Comment = (EditText)findViewById( R.id.traumaDressing200Comment );
-        bandage75 = (CheckBox)findViewById( R.id.bandage75 );
-        bandage75Qty = (TextView)findViewById( R.id.bandage75Qty );
-        bandage75Comment = (EditText)findViewById( R.id.bandage75Comment );
-        bandage50 = (CheckBox)findViewById( R.id.bandage50 );
-        bandage50Qty = (TextView)findViewById( R.id.bandage50Qty );
-        bandage50Comment = (EditText)findViewById( R.id.bandage50Comment );
-        stretchBandage = (CheckBox)findViewById( R.id.stretchBandage );
-        stretchBandageQty = (TextView)findViewById( R.id.stretchBandageQty );
-        stretchBandageComment = (EditText)findViewById( R.id.stretchBandageComment );
-        elastoplast = (CheckBox)findViewById( R.id.elastoplast );
-        elastoplastQty = (TextView)findViewById( R.id.elastoplastQty );
-        elastoplastComment = (EditText)findViewById( R.id.elastoplastComment );
-        adultBvm = (CheckBox)findViewById( R.id.adultBvm );
-        adultBvmQty = (TextView)findViewById( R.id.adultBvmQty );
-        adultBvmComment = (EditText)findViewById( R.id.adultBvmComment );
-        childBvm = (CheckBox)findViewById( R.id.childBvm );
-        childBvmQty = (TextView)findViewById( R.id.childBvmQty );
-        childBvmComment = (EditText)findViewById( R.id.childBvmComment );
-        infantBvm = (CheckBox)findViewById( R.id.infantBvm );
-        infantBvmQty = (TextView)findViewById( R.id.infantBvmQty );
-        infantBvmComment = (EditText)findViewById( R.id.infantBvmComment );
-        adultMagilles = (CheckBox)findViewById( R.id.adultMagilles );
-        adultMagillesQty = (TextView)findViewById( R.id.adultMagillesQty );
-        adultMagillesComment = (EditText)findViewById( R.id.adultMagillesComment );
-        childMagilles = (CheckBox)findViewById( R.id.childMagilles );
-        childMagillesQty = (TextView)findViewById( R.id.childMagillesQty );
-        childMagillesComment = (EditText)findViewById( R.id.childMagillesComment );
-        tube000 = (CheckBox)findViewById( R.id.tube000 );
-        tube000Qty = (TextView)findViewById( R.id.tube000Qty );
-        tube000Comment = (EditText)findViewById( R.id.tube000Comment );
-        tube00 = (CheckBox)findViewById( R.id.tube00 );
-        tube00Qty = (TextView)findViewById( R.id.tube00Qty );
-        tube00Comment = (EditText)findViewById( R.id.tube00Comment );
-        tube0 = (CheckBox)findViewById( R.id.tube0 );
-        tube0Qty = (TextView)findViewById( R.id.tube0Qty );
-        tube0Comment = (EditText)findViewById( R.id.tube0Comment );
-        tube1 = (CheckBox)findViewById( R.id.tube1 );
-        tube1Qty = (TextView)findViewById( R.id.tube1Qty );
-        tube1Comment = (EditText)findViewById( R.id.tube1Comment );
-        tube2 = (CheckBox)findViewById( R.id.tube2 );
-        tube2Qty = (TextView)findViewById( R.id.tube2Qty );
-        tube2Comment = (EditText)findViewById( R.id.tube2Comment );
-        tube3 = (CheckBox)findViewById( R.id.tube3 );
-        tube3Qty = (TextView)findViewById( R.id.tube3Qty );
-        tube3Comment = (EditText)findViewById( R.id.tube3Comment );
-        tube4 = (CheckBox)findViewById( R.id.tube4 );
-        tube4Qty = (TextView)findViewById( R.id.tube4Qty );
-        tube4Comment = (EditText)findViewById( R.id.tube4Comment );
-        tube5 = (CheckBox)findViewById( R.id.tube5 );
-        tube5Qty = (TextView)findViewById( R.id.tube5Qty );
-        tube5Comment = (EditText)findViewById( R.id.tube5Comment );
-        lma5 = (CheckBox)findViewById( R.id.lma5 );
-        lma5Qty = (TextView)findViewById( R.id.lma5Qty );
-        lma5Comment = (EditText)findViewById( R.id.lma5Comment );
-        lma4 = (CheckBox)findViewById( R.id.lma4 );
-        lma4Qty = (TextView)findViewById( R.id.lma4Qty );
-        lma4Comment = (EditText)findViewById( R.id.lma4Comment );
-        lma3 = (CheckBox)findViewById( R.id.lma3 );
-        lma3Qty = (TextView)findViewById( R.id.lma3Qty );
-        lma3Comment = (EditText)findViewById( R.id.lma3Comment );
-        lma2 = (CheckBox)findViewById( R.id.lma2 );
-        lma2Qty = (TextView)findViewById( R.id.lma2Qty );
-        lma2Comment = (EditText)findViewById( R.id.lma2Comment );
-        lma1 = (CheckBox)findViewById( R.id.lma1 );
-        lma1Qty = (TextView)findViewById( R.id.lma1Qty );
-        lma1Comment = (EditText)findViewById( R.id.lma1Comment );
-        uvcPack = (CheckBox)findViewById( R.id.uvcPack );
-        uvcPackQty = (TextView)findViewById( R.id.uvcPackQty );
-        uvcPackComment = (EditText)findViewById( R.id.uvcPackComment );
-        maternity = (CheckBox)findViewById( R.id.maternity );
-        maternityQty = (TextView)findViewById( R.id.maternityQty );
-        maternityComment = (EditText)findViewById( R.id.maternityComment );
-        needleCric = (CheckBox)findViewById( R.id.needleCric );
-        needleCricQty = (TextView)findViewById( R.id.needleCricQty );
-        needleCricComment = (EditText)findViewById( R.id.needleCricComment );
-        ngTube = (CheckBox)findViewById( R.id.ngTube );
-        ngTubeQty = (TextView)findViewById( R.id.ngTubeQty );
-        ngTubeComment = (EditText)findViewById( R.id.ngTubeComment );
-        airwayPack = (CheckBox)findViewById( R.id.airwayPack );
-        airwayPackQty = (TextView)findViewById( R.id.airwayPackQty );
-        airwayPackComment = (EditText)findViewById( R.id.airwayPackComment );
-        urinaryCatheter = (CheckBox)findViewById( R.id.urinaryCatheter );
-        urinaryCatheterQty = (TextView)findViewById( R.id.urinaryCatheterQty );
-        urinaryCatheterComment = (EditText)findViewById( R.id.urinaryCatheterComment );
-        urineBag = (CheckBox)findViewById( R.id.urineBag );
-        urineBagQty = (TextView)findViewById( R.id.urineBagQty );
-        urineBagComment = (EditText)findViewById( R.id.urineBagComment );
-        suturePack = (CheckBox)findViewById( R.id.suturePack );
-        suturePackQty = (TextView)findViewById( R.id.suturePackQty );
-        suturePackComment = (EditText)findViewById( R.id.suturePackComment );
-        spirometer = (CheckBox)findViewById( R.id.spirometer );
-        spirometerQty = (TextView)findViewById( R.id.spirometerQty );
-        spirometerComment = (EditText)findViewById( R.id.spirometerComment );
-        ringers1000 = (CheckBox)findViewById( R.id.ringers1000 );
-        ringers1000Qty = (TextView)findViewById( R.id.ringers1000Qty );
-        ringers1000Comment = (EditText)findViewById( R.id.ringers1000Comment );
-        sodiumChloride = (CheckBox)findViewById( R.id.sodiumChloride );
-        sodiumChlorideQty = (TextView)findViewById( R.id.sodiumChlorideQty );
-        sodiumChlorideComment = (EditText)findViewById( R.id.sodiumChlorideComment );
-        colloid = (CheckBox)findViewById( R.id.colloid );
-        colloidQty = (TextView)findViewById( R.id.colloidQty );
-        colloidComment = (EditText)findViewById( R.id.colloidComment );
-        canulla14 = (CheckBox)findViewById( R.id.canulla14 );
-        canulla14Qty = (TextView)findViewById( R.id.canulla14Qty );
-        canulla14Comment = (EditText)findViewById( R.id.canulla14Comment );
-        canulla16 = (CheckBox)findViewById( R.id.canulla16 );
-        canulla16Qty = (TextView)findViewById( R.id.canulla16Qty );
-        canulla16Comment = (EditText)findViewById( R.id.canulla16Comment );
-        canulla18 = (CheckBox)findViewById( R.id.canulla18 );
-        canulla18Qty = (TextView)findViewById( R.id.canulla18Qty );
-        canulla18Comment = (EditText)findViewById( R.id.canulla18Comment );
-        canulla20 = (CheckBox)findViewById( R.id.canulla20 );
-        canulla20Qty = (TextView)findViewById( R.id.canulla20Qty );
-        canulla20Comment = (EditText)findViewById( R.id.canulla20Comment );
-        canulla22 = (CheckBox)findViewById( R.id.canulla22 );
-        canulla22Qty = (TextView)findViewById( R.id.canulla22Qty );
-        canulla22Comment = (EditText)findViewById( R.id.canulla22Comment );
-        canulla24 = (CheckBox)findViewById( R.id.canulla24 );
-        canulla24Qty = (TextView)findViewById( R.id.canulla24Qty );
-        canulla24Comment = (EditText)findViewById( R.id.canulla24Comment );
-        admin60 = (CheckBox)findViewById( R.id.admin60 );
-        admin60Qty = (TextView)findViewById( R.id.admin60Qty );
-        admin60Comment = (EditText)findViewById( R.id.admin60Comment );
-        admin20 = (CheckBox)findViewById( R.id.admin20 );
-        admin20Qty = (TextView)findViewById( R.id.admin20Qty );
-        admin20Comment = (EditText)findViewById( R.id.admin20Comment );
-        admin15 = (CheckBox)findViewById( R.id.admin15 );
-        admin15Qty = (TextView)findViewById( R.id.admin15Qty );
-        admin15Comment = (EditText)findViewById( R.id.admin15Comment );
-        admin10 = (CheckBox)findViewById( R.id.admin10 );
-        admin10Qty = (TextView)findViewById( R.id.admin10Qty );
-        admin10Comment = (EditText)findViewById( R.id.admin10Comment );
-        webcol = (CheckBox)findViewById( R.id.webcol );
-        webcolQty = (TextView)findViewById( R.id.webcolQty );
-        webcolComment = (EditText)findViewById( R.id.webcolComment );
-        tegaderm = (CheckBox)findViewById( R.id.tegaderm );
-        tegadermQty = (TextView)findViewById( R.id.tegadermQty );
-        tegadermComment = (EditText)findViewById( R.id.tegadermComment );
-        syringe50 = (CheckBox)findViewById( R.id.syringe50 );
-        syringe50Qty = (TextView)findViewById( R.id.syringe50Qty );
-        syringe50Comment = (EditText)findViewById( R.id.syringe50Comment );
-        syringe20 = (CheckBox)findViewById( R.id.syringe20 );
-        syringe20Qty = (TextView)findViewById( R.id.syringe20Qty );
-        syringe20Comment = (EditText)findViewById( R.id.syringe20Comment );
-        syringe10 = (CheckBox)findViewById( R.id.syringe10 );
-        syringe10Qty = (TextView)findViewById( R.id.syringe10Qty );
-        syringe10Comment = (EditText)findViewById( R.id.syringe10Comment );
-        syringe5 = (CheckBox)findViewById( R.id.syringe5 );
-        syringe5Qty = (TextView)findViewById( R.id.syringe5Qty );
-        syringe5Comment = (EditText)findViewById( R.id.syringe5Comment );
-        syringe3 = (CheckBox)findViewById( R.id.syringe3 );
-        syringe3Qty = (TextView)findViewById( R.id.syringe3Qty );
-        syringe3Comment = (EditText)findViewById( R.id.syringe3Comment );
-        needle18 = (CheckBox)findViewById( R.id.needle18 );
-        needle18Qty = (TextView)findViewById( R.id.needle18Qty );
-        needle18Comment = (EditText)findViewById( R.id.needle18Comment );
-        needle21 = (CheckBox)findViewById( R.id.needle21 );
-        needle21Qty = (TextView)findViewById( R.id.needle21Qty );
-        needle21Comment = (EditText)findViewById( R.id.needle21Comment );
-        handle = (CheckBox)findViewById( R.id.handle );
-        handleQty = (TextView)findViewById( R.id.handleQty );
-        handleComment = (EditText)findViewById( R.id.handleComment );
-        blade4 = (CheckBox)findViewById( R.id.blade4 );
-        blade4Qty = (TextView)findViewById( R.id.blade4Qty );
-        blade4Comment = (EditText)findViewById( R.id.blade4Comment );
-        blade3 = (CheckBox)findViewById( R.id.blade3 );
-        blade3Qty = (TextView)findViewById( R.id.blade3Qty );
-        blade3Comment = (EditText)findViewById( R.id.blade3Comment );
-        blade2 = (CheckBox)findViewById( R.id.blade2 );
-        blade2Qty = (TextView)findViewById( R.id.blade2Qty );
-        blade2Comment = (EditText)findViewById( R.id.blade2Comment );
-        blade1 = (CheckBox)findViewById( R.id.blade1 );
-        blade1Qty = (TextView)findViewById( R.id.blade1Qty );
-        blade1Comment = (EditText)findViewById( R.id.blade1Comment );
-        blade0 = (CheckBox)findViewById( R.id.blade0 );
-        blade0Qty = (TextView)findViewById( R.id.blade0Qty );
-        blade0Comment = (EditText)findViewById( R.id.blade0Comment );
-        et25 = (CheckBox)findViewById( R.id.et2_5 );
-        et25Qty = (TextView)findViewById( R.id.et2_5Qty );
-        et25Comment = (EditText)findViewById( R.id.et2_5Comment );
-        et3 = (CheckBox)findViewById( R.id.et3 );
-        et3Qty = (TextView)findViewById( R.id.et3Qty );
-        et3Comment = (EditText)findViewById( R.id.et3Comment );
-        et35 = (CheckBox)findViewById( R.id.et3_5 );
-        et35Qty = (TextView)findViewById( R.id.et3_5Qty );
-        et35Comment = (EditText)findViewById( R.id.et3_5Comment );
-        et4 = (CheckBox)findViewById( R.id.et4 );
-        et4Qty = (TextView)findViewById( R.id.et4Qty );
-        et4Comment = (EditText)findViewById( R.id.et4Comment );
-        et45 = (CheckBox)findViewById( R.id.et4_5 );
-        et45Qty = (TextView)findViewById( R.id.et4_5Qty );
-        et45Comment = (EditText)findViewById( R.id.et4_5Comment );
-        et5 = (CheckBox)findViewById( R.id.et5 );
-        et5Qty = (TextView)findViewById( R.id.et5Qty );
-        et5Comment = (EditText)findViewById( R.id.et5Comment );
-        et55 = (CheckBox)findViewById( R.id.et5_5 );
-        et55Qty = (TextView)findViewById( R.id.et5_5Qty );
-        et55Comment = (EditText)findViewById( R.id.et5_5Comment );
-        et6 = (CheckBox)findViewById( R.id.et6 );
-        et6Qty = (TextView)findViewById( R.id.et6Qty );
-        et6Comment = (EditText)findViewById( R.id.et6Comment );
-        et65 = (CheckBox)findViewById( R.id.et6_5 );
-        et65Qty = (TextView)findViewById( R.id.et6_5Qty );
-        et65Comment = (EditText)findViewById( R.id.et6_5Comment );
-        et7 = (CheckBox)findViewById( R.id.et7 );
-        et7Qty = (TextView)findViewById( R.id.et7Qty );
-        et7Comment = (EditText)findViewById( R.id.et7Comment );
-        et75 = (CheckBox)findViewById( R.id.et7_5 );
-        et75Qty = (TextView)findViewById( R.id.et7_5Qty );
-        et75Comment = (EditText)findViewById( R.id.et7_5Comment );
-        et8 = (CheckBox)findViewById( R.id.et8 );
-        et8Qty = (TextView)findViewById( R.id.et8Qty );
-        et8Comment = (EditText)findViewById( R.id.et8Comment );
-        et85 = (CheckBox)findViewById( R.id.et8_5 );
-        et85Qty = (TextView)findViewById( R.id.et8_5Qty );
-        et85Comment = (EditText)findViewById( R.id.et8_5Comment );
-        tongue = (CheckBox)findViewById( R.id.tongue );
-        tongueQty = (TextView)findViewById( R.id.tongueQty );
-        tongueComment = (EditText)findViewById( R.id.tongueComment );
-        childHolder = (CheckBox)findViewById( R.id.childHolder );
-        childHolderQty = (TextView)findViewById( R.id.childHolderQty );
-        childHolderComment = (EditText)findViewById( R.id.childHolderComment );
-        tubeTape = (CheckBox)findViewById( R.id.tubeTape );
-        tubeTapeQty = (TextView)findViewById( R.id.tubeTapeQty );
-        tubeTapeComment = (EditText)findViewById( R.id.tubeTapeComment );
-        spareBatteries = (CheckBox)findViewById( R.id.spareBatteries );
-        spareBatteriesQty = (TextView)findViewById( R.id.spareBatteriesQty );
-        spareBatteriesComment = (EditText)findViewById( R.id.spareBatteriesComment );
-        micropore = (CheckBox)findViewById( R.id.micropore );
-        microporeQty = (TextView)findViewById( R.id.microporeQty );
-        microporeComment = (EditText)findViewById( R.id.microporeComment );
-        peepValve = (CheckBox)findViewById( R.id.peepValve );
-        peepValveQty = (TextView)findViewById( R.id.peepValveQty );
-        peepValveComment = (EditText)findViewById( R.id.peepValveComment );
-        spaceBlanket = (CheckBox)findViewById( R.id.spaceBlanket );
-        spaceBlanketQty = (TextView)findViewById( R.id.spaceBlanketQty );
-        spaceBlanketComment = (EditText)findViewById( R.id.spaceBlanketComment );
-        gauze = (CheckBox)findViewById( R.id.gauze );
-        gauzeQty = (TextView)findViewById( R.id.gauzeQty );
-        gauzeComment = (EditText)findViewById( R.id.gauzeComment );
-        triBandages = (CheckBox)findViewById( R.id.triBandages );
-        triBandageseQty = (TextView)findViewById( R.id.triBandageseQty );
-        triBandagesComment = (EditText)findViewById( R.id.triBandagesComment );
-        vommit = (CheckBox)findViewById( R.id.vommit );
-        vommitQty = (TextView)findViewById( R.id.vommitQty );
-        vommitComment = (EditText)findViewById( R.id.vommitComment );
-        lastlin = (LinearLayout)findViewById( R.id.lastlin );
-        multiPack = (CheckBox)findViewById( R.id.multiPack );
-        multiPackQty = (TextView)findViewById( R.id.multiPackQty );
-        multiPackComment = (EditText)findViewById( R.id.multiPackComment );
-        next = (Button)findViewById( R.id.next );
+        /*air = findViewById( R.id.air );
+        antennae = findViewById( R.id.antennae );
+        battery = findViewById( R.id.battery );
+        body = findViewById( R.id.body );
+        brake = findViewById( R.id.brake );
+        branding = findViewById( R.id.branding );
+        dashboard = findViewById( R.id.dashboard );
+        emergency = findViewById( R.id.emergency );
+        exhaust = findViewById( R.id.exhaust );
+        oil = findViewById( R.id.oil );
+        fuel = findViewById( R.id.fuel );
+        headlights = findViewById( R.id.headlights );
+        leftIndicator = findViewById( R.id.leftIndicator );
+        rightIndicator = findViewById( R.id.rightIndicator );
+        back = findViewById( R.id.back );
+        front = findViewById( R.id.front );
+        jack = findViewById( R.id.jack );
+        leds = findViewById( R.id.leds );
+        licence = findViewById( R.id.licence );
+        plates = findViewById( R.id.plates );
+        radio = findViewById( R.id.radio );
+        rear = findViewById( R.id.rear );
+        reverse = findViewById( R.id.reverse );
+        side = findViewById( R.id.side );
+        siren = findViewById( R.id.siren );
+        spare = findViewById( R.id.spare );
+        tread = findViewById( R.id.tread );
+        pressure = findViewById( R.id.pressure );
+        windows = findViewById( R.id.windows );
+        windscreen = findViewById( R.id.windscreen );
+        airComment = findViewById( R.id.airComment );
+        antennaeComment = findViewById( R.id.antennaeComment );
+        batteryComment = findViewById( R.id.batteryComment );
+        bodyComment = findViewById( R.id.bodyComment );
+        brakeComment = findViewById( R.id.brakeComment );
+        brandingComment = findViewById( R.id.brandingComment );
+        dashboardComment = findViewById( R.id.dashboardComment );
+        emergencyComment = findViewById( R.id.emergencyComment );
+        exhaustComment = findViewById( R.id.exhaustComment );
+        oilComment = findViewById( R.id.oilComment );
+        fuelComment = findViewById( R.id.fuelComment );
+        headlightsComment = findViewById( R.id.headlightsComment );
+        leftIndicatorComment = findViewById( R.id.leftIndicatorComment );
+        rightIndicatorComment = findViewById( R.id.rightIndicatorComment );
+        backComment = findViewById( R.id.backComment );
+        frontComment = findViewById( R.id.frontComment );
+        jackComment = findViewById( R.id.jackComment );
+        ledsComment = findViewById( R.id.ledsComment );
+        licenceComment = findViewById( R.id.licenceComment );
+        platesComment = findViewById( R.id.platesComment );
+        radioComment = findViewById( R.id.radioComment );
+        rearComment = findViewById( R.id.rearComment );
+        reverseComment = findViewById( R.id.reverseComment );
+        sideComment = findViewById( R.id.sideComment );
+        sirenComment = findViewById( R.id.sirenComment );
+        spareComment = findViewById( R.id.spareComment );
+        treadComment = findViewById( R.id.treadComment );
+        pressureComment = findViewById( R.id.pressureComment );
+        windowsComment = findViewById( R.id.windowsComment );
+        windscreenComment = findViewById( R.id.windscreenComment );
+        ecg = findViewById( R.id.ecg );
+        ecgQty = findViewById( R.id.ecgQty );
+        ecgComment = findViewById( R.id.ecgComment );
+        adultEcg = findViewById( R.id.adultEcg );
+        adultEcgQty = findViewById( R.id.adultEcgQty );
+        adultEcgComment = findViewById( R.id.adultEcgComment );
+        childEcg = findViewById( R.id.childEcg );
+        childEcgQty = findViewById( R.id.childEcgQty );
+        childEcgComment = findViewById( R.id.childEcgComment );
+        spareBattery = findViewById( R.id.spareBattery );
+        spareBatteryQty = findViewById( R.id.spareBatteryQty );
+        spareBatteryComment = findViewById( R.id.spareBatteryComment );
+        spareEcg = findViewById( R.id.spareEcg );
+        spareEcgQty = findViewById( R.id.spareEcgQty );
+        spareEcgComment = findViewById( R.id.spareEcgComment );
+        oximeter = findViewById( R.id.oximeter );
+        oximeterQty = findViewById( R.id.oximeterQty );
+        oximeterComment = findViewById( R.id.oximeterComment );
+        suctionUnit = findViewById( R.id.suctionUnit );
+        suctionUnitQty = findViewById( R.id.suctionUnitQty );
+        suctionUnitComment = findViewById( R.id.suctionUnitComment );
+        suctionReservoir = findViewById( R.id.suctionReservoir );
+        suctionReservoirQty = findViewById( R.id.suctionReservoirQty );
+        suctionReservoirComment = findViewById( R.id.suctionReservoirComment );
+        chargingCable = findViewById( R.id.chargingCable );
+        chargingCableQty = findViewById( R.id.chargingCableQty );
+        chargingCableComment = findViewById( R.id.chargingCableComment );
+        suctionTubing = findViewById( R.id.suctionTubing );
+        suctionTubingQty = findViewById( R.id.suctionTubingQty );
+        suctionTubingComment = findViewById( R.id.suctionTubingComment );
+        softSuction = findViewById( R.id.softSuction );
+        softSuctionQty = findViewById( R.id.softSuctionQty );
+        softSuctionComment = findViewById( R.id.softSuctionComment );
+        adultSuction = findViewById( R.id.adultSuction );
+        adultSuctionQty = findViewById( R.id.adultSuctionQty );
+        adultSuctionComment = findViewById( R.id.adultSuctionComment );
+        paedSuction = findViewById( R.id.paedSuction );
+        paedSuctionQty = findViewById( R.id.paedSuctionQty );
+        paedSuctionComment = findViewById( R.id.paedSuctionComment );
+        ventilatorKit = findViewById( R.id.ventilatorKit );
+        ventilatorKitQty = findViewById( R.id.ventilatorKitQty );
+        ventilatorKitComment = findViewById( R.id.ventilatorKitComment );
+        circuitHose = findViewById( R.id.circuitHose );
+        circuitHoseQty = findViewById( R.id.circuitHoseQty );
+        circuitHoseComment = findViewById( R.id.circuitHoseComment );
+        circuitHoseFilter = findViewById( R.id.circuitHoseFilter );
+        circuitHoseFilterQty = findViewById( R.id.circuitHoseFilterQty );
+        circuitHoseFilterComment = findViewById( R.id.circuitHoseFilterComment );
+        co2Attachment = findViewById( R.id.co2Attachment );
+        co2AttachmentQty = findViewById( R.id.co2AttachmentQty );
+        co2AttachmentComment = findViewById( R.id.co2AttachmentComment );
+        oxygenCylinder = findViewById( R.id.oxygenCylinder );
+        oxygenCylinderQty = findViewById( R.id.oxygenCylinderQty );
+        oxygenCylinderComment = findViewById( R.id.oxygenCylinderComment );
+        oxygenGauge = findViewById( R.id.oxygenGauge );
+        oxygenGaugeQty = findViewById( R.id.oxygenGaugeQty );
+        oxygenGaugeComment = findViewById( R.id.oxygenGaugeComment );
+        oxygenCylinderKey = findViewById( R.id.oxygenCylinderKey );
+        oxygenCylinderKeyQty = findViewById( R.id.oxygenCylinderKeyQty );
+        oxygenCylinderKeyComment = findViewById( R.id.oxygenCylinderKeyComment );
+        syringePump = findViewById( R.id.syringePump );
+        syringePumpQty = findViewById( R.id.syringePumpQty );
+        syringePumpComment = findViewById( R.id.syringePumpComment );
+        powerCable = findViewById( R.id.powerCable );
+        powerCableQty = findViewById( R.id.powerCableQty );
+        powerCableComment = findViewById( R.id.powerCableComment );
+        fiftySyringe = findViewById( R.id.fiftySyringe );
+        fiftySyringeQty = findViewById( R.id.fiftySyringeQty );
+        fiftySyringeComment = findViewById( R.id.fiftySyringeComment );
+        microbore = findViewById( R.id.microbore );
+        microboreQty = findViewById( R.id.microboreQty );
+        microboreComment = findViewById( R.id.microboreComment );
+        stretcher = findViewById( R.id.stretcher );
+        stretcherQty = findViewById( R.id.stretcherQty );
+        stretcherComment = findViewById( R.id.stretcherComment );
+        straps = findViewById( R.id.straps );
+        strapsQty = findViewById( R.id.strapsQty );
+        strapsComment = findViewById( R.id.strapsComment );
+        mattress = findViewById( R.id.mattress );
+        mattressQty = findViewById( R.id.mattressQty );
+        mattressComment = findViewById( R.id.mattressComment );
+        sheet = findViewById( R.id.sheet );
+        sheetQty = findViewById( R.id.sheetQty );
+        sheetComment = findViewById( R.id.sheetComment );
+        pillow = findViewById( R.id.pillow );
+        pillowQty = findViewById( R.id.pillowQty );
+        pillowComment = findViewById( R.id.pillowComment );
+        pillowCase = findViewById( R.id.pillowCase );
+        pillowCaseQty = findViewById( R.id.pillowCaseQty );
+        pillowCaseComment = findViewById( R.id.pillowCaseComment );
+        blanket = findViewById( R.id.blanket );
+        blanketQty = findViewById( R.id.blanketQty );
+        blanketComment = findViewById( R.id.blanketComment );
+        other = findViewById( R.id.other );
+        otherQty = findViewById( R.id.otherQty );
+        otherComment = findViewById( R.id.otherComment );
+        adultKed = findViewById( R.id.adultKed );
+        adultKedQty = findViewById( R.id.adultKedQty );
+        adultKedComment = findViewById( R.id.adultKedComment );
+        childKed = findViewById( R.id.childKed );
+        childKedQty = findViewById( R.id.childKedQty );
+        childKedComment = findViewById( R.id.childKedComment );
+        adultSplint = findViewById( R.id.adultSplint );
+        adultSplintQty = findViewById( R.id.adultSplintQty );
+        adultSplintComment = findViewById( R.id.adultSplintComment );
+        scoopStretcher = findViewById( R.id.scoopStretcher );
+        scoopStretcherQty = findViewById( R.id.scoopStretcherQty );
+        scoopStretcherComment = findViewById( R.id.scoopStretcherComment );
+        spinalBoard = findViewById( R.id.spinalBoard );
+        spinalBoardQty = findViewById( R.id.spinalBoardQty );
+        spinalBoardComment = findViewById( R.id.spinalBoardComment );
+        headBlocks = findViewById( R.id.headBlocks );
+        headBlocksQty = findViewById( R.id.headBlocksQty );
+        headBlocksComment = findViewById( R.id.headBlocksComment );
+        basePlate = findViewById( R.id.basePlate );
+        basePlateQty = findViewById( R.id.basePlateQty );
+        basePlateComment = findViewById( R.id.basePlateComment );
+        spiderHarness = findViewById( R.id.spiderHarness );
+        spiderHarnessQty = findViewById( R.id.spiderHarnessQty );
+        spiderHarnessComment = findViewById( R.id.spiderHarnessComment );
+        headStraps = findViewById( R.id.headStraps );
+        headStrapsQty = findViewById( R.id.headStrapsQty );
+        headStrapsComment = findViewById( R.id.headStrapsComment );
+        zipStretcher = findViewById( R.id.zipStretcher );
+        zipStretcherBoardQty = findViewById( R.id.zipStretcherBoardQty );
+        zipStretcherComment = findViewById( R.id.zipStretcherComment );
+        longSplints = findViewById( R.id.longSplints );
+        longSplintsQty = findViewById( R.id.longSplintsQty );
+        longSplintsComment = findViewById( R.id.longSplintsComment );
+        shortSplints = findViewById( R.id.shortSplints );
+        shortSplintsQty = findViewById( R.id.shortSplintsQty );
+        shortSplintsComment = findViewById( R.id.shortSplintsComment );
+        adultCollar = findViewById( R.id.adultCollar );
+        adultCollarQty = findViewById( R.id.adultCollarQty );
+        adultCollarComment = findViewById( R.id.adultCollarComment );
+        childCollar = findViewById( R.id.childCollar );
+        childCollarQty = findViewById( R.id.childCollarQty );
+        childCollarComment = findViewById( R.id.childCollarComment );
+        fireExtinguisher = findViewById( R.id.fireExtinguisher );
+        fireExtinguisherQty = findViewById( R.id.fireExtinguisherQty );
+        fireExtinguisherComment = findViewById( R.id.fireExtinguisherComment );
+        rescueHelmet = findViewById( R.id.rescueHelmet );
+        rescueHelmetQty = findViewById( R.id.rescueHelmetQty );
+        rescueHelmetComment = findViewById( R.id.rescueHelmetComment );
+        roadCones = findViewById( R.id.roadCones );
+        roadConesQty = findViewById( R.id.roadConesQty );
+        roadConesComment = findViewById( R.id.roadConesComment );
+        reflectorVests = findViewById( R.id.reflectorVests );
+        reflectorVestsQty = findViewById( R.id.reflectorVestsQty );
+        reflectorVestsComment = findViewById( R.id.reflectorVestsComment );
+        wasteBin = findViewById( R.id.wasteBin );
+        wasteBinQty = findViewById( R.id.wasteBinQty );
+        wasteBinComment = findViewById( R.id.wasteBinComment );
+        medicalWaste = findViewById( R.id.medicalWaste );
+        medicalWasteQty = findViewById( R.id.medicalWasteQty );
+        medicalWasteComment = findViewById( R.id.medicalWasteComment );
+        sharpsBin = findViewById( R.id.sharpsBin );
+        sharpsBinQty = findViewById( R.id.sharpsBinQty );
+        sharpsBinComment = findViewById( R.id.sharpsBinComment );
+        bodyBag = findViewById( R.id.bodyBag );
+        bodyBagQty = findViewById( R.id.bodyBagQty );
+        bodyBagComment = findViewById( R.id.bodyBagComment );
+        gloves = findViewById( R.id.gloves );
+        glovesQty = findViewById( R.id.glovesQty );
+        glovesComment = findViewById( R.id.glovesComment );
+        portableOxygen = findViewById( R.id.portableOxygen );
+        portableOxygenQty = findViewById( R.id.portableOxygenQty );
+        portableOxygenComment = findViewById( R.id.portableOxygenComment );
+        pinRegulator = findViewById( R.id.pinRegulator );
+        pinRegulatorQty = findViewById( R.id.pinRegulatorQty );
+        pinRegulatorComment = findViewById( R.id.pinRegulatorComment );
+        oxygenMainline = findViewById( R.id.oxygenMainline );
+        oxygenMainlineQty = findViewById( R.id.oxygenMainlineQty );
+        oxygenMainlineComment = findViewById( R.id.oxygenMainlineComment );
+        oxygenFlowMeter = findViewById( R.id.oxygenFlowMeter );
+        oxygenFlowMeterQty = findViewById( R.id.oxygenFlowMeterQty );
+        oxygenFlowMeterComment = findViewById( R.id.oxygenFlowMeterComment );
+        bullNose = findViewById( R.id.bullNose );
+        bullNoseQty = findViewById( R.id.bullNoseQty );
+        bullNoseComment = findViewById( R.id.bullNoseComment );
+        aed = findViewById( R.id.aed );
+        aedQty = findViewById( R.id.aedQty );
+        aedComment = findViewById( R.id.aedComment );
+        adultDefibPads = findViewById( R.id.adultDefibPads );
+        adultDefibPadsQty = findViewById( R.id.adultDefibPadsQty );
+        adultDefibPadsComment = findViewById( R.id.adultDefibPadsComment );
+        childDefibPads = findViewById( R.id.childDefibPads );
+        childDefibPadsQty = findViewById( R.id.childDefibPadsQty );
+        childDefibPadsComment = findViewById( R.id.childDefibPadsComment );
+        defibGel = findViewById( R.id.defibGel );
+        defibGelQty = findViewById( R.id.defibGelQty );
+        defibGelComment = findViewById( R.id.defibGelComment );
+        asprin = findViewById( R.id.asprin );
+        asprinQty = findViewById( R.id.asprinQty );
+        asprinComment = findViewById( R.id.asprinComment );
+        gtn = findViewById( R.id.gtn );
+        gtnQty = findViewById( R.id.gtnQty );
+        gtnComment = findViewById( R.id.gtnComment );
+        clopidogrel = findViewById( R.id.clopidogrel );
+        clopidogrelQty = findViewById( R.id.clopidogrelQty );
+        clopidogrelComment = findViewById( R.id.clopidogrelComment );
+        adenosine = findViewById( R.id.adenosine );
+        adenosineQty = findViewById( R.id.adenosineQty );
+        adenosineComment = findViewById( R.id.adenosineComment );
+        amiodarone = findViewById( R.id.amiodarone );
+        amiodaroneQty = findViewById( R.id.amiodaroneQty );
+        amiodaroneComment = findViewById( R.id.amiodaroneComment );
+        lignocaine = findViewById( R.id.lignocaine );
+        lignocaineQty = findViewById( R.id.lignocaineQty );
+        lignocaineComment = findViewById( R.id.lignocaineComment );
+        adrenaline = findViewById( R.id.adrenaline );
+        adrenalineQty = findViewById( R.id.adrenalineQty );
+        adrenalineComment = findViewById( R.id.adrenalineComment );
+        atropine = findViewById( R.id.atropine );
+        atropineQty = findViewById( R.id.atropineQty );
+        atropineComment = findViewById( R.id.atropineComment );
+        magnesium = findViewById( R.id.magnesium );
+        magnesiumQty = findViewById( R.id.magnesiumQty );
+        magnesiumComment = findViewById( R.id.magnesiumComment );
+        calcium = findViewById( R.id.calcium );
+        calciumQty = findViewById( R.id.calciumQty );
+        calciumComment = findViewById( R.id.calciumComment );
+        soda = findViewById( R.id.soda );
+        sodaQty = findViewById( R.id.sodaQty );
+        sodaComment = findViewById( R.id.sodaComment );
+        thiamine = findViewById( R.id.thiamine );
+        thiamineQty = findViewById( R.id.thiamineQty );
+        thiamineComment = findViewById( R.id.thiamineComment );
+        diazepam = findViewById( R.id.diazepam );
+        diazepamQty = findViewById( R.id.diazepamQty );
+        diazepamComment = findViewById( R.id.diazepamComment );
+        midazolam = findViewById( R.id.midazolam );
+        midazolamQty = findViewById( R.id.midazolamQty );
+        midazolamComment = findViewById( R.id.midazolamComment );
+        promethazine = findViewById( R.id.promethazine );
+        promethazineQty = findViewById( R.id.promethazineQty );
+        promethazineComment = findViewById( R.id.promethazineComment );
+        activatedCharcoal = findViewById( R.id.activatedCharcoal );
+        activatedCharcoalQty = findViewById( R.id.activatedCharcoalQty );
+        activatedCharcoalComment = findViewById( R.id.activatedCharcoalComment );
+        flumazenil = findViewById( R.id.flumazenil );
+        flumazenilQty = findViewById( R.id.flumazenilQty );
+        flumazenilComment = findViewById( R.id.flumazenilComment );
+        naloxone = findViewById( R.id.naloxone );
+        naloxoneQty = findViewById( R.id.naloxoneQty );
+        naloxoneComment = findViewById( R.id.naloxoneComment );
+        morphine = findViewById( R.id.morphine );
+        morphineQty = findViewById( R.id.morphineQty );
+        morphineComment = findViewById( R.id.morphineComment );
+        dextrose = findViewById( R.id.dextrose );
+        dextroseQty = findViewById( R.id.dextroseQty );
+        dextroseComment = findViewById( R.id.dextroseComment );
+        glucose = findViewById( R.id.glucose );
+        glucoseQty = findViewById( R.id.glucoseQty );
+        glucoseComment = findViewById( R.id.glucoseComment );
+        fenoterol = findViewById( R.id.fenoterol );
+        fenoterolQty = findViewById( R.id.fenoterolQty );
+        fenoterolComment = findViewById( R.id.fenoterolComment );
+        bromide = findViewById( R.id.bromide );
+        bromideQty = findViewById( R.id.bromideQty );
+        bromideComment = findViewById( R.id.bromideComment );
+        corticosteriods = findViewById( R.id.corticosteriods );
+        corticosteriodsQty = findViewById( R.id.corticosteriodsQty );
+        corticosteriodsComment = findViewById( R.id.corticosteriodsComment );
+        furosemide = findViewById( R.id.furosemide );
+        furosemideQty = findViewById( R.id.furosemideQty );
+        furosemideComment = findViewById( R.id.furosemideComment );
+        metaclopramide = findViewById( R.id.metaclopramide );
+        metaclopramideQty = findViewById( R.id.metaclopramideQty );
+        metaclopramideComment = findViewById( R.id.metaclopramideComment );
+        buscopan = findViewById( R.id.buscopan );
+        buscopanQty = findViewById( R.id.buscopanQty );
+        buscopanComment = findViewById( R.id.buscopanComment );
+        bigPlasters = findViewById( R.id.bigPlasters );
+        bigPlastersQty = findViewById( R.id.bigPlastersQty );
+        bigPlastersComment = findViewById( R.id.bigPlastersComment );
+        smallPlasters = findViewById( R.id.smallPlasters );
+        smallPlastersQty = findViewById( R.id.smallPlastersQty );
+        smallPlastersComment = findViewById( R.id.smallPlastersComment );
+        cetrimide = findViewById( R.id.cetrimide );
+        cetrimideQty = findViewById( R.id.cetrimideQty );
+        cetrimideComment = findViewById( R.id.cetrimideComment );
+        elastoplastRoll = findViewById( R.id.elastoplastRoll );
+        elastoplastRollQty = findViewById( R.id.elastoplastRollQty );
+        elastoplastRollComment = findViewById( R.id.elastoplastRollComment );
+        prf = findViewById( R.id.prf );
+        prfQty = findViewById( R.id.prfQty );
+        prfComment = findViewById( R.id.prfComment );
+        doa = findViewById( R.id.doa );
+        doaQty = findViewById( R.id.doaQty );
+        doaComment = findViewById( R.id.doaComment );
+        gop = findViewById( R.id.gop );
+        gopQty = findViewById( R.id.gopQty );
+        gopComment = findViewById( R.id.gopComment );
+        torniquet = findViewById( R.id.torniquet );
+        torniquetQty = findViewById( R.id.torniquetQty );
+        torniquetComment = findViewById( R.id.torniquetComment );
+        glucometer = findViewById( R.id.glucometer );
+        glucometerQty = findViewById( R.id.glucometerQty );
+        glucometerComment = findViewById( R.id.glucometerComment );
+        gloves2 = findViewById( R.id.gloves2 );
+        gloves2Qty = findViewById( R.id.gloves2Qty );
+        gloves2Comment = findViewById( R.id.gloves2Comment );
+        bp = findViewById( R.id.bp );
+        bpQty = findViewById( R.id.bpQty );
+        bpComment = findViewById( R.id.bpComment );
+        stethoscope = findViewById( R.id.stethoscope );
+        stethoscopeQty = findViewById( R.id.stethoscopeQty );
+        stethoscopeComment = findViewById( R.id.stethoscopeComment );
+        rescueScissors = findViewById( R.id.rescueScissors );
+        rescueScissorsQty = findViewById( R.id.rescueScissorsQty );
+        rescueScissorsComment = findViewById( R.id.rescueScissorsComment );
+        thermometer = findViewById( R.id.thermometer );
+        thermometerQty = findViewById( R.id.thermometerQty );
+        thermometerComment = findViewById( R.id.thermometerComment );
+        pupilTorch = findViewById( R.id.pupilTorch );
+        pupilTorchQty = findViewById( R.id.pupilTorchQty );
+        pupilTorchComment = findViewById( R.id.pupilTorchComment );
+        testStrips = findViewById( R.id.testStrips );
+        testStripsQty = findViewById( R.id.testStripsQty );
+        testStripsComment = findViewById( R.id.testStripsComment );
+        lancets = findViewById( R.id.lancets );
+        lancetsQty = findViewById( R.id.lancetsQty );
+        lancetsComment = findViewById( R.id.lancetsComment );
+        sats = findViewById( R.id.sats );
+        satsQty = findViewById( R.id.satsQty );
+        satsComment = findViewById( R.id.satsComment );
+        adultMask = findViewById( R.id.adultMask );
+        adultMaskQty = findViewById( R.id.adultMaskQty );
+        adultMaskComment = findViewById( R.id.adultMaskComment );
+        adultRebreather = findViewById( R.id.adultRebreather );
+        adultRebreatherQty = findViewById( R.id.adultRebreatherQty );
+        adultRebreatherComment = findViewById( R.id.adultRebreatherComment );
+        adultNebulizer = findViewById( R.id.adultNebulizer );
+        adultNebulizerQty = findViewById( R.id.adultNebulizerQty );
+        adultNebulizerComment = findViewById( R.id.adultNebulizerComment );
+        adultNasal = findViewById( R.id.adultNasal );
+        adultNasalQty = findViewById( R.id.adultNasalQty );
+        adultNasalComment = findViewById( R.id.adultNasalComment );
+        childMask = findViewById( R.id.childMask );
+        childMaskQty = findViewById( R.id.childMaskQty );
+        childMaskComment = findViewById( R.id.childMaskComment );
+        childRebreather = findViewById( R.id.childRebreather );
+        childRebreatherQty = findViewById( R.id.childRebreatherQty );
+        childRebreatherComment = findViewById( R.id.childRebreatherComment );
+        childNebuliser = findViewById( R.id.childNebuliser );
+        childNebuliserQty = findViewById( R.id.childNebuliserQty );
+        childNebuliserComment = findViewById( R.id.childNebuliserComment );
+        childNasal = findViewById( R.id.childNasal );
+        childNasalQty = findViewById( R.id.childNasalQty );
+        childNasalComment = findViewById( R.id.childNasalComment );
+        traumaPads = findViewById( R.id.traumaPads );
+        traumaPadsQty = findViewById( R.id.traumaPadsQty );
+        traumaPadsComment = findViewById( R.id.traumaPadsComment );
+        traumaDressing100 = findViewById( R.id.traumaDressing100 );
+        traumaDressing100Qty = findViewById( R.id.traumaDressing100Qty );
+        traumaDressing100Comment = findViewById( R.id.traumaDressing100Comment );
+        traumaDressing200 = findViewById( R.id.traumaDressing200 );
+        traumaDressing200Qty = findViewById( R.id.traumaDressing200Qty );
+        traumaDressing200Comment = findViewById( R.id.traumaDressing200Comment );
+        bandage75 = findViewById( R.id.bandage75 );
+        bandage75Qty = findViewById( R.id.bandage75Qty );
+        bandage75Comment = findViewById( R.id.bandage75Comment );
+        bandage50 = findViewById( R.id.bandage50 );
+        bandage50Qty = findViewById( R.id.bandage50Qty );
+        bandage50Comment = findViewById( R.id.bandage50Comment );
+        stretchBandage = findViewById( R.id.stretchBandage );
+        stretchBandageQty = findViewById( R.id.stretchBandageQty );
+        stretchBandageComment = findViewById( R.id.stretchBandageComment );
+        elastoplast = findViewById( R.id.elastoplast );
+        elastoplastQty = findViewById( R.id.elastoplastQty );
+        elastoplastComment = findViewById( R.id.elastoplastComment );
+        adultBvm = findViewById( R.id.adultBvm );
+        adultBvmQty = findViewById( R.id.adultBvmQty );
+        adultBvmComment = findViewById( R.id.adultBvmComment );
+        childBvm = findViewById( R.id.childBvm );
+        childBvmQty = findViewById( R.id.childBvmQty );
+        childBvmComment = findViewById( R.id.childBvmComment );
+        infantBvm = findViewById( R.id.infantBvm );
+        infantBvmQty = findViewById( R.id.infantBvmQty );
+        infantBvmComment = findViewById( R.id.infantBvmComment );
+        adultMagilles = findViewById( R.id.adultMagilles );
+        adultMagillesQty = findViewById( R.id.adultMagillesQty );
+        adultMagillesComment = findViewById( R.id.adultMagillesComment );
+        childMagilles = findViewById( R.id.childMagilles );
+        childMagillesQty = findViewById( R.id.childMagillesQty );
+        childMagillesComment = findViewById( R.id.childMagillesComment );
+        tube000 = findViewById( R.id.tube000 );
+        tube000Qty = findViewById( R.id.tube000Qty );
+        tube000Comment = findViewById( R.id.tube000Comment );
+        tube00 = findViewById( R.id.tube00 );
+        tube00Qty = findViewById( R.id.tube00Qty );
+        tube00Comment = findViewById( R.id.tube00Comment );
+        tube0 = findViewById( R.id.tube0 );
+        tube0Qty = findViewById( R.id.tube0Qty );
+        tube0Comment = findViewById( R.id.tube0Comment );
+        tube1 = findViewById( R.id.tube1 );
+        tube1Qty = findViewById( R.id.tube1Qty );
+        tube1Comment = findViewById( R.id.tube1Comment );
+        tube2 = findViewById( R.id.tube2 );
+        tube2Qty = findViewById( R.id.tube2Qty );
+        tube2Comment = findViewById( R.id.tube2Comment );
+        tube3 = findViewById( R.id.tube3 );
+        tube3Qty = findViewById( R.id.tube3Qty );
+        tube3Comment = findViewById( R.id.tube3Comment );
+        tube4 = findViewById( R.id.tube4 );
+        tube4Qty = findViewById( R.id.tube4Qty );
+        tube4Comment = findViewById( R.id.tube4Comment );
+        tube5 = findViewById( R.id.tube5 );
+        tube5Qty = findViewById( R.id.tube5Qty );
+        tube5Comment = findViewById( R.id.tube5Comment );
+        lma5 = findViewById( R.id.lma5 );
+        lma5Qty = findViewById( R.id.lma5Qty );
+        lma5Comment = findViewById( R.id.lma5Comment );
+        lma4 = findViewById( R.id.lma4 );
+        lma4Qty = findViewById( R.id.lma4Qty );
+        lma4Comment = findViewById( R.id.lma4Comment );
+        lma3 = findViewById( R.id.lma3 );
+        lma3Qty = findViewById( R.id.lma3Qty );
+        lma3Comment = findViewById( R.id.lma3Comment );
+        lma2 = findViewById( R.id.lma2 );
+        lma2Qty = findViewById( R.id.lma2Qty );
+        lma2Comment = findViewById( R.id.lma2Comment );
+        lma1 = findViewById( R.id.lma1 );
+        lma1Qty = findViewById( R.id.lma1Qty );
+        lma1Comment = findViewById( R.id.lma1Comment );
+        uvcPack = findViewById( R.id.uvcPack );
+        uvcPackQty = findViewById( R.id.uvcPackQty );
+        uvcPackComment = findViewById( R.id.uvcPackComment );
+        maternity = findViewById( R.id.maternity );
+        maternityQty = findViewById( R.id.maternityQty );
+        maternityComment = findViewById( R.id.maternityComment );
+        needleCric = findViewById( R.id.needleCric );
+        needleCricQty = findViewById( R.id.needleCricQty );
+        needleCricComment = findViewById( R.id.needleCricComment );
+        ngTube = findViewById( R.id.ngTube );
+        ngTubeQty = findViewById( R.id.ngTubeQty );
+        ngTubeComment = findViewById( R.id.ngTubeComment );
+        airwayPack = findViewById( R.id.airwayPack );
+        airwayPackQty = findViewById( R.id.airwayPackQty );
+        airwayPackComment = findViewById( R.id.airwayPackComment );
+        urinaryCatheter = findViewById( R.id.urinaryCatheter );
+        urinaryCatheterQty = findViewById( R.id.urinaryCatheterQty );
+        urinaryCatheterComment = findViewById( R.id.urinaryCatheterComment );
+        urineBag = findViewById( R.id.urineBag );
+        urineBagQty = findViewById( R.id.urineBagQty );
+        urineBagComment = findViewById( R.id.urineBagComment );
+        suturePack = findViewById( R.id.suturePack );
+        suturePackQty = findViewById( R.id.suturePackQty );
+        suturePackComment = findViewById( R.id.suturePackComment );
+        spirometer = findViewById( R.id.spirometer );
+        spirometerQty = findViewById( R.id.spirometerQty );
+        spirometerComment = findViewById( R.id.spirometerComment );
+        ringers1000 = findViewById( R.id.ringers1000 );
+        ringers1000Qty = findViewById( R.id.ringers1000Qty );
+        ringers1000Comment = findViewById( R.id.ringers1000Comment );
+        sodiumChloride = findViewById( R.id.sodiumChloride );
+        sodiumChlorideQty = findViewById( R.id.sodiumChlorideQty );
+        sodiumChlorideComment = findViewById( R.id.sodiumChlorideComment );
+        colloid = findViewById( R.id.colloid );
+        colloidQty = findViewById( R.id.colloidQty );
+        colloidComment = findViewById( R.id.colloidComment );
+        canulla14 = findViewById( R.id.canulla14 );
+        canulla14Qty = findViewById( R.id.canulla14Qty );
+        canulla14Comment = findViewById( R.id.canulla14Comment );
+        canulla16 = findViewById( R.id.canulla16 );
+        canulla16Qty = findViewById( R.id.canulla16Qty );
+        canulla16Comment = findViewById( R.id.canulla16Comment );
+        canulla18 = findViewById( R.id.canulla18 );
+        canulla18Qty = findViewById( R.id.canulla18Qty );
+        canulla18Comment = findViewById( R.id.canulla18Comment );
+        canulla20 = findViewById( R.id.canulla20 );
+        canulla20Qty = findViewById( R.id.canulla20Qty );
+        canulla20Comment = findViewById( R.id.canulla20Comment );
+        canulla22 = findViewById( R.id.canulla22 );
+        canulla22Qty = findViewById( R.id.canulla22Qty );
+        canulla22Comment = findViewById( R.id.canulla22Comment );
+        canulla24 = findViewById( R.id.canulla24 );
+        canulla24Qty = findViewById( R.id.canulla24Qty );
+        canulla24Comment = findViewById( R.id.canulla24Comment );
+        admin60 = findViewById( R.id.admin60 );
+        admin60Qty = findViewById( R.id.admin60Qty );
+        admin60Comment = findViewById( R.id.admin60Comment );
+        admin20 = findViewById( R.id.admin20 );
+        admin20Qty = findViewById( R.id.admin20Qty );
+        admin20Comment = findViewById( R.id.admin20Comment );
+        admin15 = findViewById( R.id.admin15 );
+        admin15Qty = findViewById( R.id.admin15Qty );
+        admin15Comment = findViewById( R.id.admin15Comment );
+        admin10 = findViewById( R.id.admin10 );
+        admin10Qty = findViewById( R.id.admin10Qty );
+        admin10Comment = findViewById( R.id.admin10Comment );
+        webcol = findViewById( R.id.webcol );
+        webcolQty = findViewById( R.id.webcolQty );
+        webcolComment = findViewById( R.id.webcolComment );
+        tegaderm = findViewById( R.id.tegaderm );
+        tegadermQty = findViewById( R.id.tegadermQty );
+        tegadermComment = findViewById( R.id.tegadermComment );
+        syringe50 = findViewById( R.id.syringe50 );
+        syringe50Qty = findViewById( R.id.syringe50Qty );
+        syringe50Comment = findViewById( R.id.syringe50Comment );
+        syringe20 = findViewById( R.id.syringe20 );
+        syringe20Qty = findViewById( R.id.syringe20Qty );
+        syringe20Comment = findViewById( R.id.syringe20Comment );
+        syringe10 = findViewById( R.id.syringe10 );
+        syringe10Qty = findViewById( R.id.syringe10Qty );
+        syringe10Comment = findViewById( R.id.syringe10Comment );
+        syringe5 = findViewById( R.id.syringe5 );
+        syringe5Qty = findViewById( R.id.syringe5Qty );
+        syringe5Comment = findViewById( R.id.syringe5Comment );
+        syringe3 = findViewById( R.id.syringe3 );
+        syringe3Qty = findViewById( R.id.syringe3Qty );
+        syringe3Comment = findViewById( R.id.syringe3Comment );
+        needle18 = findViewById( R.id.needle18 );
+        needle18Qty = findViewById( R.id.needle18Qty );
+        needle18Comment = findViewById( R.id.needle18Comment );
+        needle21 = findViewById( R.id.needle21 );
+        needle21Qty = findViewById( R.id.needle21Qty );
+        needle21Comment = findViewById( R.id.needle21Comment );
+        handle = findViewById( R.id.handle );
+        handleQty = findViewById( R.id.handleQty );
+        handleComment = findViewById( R.id.handleComment );
+        blade4 = findViewById( R.id.blade4 );
+        blade4Qty = findViewById( R.id.blade4Qty );
+        blade4Comment = findViewById( R.id.blade4Comment );
+        blade3 = findViewById( R.id.blade3 );
+        blade3Qty = findViewById( R.id.blade3Qty );
+        blade3Comment = findViewById( R.id.blade3Comment );
+        blade2 = findViewById( R.id.blade2 );
+        blade2Qty = findViewById( R.id.blade2Qty );
+        blade2Comment = findViewById( R.id.blade2Comment );
+        blade1 = findViewById( R.id.blade1 );
+        blade1Qty = findViewById( R.id.blade1Qty );
+        blade1Comment = findViewById( R.id.blade1Comment );
+        blade0 = findViewById( R.id.blade0 );
+        blade0Qty = findViewById( R.id.blade0Qty );
+        blade0Comment = findViewById( R.id.blade0Comment );
+        et25 = findViewById( R.id.et2_5 );
+        et25Qty = findViewById( R.id.et2_5Qty );
+        et25Comment = findViewById( R.id.et2_5Comment );
+        et3 = findViewById( R.id.et3 );
+        et3Qty = findViewById( R.id.et3Qty );
+        et3Comment = findViewById( R.id.et3Comment );
+        et35 = findViewById( R.id.et3_5 );
+        et35Qty = findViewById( R.id.et3_5Qty );
+        et35Comment = findViewById( R.id.et3_5Comment );
+        et4 = findViewById( R.id.et4 );
+        et4Qty = findViewById( R.id.et4Qty );
+        et4Comment = findViewById( R.id.et4Comment );
+        et45 = findViewById( R.id.et4_5 );
+        et45Qty = findViewById( R.id.et4_5Qty );
+        et45Comment = findViewById( R.id.et4_5Comment );
+        et5 = findViewById( R.id.et5 );
+        et5Qty = findViewById( R.id.et5Qty );
+        et5Comment = findViewById( R.id.et5Comment );
+        et55 = findViewById( R.id.et5_5 );
+        et55Qty = findViewById( R.id.et5_5Qty );
+        et55Comment = findViewById( R.id.et5_5Comment );
+        et6 = findViewById( R.id.et6 );
+        et6Qty = findViewById( R.id.et6Qty );
+        et6Comment = findViewById( R.id.et6Comment );
+        et65 = findViewById( R.id.et6_5 );
+        et65Qty = findViewById( R.id.et6_5Qty );
+        et65Comment = findViewById( R.id.et6_5Comment );
+        et7 = findViewById( R.id.et7 );
+        et7Qty = findViewById( R.id.et7Qty );
+        et7Comment = findViewById( R.id.et7Comment );
+        et75 = findViewById( R.id.et7_5 );
+        et75Qty = findViewById( R.id.et7_5Qty );
+        et75Comment = findViewById( R.id.et7_5Comment );
+        et8 = findViewById( R.id.et8 );
+        et8Qty = findViewById( R.id.et8Qty );
+        et8Comment = findViewById( R.id.et8Comment );
+        et85 = findViewById( R.id.et8_5 );
+        et85Qty = findViewById( R.id.et8_5Qty );
+        et85Comment = findViewById( R.id.et8_5Comment );
+        tongue = findViewById( R.id.tongue );
+        tongueQty = findViewById( R.id.tongueQty );
+        tongueComment = findViewById( R.id.tongueComment );
+        childHolder = findViewById( R.id.childHolder );
+        childHolderQty = findViewById( R.id.childHolderQty );
+        childHolderComment = findViewById( R.id.childHolderComment );
+        tubeTape = findViewById( R.id.tubeTape );
+        tubeTapeQty = findViewById( R.id.tubeTapeQty );
+        tubeTapeComment = findViewById( R.id.tubeTapeComment );
+        spareBatteries = findViewById( R.id.spareBatteries );
+        spareBatteriesQty = findViewById( R.id.spareBatteriesQty );
+        spareBatteriesComment = findViewById( R.id.spareBatteriesComment );
+        micropore = findViewById( R.id.micropore );
+        microporeQty = findViewById( R.id.microporeQty );
+        microporeComment = findViewById( R.id.microporeComment );
+        peepValve = findViewById( R.id.peepValve );
+        peepValveQty = findViewById( R.id.peepValveQty );
+        peepValveComment = findViewById( R.id.peepValveComment );
+        spaceBlanket = findViewById( R.id.spaceBlanket );
+        spaceBlanketQty = findViewById( R.id.spaceBlanketQty );
+        spaceBlanketComment = findViewById( R.id.spaceBlanketComment );
+        gauze = findViewById( R.id.gauze );
+        gauzeQty = findViewById( R.id.gauzeQty );
+        gauzeComment = findViewById( R.id.gauzeComment );
+        triBandages = findViewById( R.id.triBandages );
+        triBandageseQty = findViewById( R.id.triBandageseQty );
+        triBandagesComment = findViewById( R.id.triBandagesComment );
+        vommit = findViewById( R.id.vommit );
+        vommitQty = findViewById( R.id.vommitQty );
+        vommitComment = findViewById( R.id.vommitComment );
+        lastlin = findViewById( R.id.lastlin );
+        multiPack = findViewById( R.id.multiPack );
+        multiPackQty = findViewById( R.id.multiPackQty );
+        multiPackComment = findViewById( R.id.multiPackComment );*/
 
 
     }
@@ -1439,6 +1452,7 @@ public class ALS_ICU_AMB extends AppCompatActivity {
         checkedBy = findViewById(R.id.checkedEdit);
         inspectionTime = findViewById(R.id.timeEdit);
         dateView = findViewById(R.id.dateView);
+        next = findViewById( R.id.next );
         url = "http://capemedicstestserver-com.stackstaging.com/apktest/vehicleChecklist.php";
         driver.requestFocus();
 
@@ -1529,18 +1543,45 @@ public class ALS_ICU_AMB extends AppCompatActivity {
         },30,30, TimeUnit.SECONDS);
 
         Toast.makeText(getApplicationContext(), "saved", Toast.LENGTH_SHORT).show();
+
+        TableSync();
     }
+
+    private void TableSync()
+    {
+        root = findViewById(R.id.content);
+        root2 = findViewById(R.id.content2);
+        root3 = findViewById(R.id.content3);
+        root4 = findViewById(R.id.content4);
+        root5 = findViewById(R.id.content5);
+        root6 = findViewById(R.id.content6);
+        //root7 = findViewById(R.id.content7);
+
+        View table = getVehicleTable();
+        View table2 = getEquipmentTable();
+        View table3 = getDisposableTable();
+        View table4 = getDrugTable();
+        View table5 = getIlsDrugTable();
+        View table6 = getDocumentationTable();
+        //View table7 = getDiagnosticsTable();
+
+        root.addView(table);
+        root2.addView(table2);
+        root3.addView(table3);
+        root4.addView(table4);
+        root5.addView(table5);
+        root6.addView(table6);
+        //root7.addView(table7);
+    }
+
 
     public void Send(View v){
 
         if(validate()){
             ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-            if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                    connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                //we are connected to a network
-                connected = true;
-            }
-            else connected = false;
+            //we are connected to a network
+            connected = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                    connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED;
             if (connected) {
                 AsyncT send = new AsyncT();
                 send.execute();
@@ -1599,7 +1640,7 @@ public class ALS_ICU_AMB extends AppCompatActivity {
                 HttpResponse response = httpclient.execute(httppost);
                 InputStream inputStream = response.getEntity().getContent();
                 Login_Page.InputStreamToStringExample str = new Login_Page.InputStreamToStringExample();
-                responseServer = str.getStringFromInputStream(inputStream);
+                responseServer = Login_Page.InputStreamToStringExample.getStringFromInputStream(inputStream);
                 Log.e("response", "cake -----" + responseServer);
 
 
@@ -3601,5 +3642,988 @@ public class ALS_ICU_AMB extends AppCompatActivity {
 
 
         return valid;
+    }
+
+    private View getVehicleTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("Response Car M05");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"AIRCONDITIONER","ANTENNAE\'S","BATTERY SECURED","BODY WORK","BRAKE LIGHTS","BRANDING","DASHBOARD LIGHTS",
+                "EMERGENCY LIGHTS","EXHAUST","FUEL LEVEL","HEADLIGHTS","INDICATORS LEFT","INDICATORS RIGHT","INTERIOR LIGHT BACK","INTERIOR LIGHT FRONT",
+                "JACK AND TOOLS","LED'S","LICENSE DISK X2 & EXP DATE","NUMBER PLATES","RADIO CD","REAR VIEW MIRROR","REVERSE LIGHTS","SIDE MIRRORS","SIREN",
+                "SPARE WHEEL","TYRE THREAD","TYRE PRESSURE","WINDOWS","WINDSCREEN"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Need Repair"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            Row item = new Row(this, st, "1", qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getEquipmentTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"LAERDAL SUCTION UNIT+TUBING","YANKUAR CATHETER AND SOFT TIP","ECG MONITOR + ELECTRODES+ DEFIB PADS","SMALL CERVICAL COLLARS",
+                "LARGE CERVICAL COLLARS","LONG KRAMER WIRE SPLINTS","SHORT KRAMER WIRE SPLINTS","REGULATOR PIN INDEX CM1201","PORTABLE 02 HC012094",
+                "SHARPS CONTAINER 1228","REFLECTIVE VESTS","RESCUE HELMET","LINEN SAVERS","FIRE EXTINGUISHER","KED ADULT","ADULT TRACTION SPLINT",
+                "EMERGENCY TRIANGLE","ROAD CONES","TORNIQUET","GLUCOMETER","GLOVES","BP CUFF","STETHOSCOPE","RESCUE SCISSORS","THERMOMETER","PUPIL TORCH","TEST STRIPS","LANCETS",
+                "SATS PROBE","VENTURI MASK ADULT","REBREATHER MASK ADULT","NEBULIZER MASK ADULT","NASAL CANNULA ADULT","VENTURI MASK CHILD","REBREATHER MASK CHILD","NEBULISER MASK CHILD",
+                "NASAL CANNULA CHILD","TRAUMA PADS","TRAUMA DRESSING 75X100MM","TRAUMA DRESSING 150X200MM","CONFORMING BANDAGE 75MM","CONFORMING BANDAGE 50MM","STRECTH BANDAGE 200X300MM",
+                "ELASTOPLAST","BVM ADULT+RESERVOIR","BVM CHILD+RESERVOIR","BVM INFANT+RESERVOIR","MAGILLES ADULT","MAGILLES PAED","OP TUBE SIZE 000","OP TUBE SIZE 00","OP TUBE SIZE 0",
+                "OP TUBE SIZE 1","OP TUBE SIZE 2","OP TUBE SIZE 3","OP TUBE SIZE 4","OP TUBE SIZE 5","LMA 5","LMA 4","LMA 3","LMA 2","LMA 1","UVC PACK","MATERNITY PACK","NEEDLE CRIC PACK",
+                "NG TUBE","SURGICAL AIRWAY PACK","URINARY CATHETER","URINE BAG","SUTURE PACK","SPIROMETER","RINGERS 1000ML","SODIUM CHLORIDE 0,9% 200ML","16G JELCO","18G JELCO","20G JELCO","22G JELCO",
+                "24G JELCO","60 DROP ADMIN SET","20 DROP ADMIN SET","15 DROP ADMIN SET","10 DROP ADMIN SET","WEBCOL","TEGADERM","SYRINGES 20ML","SYRINGES 10ML","SYRINGES 5ML","SYRINGES 3ML","18G HYPODERMIC NEEDLE",
+                "21G HYPODERMIC NEEDLE","LARYNGOSOPE HANDLE","LARYNGOSOPE BLADE 4","LARYNGOSOPE BLADE 3","LARYNGOSOPE BLADE 2","LARYNGOSOPE BLADE 1","LARYNGOSOPE BLADE 0","ET 2.5","ET 3.0",
+                "ET 3.5","ET 4.0","ET 4.5","ET 5.0","ET 5.5","ET 6.0","ET 6.5","ET 7.0","ET 7.5","ET 8.0","ET 8.5","TONGUE DEPRESSORS","PEAD TUBE HOLDERS","TUBE TAPE","BATTERIES (SPARE)","MICROPORE",
+                "PEEP VALVE","SPACE BLANKET","GAUZE","TRIANGULAR BANDAGES","VOMMIT BAGS","BURNSHIELD MULTIPACK","OTHER"
+        };
+
+        String[] _qtylist = new String[]{"1","1","1","1","2","2","1","1","1","2","1","1","1","1","1","1","*","*","*","*","*","*","1","1","1","1","1","1","1","1","1","25","1","2","2","2","2","2","2","2","2","10",
+                "2","2","2","2","2","3","1","1","1","*","*","2","2","2","2","2","2","2","2","1","1","1","1","1","1","1","1","1","1","1","1","2","1","1","2","4","4","4","4","4","4",
+                "2","2","2","23","4","4","4","4","4","5","10","1","1","1","1","1","1","2","2","2","2","2","2","2","2","2","2","2","2","2","8","2","2","1","1","1","2","6","2","2","1"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Need Repair", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getDisposableTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"Portable Oxygen Cyliner","Pin index regulator","Oxygen Cylindar Key/Spanner","Oxygen Mainline Cylinder",
+                "Oxygen flow meter","Bullnose/Pin Index regulator","AED (Charge working)","Defib pads - adult","Defib pads - paed","Defib gel"
+        };
+
+        String[] _qtylist = new String[]{"2","1","1","1","2","1","1","1","1","1"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Need Repair", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getDrugTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"ASPRIN","GTN","CLOPIDOGREL","ADENOSINE","AMIODARONE","LIGNOCAINE2%(SYSTEMIC)","ADRENALINE","ATROPINE","MAG. SULPHATE",
+                "CALCIUM CHLORIDE","SODA BIC 8.5%","THIAMINE(IM/SC)","DIAZEPAM","MIDAZOLAM","PROMETHAZINE","ACTIVATED CHARCOAL","FLUMAZENIL","NALOXONE",
+                "MORPHINE","DEXTROSE 50%","ORAL GLUCOSE","FENOTEROL","IPRATROPRIUM BROMIDE","CORTICOSTERIODS","FUROSEMIDE","METACLOPRAMIDE","BUSCOPAN"
+        };
+
+        String[] _qtylist = new String[]{"6","1","8","3","3","2","10","4","3","2","1","1","2","2","2","1","1","4","2","2","2","3","3","3","3","4","2"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getIlsDrugTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"DEXTROSE 50%","FENETROL","IPRATROPIUM BROMIDE","DISPRIN","BIG PLASTERS","SMALL PLASTERS","CETRIMIDE 1% BOTTLE","GLUCOGEL","ELASTOPLAST",
+        };
+
+        String[] _qtylist = new String[]{"1","3","3","6","5","10","1","2","1"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getDocumentationTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"PRF BOOK","DOA BOOK","GOP FORMS"
+        };
+
+        String[] _qtylist = new String[]{"1","1","5"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getDiagnosticsTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"TORNIQUET","GLUCOMETER","GLOVES","BP CUFF","STETHOSCOPE","RESCUE SCISSORS","THERMOMETER","PUPIL TORCH","TEST STRIPS",
+                "LANCETS","SATS PROBE"
+        };
+
+        String[] _qtylist = new String[]{"1","1","1","1","1","1","1","1","1","25","1"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
     }
 }

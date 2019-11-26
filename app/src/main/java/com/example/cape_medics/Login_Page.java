@@ -91,7 +91,6 @@ public class Login_Page extends AppCompatActivity {
         password.setPaintFlags(0);
         url = "http://capemedicstestserver-com.stackstaging.com/apktest/loginPage.php";
 
-
     }
 
     public void Login (View v) throws JSONException {

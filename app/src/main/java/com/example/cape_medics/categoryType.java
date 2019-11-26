@@ -1,6 +1,8 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +10,9 @@ import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
+import com.example.cape_medics.DateAndTimePicker.TimePickerFragment;
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 
 import org.json.JSONArray;
@@ -19,15 +23,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class categoryType extends AppCompatActivity {
+public class categoryType extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
     ExpandableRelativeLayout expandableLayout1, expandableLayout2, expandableLayout3, expandableLayout4, expandableLayout5;
     CheckBox ortia,ctia,ksia,inemergency,airemergency,organtransfer,landemergency,airtransfer,acsastaff,otherstakeholder;
     CheckBox publicpassenger, film, event, cticc, gcc, firstaid, prf, gccstaff, other, publicPatron, home2hospital;
     CheckBox facility2facility, house, office, publicVenue;
-    EditText callLocation, name, company, organiser, callLocation2, callLocation3, reportTime;
+    EditText callLocation, name, company, organiser, callLocation2, callLocation3;
     Cache cache;
 
-    TextView dateView;
+    TextView dateView, reportTime;
 
     JSONObject acsa, load;
     String airport,callType_acsa,general_acsa,code ;
@@ -111,8 +115,18 @@ public class categoryType extends AppCompatActivity {
             }
         }
 
+        reportTime.setOnClickListener(view -> {
+            DialogFragment timePickerFragment = new TimePickerFragment();
+            timePickerFragment.setCancelable(false);
+            timePickerFragment.show(getSupportFragmentManager(), "timePicker");
+        });
+
+    }
 
 
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        reportTime.setText("Hour = " + hourOfDay + " Minute = " + minute);
     }
 
     public void expandableButton1(View view) {
@@ -236,6 +250,5 @@ public class categoryType extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), medicalTabbedView.class);
         startActivity(i);
     }
-
 
 }

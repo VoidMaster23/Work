@@ -19,17 +19,15 @@ import org.json.JSONObject;
 public class Stroke extends Fragment {
     private ImageView imageView18;
     private CheckBox  chkNA;
-    private CheckBox checkBox4;
+    private CheckBox checkBoxStroke, checkBoxCasualty;
     private CheckBox checkBox5;
     private CheckBox checkBox6;
     private TextView textView55;
     private EditText editDoorDrug;
     private TextView textView56;
     private EditText editStrokeUnit;
-    private TextView textView57;
-    private EditText editCasualty;
 
-    private Button fd_btnYes, fd_btnNo, aw_btnYes, aw_btnNo, sd_btnYes, sd_btnNo;
+    private Button fd_btnYes, fd_btnNo, aw_btnYes, aw_btnNo, sd_btnYes, sd_btnNo, Casualty_btnNo, Casualty_btnYes;
 
     JSONObject stroke;
 
@@ -57,7 +55,6 @@ public class Stroke extends Fragment {
         //textView56 = (TextView)view.findViewById( R.id.textView56 );
         editStrokeUnit = view.findViewById( R.id.editStrokeUnit );
         //textView57 = (TextView)view.findViewById( R.id.textView57 );
-        editCasualty = view.findViewById( R.id.editCasualty );
 
         fd_btnYes = view.findViewById(R.id.fd_btnYes);
         fd_btnNo = view.findViewById(R.id.fd_btnNo);
@@ -65,13 +62,16 @@ public class Stroke extends Fragment {
         aw_btnNo = view.findViewById(R.id.aw_btnNo);
         sd_btnYes = view.findViewById(R.id.sd_btnYes);
         sd_btnNo = view.findViewById(R.id.sd_btnNo);
+        Casualty_btnYes = view.findViewById(R.id.Casualty_btnYes);
+        Casualty_btnNo = view.findViewById(R.id.Casualty_btnNo);
+
 
         Init();
 
         return view;
     }
 
-    String facial = "No", arm = "No", speech = "No";
+    String facial = "No", arm = "No", speech = "No", casualty = "No";
 
     private void Init(){
 
@@ -116,6 +116,20 @@ public class Stroke extends Fragment {
 
             speech = "No";
         });
+
+        Casualty_btnYes.setOnClickListener(v -> {
+            Casualty_btnYes.setBackgroundResource(R.drawable.orangeshape);
+            Casualty_btnNo.setBackgroundResource(R.drawable.whiteshape);
+
+            casualty = "Yes";
+        });
+
+        Casualty_btnNo.setOnClickListener(v -> {
+            Casualty_btnYes.setBackgroundResource(R.drawable.whiteshape);
+            Casualty_btnNo.setBackgroundResource(R.drawable.orangeshape);
+
+            casualty = "No";
+        });
     }
 
     public JSONObject createJson(){
@@ -131,16 +145,15 @@ public class Stroke extends Fragment {
 
         String door = editDoorDrug.getText().toString();
         String strokeStr = editStrokeUnit.getText().toString();
-        String casual = editCasualty.getText().toString();
 
         try{
 
             stroke.put("Facial", facial);
             stroke.put("Arm", arm);
             stroke.put("Speech", speech);
+            stroke.put("Casualty", casualty);
             stroke.put("Door", door);
             stroke.put("Stroke", strokeStr);
-            stroke.put("Casualty", casual);
 
 
         }catch (Exception e){
