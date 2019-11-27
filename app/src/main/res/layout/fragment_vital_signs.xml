@@ -88,7 +88,7 @@
                             android:isScrollContainer="true"
                             android:padding="15dp"
                             app:ael_duration="400"
-                            app:ael_expanded="false"
+                            app:ael_expanded="true"
                             app:ael_interpolator="accelerateDecelerate"
                             app:ael_orientation="vertical">
 
@@ -105,15 +105,15 @@
                                 android:id="@+id/edtTime1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="35dp"
+                                android:layout_alignLeft="@id/edtPulse1"
                                 android:background="@drawable/round_shape"
                                 android:gravity="top"
                                 android:hint="Pick Time"
-                                android:paddingTop="5dp"
-                                android:textColor="@color/white"
-                                android:textSize="14sp"
-                                android:layout_alignLeft="@id/edtPulse1"
                                 android:paddingLeft="10dp"
-                                android:paddingRight="10dp"/>
+                                android:paddingTop="5dp"
+                                android:paddingRight="10dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/lblPulse1"

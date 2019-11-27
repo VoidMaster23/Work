@@ -66,27 +66,20 @@ public class ILSAMB extends AppCompatActivity {
     List<CheckBox> checkBoxList;
     List<EditText> commentList;
     JSONObject ils_amb,response, save, load;
-    String Date, responseServer,url, code, saved;
+    String Date, responseServer,url, code, saved,authorisation;
     Cache cache;
     boolean connected;
     ScheduledExecutorService scheduledExecutorService1;
     Button next;
 
-    private  EditText driver, controller, checkedBy;
+    String vehicle, driverName, controllerName, checkedName, inspectedAt, notes;
 
+    private  EditText driver, controller, checkedBy,noteEdt;
 
 
     private static final int WrapContent = ViewGroup.LayoutParams.WRAP_CONTENT;
     private static final int MatchParent = ViewGroup.LayoutParams.MATCH_PARENT;
     private RelativeLayout root,root2,root3,root4,root5,root6,root7,root8,root9;
-
-
-    /**
-     * Find the Views in the layout<br />
-     * <br />
-     * Auto-created on 2019-07-03 18:20:12 by Android Layout Finder
-     * (http://www.buzzingandroid.com/tools/android-layout-finder)
-     */
 
 
 
@@ -100,6 +93,7 @@ public class ILSAMB extends AppCompatActivity {
         ils_amb = new JSONObject();
         Bundle bundle = getIntent().getExtras();
         code = bundle.getString("code");
+        authorisation = bundle.getString("Authorisation");
         cache = new Cache(getApplicationContext());
         save = new JSONObject();
 
@@ -112,10 +106,11 @@ public class ILSAMB extends AppCompatActivity {
         checkedBy = findViewById(R.id.checkedEdit);
         inspectionTime = findViewById(R.id.timeEdit);
         dateView = findViewById(R.id.dateView);
-        next = (Button)findViewById( R.id.next );
+        noteEdt = findViewById(R.id.notes);
+
         url = "http://capemedicstestserver-com.stackstaging.com/apktest/vehicleChecklist.php";
 
-        ImageView logo = findViewById(R.id.logo);
+
 
         driver.requestFocus();
         String[] vehicleNumber = {"MED 1","MED 2","MED 3","MED 4","MED 5","MED 6","MED 7","MED 8","MED 9","MED 10","MED 11","MED 12","MED 13","MED 14","MED 15","MED 16","MED 17","MED 18","MED 19","MED 20","MED 21","MED 22","MED 23","MED 24"};
@@ -147,21 +142,8 @@ public class ILSAMB extends AppCompatActivity {
                 driver.setText(load.getString("Driver"));
                 inspectionTime.setText(load.getString("Inspection_Time"));
                 checkedBy.setText(load.getString("Checked_By"));
-                Iterator<String> keys = load.keys();
-                while(keys.hasNext()) {
-                    String key = keys.next();
-                    String item = load.getString(key);
-                    for (int j = 0; j<checkBoxList.size();j++) {
-                        if (checkBoxList.get(j) != null) {
-                            if (key.equals(checkBoxList.get(j).getText().toString())) {
-                                checkBoxList.get(j).setChecked(true);
-                                commentList.get(j).setText(item);
+                noteEdt.setText(load.getString("notes"));
 
-                            }
-                        }
-                    }
-
-                }
 
 
             } catch (JSONException e) {
@@ -186,16 +168,7 @@ public class ILSAMB extends AppCompatActivity {
                             save.put("Checked_By", checkedBy.getText().toString());
                             save.put("Inspection_Time", inspectionTime.getText().toString());
 
-                            for (int i = 0; i<checkBoxList.size();i++) {
-                                if (checkBoxList.get(i) != null) {
-                                    if (checkBoxList.get(i).isChecked()) {
-                                        if (commentList.get(i).getText() != null) {
-                                            save.put(checkBoxList.get(i).getText().toString(), commentList.get(i).getText().toString());
-                                        }
-
-                                    }
-                                }
-                            }
+//
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -261,15 +234,23 @@ public class ILSAMB extends AppCompatActivity {
                 //we are connected to a network
                 connected = true;
             } else connected = false;
-            if (connected) {
-                AsyncT send = new AsyncT();
-                send.execute();
-                Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
-                cache.removeStringProperty("vehicleSaveILSAMB" + code);
-                scheduledExecutorService1.shutdown();
-                i.putExtra("code", code);
-                i.putExtra("first", "not");
-                startActivity(i);
+            if (connected ) {
+                vehicle =  VehicleNumber.getSelectedItem().toString();
+                driverName = driver.getText().toString();
+                checkedName = checkedBy.getText().toString();
+                controllerName = controller.getText().toString();
+                inspectedAt = inspectionTime.getText().toString();
+                notes = noteEdt.getText().toString();
+
+                if(validate()){
+
+                    AsyncT send = new AsyncT();
+                    send.execute();
+                    cache.removeStringProperty("vehicleSaveILSAMB" + code);
+                    scheduledExecutorService1.shutdown();
+                }
+
+
             } else {
                 Toast.makeText(getApplicationContext(), "Please establish an internet connection", Toast.LENGTH_SHORT).show();
             }
@@ -285,7 +266,12 @@ public class ILSAMB extends AppCompatActivity {
 
             try {
                 //Accessing the Table Data
-                JSONObject tableData = new JSONObject();
+                JSONObject vehicleData = new JSONObject();
+                JSONObject equipmentData = new JSONObject();
+                JSONObject disposableData = new JSONObject();
+                JSONObject drugData = new JSONObject();
+                JSONObject ilsDrugData = new JSONObject();
+                JSONObject documentationData = new JSONObject();
 
                 for (Row row : vehicleTableArrayList)
                 {
@@ -294,31 +280,83 @@ public class ILSAMB extends AppCompatActivity {
                     rowData.put("CHECKED", row.getChecked());
                     rowData.put("COMMENT",row.getComment());
 
-                    tableData.put(row.getDescription(),rowData.toString());
+                    vehicleData.put(row.getDescription(),rowData.toString());
                 }//
+
+                for (Row row : equipmentTable)
+                {
+                    JSONObject rowData = new JSONObject();
+                    rowData.put("QTY",row.getQty());
+                    rowData.put("CHECKED", row.getChecked());
+                    rowData.put("COMMENT",row.getComment());
+
+                    equipmentData.put(row.getDescription(),rowData.toString());
+                }//
+
+                for (Row row : disposableTable)
+                {
+                    JSONObject rowData = new JSONObject();
+                    rowData.put("QTY",row.getQty());
+                    rowData.put("CHECKED", row.getChecked());
+                    rowData.put("COMMENT",row.getComment());
+
+                    disposableData.put(row.getDescription(),rowData.toString());
+                }//
+
+                for (Row row : drugTable)
+                {
+                    JSONObject rowData = new JSONObject();
+                    rowData.put("QTY",row.getQty());
+                    rowData.put("CHECKED", row.getChecked());
+                    rowData.put("COMMENT",row.getComment());
+
+                    drugData.put(row.getDescription(),rowData.toString());
+                }//
+
+                for (Row row : ilsDrugTable)
+                {
+                    JSONObject rowData = new JSONObject();
+                    rowData.put("QTY",row.getQty());
+                    rowData.put("CHECKED", row.getChecked());
+                    rowData.put("COMMENT",row.getComment());
+
+                    ilsDrugData.put(row.getDescription(),rowData.toString());
+                }//
+
+                for (Row row : documentationTable)
+                {
+                    JSONObject rowData = new JSONObject();
+                    rowData.put("QTY",row.getQty());
+                    rowData.put("CHECKED", row.getChecked());
+                    rowData.put("COMMENT",row.getComment());
+
+                    documentationData.put(row.getDescription(),rowData.toString());
+                }//
+
+
 
                 ils_amb.put("Ambulance_Type", "ILS Ambulance");
                 ils_amb.put("Vehicle_Type", "Ambulance");
-                ils_amb.put("Vehicle Number", VehicleNumber.getSelectedItem().toString());
-                ils_amb.put("Driver", driver.toString());
-                ils_amb.put("Controller", controller.toString());
-                ils_amb.put("Checked By", checkedBy.toString());
+                ils_amb.put("Vehicle Number", vehicle);
+                ils_amb.put("Driver", driverName);
+                ils_amb.put("Controller", controllerName);
+                ils_amb.put("Checked By", checkedName);
                 ils_amb.put("Inspection Date", Date);
-                ils_amb.put("Inspection Time", inspectionTime.toString());
+                ils_amb.put("Inspection Time", inspectedAt);
+                ils_amb.put("Notes", notes);
                 //Accessing the Table Data
-                ils_amb.put("Vehicle", tableData.toString());
+                ils_amb.put("Vehicle", vehicleData.toString());
+                ils_amb.put("Equipment",equipmentData.toString());
+                ils_amb.put("Disposable",disposableData.toString());
+                ils_amb.put("Drug Bag",drugData.toString());
+                ils_amb.put("Ils Drug Pouch",ilsDrugData.toString());
+                ils_amb.put("Documentation",documentationData.toString());
 
-                for (int i = 0; i<checkBoxList.size();i++) {
-                    if (checkBoxList.get(i) != null) {
-                        if (!checkBoxList.get(i).isChecked()) {
-                            if (commentList.get(i).getText() != null) {
-                                ils_amb.put(checkBoxList.get(i).getText().toString(), commentList.get(i).getText().toString());
-                            } else
-                                ils_amb.put(checkBoxList.get(i).getText().toString(), "No Comment");
 
-                        }
-                    }
-                }
+                Log.i("Table DATA",ils_amb.toString());
+
+
+
 
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
                 nameValuePairs.add(new BasicNameValuePair("req", ils_amb.toString()));
@@ -346,18 +384,13 @@ public class ILSAMB extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
-            try {
-                response = new JSONObject(responseServer);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-           /* if (response.length() < 3) {
-                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-            }
-           else {
-                Toast.makeText(getApplicationContext(), responseServer, Toast.LENGTH_SHORT).show();
-            }*/
+            Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
             Toast.makeText(getApplicationContext(), "sent", Toast.LENGTH_SHORT).show();
+            i.putExtra("code", code);
+            i.putExtra("Authorisation",authorisation);
+            i.putExtra("first", "not");
+            startActivity(i);
+
         }
     }
 
@@ -409,7 +442,6 @@ public class ILSAMB extends AppCompatActivity {
 
     //Accessing the Table Data
     ArrayList<Row> vehicleTableArrayList = new ArrayList<>();
-
     private View getVehicleTable(){
 
         // create table
@@ -550,6 +582,8 @@ public class ILSAMB extends AppCompatActivity {
         return table;
     }
 
+    //Accessing table data
+    ArrayList<Row> equipmentTable = new ArrayList<>();
     private View getEquipmentTable(){
 
         // create table
@@ -690,6 +724,9 @@ public class ILSAMB extends AppCompatActivity {
             String qtyst = _qtylist[i];
             Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
 
+            //Accessing table tata
+            equipmentTable.add(item);
+
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
             tableContent.addView(item.getRow());
@@ -702,6 +739,8 @@ public class ILSAMB extends AppCompatActivity {
         return table;
     }
 
+    //accessing table data
+    ArrayList<Row> disposableTable = new ArrayList<>();
     private View getDisposableTable(){
 
         // create table
@@ -829,6 +868,9 @@ public class ILSAMB extends AppCompatActivity {
             String qtyst = _qtylist[i];
             Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
 
+            //table data
+            disposableTable.add(item);
+
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
             tableContent.addView(item.getRow());
@@ -841,6 +883,8 @@ public class ILSAMB extends AppCompatActivity {
         return table;
     }
 
+    //accessing table data
+    ArrayList<Row> drugTable = new ArrayList<>();
     private View getDrugTable(){
 
         // create table
@@ -969,6 +1013,9 @@ public class ILSAMB extends AppCompatActivity {
             String qtyst = _qtylist[i];
             Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
 
+            //row data
+            drugTable.add(item);
+
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
             tableContent.addView(item.getRow());
@@ -981,6 +1028,8 @@ public class ILSAMB extends AppCompatActivity {
         return table;
     }
 
+    //accessing table data
+    ArrayList<Row> ilsDrugTable = new ArrayList<>();
     private View getIlsDrugTable(){
 
         // create table
@@ -1107,6 +1156,9 @@ public class ILSAMB extends AppCompatActivity {
             String qtyst = _qtylist[i];
             Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
 
+            //accessing item
+            ilsDrugTable.add(item);
+
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
             tableContent.addView(item.getRow());
@@ -1119,6 +1171,9 @@ public class ILSAMB extends AppCompatActivity {
         return table;
     }
 
+
+    //Accessing table data
+    ArrayList<Row> documentationTable = new ArrayList<>();
     private View getDocumentationTable(){
 
         // create table
@@ -1244,6 +1299,9 @@ public class ILSAMB extends AppCompatActivity {
             String st = _list[i];
             String qtyst = _qtylist[i];
             Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT","Comment here", i, parentWidth);
+
+            //access table data
+            documentationTable.add(item);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
@@ -1394,5 +1452,39 @@ public class ILSAMB extends AppCompatActivity {
         table.addView(nestedScrollView);
 
         return table;
+    }
+
+    public boolean validate(){
+
+        boolean valid = true;
+
+        if(driverName.isEmpty()){
+            valid = false;
+            Toast.makeText(getApplicationContext(),"Please enter a driver name", Toast.LENGTH_SHORT).show();
+        }
+
+        if(valid){
+            if(controllerName.isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please enter a controller name", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(inspectedAt.isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please enter an inspection time", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(checkedName.isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please enter the name of the person who checked the vehicle", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        return valid;
+
     }
 }

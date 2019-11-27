@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -50,7 +51,8 @@ public class Death extends Fragment {
     JSONArray CategoryType;
     Button send, go;
     JSONObject death, response;
-    EditText location, time, place, date, name, post, time2;
+    EditText location,  place, name, post;
+    TextView time,time2,date;
     CheckBox carotidPulseLeft, carotidPulseRight, breathingYes, breathingNo, eyeYes, eyeNo, ecgYes, ecgNo, pupilsYes, pupilsNo;
     String carotidPulse, breathing, dollEyeMovements, ecgStraightLine, bilateralFixedDilatedPupils, responseServer;
     private static final String IMAGE_DIRECTORY = "/Pictures";
