@@ -1,5 +1,7 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,27 +16,30 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cape_medics.Cache;
+import com.example.cape_medics.R;
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
 
 public class VitalSigns extends Fragment {
 
- ExpandableRelativeLayout expandableRelativeLayout1, expandableRelativeLayout2,expandableRelativeLayout3, expandableRelativeLayout4;
-Button button1,button2,button3, button4;
+    ExpandableRelativeLayout expandableRelativeLayout1, expandableRelativeLayout2,expandableRelativeLayout3, expandableRelativeLayout4;
+    Button button1,button2,button3, button4;
     private ImageView imageView15;
-    public CheckBox chkNA;
+    private CheckBox chkNA;
     private Button expBut1;
     private ScrollView scrl1;
     private ExpandableRelativeLayout expLay1;
     private TextView lblTime1;
-    private EditText edtTime1;
+    private TextView edtTime1;
     private TextView lblPulse1;
     private EditText edtPulse1;
     private TextView lblBp1;
@@ -61,7 +66,7 @@ Button button1,button2,button3, button4;
     private ScrollView scrl2;
     private ExpandableRelativeLayout expLay2;
     private TextView lblTime2;
-    private EditText edtTime2;
+    private TextView edtTime2;
     private TextView lblPulse2;
     private EditText edtPulse2;
     private TextView lblBp2;
@@ -88,7 +93,7 @@ Button button1,button2,button3, button4;
     private ScrollView scrl3;
     private ExpandableRelativeLayout expLay3;
     private TextView lblTime3;
-    private EditText edtTime3;
+    private TextView edtTime3;
     private TextView lblPulse3;
     private EditText edtPulse3;
     private TextView lblBp3;
@@ -114,7 +119,7 @@ Button button1,button2,button3, button4;
     private Button expBut4;
     private ExpandableRelativeLayout expLay4;
     private TextView lblTime4;
-    private EditText edtTime4;
+    private TextView edtTime4;
     private TextView lblPulse4;
     private EditText edtPulse4;
     private TextView lblBp4;
@@ -138,6 +143,8 @@ Button button1,button2,button3, button4;
     private Spinner spnLeftSize4;
     private Spinner spnRightSize4;
 
+    private Button epl_yes, epl_no, epr_yes, epr_no;
+
     JSONObject vitalSigns;
 
     List<CheckBox> checkBoxList;
@@ -155,164 +162,170 @@ Button button1,button2,button3, button4;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-     View view = inflater.inflate(R.layout.fragment_vital_signs, container, false);
-        expandableRelativeLayout1 = (ExpandableRelativeLayout) view.findViewById(R.id.expLay1);
-        expandableRelativeLayout2 = (ExpandableRelativeLayout) view.findViewById(R.id.expLay2);
-        expandableRelativeLayout3 = (ExpandableRelativeLayout) view.findViewById(R.id.expLay3);
-        expandableRelativeLayout4 = (ExpandableRelativeLayout) view.findViewById(R.id.expLay4);
+        View view = inflater.inflate(R.layout.fragment_vital_signs, container, false);
+        expandableRelativeLayout1 = view.findViewById(R.id.expLay1);
+        expandableRelativeLayout2 = view.findViewById(R.id.expLay2);
+        expandableRelativeLayout3 = view.findViewById(R.id.expLay3);
+        expandableRelativeLayout4 = view.findViewById(R.id.expLay4);
 
         button1 = view.findViewById(R.id.expBut1);
         button2 = view.findViewById(R.id.expBut2);
         button3 = view.findViewById(R.id.expBut3);
         button4 = view.findViewById(R.id.expBut4);
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                expandableRelativeLayout1.toggle();
-            }
+        epl_yes = view.findViewById(R.id.epl_yes);
+        epl_no = view.findViewById(R.id.epl_no);
+        epr_yes = view.findViewById(R.id.epr_yes);
+        epr_no = view.findViewById(R.id.epr_no);
+
+        button1.setOnClickListener(view12 -> expandableRelativeLayout1.toggle());
+
+        button2.setOnClickListener(view1 -> expandableRelativeLayout2.toggle());
+
+
+        button3.setOnClickListener(view13 -> expandableRelativeLayout3.toggle());
+
+        button4.setOnClickListener(view14 -> expandableRelativeLayout4.toggle());
+
+        imageView15 = view.findViewById( R.id.imageView12 );
+        chkNA = view.findViewById( R.id.chkNA );
+        expBut1 = view.findViewById( R.id.expBut1 );
+        scrl1 = view.findViewById( R.id.scrl1 );
+        expLay1 = view.findViewById( R.id.expLay1 );
+        lblTime1 = view.findViewById( R.id.lblTime1 );
+        edtTime1 = view.findViewById( R.id.edtTime1 );
+        lblPulse1 = view.findViewById( R.id.lblPulse1 );
+        edtPulse1 = view.findViewById( R.id.edtPulse1 );
+        lblBp1 = view.findViewById( R.id.lblBp1 );
+        edtBp1 = view.findViewById( R.id.edtBp1 );
+        lblSpo1 = view.findViewById( R.id.lblSpo1 );
+        edtSpo1 = view.findViewById( R.id.edtSpo1 );
+        lblResp1 = view.findViewById( R.id.lblResp1 );
+        edtResp1 = view.findViewById( R.id.edtResp1 );
+        lblHgt1 = view.findViewById( R.id.lblHgt1 );
+        edtHgt1 = view.findViewById( R.id.edtHgt1 );
+        lblCO21 = view.findViewById( R.id.lblCO21 );
+        edtCO21 = view.findViewById( R.id.edtCO21 );
+        lblFlow1 = view.findViewById( R.id.lblFlow1 );
+        edtFlow1 = view.findViewById( R.id.edtFlow1 );
+        lblPearl1 = view.findViewById( R.id.lblPearl1 );
+        //chkLeft1 = view.findViewById( R.id.chkLeft1 );
+        //chkRight1 = view.findViewById( R.id.chkRight1 );
+        lblPupSize1 = view.findViewById( R.id.lblPupSize1 );
+        lblPupLeft1 = view.findViewById( R.id.lblPupLeft1 );
+        lblPupRight1 = view.findViewById( R.id.lblPupRight1 );
+        spnLeftSize1 = view.findViewById( R.id.spnLeftSize1 );
+        spnRightSize1 = view.findViewById( R.id.spnRightSize1 );
+        expBut2 = view.findViewById( R.id.expBut2 );
+        scrl2 = view.findViewById( R.id.scrl2 );
+        expLay2 = view.findViewById( R.id.expLay2 );
+        lblTime2 = view.findViewById( R.id.lblTime2 );
+        edtTime2 = view.findViewById( R.id.edtTime2 );
+        lblPulse2 = view.findViewById( R.id.lblPulse2 );
+        edtPulse2 = view.findViewById( R.id.edtPulse2 );
+        lblBp2 = view.findViewById( R.id.lblBp2 );
+        edtBp2 = view.findViewById( R.id.edtBp2 );
+        lblSpo2 = view.findViewById( R.id.lblSpo2 );
+        edtSpo2 = view.findViewById( R.id.edtSpo2 );
+        lblResp2 = view.findViewById( R.id.lblResp2 );
+        edtResp2 = view.findViewById( R.id.edtResp2 );
+        lblHgt2 = view.findViewById( R.id.lblHgt2 );
+        edtHgt2 = view.findViewById( R.id.edtHgt2 );
+        lblCO22 = view.findViewById( R.id.lblCO22 );
+        edtCO22 = view.findViewById( R.id.edtCO22 );
+        lblFlow2 = view.findViewById( R.id.lblFlow2 );
+        edtFlow2 = view.findViewById( R.id.edtFlow2 );
+        lblPearl2 = view.findViewById( R.id.lblPearl2 );
+        chkLeft2 = view.findViewById( R.id.chkLeft2 );
+        chkRight2 = view.findViewById( R.id.chkRight2 );
+        lblPupSize2 = view.findViewById( R.id.lblPupSize2 );
+        lblPupLeft2 = view.findViewById( R.id.lblPupLeft2 );
+        lblPupRight2 = view.findViewById( R.id.lblPupRight2 );
+        spnLeftSize2 = view.findViewById( R.id.spnLeftSize2 );
+        spnRightSize2 = view.findViewById( R.id.spnRightSize2 );
+        expBut3 = view.findViewById( R.id.expBut3 );
+        scrl3 = view.findViewById( R.id.scrl3 );
+        expLay3 = view.findViewById( R.id.expLay3 );
+        lblTime3 = view.findViewById( R.id.lblTime3 );
+        edtTime3 = view.findViewById( R.id.edtTime3 );
+        lblPulse3 = view.findViewById( R.id.lblPulse3 );
+        edtPulse3 = view.findViewById( R.id.edtPulse3 );
+        lblBp3 = view.findViewById( R.id.lblBp3 );
+        edtBp3 = view.findViewById( R.id.edtBp3 );
+        lblSpo3 = view.findViewById( R.id.lblSpo3 );
+        edtSpo3 = view.findViewById( R.id.edtSpo3 );
+        lblResp3 = view.findViewById( R.id.lblResp3 );
+        edtResp3 = view.findViewById( R.id.edtResp3 );
+        lblHgt3 = view.findViewById( R.id.lblHgt3 );
+        edtHgt3 = view.findViewById( R.id.edtHgt3 );
+        lblCO23 = view.findViewById( R.id.lblCO23 );
+        edtCO23 = view.findViewById( R.id.edtCO23 );
+        lblFlow3 = view.findViewById( R.id.lblFlow3 );
+        edtFlow3 = view.findViewById( R.id.edtFlow3 );
+        lblPearl3 = view.findViewById( R.id.lblPearl3 );
+        chkLeft3 = view.findViewById( R.id.chkLeft3 );
+        chkRight3 = view.findViewById( R.id.chkRight3 );
+        lblPupSize3 = view.findViewById( R.id.lblPupSize3 );
+        lblPupLeft3 = view.findViewById( R.id.lblPupLeft3 );
+        lblPupRight3 = view.findViewById( R.id.lblPupRight3 );
+        spnLeftSize3 = view.findViewById( R.id.spnLeftSize3 );
+        spnRightSize3 = view.findViewById( R.id.spnRightSize3 );
+        expBut4 = view.findViewById( R.id.expBut4 );
+        expLay4 = view.findViewById( R.id.expLay4 );
+        lblTime4 = view.findViewById( R.id.lblTime4 );
+        edtTime4 = view.findViewById( R.id.edtTime4 );
+        lblPulse4 = view.findViewById( R.id.lblPulse4 );
+        edtPulse4 = view.findViewById( R.id.edtPulse4 );
+        lblBp4 = view.findViewById( R.id.lblBp4 );
+        edtBp4 = view.findViewById( R.id.edtBp4 );
+        lblSpo4 = view.findViewById( R.id.lblSpo4 );
+        edtSpo4 = view.findViewById( R.id.edtSpo4 );
+        lblResp4 = view.findViewById( R.id.lblResp4 );
+        edtResp4 = view.findViewById( R.id.edtResp4 );
+        lblHgt4 = view.findViewById( R.id.lblHgt4 );
+        edtHgt4 = view.findViewById( R.id.edtHgt4 );
+        lblCO24 = view.findViewById( R.id.lblCO24 );
+        edtCO24 = view.findViewById( R.id.edtCO24 );
+        lblFlow4 = view.findViewById( R.id.lblFlow4 );
+        edtFlow4 = view.findViewById( R.id.edtFlow4 );
+        lblPearl4 = view.findViewById( R.id.lblPearl4 );
+        chkLeft4 = view.findViewById( R.id.chkLeft4 );
+        chkRight4 = view.findViewById( R.id.chkRight4 );
+        lblPupSize4 = view.findViewById( R.id.lblPupSize4 );
+        lblPupLeft4 = view.findViewById( R.id.lblPupLeft4 );
+        lblPupRight4 = view.findViewById( R.id.lblPupRight4 );
+        spnLeftSize4 = view.findViewById( R.id.spnLeftSize4 );
+        spnRightSize4 = view.findViewById( R.id.spnRightSize4 );
+
+        epl_yes.setOnClickListener(v -> {
+            epl_yes.setBackgroundResource(R.drawable.orangeshape);
+            epl_no.setBackgroundResource(R.drawable.whiteshape);
+
+            leftEyes[0] = "Yes";
         });
 
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                expandableRelativeLayout2.toggle();
-            }
+        epl_no.setOnClickListener(v -> {
+            epl_no.setBackgroundResource(R.drawable.orangeshape);
+            epl_yes.setBackgroundResource(R.drawable.whiteshape);
+
+            leftEyes[0] = "No";
         });
 
+        epr_yes.setOnClickListener(v -> {
+            epr_yes.setBackgroundResource(R.drawable.orangeshape);
+            epr_no.setBackgroundResource(R.drawable.whiteshape);
 
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                expandableRelativeLayout3.toggle();
-            }
+            rightEyes[0] = "Yes";
         });
 
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                expandableRelativeLayout4.toggle();
-            }
+        epr_no.setOnClickListener(v -> {
+            epr_no.setBackgroundResource(R.drawable.orangeshape);
+            epr_yes.setBackgroundResource(R.drawable.whiteshape);
+
+            rightEyes[0] = "No";
         });
 
-        imageView15 = (ImageView)view.findViewById( R.id.imageView12 );
-        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox );
-        expBut1 = (Button)view.findViewById( R.id.expBut1 );
-        scrl1 = (ScrollView)view.findViewById( R.id.scrl1 );
-        expLay1 = (ExpandableRelativeLayout)view.findViewById( R.id.expLay1 );
-        lblTime1 = (TextView)view.findViewById( R.id.lblTime1 );
-        edtTime1 = (EditText)view.findViewById( R.id.edtTime1 );
-        lblPulse1 = (TextView)view.findViewById( R.id.lblPulse1 );
-        edtPulse1 = (EditText)view.findViewById( R.id.edtPulse1 );
-        lblBp1 = (TextView)view.findViewById( R.id.lblBp1 );
-        edtBp1 = (EditText)view.findViewById( R.id.edtBp1 );
-        lblSpo1 = (TextView)view.findViewById( R.id.lblSpo1 );
-        edtSpo1 = (EditText)view.findViewById( R.id.edtSpo1 );
-        lblResp1 = (TextView)view.findViewById( R.id.lblResp1 );
-        edtResp1 = (EditText)view.findViewById( R.id.edtResp1 );
-        lblHgt1 = (TextView)view.findViewById( R.id.lblHgt1 );
-        edtHgt1 = (EditText)view.findViewById( R.id.edtHgt1 );
-        lblCO21 = (TextView)view.findViewById( R.id.lblCO21 );
-        edtCO21 = (EditText)view.findViewById( R.id.edtCO21 );
-        lblFlow1 = (TextView)view.findViewById( R.id.lblFlow1 );
-        edtFlow1 = (EditText)view.findViewById( R.id.edtFlow1 );
-        lblPearl1 = (TextView)view.findViewById( R.id.lblPearl1 );
-        //chkLeft1 = (CheckBox)view.findViewById( R.id.chkLeft1 );
-        //chkRight1 = (CheckBox)view.findViewById( R.id.chkRight1 );
-        lblPupSize1 = (TextView)view.findViewById( R.id.lblPupSize1 );
-        lblPupLeft1 = (TextView)view.findViewById( R.id.lblPupLeft1 );
-        lblPupRight1 = (TextView)view.findViewById( R.id.lblPupRight1 );
-        spnLeftSize1 = (Spinner)view.findViewById( R.id.spnLeftSize1 );
-        spnRightSize1 = (Spinner)view.findViewById( R.id.spnRightSize1 );
-        expBut2 = (Button)view.findViewById( R.id.expBut2 );
-        scrl2 = (ScrollView)view.findViewById( R.id.scrl2 );
-        expLay2 = (ExpandableRelativeLayout)view.findViewById( R.id.expLay2 );
-        lblTime2 = (TextView)view.findViewById( R.id.lblTime2 );
-        edtTime2 = (EditText)view.findViewById( R.id.edtTime2 );
-        lblPulse2 = (TextView)view.findViewById( R.id.lblPulse2 );
-        edtPulse2 = (EditText)view.findViewById( R.id.edtPulse2 );
-        lblBp2 = (TextView)view.findViewById( R.id.lblBp2 );
-        edtBp2 = (EditText)view.findViewById( R.id.edtBp2 );
-        lblSpo2 = (TextView)view.findViewById( R.id.lblSpo2 );
-        edtSpo2 = (EditText)view.findViewById( R.id.edtSpo2 );
-        lblResp2 = (TextView)view.findViewById( R.id.lblResp2 );
-        edtResp2 = (EditText)view.findViewById( R.id.edtResp2 );
-        lblHgt2 = (TextView)view.findViewById( R.id.lblHgt2 );
-        edtHgt2 = (EditText)view.findViewById( R.id.edtHgt2 );
-        lblCO22 = (TextView)view.findViewById( R.id.lblCO22 );
-        edtCO22 = (EditText)view.findViewById( R.id.edtCO22 );
-        lblFlow2 = (TextView)view.findViewById( R.id.lblFlow2 );
-        edtFlow2 = (EditText)view.findViewById( R.id.edtFlow2 );
-        lblPearl2 = (TextView)view.findViewById( R.id.lblPearl2 );
-        chkLeft2 = (CheckBox)view.findViewById( R.id.chkLeft2 );
-        chkRight2 = (CheckBox)view.findViewById( R.id.chkRight2 );
-        lblPupSize2 = (TextView)view.findViewById( R.id.lblPupSize2 );
-        lblPupLeft2 = (TextView)view.findViewById( R.id.lblPupLeft2 );
-        lblPupRight2 = (TextView)view.findViewById( R.id.lblPupRight2 );
-        spnLeftSize2 = (Spinner)view.findViewById( R.id.spnLeftSize2 );
-        spnRightSize2 = (Spinner)view.findViewById( R.id.spnRightSize2 );
-        expBut3 = (Button)view.findViewById( R.id.expBut3 );
-        scrl3 = (ScrollView)view.findViewById( R.id.scrl3 );
-        expLay3 = (ExpandableRelativeLayout)view.findViewById( R.id.expLay3 );
-        lblTime3 = (TextView)view.findViewById( R.id.lblTime3 );
-        edtTime3 = (EditText)view.findViewById( R.id.edtTime3 );
-        lblPulse3 = (TextView)view.findViewById( R.id.lblPulse3 );
-        edtPulse3 = (EditText)view.findViewById( R.id.edtPulse3 );
-        lblBp3 = (TextView)view.findViewById( R.id.lblBp3 );
-        edtBp3 = (EditText)view.findViewById( R.id.edtBp3 );
-        lblSpo3 = (TextView)view.findViewById( R.id.lblSpo3 );
-        edtSpo3 = (EditText)view.findViewById( R.id.edtSpo3 );
-        lblResp3 = (TextView)view.findViewById( R.id.lblResp3 );
-        edtResp3 = (EditText)view.findViewById( R.id.edtResp3 );
-        lblHgt3 = (TextView)view.findViewById( R.id.lblHgt3 );
-        edtHgt3 = (EditText)view.findViewById( R.id.edtHgt3 );
-        lblCO23 = (TextView)view.findViewById( R.id.lblCO23 );
-        edtCO23 = (EditText)view.findViewById( R.id.edtCO23 );
-        lblFlow3 = (TextView)view.findViewById( R.id.lblFlow3 );
-        edtFlow3 = (EditText)view.findViewById( R.id.edtFlow3 );
-        lblPearl3 = (TextView)view.findViewById( R.id.lblPearl3 );
-        chkLeft3 = (CheckBox)view.findViewById( R.id.chkLeft3 );
-        chkRight3 = (CheckBox)view.findViewById( R.id.chkRight3 );
-        lblPupSize3 = (TextView)view.findViewById( R.id.lblPupSize3 );
-        lblPupLeft3 = (TextView)view.findViewById( R.id.lblPupLeft3 );
-        lblPupRight3 = (TextView)view.findViewById( R.id.lblPupRight3 );
-        spnLeftSize3 = (Spinner)view.findViewById( R.id.spnLeftSize3 );
-        spnRightSize3 = (Spinner)view.findViewById( R.id.spnRightSize3 );
-        expBut4 = (Button)view.findViewById( R.id.expBut4 );
-        expLay4 = (ExpandableRelativeLayout)view.findViewById( R.id.expLay4 );
-        lblTime4 = (TextView)view.findViewById( R.id.lblTime4 );
-        edtTime4 = (EditText)view.findViewById( R.id.edtTime4 );
-        lblPulse4 = (TextView)view.findViewById( R.id.lblPulse4 );
-        edtPulse4 = (EditText)view.findViewById( R.id.edtPulse4 );
-        lblBp4 = (TextView)view.findViewById( R.id.lblBp4 );
-        edtBp4 = (EditText)view.findViewById( R.id.edtBp4 );
-        lblSpo4 = (TextView)view.findViewById( R.id.lblSpo4 );
-        edtSpo4 = (EditText)view.findViewById( R.id.edtSpo4 );
-        lblResp4 = (TextView)view.findViewById( R.id.lblResp4 );
-        edtResp4 = (EditText)view.findViewById( R.id.edtResp4 );
-        lblHgt4 = (TextView)view.findViewById( R.id.lblHgt4 );
-        edtHgt4 = (EditText)view.findViewById( R.id.edtHgt4 );
-        lblCO24 = (TextView)view.findViewById( R.id.lblCO24 );
-        edtCO24 = (EditText)view.findViewById( R.id.edtCO24 );
-        lblFlow4 = (TextView)view.findViewById( R.id.lblFlow4 );
-        edtFlow4 = (EditText)view.findViewById( R.id.edtFlow4 );
-        lblPearl4 = (TextView)view.findViewById( R.id.lblPearl4 );
-        chkLeft4 = (CheckBox)view.findViewById( R.id.chkLeft4 );
-        chkRight4 = (CheckBox)view.findViewById( R.id.chkRight4 );
-        lblPupSize4 = (TextView)view.findViewById( R.id.lblPupSize4 );
-        lblPupLeft4 = (TextView)view.findViewById( R.id.lblPupLeft4 );
-        lblPupRight4 = (TextView)view.findViewById( R.id.lblPupRight4 );
-        spnLeftSize4 = (Spinner)view.findViewById( R.id.spnLeftSize4 );
-        spnRightSize4 = (Spinner)view.findViewById( R.id.spnRightSize4 );
-
-        chkNA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(chkNA.isChecked()){
-                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
-                }
-            }
-        });
+        TimePicker();
 
         checkBoxList = Arrays.asList(chkLeft1,chkLeft2,chkLeft3,chkLeft4,chkRight1,chkRight2,chkRight3,chkRight4);
         cache = new Cache(getContext());
@@ -320,41 +333,41 @@ Button button1,button2,button3, button4;
         if(saved != null ){
             try {
                 load = new JSONObject(saved);
-                edtTime1.setText(load.getString("Time1"));
-                edtPulse1.setText(load.getString("Pulse1"));
-                edtBp1.setText(load.getString("BP1"));
-                edtSpo1.setText(load.getString("spo21"));
-                edtResp1.setText(load.getString("resp1"));
-                edtHgt1.setText(load.getString("hgt1"));
-                edtCO21.setText(load.getString("co21"));
-                edtFlow1.setText(load.getString("peak1"));
+                edtTime1.setText(vitalSigns.getString("Time1"));
+                edtPulse1.setText(vitalSigns.getString("Pulse1"));
+                edtBp1.setText(vitalSigns.getString("BP1"));
+                edtSpo1.setText(vitalSigns.getString("spo21"));
+                edtResp1.setText(vitalSigns.getString("resp1"));
+                edtHgt1.setText(vitalSigns.getString("hgt1"));
+                edtCO21.setText(vitalSigns.getString("co21"));
+                edtFlow1.setText(vitalSigns.getString("peak1"));
 
-                edtTime2.setText(load.getString("Time2"));
-                edtPulse2.setText(load.getString("Pulse2"));
-                edtBp2.setText(load.getString("BP2"));
-                edtSpo2.setText(load.getString("spo22"));
-                edtResp2.setText(load.getString("resp2"));
-                edtHgt2.setText(load.getString("hgt2"));
-                edtCO22.setText(load.getString("co22"));
-                edtFlow2.setText(load.getString("peak2"));
+                edtTime2.setText(vitalSigns.getString("Time2"));
+                edtPulse2.setText(vitalSigns.getString("Pulse2"));
+                edtBp2.setText(vitalSigns.getString("BP2"));
+                edtSpo2.setText(vitalSigns.getString("spo22"));
+                edtResp2.setText(vitalSigns.getString("resp2"));
+                edtHgt2.setText(vitalSigns.getString("hgt2"));
+                edtCO22.setText(vitalSigns.getString("co22"));
+                edtFlow2.setText(vitalSigns.getString("peak2"));
 
-                edtTime3.setText(load.getString("Time3"));
-                edtPulse3.setText(load.getString("Pulse3"));
-                edtBp3.setText(load.getString("BP3"));
-                edtSpo3.setText(load.getString("spo23"));
-                edtResp3.setText(load.getString("resp3"));
-                edtHgt3.setText(load.getString("hgt3"));
-                edtCO23.setText(load.getString("co23"));
-                edtFlow3.setText(load.getString("peak3"));
+                edtTime3.setText(vitalSigns.getString("Time3"));
+                edtPulse3.setText(vitalSigns.getString("Pulse3"));
+                edtBp3.setText(vitalSigns.getString("BP3"));
+                edtSpo3.setText(vitalSigns.getString("spo23"));
+                edtResp3.setText(vitalSigns.getString("resp3"));
+                edtHgt3.setText(vitalSigns.getString("hgt3"));
+                edtCO23.setText(vitalSigns.getString("co23"));
+                edtFlow3.setText(vitalSigns.getString("peak3"));
 
-                edtTime4.setText(load.getString("Time4"));
-                edtPulse4.setText(load.getString("Pulse4"));
-                edtBp4.setText(load.getString("BP4"));
-                edtSpo4.setText(load.getString("spo24"));
-                edtResp4.setText(load.getString("resp4"));
-                edtHgt4.setText(load.getString("hgt4"));
-                edtCO24.setText(load.getString("co24"));
-                edtFlow4.setText(load.getString("peak4"));
+                edtTime4.setText(vitalSigns.getString("Time4"));
+                edtPulse4.setText(vitalSigns.getString("Pulse4"));
+                edtBp4.setText(vitalSigns.getString("BP4"));
+                edtSpo4.setText(vitalSigns.getString("spo24"));
+                edtResp4.setText(vitalSigns.getString("resp4"));
+                edtHgt4.setText(vitalSigns.getString("hgt4"));
+                edtCO24.setText(vitalSigns.getString("co24"));
+                edtFlow4.setText(vitalSigns.getString("peak4"));
 
                 Iterator<String> keys = load.keys();
                 while(keys.hasNext()) {
@@ -376,9 +389,45 @@ Button button1,button2,button3, button4;
             }
         }
 
-     return view;
+        return view;
     }
 
+    Context mContext;
+    private void TimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        mContext = getActivity();
+
+        edtTime1.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtTime1.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtTime2.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtTime2.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtTime3.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtTime3.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtTime4.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtTime4.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+    }
+
+
+    final String[] leftEyes = {"No"};
+    final String[] rightEyes = {"No"};
 
     public JSONObject createJson(){
 
@@ -393,15 +442,17 @@ Button button1,button2,button3, button4;
         String co21 = edtCO21.getText().toString();
         String peak1 = edtFlow1.getText().toString();
 
-        //String checkedLeft1 = null;
-        //if (chkLeft1.isChecked()){
-        //    checkedLeft1 = chkLeft1.getText().toString();
-        //}
+        /*String checkedLeft1 = null;
+        if (chkLeft1.isChecked()){
+            checkedLeft1 = chkLeft1.getText().toString();
+        }
 
-       // String checkedRight1 = null;
-        //if(chkRight1.isChecked()){
-        //    checkedRight1 = chkRight1.getText().toString();
-        //}
+        String checkedRight1 = null;
+        if(chkRight1.isChecked()){
+            checkedRight1 = chkRight1.getText().toString();
+        }*/
+
+
 
         try{
             vitalSigns.put("Time1",time1);
@@ -412,6 +463,8 @@ Button button1,button2,button3, button4;
             vitalSigns.put("hgt1",hgt1);
             vitalSigns.put("co21",co21);
             vitalSigns.put("peak1",peak1);
+            vitalSigns.put("leftEyes",leftEyes);
+            vitalSigns.put("rightEyes",rightEyes);
 
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();

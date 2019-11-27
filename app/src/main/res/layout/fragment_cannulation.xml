@@ -96,20 +96,19 @@
                                 android:text="Time"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/edtTim1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="115dp"
                                 android:layout_marginTop="10dp"
-                                android:layout_toRightOf="@id/lblTime1"
-                                android:background="@null"
+                                android:background="@drawable/round_shape"
                                 android:ems="10"
                                 android:gravity="top"
-                                android:hint="hh:mm"
-                                android:inputType="textPersonName"
+                                android:hint="Pick Time"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:textAlignment="center"/>
 
                             <TextView
                                 android:id="@+id/lblSize1"
@@ -133,7 +132,7 @@
                                 android:id="@+id/lblAtt1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/lblSize1"
+                                android:layout_below="@+id/sizeSpin1"
                                 android:layout_marginTop="10dp"
                                 android:text="Attempts"
                                 android:textColor="@color/white" />
@@ -208,7 +207,7 @@
                                 android:id="@+id/lblSite1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/lblAtt1"
+                                android:layout_below="@+id/edtAtt1"
                                 android:layout_marginTop="10dp"
                                 android:text="Site"
                                 android:textColor="@color/white" />
@@ -233,7 +232,7 @@
                                 android:id="@+id/lblRate1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/lblSite1"
+                                android:layout_below="@+id/edtSite1"
                                 android:layout_marginTop="10dp"
                                 android:text="Rate"
                                 android:textColor="@color/white" />
@@ -258,7 +257,7 @@
                                 android:id="@+id/lblVol1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/lblRate1"
+                                android:layout_below="@+id/edtRate1"
                                 android:layout_marginTop="10dp"
                                 android:text="Volume Infused"
                                 android:textColor="@color/white" />
@@ -283,7 +282,7 @@
                                 android:id="@+id/lblFluid1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/lblVol1"
+                                android:layout_below="@+id/edtVol1"
                                 android:layout_marginTop="10dp"
                                 android:text="Fluid Type Used"
                                 android:textColor="@color/white" />
@@ -348,20 +347,19 @@
                                 android:text="Time"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/edtTim2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="115dp"
                                 android:layout_marginTop="10dp"
-                                android:layout_toRightOf="@id/lblTime2"
-                                android:background="@null"
+                                android:background="@drawable/round_shape"
                                 android:ems="10"
                                 android:gravity="top"
-                                android:hint="hh:mm"
-                                android:inputType="textPersonName"
+                                android:hint="Pick Time"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:textAlignment="center"/>
 
                             <TextView
                                 android:id="@+id/lblSize2"

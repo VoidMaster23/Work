@@ -1,9 +1,13 @@
 package com.example.cape_medics;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -36,6 +40,8 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Calendar;
+import java.util.Objects;
 import java.util.concurrent.ScheduledExecutorService;
 
 import static android.support.v4.content.ContextCompat.getSystemService;
@@ -87,6 +93,10 @@ public class Death extends Fragment {
         pupilsNo = view.findViewById(R.id.dilatedChkNo);
         CategoryType = new JSONArray();
 
+        TimePicker();
+        DatePicker();
+
+
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,6 +145,56 @@ public class Death extends Fragment {
         }catch (Exception e) {}
 
         return view;
+    }
+
+    Context mContext;
+    private void TimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        mContext = getActivity();
+
+        time.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> time.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        time2.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> time2.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+    }
+
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+    public void DatePicker(){
+
+        mContext = getActivity();
+
+        date.setOnClickListener(view -> {
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog dialog = new DatePickerDialog(
+                    mContext,
+                    android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                    mDateSetListener,
+                    year,month,day);
+            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+        });
+
+        mDateSetListener = (datePicker, year, month, day) -> {
+            month = month + 1;
+            Log.d("tag", "onDateSet: dd/mm/yyyy: " + day + "/" + month + "/" + year);
+
+            String ddate = day + "/" + month + "/" + year;
+            date.setText(ddate);
+        };
     }
     public void removeStringPropertys(String code, Cache cache, Context context){
         //use this method to remove all string caches

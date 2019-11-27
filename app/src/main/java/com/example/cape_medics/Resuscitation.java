@@ -1,5 +1,6 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,10 +18,12 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
 
 public class Resuscitation extends Fragment {
     private ImageView imageView19;
-    public CheckBox chkNA;
+    private CheckBox chkNA;
     private TextView countDown;
     private Button btnStart;
     private Button btnStop;
@@ -37,15 +40,12 @@ public class Resuscitation extends Fragment {
     private CheckBox chkCPRo;
     private CheckBox chkIncAirway;
     private TextView textView28;
-    private EditText edtStartCPR;
+    private TextView edtStartCPR;
     private TextView textView29;
-    private EditText edtEndCPR;
+    private TextView edtEndCPR,rosceditTextView;
     private TextView textView30;
-    private EditText edtDrugIssue;
+    private TextView edtDrugIssue;
     private CheckBox chkWitness;
-    private EditText rosc;
-    private EditText firstPush;
-
 
     JSONObject resicitation;
 
@@ -70,7 +70,7 @@ public class Resuscitation extends Fragment {
         sec = 60;
         textView = view.findViewById(R.id.countDown);
         imageView19 = (ImageView)view.findViewById(R.id.imageView12);
-        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox );
+        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
         btnStart = (Button)view.findViewById( R.id.btnStart );
         btnStop = (Button)view.findViewById( R.id.btnStop );
         btnReset = (Button)view.findViewById( R.id.btnReset );
@@ -86,24 +86,15 @@ public class Resuscitation extends Fragment {
         chkCPRo = (CheckBox)view.findViewById( R.id.chkCPRo );
         chkIncAirway = (CheckBox)view.findViewById( R.id.chkIncAirway );
         textView28 = (TextView)view.findViewById( R.id.textView28 );
-        edtStartCPR = (EditText)view.findViewById( R.id.edtStartCPR );
-        textView29 = (TextView)view.findViewById( R.id.textView29 );
-        edtEndCPR = (EditText)view.findViewById( R.id.edtEndCPR );
-        textView30 = (TextView)view.findViewById( R.id.textView30 );
-        edtDrugIssue = (EditText)view.findViewById( R.id.edtDrugIssue );
+        edtStartCPR = view.findViewById( R.id.edtStartCPR );
+        textView29 = view.findViewById( R.id.textView29 );
+        edtEndCPR = view.findViewById( R.id.edtEndCPR );
+        rosceditTextView = view.findViewById( R.id.rosceditTextView );
+        textView30 = view.findViewById( R.id.textView30 );
+        edtDrugIssue = view.findViewById( R.id.edtDrugIssue );
         chkWitness = (CheckBox)view.findViewById( R.id.chkWitness );
-        rosc = view.findViewById(R.id.rosceditTextView);
-        firstPush = view.findViewById(R.id.edtDrugIssue);
 
-        chkNA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(chkNA.isChecked()){
-                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
-                }
-            }
-        });
-
+        TimePicker();
 
         final CountDownTimer timer = new CountDownTimer(180000,1000){
             @Override
@@ -167,6 +158,39 @@ public class Resuscitation extends Fragment {
         return view;
     }
 
+    Context mContext;
+    private void TimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        mContext = getActivity();
+
+        edtStartCPR.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtStartCPR.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtEndCPR.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtEndCPR.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        rosceditTextView.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> rosceditTextView.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtDrugIssue.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtDrugIssue.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+    }
+
 
     public JSONObject createJson(){
 
@@ -203,8 +227,6 @@ public class Resuscitation extends Fragment {
 
         String start = edtStartCPR.getText().toString();
         String end  = edtEndCPR.getText().toString();
-        String roscT = rosc.getText().toString();
-        String timeP = firstPush.getText().toString();
 
 
         try{
@@ -213,64 +235,10 @@ public class Resuscitation extends Fragment {
             resicitation.put("CPR Details",cpr);
             resicitation.put("Start",start);
             resicitation.put("End",end);
-            resicitation.put("ROSC", roscT);
-            resicitation.put("Time 1st drug pushed", timeP);
         }catch (Exception e){
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-    return resicitation;
-    }
-
-    public boolean validate(){
-        boolean valid = true;
-        String provided = null;
-
-        if(chkBystander.isChecked()){
-            provided = chkBystander.getText().toString();
-        }else if(chkEms.isChecked()){
-            provided = chkEms.getText().toString();
-        }else if(chkFirst.isChecked()){
-            provided = chkFirst.getText().toString();
-        }else if(chkOther.isChecked()){
-            provided = chkOther.getText().toString();
-        }
-
-        String items = null;
-
-        if (chkPads.isChecked()){
-            items = chkPads.getText().toString();
-        }else if(chkPaddles.isChecked()){
-            items = chkPaddles.getText().toString();
-        }
-
-
-        String cpr = null;
-        if(chkCPRo.isChecked()){
-            cpr = chkCPRo.getText().toString();
-        }else if(chkIncAirway.isChecked()){
-            cpr = chkIncAirway.getText().toString();
-
-        }
-
-
-        String start = edtStartCPR.getText().toString();
-        String end  = edtEndCPR.getText().toString();
-        String roscT = rosc.getText().toString();
-        String timeP = firstPush.getText().toString();
-
-
-        if(provided.isEmpty() || items.isEmpty() || cpr.isEmpty() || start.isEmpty() || end.isEmpty() || roscT.isEmpty() || timeP.isEmpty()){
-            valid = false;
-            Toast.makeText(getContext(),"Please make sure resuscitation has been filled in", Toast.LENGTH_SHORT).show();
-        }
-
-        String reg = MedicalFormCalls.toMatch;
-        if(!start.matches(reg) || !end.matches(reg) || !roscT.matches(reg) || timeP.matches(reg)){
-            valid = false;
-            Toast.makeText(getContext(),"Please make sure times are in hh:mm format", Toast.LENGTH_SHORT).show();
-        }
-
-        return valid;
+        return resicitation;
     }
 
 }

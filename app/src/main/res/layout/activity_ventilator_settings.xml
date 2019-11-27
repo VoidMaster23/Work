@@ -93,14 +93,13 @@
                     android:paddingStart="10dp"
                     android:paddingLeft="10dp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/lpmTime"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_marginTop="15dp"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_below="@+id/lpm"
                     android:textColor="@color/white"
@@ -126,14 +125,13 @@
                     android:layout_below="@+id/lpmEdit"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/lpmTime1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_alignParentEnd="true"
@@ -161,14 +159,13 @@
                     android:layout_below="@+id/lpmEdit1"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/lpmTime2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/lpmEdit2"
@@ -209,15 +206,14 @@
                     android:layout_below="@+id/tidal"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/tidalTime"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/tidalEdit"
@@ -244,14 +240,13 @@
                     android:layout_below="@+id/tidalEdit"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/tidalTime1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/tidalEdit1"
@@ -278,14 +273,13 @@
                     android:layout_below="@+id/tidalEdit1"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/tidalTime2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/tidalEdit2"
@@ -325,15 +319,14 @@
                     android:layout_below="@+id/spontaneous"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/spontaneousTime"
                     android:layout_width="wrap_content"
                     android:layout_marginTop="15dp"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/spontaneousEdit"
@@ -360,14 +353,13 @@
                     android:layout_below="@+id/spontaneousEdit"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/spontaneousTime1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/spontaneousEdit1"
@@ -394,14 +386,13 @@
                     android:layout_below="@+id/spontaneousEdit1"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/spontaneousTime2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/spontaneousEdit2"
@@ -442,15 +433,14 @@
                     android:layout_below="@+id/vent"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/ventTime"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:layout_marginTop="15dp"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/ventEdit"
@@ -477,14 +467,13 @@
                     android:layout_below="@+id/ventEdit"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/ventTime1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/ventEdit1"
@@ -511,14 +500,13 @@
                     android:layout_below="@+id/ventEdit1"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/ventTime2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/ventEdit2"
@@ -558,15 +546,14 @@
                     android:layout_below="@+id/rate"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/rateTime"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/rateEdit"
@@ -593,14 +580,13 @@
                     android:layout_below="@+id/rateEdit"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/rateTime1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/rateEdit1"
@@ -627,14 +613,13 @@
                     android:layout_below="@+id/rateEdit1"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/rateTime2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/rateEdit2"
@@ -674,15 +659,14 @@
                     android:layout_below="@+id/peep"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/peepTime"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/peepEdit"
@@ -709,14 +693,13 @@
                     android:layout_below="@+id/peepEdit"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/peepTime1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/peepEdit1"
@@ -743,14 +726,13 @@
                     android:layout_below="@+id/peepEdit1"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/peepTime2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/peepEdit2"
@@ -792,15 +774,14 @@
                     android:layout_below="@+id/ratio"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/ratioTime"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/ratioEdit"
@@ -827,14 +808,13 @@
                     android:layout_below="@+id/ratioEdit"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/ratioTime1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/ratioEdit1"
@@ -861,14 +841,13 @@
                     android:layout_below="@+id/ratioEdit1"
                     android:textColor="@color/white"/>
 
-                <EditText
+                <TextView
                     android:id="@+id/ratioTime2"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:background="@drawable/cell_shape"
                     android:ems="10"
-                    android:hint="Time"
-                    android:inputType="textPersonName"
+                    android:hint="Pick Time"
                     android:textSize="15sp"
                     android:layout_alignParentEnd="true"
                     android:layout_toEndOf="@id/ratioEdit2"

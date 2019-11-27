@@ -92,18 +92,21 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/locationEdit" />
 
-            <EditText
+            <TextView
                 android:id="@+id/timeEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
-                android:ems="10"
-                android:hint="hh:mm"
-                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:hint="Pick Time of examination"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/time" />
+                android:layout_below="@+id/time"
+                android:background="@drawable/round_shape"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
 
             <TextView
                 android:id="@+id/place"
@@ -141,18 +144,20 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/placeEdit" />
 
-            <EditText
+            <TextView
                 android:id="@+id/dateEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
-                android:ems="10"
-                android:hint="Date"
-                android:inputType="textPersonName"
+                android:hint="Pick Date"
+                android:background="@drawable/round_shape"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/date" />
+                android:layout_below="@+id/date"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"/>
 
 
             <TextView
@@ -214,18 +219,21 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/postEdit" />
 
-            <EditText
+            <TextView
                 android:id="@+id/timeEdit2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
-                android:ems="10"
-                android:hint="hh:mm"
-                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:hint="Pick Time"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@+id/time2" />
+                android:layout_below="@+id/time2"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/round_shape"/>
 
         </RelativeLayout>
 

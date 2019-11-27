@@ -98,16 +98,15 @@
                                 android:text="Time"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/edtDrugTime1"
                                 android:layout_width="146dp"
                                 android:layout_height="30dp"
                                 android:layout_marginLeft="100dp"
-                                android:layout_toRightOf="@id/drugTime1"
-                                android:background="@null"
+                                android:background="@drawable/round_shape"
                                 android:ems="10"
-                                android:hint="hh:mm"
-                                android:inputType="textPersonName"
+                                android:hint="Pick Time"
+                                android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textSize="14sp" />
 
@@ -244,16 +243,15 @@
                                 android:text="Time"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/edtDrugTime2"
                                 android:layout_width="146dp"
                                 android:layout_height="30dp"
                                 android:layout_marginLeft="100dp"
-                                android:layout_toRightOf="@id/drugTime2"
-                                android:background="@null"
+                                android:background="@drawable/round_shape"
                                 android:ems="10"
-                                android:hint="hh:mm"
-                                android:inputType="textPersonName"
+                                android:hint="Pick Time"
+                                android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textSize="14sp" />
 
@@ -379,7 +377,7 @@
                             android:isScrollContainer="true"
                             android:padding="15dp"
                             app:ael_duration="400"
-                            app:ael_expanded="false"
+                            app:ael_expanded="true"
                             app:ael_interpolator="accelerateDecelerate"
                             app:ael_orientation="vertical">
 
@@ -390,16 +388,15 @@
                                 android:text="Time"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/edtDrugTime3"
                                 android:layout_width="146dp"
                                 android:layout_height="30dp"
                                 android:layout_marginLeft="100dp"
-                                android:layout_toRightOf="@id/drugTime3"
-                                android:background="@null"
+                                android:background="@drawable/round_shape"
                                 android:ems="10"
-                                android:hint="hh:mm"
-                                android:inputType="textPersonName"
+                                android:hint="Pick Time"
+                                android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textSize="14sp" />
 
@@ -537,16 +534,15 @@
                                 android:text="Time"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/edtDrugTime4"
                                 android:layout_width="146dp"
                                 android:layout_height="30dp"
                                 android:layout_marginLeft="100dp"
-                                android:layout_toRightOf="@id/drugTime4"
-                                android:background="@null"
+                                android:background="@drawable/round_shape"
                                 android:ems="10"
-                                android:hint="hh:mm"
-                                android:inputType="textPersonName"
+                                android:hint="Pick Time"
+                                android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textSize="14sp" />
 
@@ -683,16 +679,15 @@
                                 android:text="Time"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/edtDrugTime5"
                                 android:layout_width="146dp"
                                 android:layout_height="30dp"
                                 android:layout_marginLeft="100dp"
-                                android:layout_toRightOf="@id/drugTime5"
-                                android:background="@null"
+                                android:background="@drawable/round_shape"
                                 android:ems="10"
-                                android:hint="hh:mm"
-                                android:inputType="textPersonName"
+                                android:hint="Pick Time"
+                                android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textSize="14sp" />
 
@@ -829,16 +824,15 @@
                                 android:text="Time"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/edtDrugTime6"
                                 android:layout_width="146dp"
                                 android:layout_height="30dp"
                                 android:layout_marginLeft="100dp"
-                                android:layout_toRightOf="@id/drugTime6"
-                                android:background="@null"
+                                android:background="@drawable/round_shape"
                                 android:ems="10"
-                                android:hint="hh:mm"
-                                android:inputType="textPersonName"
+                                android:hint="Pick Time"
+                                android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textSize="14sp" />
 

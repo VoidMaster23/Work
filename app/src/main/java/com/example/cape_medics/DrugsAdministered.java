@@ -1,5 +1,6 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.net.Uri;
@@ -32,19 +33,20 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Calendar;
 
 
 public class DrugsAdministered extends Fragment {
-  private   ExpandableRelativeLayout drug1, drug2,drug3,drug4, drug5,drug6;
-  private Button but1, but2, but3, but4, but5, but6;
-  private Spinner drugspn1,drugspn2,drugspn3,drugspn4,drugspn5,drugspn6;
+    private   ExpandableRelativeLayout drug1, drug2,drug3,drug4, drug5,drug6;
+    private Button but1, but2, but3, but4, but5, but6;
+    private Spinner drugspn1,drugspn2,drugspn3,drugspn4,drugspn5,drugspn6;
 
-  String[] drugs;
+    String[] drugs;
     private ImageView imageView18;
-    public CheckBox chkNA;
+    private CheckBox chkNA;
     private ScrollView drugScrl1;
     private TextView drugTime1;
-    private EditText edtDrugTime1;
+    private TextView edtDrugTime1;
     private TextView drugName1;
     private TextView drugDose1;
     private EditText edtDrugDose1;
@@ -54,7 +56,7 @@ public class DrugsAdministered extends Fragment {
     private EditText edtDrugGiven1;
     private ScrollView drugScrl2;
     private TextView drugTime2;
-    private EditText edtDrugTime2;
+    private TextView edtDrugTime2;
     private TextView drugName2;
     private TextView drugDose2;
     private EditText edtDrugDose2;
@@ -64,7 +66,7 @@ public class DrugsAdministered extends Fragment {
     private EditText edtDrugGiven2;
     private ScrollView drugScrl3;
     private TextView drugTime3;
-    private EditText edtDrugTime3;
+    private TextView edtDrugTime3;
     private TextView drugName3;
     private TextView drugDose3;
     private EditText edtDrugDose3;
@@ -74,7 +76,7 @@ public class DrugsAdministered extends Fragment {
     private EditText edtDrugGiven3;
     private ScrollView drugScrl4;
     private TextView drugTime4;
-    private EditText edtDrugTime4;
+    private TextView edtDrugTime4;
     private TextView drugName4;
     private TextView drugDose4;
     private EditText edtDrugDose4;
@@ -84,7 +86,7 @@ public class DrugsAdministered extends Fragment {
     private EditText edtDrugGiven4;
     private ScrollView drugScrl5;
     private TextView drugTime5;
-    private EditText edtDrugTime5;
+    private TextView edtDrugTime5;
     private TextView drugName5;
     private TextView drugDose5;
     private EditText edtDrugDose5;
@@ -94,7 +96,7 @@ public class DrugsAdministered extends Fragment {
     private EditText edtDrugGiven5;
     private ScrollView drugScrl6;
     private TextView drugTime6;
-    private EditText edtDrugTime6;
+    private TextView edtDrugTime6;
     private TextView drugName6;
     private TextView drugDose6;
     private EditText edtDrugDose6;
@@ -148,18 +150,10 @@ public class DrugsAdministered extends Fragment {
         drugspn6 = view.findViewById(R.id.drugNameSpn6);
 
         imageView18 = (ImageView)view.findViewById( R.id.imageView18 );
-        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox);
-        chkNA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(chkNA.isChecked()){
-                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
-                }
-            }
-        });
+        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
         drugScrl1 = (ScrollView)view.findViewById( R.id.drugScrl1 );
         drugTime1 = (TextView)view.findViewById( R.id.drugTime1 );
-        edtDrugTime1 = (EditText)view.findViewById( R.id.edtDrugTime1 );
+        edtDrugTime1 = view.findViewById( R.id.edtDrugTime1 );
         drugName1 = (TextView)view.findViewById( R.id.drugName1 );
         drugDose1 = (TextView)view.findViewById( R.id.drugDose1 );
         edtDrugDose1 = (EditText)view.findViewById( R.id.edtDrugDose1 );
@@ -169,7 +163,7 @@ public class DrugsAdministered extends Fragment {
         edtDrugGiven1 = (EditText)view.findViewById( R.id.edtDrugGiven1 );
         drugScrl2 = (ScrollView)view.findViewById( R.id.drugScrl2 );
         drugTime2 = (TextView)view.findViewById( R.id.drugTime2 );
-        edtDrugTime2 = (EditText)view.findViewById( R.id.edtDrugTime2 );
+        edtDrugTime2 = view.findViewById( R.id.edtDrugTime2 );
         drugName2 = (TextView)view.findViewById( R.id.drugName2 );
         drugDose2 = (TextView)view.findViewById( R.id.drugDose2 );
         edtDrugDose2 = (EditText)view.findViewById( R.id.edtDrugDose2 );
@@ -179,7 +173,7 @@ public class DrugsAdministered extends Fragment {
         edtDrugGiven2 = (EditText)view.findViewById( R.id.edtDrugGiven2 );
         drugScrl3 = (ScrollView)view.findViewById( R.id.drugScrl3 );
         drugTime3 = (TextView)view.findViewById( R.id.drugTime3 );
-        edtDrugTime3 = (EditText)view.findViewById( R.id.edtDrugTime3 );
+        edtDrugTime3 = view.findViewById( R.id.edtDrugTime3 );
         drugName3 = (TextView)view.findViewById( R.id.drugName3 );
         drugDose3 = (TextView)view.findViewById( R.id.drugDose3 );
         edtDrugDose3 = (EditText)view.findViewById( R.id.edtDrugDose3 );
@@ -189,7 +183,7 @@ public class DrugsAdministered extends Fragment {
         edtDrugGiven3 = (EditText)view.findViewById( R.id.edtDrugGiven3 );
         drugScrl4 = (ScrollView)view.findViewById( R.id.drugScrl4 );
         drugTime4 = (TextView)view.findViewById( R.id.drugTime4 );
-        edtDrugTime4 = (EditText)view.findViewById( R.id.edtDrugTime4 );
+        edtDrugTime4 = view.findViewById( R.id.edtDrugTime4 );
         drugName4 = (TextView)view.findViewById( R.id.drugName4 );
         drugDose4 = (TextView)view.findViewById( R.id.drugDose4 );
         edtDrugDose4 = (EditText)view.findViewById( R.id.edtDrugDose4 );
@@ -199,7 +193,7 @@ public class DrugsAdministered extends Fragment {
         edtDrugGiven4 = (EditText)view.findViewById( R.id.edtDrugGiven4 );
         drugScrl5 = (ScrollView)view.findViewById( R.id.drugScrl5 );
         drugTime5 = (TextView)view.findViewById( R.id.drugTime5 );
-        edtDrugTime5 = (EditText)view.findViewById( R.id.edtDrugTime5 );
+        edtDrugTime5 = view.findViewById( R.id.edtDrugTime5 );
         drugName5 = (TextView)view.findViewById( R.id.drugName5 );
         drugDose5 = (TextView)view.findViewById( R.id.drugDose5 );
         edtDrugDose5 = (EditText)view.findViewById( R.id.edtDrugDose5 );
@@ -209,7 +203,7 @@ public class DrugsAdministered extends Fragment {
         edtDrugGiven5 = (EditText)view.findViewById( R.id.edtDrugGiven5 );
         drugScrl6 = (ScrollView)view.findViewById( R.id.drugScrl6 );
         drugTime6 = (TextView)view.findViewById( R.id.drugTime6 );
-        edtDrugTime6 = (EditText)view.findViewById( R.id.edtDrugTime6 );
+        edtDrugTime6 = view.findViewById( R.id.edtDrugTime6 );
         drugName6 = (TextView)view.findViewById( R.id.drugName6 );
         drugDose6 = (TextView)view.findViewById( R.id.drugDose6 );
         edtDrugDose6 = (EditText)view.findViewById( R.id.edtDrugDose6 );
@@ -227,7 +221,7 @@ public class DrugsAdministered extends Fragment {
             InputStream in = getContext().getAssets().open(filename, AssetManager.ACCESS_BUFFER);
             String sHTML = StreamToString(in);
             in.close();
-           // FileData data = new FileData(sHTML);
+            // FileData data = new FileData(sHTML);
             drugs = sHTML.split("\n");
             ArrayAdapter adapter1 = new ArrayAdapter(getContext(),R.layout.custom_spinner,drugs);
             adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -322,10 +316,6 @@ public class DrugsAdministered extends Fragment {
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
-
-
-
-
         but1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -368,8 +358,56 @@ public class DrugsAdministered extends Fragment {
             }
         });
 
+        TimePicker();
+
         return view;
     }
+
+    Context mContext;
+    private void TimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        mContext = getActivity();
+
+        edtDrugTime1.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtDrugTime1.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtDrugTime2.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtDrugTime2.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtDrugTime3.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtDrugTime3.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtDrugTime4.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtDrugTime4.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtDrugTime5.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtDrugTime5.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+
+        edtDrugTime6.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtDrugTime6.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+    }
+
 
     public static String StreamToString(InputStream in) throws IOException {
         if(in == null) {

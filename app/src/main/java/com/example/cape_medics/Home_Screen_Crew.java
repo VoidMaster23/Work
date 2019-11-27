@@ -360,7 +360,7 @@ public class Home_Screen_Crew extends AppCompatActivity {
     }
 
 
-
+    //this is actually a litte dodge but, will fix tomorrow  27 November 2019
     public void BroadCast (View v){
         Intent i = new Intent(getApplicationContext(), ChooseBroadCast.class);
         startActivity(i);

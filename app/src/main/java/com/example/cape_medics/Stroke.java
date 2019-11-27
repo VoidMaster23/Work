@@ -1,5 +1,6 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,21 +17,23 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
 public class Stroke extends Fragment {
     private ImageView imageView18;
-    public CheckBox  chkNA;
-    private CheckBox checkBox4;
+    private CheckBox  chkNA;
+    private CheckBox checkBoxStroke, checkBoxCasualty;
     private CheckBox checkBox5;
     private CheckBox checkBox6;
     private TextView textView55;
-    private EditText editDoorDrug;
+    private TextView editDoorDrug;
     private TextView textView56;
     private EditText editStrokeUnit;
-    private TextView textView57;
-    private EditText editCasualty;
+
+    private Button fd_btnYes, fd_btnNo, aw_btnYes, aw_btnNo, sd_btnYes, sd_btnNo, Casualty_btnNo, Casualty_btnYes;
 
     JSONObject stroke;
-    private Button fd_btnYes, fd_btnNo, aw_btnYes, aw_btnNo, sd_btnYes, sd_btnNo;
+
 
 
 
@@ -45,23 +48,16 @@ public class Stroke extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_stroke, container, false);
 
-        imageView18 = (ImageView)view.findViewById( R.id.imageView18 );
-        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox );
-
-        textView55 = (TextView)view.findViewById( R.id.textView55 );
-        editDoorDrug = (EditText)view.findViewById( R.id.editDoorDrug );
-
-        editStrokeUnit = (EditText)view.findViewById( R.id.editStrokeUnit );
-
-        editCasualty = (EditText)view.findViewById( R.id.editCasualty );
-        chkNA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(chkNA.isChecked()){
-                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
-                }
-            }
-        });
+        imageView18 = view.findViewById( R.id.imageView18 );
+        chkNA = view.findViewById( R.id.chkNA );
+        //checkBox4 = view.findViewById( R.id.checkBox4 );
+        //checkBox5 = view.findViewById( R.id.checkBox5 );
+        //checkBox6 = view.findViewById( R.id.checkBox6 );
+        textView55 = view.findViewById( R.id.textView55 );
+        editDoorDrug = view.findViewById( R.id.editDoorDrug );
+        //textView56 = (TextView)view.findViewById( R.id.textView56 );
+        editStrokeUnit = view.findViewById( R.id.editStrokeUnit );
+        //textView57 = (TextView)view.findViewById( R.id.textView57 );
 
         fd_btnYes = view.findViewById(R.id.fd_btnYes);
         fd_btnNo = view.findViewById(R.id.fd_btnNo);
@@ -69,72 +65,91 @@ public class Stroke extends Fragment {
         aw_btnNo = view.findViewById(R.id.aw_btnNo);
         sd_btnYes = view.findViewById(R.id.sd_btnYes);
         sd_btnNo = view.findViewById(R.id.sd_btnNo);
+        Casualty_btnYes = view.findViewById(R.id.Casualty_btnYes);
+        Casualty_btnNo = view.findViewById(R.id.Casualty_btnNo);
+
+        TimePicker();
 
         Init();
 
         return view;
     }
 
-    String facial = "No", arm = "No", speech = "No";
+    Context mContext;
+    private void TimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        mContext = getActivity();
+
+        editDoorDrug.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> editDoorDrug.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
+    }
+
+
+    String facial = "No", arm = "No", speech = "No", casualty = "No";
 
     private void Init(){
 
-        fd_btnYes.setOnClickListener(new  View.OnClickListener(){
-            @Override
-            public void onClick(View  view) {
+        fd_btnYes.setOnClickListener(v -> {
+            fd_btnYes.setBackgroundResource(R.drawable.orangeshape);
+            fd_btnNo.setBackgroundResource(R.drawable.whiteshape);
 
-                    fd_btnYes.setBackgroundResource(R.drawable.orangeshape);
-                    fd_btnNo.setBackgroundResource(R.drawable.whiteshape);
-
-                    facial = "yes";
-
-        }});
-
-        fd_btnNo.setOnClickListener(new  View.OnClickListener(){
-            @Override
-            public void onClick(View  view) {
-                fd_btnYes.setBackgroundResource(R.drawable.whiteshape);
-                fd_btnNo.setBackgroundResource(R.drawable.orangeshape);
-
-                facial = "No";
-            }
+            facial = "yes";
         });
 
-        aw_btnYes.setOnClickListener(new  View.OnClickListener(){
-            @Override
-            public void onClick(View  view) {
+        fd_btnNo.setOnClickListener(v -> {
+            fd_btnYes.setBackgroundResource(R.drawable.whiteshape);
+            fd_btnNo.setBackgroundResource(R.drawable.orangeshape);
+
+            facial = "No";
+        });
+
+        aw_btnYes.setOnClickListener(v -> {
             aw_btnYes.setBackgroundResource(R.drawable.orangeshape);
             aw_btnNo.setBackgroundResource(R.drawable.whiteshape);
 
             arm = "Yes";
-        }});
+        });
 
-        aw_btnNo.setOnClickListener(new  View.OnClickListener(){
-            @Override
-            public void onClick(View  view) {
+        aw_btnNo.setOnClickListener(v -> {
             aw_btnYes.setBackgroundResource(R.drawable.whiteshape);
             aw_btnNo.setBackgroundResource(R.drawable.orangeshape);
 
             arm = "No";
-        }});
+        });
 
-        sd_btnYes.setOnClickListener(new  View.OnClickListener(){
-            @Override
-            public void onClick(View  view) {
+        sd_btnYes.setOnClickListener(v -> {
             sd_btnYes.setBackgroundResource(R.drawable.orangeshape);
             sd_btnNo.setBackgroundResource(R.drawable.whiteshape);
 
             speech = "Yes";
-        }});
+        });
 
-        sd_btnNo.setOnClickListener(new  View.OnClickListener(){
-            @Override
-            public void onClick(View  view) {
+        sd_btnNo.setOnClickListener(v -> {
             sd_btnYes.setBackgroundResource(R.drawable.whiteshape);
             sd_btnNo.setBackgroundResource(R.drawable.orangeshape);
 
             speech = "No";
-        }});
+        });
+
+        Casualty_btnYes.setOnClickListener(v -> {
+            Casualty_btnYes.setBackgroundResource(R.drawable.orangeshape);
+            Casualty_btnNo.setBackgroundResource(R.drawable.whiteshape);
+
+            casualty = "Yes";
+        });
+
+        Casualty_btnNo.setOnClickListener(v -> {
+            Casualty_btnYes.setBackgroundResource(R.drawable.whiteshape);
+            Casualty_btnNo.setBackgroundResource(R.drawable.orangeshape);
+
+            casualty = "No";
+        });
     }
 
     public JSONObject createJson(){
@@ -150,16 +165,15 @@ public class Stroke extends Fragment {
 
         String door = editDoorDrug.getText().toString();
         String strokeStr = editStrokeUnit.getText().toString();
-        String casual = editCasualty.getText().toString();
 
         try{
 
             stroke.put("Facial", facial);
             stroke.put("Arm", arm);
             stroke.put("Speech", speech);
+            stroke.put("Casualty", casualty);
             stroke.put("Door", door);
             stroke.put("Stroke", strokeStr);
-            stroke.put("Casualty", casual);
 
 
         }catch (Exception e){
@@ -168,4 +182,5 @@ public class Stroke extends Fragment {
 
         return stroke;
     }
+
 }

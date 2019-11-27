@@ -42,6 +42,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import com.example.cape_medics.TableLayout.Row;
+import com.example.cape_medics.R;
 
 public class TimeSheet extends AppCompatActivity {
     Spinner jobType;

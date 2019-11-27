@@ -1,5 +1,6 @@
 package com.example.cape_medics;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,7 +25,7 @@ import java.util.List;
 public class PrimarySurvey extends Fragment {
     private CheckBox chkNA;
     private TextView lblTime;
-    private EditText edtTime;
+    private TextView edtTime;
     private TextView textView14;
     private CheckBox chkClear;
     private CheckBox chkOcc;
@@ -53,7 +55,7 @@ public class PrimarySurvey extends Fragment {
     String saved;
 
 
-JSONObject primarySurvery;
+    JSONObject primarySurvery;
 
 
 
@@ -69,9 +71,9 @@ JSONObject primarySurvery;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_primary_survey, container, false);
-        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox );
+        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
         lblTime = (TextView)view.findViewById( R.id.lblTime );
-        edtTime = (EditText)view.findViewById( R.id.edtTime );
+        edtTime = view.findViewById( R.id.edtTime );
         textView14 = (TextView)view.findViewById( R.id.textView14 );
         chkClear = (CheckBox)view.findViewById( R.id.chkClear );
         chkOcc = (CheckBox)view.findViewById( R.id.chkOcc );
@@ -95,17 +97,10 @@ JSONObject primarySurvery;
         textView18 = (TextView)view.findViewById( R.id.textView18 );
         chkTwoPlus = (CheckBox)view.findViewById( R.id.chkTwoPlus );
         chkTwoMinus = (CheckBox)view.findViewById( R.id.chkTwoMinus );
-        checkBoxList = Arrays.asList(chkAbnormal,chkAbsent,chkClear,chkOcc,chkNoisy,chkSpine,chkRadial,chkBrachial,chkCarotid,chkFemoral,chkHigh,chkLow,chkMed,chSix,chkZero,chkNormal,chkTwoMinus,chkTwoPlus);
+        checkBoxList = Arrays.asList(chkNA,chkAbnormal,chkAbsent,chkClear,chkOcc,chkNoisy,chkSpine,chkRadial,chkBrachial,chkCarotid,chkFemoral,chkHigh,chkLow,chkMed,chSix,chkZero,chkNormal,chkTwoMinus,chkTwoPlus);
 
+        TimePicker();
 
-        chkNA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(chkNA.isChecked()){
-                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
-                }
-            }
-        });
         cache = new Cache(getContext());
         saved = cache.getStringProperty("primarySurvery");
         if(saved != null ){
@@ -130,6 +125,21 @@ JSONObject primarySurvery;
             }
         }
         return view;
+    }
+
+    Context mContext;
+    private void TimePicker() {
+        Calendar calendar = Calendar.getInstance();
+        final int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minute = calendar.get(Calendar.MINUTE);
+
+        mContext = getActivity();
+
+        edtTime.setOnClickListener(view -> {
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view1, hourOfDay, minute1) -> edtTime.setText(hourOfDay + ":" + minute1), hour, minute, android.text.format.DateFormat.is24HourFormat(mContext));
+            timePickerDialog.show();
+        });
     }
 
 
@@ -212,80 +222,6 @@ JSONObject primarySurvery;
         cache.setStringProperty("primarySurvery",primarySurvery.toString());
 
         return primarySurvery;
-    }
-
-    public boolean validate(){
-        boolean valid = true;
-
-        String time = edtTime.getText().toString();
-
-        if(time.isEmpty()){
-            valid = false;
-            Toast.makeText(getContext(),"Please enter a primary survey time",Toast.LENGTH_SHORT).show();
-        }
-
-        if(valid){
-            if(!time.matches(MedicalFormCalls.toMatch)){
-                valid = false;
-                Toast.makeText(getContext(),"Please enter a primary survey time in hh:mm format",Toast.LENGTH_SHORT).show();
-            }
-        }
-
-        if(valid){
-            boolean allEmpty = true;
-            boolean firstEmpty = true, secondEmpty = true, thirdEmpty = true, fifthEmpty = true, fourthEmpty = true;
-            for(int i  = 0; i < checkBoxList.size(); i++){
-
-
-
-                if(checkBoxList.get(i).isChecked() && i < 4){
-                    firstEmpty = false;
-                    allEmpty = false;
-                }
-
-                if(checkBoxList.get(i).isChecked() && i >= 4 && i < 9 ){
-                    secondEmpty = false;
-                    allEmpty = false;
-                }
-
-                if(checkBoxList.get(i).isChecked() && i >= 9 && i < 14 ){
-                    thirdEmpty = false;
-                    allEmpty = false;
-                }
-
-                if(checkBoxList.get(i).isChecked() && i >= 14 && i < 16 ){
-                    fourthEmpty = false;
-                    allEmpty = false;
-                }
-                if(checkBoxList.get(i).isChecked() && i >= 16){
-                    fifthEmpty = false;
-                    allEmpty = false;
-                }
-
-            }
-            if(allEmpty){
-                valid = false;
-                Toast.makeText(getContext(),"Please fill in primary survey", Toast.LENGTH_SHORT).show();
-            }else if(firstEmpty){
-                valid = false;
-                Toast.makeText(getContext(),"Please check the patient airway", Toast.LENGTH_SHORT).show();
-            }else if(secondEmpty){
-                valid = false;
-                Toast.makeText(getContext(),"Please check the patient respiration rate", Toast.LENGTH_SHORT).show();
-            }else if(thirdEmpty){
-                valid = false;
-                Toast.makeText(getContext(),"Please check the patient pulse", Toast.LENGTH_SHORT).show();
-            }else if(fourthEmpty){
-                valid = false;
-                Toast.makeText(getContext(),"Please check the patient  respiration rate", Toast.LENGTH_SHORT).show();
-            }else if(fifthEmpty){
-                valid = false;
-                Toast.makeText(getContext(),"Please check the patient cap refill", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        return valid;
     }
 
 

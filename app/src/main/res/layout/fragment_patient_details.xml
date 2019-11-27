@@ -101,23 +101,26 @@
                     android:id="@+id/lblDOB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/lblSurname"
+                    android:layout_below="@id/edtSurname"
                     android:layout_alignLeft="@id/lblName"
                     android:layout_marginTop="25dp"
                     android:text="DOB"
                     android:textColor="@color/white" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edtDOB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/edtSurname"
                     android:layout_alignLeft="@id/edtName"
-                    android:ems="10"
                     android:hint="yyyy-mm-dd"
                     android:inputType="textPersonName"
+                    android:layout_marginTop="22dp"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:background="@drawable/round_shape"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"/>
 
                 <TextView
                     android:id="@+id/lblID"
