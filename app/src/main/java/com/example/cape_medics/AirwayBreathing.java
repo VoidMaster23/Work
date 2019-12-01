@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -55,13 +56,14 @@ public class AirwayBreathing extends Fragment {
 
 
         listView.setAdapter(adapter);
+        listView.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
                 management = text.getText().toString();
-                text.toggle();
+
             }
         });
 
@@ -83,7 +85,11 @@ public class AirwayBreathing extends Fragment {
     public JSONObject createJson(){
         airwayBreathing = new JSONObject();
         try{
-            airwayBreathing.put("Management",management);
+            if(!chkNA.isChecked()) {
+                airwayBreathing.put("Management", management);
+            }else if(chkNA.isChecked()){
+                airwayBreathing.put("Status","Not Applicable");
+            }
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }

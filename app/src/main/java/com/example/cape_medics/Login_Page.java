@@ -95,37 +95,16 @@ public class Login_Page extends AppCompatActivity {
     }
 
     public void Login (View v) throws JSONException {
-        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-            //we are connected to a network
-            connected = true;
-        }
-        else connected = false;
 
-        if(connected) {
-            AsyncT send = new AsyncT();
-            send.execute();
+        Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
 
-        }
 
-        else{
-            String value = cache.getStringProperty(password.getText().toString().trim()+username.getText().toString().trim());
-            if (value == null){
-                Toast.makeText(getApplicationContext(), "no internet connection", Toast.LENGTH_SHORT).show();
-            }
-            else{
-                response = new JSONObject(value);
+                broadcasts  = "new first aid kits now available";
+                jobs = "job 1, job 2";
+                name = "Bob";
+                auhtorisation = "Manager";
 
-                name = response.getString("Crew Name");
-                auhtorisation = response.getString("Authorisation Level");
-                broadcasts = response.getString("Broadcasts");
-                jobs = response.getString("Job ID's");
-                id = response.getInt("Crew ID");
 
-                Toast.makeText(getApplicationContext(),"Welcome "+ name, Toast.LENGTH_SHORT).show();
-
-                Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
                 i.putExtra("broadcasts",broadcasts);
                 i.putExtra("jobs",jobs);
                 i.putExtra("Crew ID",id);
@@ -134,8 +113,48 @@ public class Login_Page extends AppCompatActivity {
                 i.putExtra("first", "true");
                 i.putExtra("code",password.getText().toString().trim()+username.getText().toString().trim());
                 startActivity(i);
-            }
-        }
+
+//        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+//        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+//                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+//            //we are connected to a network
+//            connected = true;
+//        }
+//        else connected = false;
+//
+//        if(connected) {
+//            AsyncT send = new AsyncT();
+//            send.execute();
+//
+//        }
+//
+//        else{
+//            String value = cache.getStringProperty(password.getText().toString().trim()+username.getText().toString().trim());
+//            if (value == null){
+//                Toast.makeText(getApplicationContext(), "no internet connection", Toast.LENGTH_SHORT).show();
+//            }
+//            else{
+//                response = new JSONObject(value);
+//
+//                name = response.getString("Crew Name");
+//                auhtorisation = response.getString("Authorisation Level");
+//                broadcasts = response.getString("Broadcasts");
+//                jobs = response.getString("Job ID's");
+//                id = response.getInt("Crew ID");
+//
+//                Toast.makeText(getApplicationContext(),"Welcome "+ name, Toast.LENGTH_SHORT).show();
+//
+//                Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
+//                i.putExtra("broadcasts",broadcasts);
+//                i.putExtra("jobs",jobs);
+//                i.putExtra("Crew ID",id);
+//                i.putExtra("Crew name",name);
+//                i.putExtra("Authorisation",auhtorisation);
+//                i.putExtra("first", "true");
+//                i.putExtra("code",password.getText().toString().trim()+username.getText().toString().trim());
+//                startActivity(i);
+//            }
+//        }
     }
 
     @Override

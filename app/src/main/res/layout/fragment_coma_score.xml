@@ -131,7 +131,7 @@
                     android:id="@+id/trtScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="44dp"
                     android:text="The Revised Trauma Score"
                     android:textColor="@color/white"
                     android:textSize="20dp"
@@ -140,46 +140,25 @@
                     app:layout_constraintTop_toBottomOf="@+id/lblGCS" />
 
                 <TextView
-                    android:id="@+id/gcs"
+                    android:id="@+id/sbp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Glasgow Coma scale"
+                    android:layout_marginTop="53dp"
+                    android:text="Systolic Blood Pressure"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/trtScore" />
 
                 <Spinner
-                    android:id="@+id/spngcs"
-                    android:layout_width="190dp"
-                    android:layout_height="23dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="28dp"
-                    android:layout_marginRight="28dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/trtScore"
-                    app:layout_constraintStart_toEndOf="@id/sbp" />
-
-                <TextView
-                    android:id="@+id/sbp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="29dp"
-                    android:text="Symtolic Blood Pressure"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/gcs" />
-
-                <Spinner
                     android:id="@+id/spnsbp"
                     android:layout_width="190dp"
                     android:layout_height="23dp"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="53dp"
                     android:layout_marginEnd="28dp"
                     android:layout_marginRight="28dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/gcs"
-                    app:layout_constraintStart_toEndOf="@id/sbp" />
+                    app:layout_constraintStart_toEndOf="@id/sbp"
+                    app:layout_constraintTop_toBottomOf="@+id/trtScore" />
 
 
                 <TextView
@@ -204,37 +183,16 @@
                     app:layout_constraintStart_toEndOf="@id/sbp" />
 
                 <TextView
-                    android:id="@+id/rtsValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
-                    android:text="RTS Value"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rr" />
-
-                <Spinner
-                    android:id="@+id/spnrtsValue"
-                    android:layout_width="190dp"
-                    android:layout_height="23dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginEnd="28dp"
-                    android:layout_marginRight="28dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rr"
-                    app:layout_constraintStart_toEndOf="@id/sbp" />
-
-                <TextView
                     android:id="@+id/lblTrauma"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="27dp"
+                    android:layout_marginTop="36dp"
                     android:text="TextView"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rtsValue" />
+                    app:layout_constraintTop_toBottomOf="@+id/rr" />
 
 
             </android.support.constraint.ConstraintLayout>

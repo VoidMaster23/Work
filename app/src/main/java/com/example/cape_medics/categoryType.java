@@ -43,9 +43,9 @@ public class categoryType extends AppCompatActivity{
     JSONObject eventDetails;
 
     JSONObject primary;
-    String callType_primary, saved;
+    String callType_primary, saved, authorisation;
 
-    JSONObject CategoryType;
+    public static JSONObject CategoryType;
 
     Context mContext=this;
 
@@ -60,6 +60,7 @@ public class categoryType extends AppCompatActivity{
         dateView = findViewById(R.id.dateView);
         cache = new Cache(getApplicationContext());
         Bundle bundle = getIntent().getExtras();
+        authorisation = bundle.getString("Authorisation");
         code = bundle.getString("code");
 
         //first tab
@@ -251,10 +252,11 @@ public class categoryType extends AppCompatActivity{
         cache.setStringProperty("categoryType"+code, CategoryType.toString());
 
         //sends JSONArray to
-        Intent intent= new Intent(getApplicationContext(), Death.class);
-        intent.putExtra("Category Type", CategoryType.toString());
 
         Intent i = new Intent(getApplicationContext(), medicalTabbedView.class);
+        i.putExtra("code",code);
+        i.putExtra("Authorisation",authorisation);
+        i.putExtra("Category Type", CategoryType.toString());
         startActivity(i);
     }
 

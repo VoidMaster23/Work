@@ -3,6 +3,7 @@ package com.example.cape_medics;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -44,7 +45,7 @@ public class SampleHistory extends Fragment {
     Cache cache;
     String saved;
     JSONObject load;
-
+    String signs, allergies, medication, past, last,events;
 
 
 
@@ -107,12 +108,12 @@ public class SampleHistory extends Fragment {
 
     public JSONObject createJson(){
 
-        String signs = edtSigns.getText().toString();
-        String allergies = edtAllergies.getText().toString();
-        String medication = edtMedication.getText().toString();
-        String past = edtPast.getText().toString();
-        String last = edtIntake.getText().toString();
-        String events = edtEvents.getText().toString();
+        signs = edtSigns.getText().toString();
+         allergies = edtAllergies.getText().toString();
+         medication = edtMedication.getText().toString();
+         past = edtPast.getText().toString();
+         last = edtIntake.getText().toString();
+         events = edtEvents.getText().toString();
 
     sampleHistory = new JSONObject();
 
@@ -121,13 +122,16 @@ public class SampleHistory extends Fragment {
 
 
         try{
-
-            sampleHistory.put("Signs",signs);
-            sampleHistory.put("Allergies",allergies);
-            sampleHistory.put("Medications",medication);
-            sampleHistory.put("Past",past);
-            sampleHistory.put("Last",last);
-            sampleHistory.put("Events",events);
+            if(!chkNA.isChecked() && validate()) {
+                sampleHistory.put("Signs", signs);
+                sampleHistory.put("Allergies", allergies);
+                sampleHistory.put("Medications", medication);
+                sampleHistory.put("Past", past);
+                sampleHistory.put("Last", last);
+                sampleHistory.put("Events", events);
+            }else if(chkNA.isChecked()){
+                sampleHistory.put("Status","Not applicable");
+            }
 
 
         }catch (Exception e){
@@ -142,23 +146,18 @@ public class SampleHistory extends Fragment {
 
     public boolean validate(){
         boolean valid = true;
-        String signs = edtSigns.getText().toString();
-        String allergies = edtAllergies.getText().toString();
-        String medication = edtMedication.getText().toString();
-        String past = edtPast.getText().toString();
-        String last = edtIntake.getText().toString();
-        String events = edtEvents.getText().toString();
+        Looper.prepare();
 
 
         if(signs.isEmpty() || allergies.isEmpty() || medication.isEmpty() || past.isEmpty() || last.isEmpty() || events.isEmpty()){
             valid = false;
-            Toast.makeText(getContext(),"Please make sure all sample history details have been entered", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"Sample History: Please make sure all details have been entered", Toast.LENGTH_SHORT).show();
 
         }
 
 
 
-
+        Looper.loop();
         return valid;
     }
 

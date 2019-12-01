@@ -67,23 +67,14 @@ public class FireSkid extends AppCompatActivity {
     JSONObject fireSkid, response, save, load;
     Spinner skid, fuelSpinner;
     TextView dateView,licenceExpire;
-    CheckBox air,antennae,battery,body,brake,branding,dashboard,emergency,exhaust,oil,fuelLevel,headlights,leftIndicator,rightIndicator,back,front,jack,leds,licence,plates,radio,rear,reverse,side,siren,spare,tread,pressure,windows,windscreen,waterSpritzer,c02,dcp,fuelFunnel,awgPencil,falseSpindles,layflat25,short65,duraflex38,afff,boltCutter,wireCutter,crowBar,hondaKey,hondaPump,highPump,rakeHoe,bushBeater,jerryCan,softSuction,strainer,towRope,meterStandpipe,standpipeKey,blankCoupling65,blankCoupling25,trafficCones,bobejaan,toolbox,shovel;
-    EditText airComment,antennaeComment,batteryComment,bodyComment,brakeComment,brandingComment,dashboardComment,emergencyComment,exhaustComment,oilComment,fuelLevelComment,headlightsComment,leftIndicatorComment,rightIndicatorComment,backComment,frontComment,jackComment,ledsComment,licenceComment,platesComment,radioComment,rearComment,reverseComment,sideComment,sirenComment,spareComment,treadComment,pressureComment,windowsComment,windscreenComment,waterSpritzerComment,c02Comment,dcpComment,fuelFunnelComment,awgPencilComment,falseSpindlesComment,layflat25Comment,short65Comment,duraflex38Comment,afffComment,boltCutterComment,wireCutterComment,crowBarComment,hondaKeyComment,hondaPumpComment,highPumpComment,rakeHoeComment,bushBeaterComment,jerryCanComment,softSuctionComment,strainerComment,towRopeComment,meterStandpipeComment,standpipeKeyComment,blankCoupling65Comment,blankCoupling25Comment,trafficConesComment,bobejaanComment,toolboxComment,shovelComment;
-    List<CheckBox> checkBoxList;
-    List<EditText> commentList;
     EditText driver,mileage,oils,reg,location,producion,crew;
     String Date, responseServer, url;
     boolean connected;
     ScheduledExecutorService scheduledExecutorService;
     Cache cache;
     String saved;
-    String code;
-    private Pattern pattern;
-    private Matcher matcher;
-
-    private static final String DATE_PATTERN =
-            "(0?[1-9]|1[012]) [/.-] (0?[1-9]|[12][0-9]|3[01]) [/.-] ((19|20)\\d\\d)";
-
+    String code, authorisation;
+    String expire, driverName, theFireSkid, mile, fuelGauge,oil, regNo, loc, product, crewNo;
 
 
     @Override
@@ -93,6 +84,7 @@ public class FireSkid extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         Bundle bundle = getIntent().getExtras();
         code = bundle.getString("code");
+        authorisation = bundle.getString("Authorisation");
 
         licenceExpire = findViewById(R.id.licenceExpireEdit);
         driver = findViewById(R.id.driverEdit);
@@ -112,8 +104,6 @@ public class FireSkid extends AppCompatActivity {
         //air = findViewById(R.id.air); antennae = findViewById(R.id.antennae); battery= findViewById(R.id.battery);body= findViewById(R.id.body);brake= findViewById(R.id.brake);branding = findViewById(R.id.branding);dashboard = findViewById(R.id.dashboard);emergency = findViewById(R.id.emergency);exhaust = findViewById(R.id.exhaust);oil = findViewById(R.id.oil);fuelLevel = findViewById(R.id.fuelLevel);headlights = findViewById(R.id.headlights);leftIndicator = findViewById(R.id.leftIndicator);rightIndicator = findViewById(R.id.rightIndicator);back = findViewById(R.id.back);front = findViewById(R.id.front);jack = findViewById(R.id.jack);leds = findViewById(R.id.leds);licence = findViewById(R.id.licence);plates = findViewById(R.id.plates);radio = findViewById(R.id.radio);rear = findViewById(R.id.rear);reverse = findViewById(R.id.reverse);side = findViewById(R.id.side);siren = findViewById(R.id.siren);spare = findViewById(R.id.spare);tread = findViewById(R.id.tread);pressure = findViewById(R.id.pressure);windows = findViewById(R.id.windows);windscreen = findViewById(R.id.windscreen);waterSpritzer = findViewById(R.id.waterSpritzer);c02 = findViewById(R.id.c02);dcp = findViewById(R.id.dcp);fuelFunnel = findViewById(R.id.fuelFunnel);awgPencil = findViewById(R.id.awgPencil);falseSpindles = findViewById(R.id.falseSpindles);layflat25 = findViewById(R.id.layflat25);short65 = findViewById(R.id.short65);duraflex38 = findViewById(R.id.duraflex38);afff = findViewById(R.id.afff);boltCutter = findViewById(R.id.boltCutter);wireCutter = findViewById(R.id.wireCutter);crowBar = findViewById(R.id.crowBar);hondaKey = findViewById(R.id.hondaKey);hondaPump = findViewById(R.id.hondaPump);highPump = findViewById(R.id.highPump);rakeHoe = findViewById(R.id.rakeHoe);bushBeater = findViewById(R.id.bushBeater);jerryCan = findViewById(R.id.jerryCan);softSuction = findViewById(R.id.softSuction);strainer = findViewById(R.id.strainer);towRope = findViewById(R.id.towRope);meterStandpipe = findViewById(R.id.meterStandpipe);standpipeKey = findViewById(R.id.standpipeKey);blankCoupling65 = findViewById(R.id.blankCoupling65);blankCoupling25 = findViewById(R.id.blankCoupling25);trafficCones = findViewById(R.id.trafficCones);bobejaan = findViewById(R.id.bobejaan);toolbox = findViewById(R.id.toolbox);shovel = findViewById(R.id.shovel);
         //airComment = findViewById(R.id.airComment); antennaeComment = findViewById(R.id.antennaeComment); batteryComment = findViewById(R.id.batteryComment);bodyComment= findViewById(R.id.bodyComment);brakeComment = findViewById(R.id.brakeComment);brandingComment = findViewById(R.id.brandingComment);dashboardComment = findViewById(R.id.dashboardComment);emergencyComment = findViewById(R.id.emergencyComment);exhaustComment = findViewById(R.id.exhaustComment);oilComment = findViewById(R.id.oilComment);fuelLevelComment = findViewById(R.id.fuelLevelComment);headlightsComment = findViewById(R.id.headlightsComment);leftIndicatorComment = findViewById(R.id.leftIndicatorComment);rightIndicatorComment = findViewById(R.id.rightIndicatorComment);backComment = findViewById(R.id.backComment);frontComment = findViewById(R.id.frontComment);jackComment = findViewById(R.id.jackComment);ledsComment = findViewById(R.id.ledsComment);licenceComment = findViewById(R.id.licenceComment);platesComment = findViewById(R.id.platesComment);radioComment = findViewById(R.id.radioComment);rearComment = findViewById(R.id.rearComment);reverseComment = findViewById(R.id.reverseComment);sideComment = findViewById(R.id.sideComment);sirenComment = findViewById(R.id.sirenComment);spareComment = findViewById(R.id.spareComment);treadComment = findViewById(R.id.treadComment);pressureComment = findViewById(R.id.pressureComment);windowsComment = findViewById(R.id.windowsComment);windscreenComment = findViewById(R.id.windscreenComment);waterSpritzerComment = findViewById(R.id.waterSpritzerComment);c02Comment = findViewById(R.id.c02Comment);dcpComment = findViewById(R.id.dcpComment);fuelFunnelComment = findViewById(R.id.fuelFunnelComment);awgPencilComment = findViewById(R.id.awgPencilComment);falseSpindlesComment = findViewById(R.id.falseSpindlesComment);layflat25Comment = findViewById(R.id.layflat25Comment);short65Comment = findViewById(R.id.short65Comment);duraflex38Comment = findViewById(R.id.duraflex38Comment);afffComment = findViewById(R.id.afffComment);boltCutterComment = findViewById(R.id.boltCutterComment);wireCutterComment = findViewById(R.id.wireCutterComment);crowBarComment = findViewById(R.id.crowBarComment);hondaKeyComment = findViewById(R.id.hondaKeyComment);hondaPumpComment = findViewById(R.id.hondaPumpComment);highPumpComment = findViewById(R.id.highPumpComment);rakeHoeComment = findViewById(R.id.rakeHoeComment);bushBeaterComment = findViewById(R.id.bushBeaterComment);jerryCanComment = findViewById(R.id.jerryCanComment);softSuctionComment = findViewById(R.id.softSuctionComment);strainerComment = findViewById(R.id.strainerComment);towRopeComment = findViewById(R.id.towRopeComment);meterStandpipeComment = findViewById(R.id.meterStandpipeComment);standpipeKeyComment = findViewById(R.id.standpipeKeyComment);blankCoupling65Comment = findViewById(R.id.blankCoupling65Comment);blankCoupling25Comment = findViewById(R.id.blankCoupling25Comment);trafficConesComment = findViewById(R.id.trafficConesComment);bobejaanComment = findViewById(R.id.bobejaanComment);toolboxComment = findViewById(R.id.toolboxComment);shovelComment = findViewById(R.id.shovelComment);
 
-        checkBoxList = Arrays.asList(air,antennae,battery,body,brake,branding,dashboard,emergency,exhaust,oil,fuelLevel,headlights,leftIndicator,rightIndicator,back,front,jack,leds,licence,plates,radio,rear,reverse,side,siren,spare,tread,pressure,windows,windscreen,waterSpritzer,c02,dcp,fuelFunnel,awgPencil,falseSpindles,layflat25,short65,duraflex38,afff,boltCutter,wireCutter,crowBar,hondaKey,hondaPump,highPump,rakeHoe,bushBeater,jerryCan,softSuction,strainer,towRope,meterStandpipe,standpipeKey,blankCoupling65,blankCoupling25,trafficCones,bobejaan,toolbox,shovel);
-        commentList = Arrays.asList(airComment,antennaeComment,batteryComment,bodyComment,brakeComment,brandingComment,dashboardComment,emergencyComment,exhaustComment,oilComment,fuelLevelComment,headlightsComment,leftIndicatorComment,rightIndicatorComment,backComment,frontComment,jackComment,ledsComment,licenceComment,platesComment,radioComment,rearComment,reverseComment,sideComment,sirenComment,spareComment,treadComment,pressureComment,windowsComment,windscreenComment,waterSpritzerComment,c02Comment,dcpComment,fuelFunnelComment,awgPencilComment,falseSpindlesComment,layflat25Comment,short65Comment,duraflex38Comment,afffComment,boltCutterComment,wireCutterComment,crowBarComment,hondaKeyComment,hondaPumpComment,highPumpComment,rakeHoeComment,bushBeaterComment,jerryCanComment,softSuctionComment,strainerComment,towRopeComment,meterStandpipeComment,standpipeKeyComment,blankCoupling65Comment,blankCoupling25Comment,trafficConesComment,bobejaanComment,toolboxComment,shovelComment);
 
         fireSkid = new JSONObject();
         String[] Skid = {"GWM","ISUZU BAKKIE"};
@@ -227,7 +217,7 @@ public class FireSkid extends AppCompatActivity {
 
     public void Send(View v){
 
-        if (validate()){
+        if (true){
             ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
             if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                     connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
@@ -236,14 +226,27 @@ public class FireSkid extends AppCompatActivity {
             }
             else connected = false;
             if (connected) {
-                AsyncT send = new AsyncT();
-                send.execute();
-                Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
-                cache.removeStringProperty("vehicleSaveSkid"+code);
-                scheduledExecutorService.shutdown();
-                i.putExtra("code",code);
-                i.putExtra("first","not");
-                startActivity(i);
+                //get all
+                expire = licenceExpire.getText().toString();
+                driverName = driver.getText().toString();
+                theFireSkid = skid.getSelectedItem().toString();
+                mile = mileage.getText().toString();
+                fuelGauge = fuelSpinner.getSelectedItem().toString();
+                oil = oils.getText().toString();
+                regNo = reg.getText().toString();
+                loc = location.getText().toString();
+                product = producion.getText().toString();
+                crewNo = crew.getText().toString();
+
+                //validate
+                if(validate()){
+
+                    AsyncT send = new AsyncT();
+                    send.execute();
+                    cache.removeStringProperty("vehicleSaveSkid"+code);
+                    scheduledExecutorService.shutdown();
+                }
+
             }
             else {
                 Toast.makeText(getApplicationContext(), "Please establish an internet connection", Toast.LENGTH_SHORT).show();
@@ -259,31 +262,51 @@ public class FireSkid extends AppCompatActivity {
             HttpPost httppost = new HttpPost(url);
 
             try {
+                //Accessing the Table Data
+                JSONObject vehicleData = new JSONObject();
+                JSONObject equipmentData = new JSONObject();
+
+                for (Row row : vehicleTableArrayList)
+                {
+                    JSONObject rowData = new JSONObject();
+                    rowData.put("QTY",row.getQty());
+                    rowData.put("CHECKED", row.getChecked());
+                    rowData.put("COMMENT",row.getComment());
+
+                    vehicleData.put(row.getDescription(),rowData.toString());
+                }//
+
+                for (Row row : equipmentTable)
+                {
+                    JSONObject rowData = new JSONObject();
+                    rowData.put("QTY",row.getQty());
+                    rowData.put("CHECKED", row.getChecked());
+                    rowData.put("COMMENT",row.getComment());
+
+                    equipmentData.put(row.getDescription(),rowData.toString());
+                }//
+
+
+
                 fireSkid.put("Fire_Vehicle_Type", "Fire Skid");
                 fireSkid.put("Vehicle_Type", "Fire");
-                fireSkid.put("Licence_Expire", licenceExpire.getText().toString());
+                fireSkid.put("Licence_Expire",expire);
                 fireSkid.put("Date", Date);
-                fireSkid.put("Driver", driver.getText().toString());
-                fireSkid.put("Fire_Engine", skid.getSelectedItem().toString());
-                fireSkid.put("Mileage", mileage.getText().toString());
-                fireSkid.put("Fuel", fuelSpinner.getSelectedItem().toString());
-                fireSkid.put("Oils", oils.getText().toString());
-                fireSkid.put("Reg_No.", reg.getText().toString());
-                fireSkid.put("Location.", location.getText().toString());
-                fireSkid.put("Production", producion.getText().toString());
-                fireSkid.put("Crew", crew.getText().toString());
+                fireSkid.put("Driver", driverName);
+                fireSkid.put("Fire_Engine", theFireSkid);
+                fireSkid.put("Mileage", mile);
+                fireSkid.put("Fuel", fuelGauge);
+                fireSkid.put("Oils", oil);
+                fireSkid.put("Reg_No.", regNo);
+                fireSkid.put("Location.", loc);
+                fireSkid.put("Production", product);
+                fireSkid.put("Crew", crewNo);
 
-                for (int i = 0; i<checkBoxList.size();i++) {
-                    if (checkBoxList.get(i) != null) {
-                        if (!checkBoxList.get(i).isChecked()) {
-                            if (commentList.get(i).getText() != null) {
-                                fireSkid.put(checkBoxList.get(i).getText().toString(), commentList.get(i).getText().toString());
-                            } else
-                                fireSkid.put(checkBoxList.get(i).getText().toString(), "No Comment");
 
-                        }
-                    }
-                }
+                //Accessing the Table Data
+                fireSkid.put("Vehicle", vehicleData.toString());
+                fireSkid.put("Equipment",equipmentData.toString());
+
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
                 nameValuePairs.add(new BasicNameValuePair("req", fireSkid.toString()));
 
@@ -309,19 +332,14 @@ public class FireSkid extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-
-          /*  try {
-                response = new JSONObject(responseServer);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-           if (response.length() < 3) {
-                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-            }
-           else {
-                Toast.makeText(getApplicationContext(), "sent", Toast.LENGTH_SHORT).show();
-            }*/
+            Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
             Toast.makeText(getApplicationContext(), "sent", Toast.LENGTH_SHORT).show();
+            i.putExtra("code", code);
+            i.putExtra("Authorisation",authorisation);
+            i.putExtra("first", "not");
+            startActivity(i);
+
+
         }
     }
 
@@ -369,7 +387,77 @@ public class FireSkid extends AppCompatActivity {
 
     }
 
-    public boolean validate(){}
+    public boolean validate(){
+        boolean valid = true;
+
+        if(expire.isEmpty()){
+            valid = false;
+            Toast.makeText(getApplicationContext(),"Please enter licence expiration date", Toast.LENGTH_SHORT).show();
+        }
+
+        if(valid){
+            if(driverName.isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please enter a driver name", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(theFireSkid.isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please enter the fire skid", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(fuelGauge.isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please enter the fuel level", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+        if(valid){
+            if(oil.isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please enter the oil details", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+        if(valid){
+            if(regNo.isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please enter the registration number", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+        if(valid){
+            if(loc.isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please enter the location", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+        if(valid){
+            if(product.isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please enter the production name", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+        if(valid){
+            if(crewNo.isEmpty()){
+                valid = false;
+                Toast.makeText(getApplicationContext(),"Please enter the crew member number", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        return valid;
+    }
 
     private static final int WrapContent = ViewGroup.LayoutParams.WRAP_CONTENT;
     private static final int MatchParent = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -388,6 +476,8 @@ public class FireSkid extends AppCompatActivity {
         root2.addView(table2);
     }
 
+    //Accessing the Table Data
+    ArrayList<Row> vehicleTableArrayList = new ArrayList<>();
     private View getVehicleTable(){
 
         // create table
@@ -514,6 +604,8 @@ public class FireSkid extends AppCompatActivity {
             String st = _list[i];
             Row item = new Row(this, st, "1", i == 9? fuelLevelSpinnerOptions : qtySpinnerOptions, "OKAY", i == 9? "FULL   3/4   1/2   1/4": i == 17? "dd/mm/yyyy": i == 18? "CA 757-267":"No COMMENT","Comment here" , i, parentWidth);
 
+            vehicleTableArrayList.add(item);
+
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());
             tableContent.addView(item.getRow());
@@ -526,6 +618,8 @@ public class FireSkid extends AppCompatActivity {
         return table;
     }
 
+    //Accessing table data
+    ArrayList<Row> equipmentTable = new ArrayList<>();
     private View getEquipmentTable(){
 
         // create table
@@ -655,6 +749,8 @@ public class FireSkid extends AppCompatActivity {
             String st = _list[i];
             String qtyst = _qtylist[i];
             Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
+
+            equipmentTable.add(item);
 
             //headingRow.setBackgroundResource(R.drawable.cell_shape);
             //table.addView(item.getRow());

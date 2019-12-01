@@ -3,6 +3,7 @@ package com.example.cape_medics;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,6 +72,7 @@ public class PresentingCondition extends Fragment{
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_presenting_condition, container, false);
         chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox );
+        chkNA.setOnClickListener(this::makeNa);
         lblPrimary = (TextView)view.findViewById( R.id.lblPrimary );
         edtPrimary = (EditText)view.findViewById( R.id.edtPrimary );
         textView19 = (TextView)view.findViewById( R.id.textView19 );
@@ -102,14 +104,7 @@ public class PresentingCondition extends Fragment{
         chkMusc = (CheckBox)view.findViewById( R.id.chkMusc );
         chkObs = (CheckBox)view.findViewById( R.id.chkObs );
         chkDeliver = (CheckBox)view.findViewById( R.id.chkDeliver );
-        chkNA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(chkNA.isChecked()){
-                    medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
-                }
-            }
-        });
+
 
         checkBoxList = Arrays.asList(chkCardiac,chkAssault,chkChest,chkLessTwo,chkMoreTwo,chkAst,chkCopd,chkHead,chkAb,chkPen,chkVomit,chkFract,chkConvulse,chkMva,chkStroke,chkDrown,chkDiabetes,chkBurn,chkHypo,chkGun,chkHyper,chkInhale,chkAlcohol,chkMusc,chkDrugs,chkObs,chkFirstAid,chkDeliver);
         cache = new Cache(getContext());
@@ -213,8 +208,12 @@ public class PresentingCondition extends Fragment{
         presentingConditon = new JSONObject();
 
         try{
-            presentingConditon.put("Primary",name);
-            presentingConditon.put("Medical Condition",condition);
+            if(!chkNA.isChecked() && validate()) {
+                presentingConditon.put("Primary", name);
+                presentingConditon.put("Medical Condition", condition);
+            }else if(chkNA.isChecked()){
+                presentingConditon.put("Status","Not applicable");
+            }
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
@@ -225,10 +224,11 @@ public class PresentingCondition extends Fragment{
 
     public boolean validate(){
         boolean valid = true;
+        Looper.prepare();
 
         if(edtPrimary.getText().toString().isEmpty()){
             valid = false;
-            Toast.makeText(getContext(),"Please enter the name of the primary presenting the complaint", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"Presenting Condition: Please enter the name of the primary presenting the complaint", Toast.LENGTH_SHORT).show();
         }
 
         if(valid){
@@ -241,10 +241,19 @@ public class PresentingCondition extends Fragment{
             }
             if(allEmpty){
                 valid = false;
-                Toast.makeText(getContext(),"Please select a medical condition", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"Presenting Condition: Please select a medical condition", Toast.LENGTH_SHORT).show();
             }
         }
+        Looper.loop();
         return valid;
     }
+
+    public void makeNa(View v){
+
+
+        medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current + 1);
+
+    }
+
 
 }

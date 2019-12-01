@@ -36,14 +36,15 @@
                     android:id="@+id/notApplicableCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Not Applicable"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:layout_toStartOf="@id/imageView12"
-                    android:layout_toLeftOf="@id/imageView12" />
+                    android:layout_toLeftOf="@id/imageView12"
+                    android:onClick="makeNa"
+                    android:text="Not Applicable"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
             </RelativeLayout>
 

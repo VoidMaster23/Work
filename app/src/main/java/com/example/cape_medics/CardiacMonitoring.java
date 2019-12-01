@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,9 +23,10 @@ public class CardiacMonitoring extends Fragment {
     private CheckBox chk3Lead;
     private CheckBox chk5Lead;
     private CheckBox chk12Lead;
-    private CheckBox chkRhythm;
-    private CheckBox chkCardio;
-    private CheckBox chkPacing;
+    private TextView chkRhythm;
+    private TextView chkCardio;
+    private TextView chkPacing;
+    private EditText cardio, rhy, pace;
     JSONObject cardiacMonitoring;
 
 
@@ -44,9 +46,13 @@ public class CardiacMonitoring extends Fragment {
         chk3Lead = (CheckBox)view.findViewById( R.id.chk3Lead );
         chk5Lead = (CheckBox)view.findViewById( R.id.chk5Lead );
         chk12Lead = (CheckBox)view.findViewById( R.id.chk12Lead );
-        chkRhythm = (CheckBox)view.findViewById( R.id.chkRhythm );
-        chkCardio = (CheckBox)view.findViewById( R.id.chkCardio );
-        chkPacing = (CheckBox)view.findViewById( R.id.chkPacing );
+        chkRhythm = view.findViewById( R.id.chkRhythm );
+        chkCardio = view.findViewById( R.id.chkCardio );
+        chkPacing = view.findViewById( R.id.chkPacing );
+
+        cardio = view.findViewById(R.id.editCardio);
+        rhy = view.findViewById(R.id.editRhythm);
+        pace = view.findViewById(R.id.editPacing);
 
         chkNA.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,18 +75,26 @@ public class CardiacMonitoring extends Fragment {
         }else if(chk12Lead.isChecked()){
             monitor = chk12Lead.getText().toString();
         }
-        else if(chkRhythm.isChecked()){
-            monitor = chkRhythm.getText().toString();
-        }else if(chkCardio.isChecked()){
-            monitor = chkCardio.getText().toString();
-        }
-        else if(chkPacing.isChecked()){
-            monitor = chkPacing.getText().toString();
-        }
+
+
+
+            String rhythm = rhy.getText().toString();
+
+            String cardioversion = cardio.getText().toString();
+
+            String extPace =  pace.getText().toString();
+
 
 
         try{
-            cardiacMonitoring.put("Cardiac Monitoring",monitor);
+            if(!chkNA.isChecked()) {
+                cardiacMonitoring.put("Cardiac Monitoring", monitor);
+                cardiacMonitoring.put("Rhythm", rhythm);
+                cardiacMonitoring.put("Cardioversion", cardioversion);
+                cardiacMonitoring.put("External Pacing", extPace);
+            }else if(chkNA.isChecked()){
+                cardiacMonitoring.put("Status","Not applicable");
+            }
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }

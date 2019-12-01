@@ -1,10 +1,12 @@
 package com.example.cape_medics;
 
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,6 +36,9 @@ public class Burns extends Fragment {
 
     Button calc;
 
+    String weigh, surf, ans;
+    String ageBurn = "";
+
     CheckBox adult, child, chkNA;
     String bType, bDress, bInhale, burnDeg;
     JSONObject burns;
@@ -62,6 +67,26 @@ public class Burns extends Fragment {
             public void onClick(View view) {
                 if(chkNA.isChecked()){
                     medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current+1, true);
+                }
+            }
+        });
+
+        adult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(adult.isChecked()){
+                    child.setChecked(false);
+                    ageBurn = adult.getText().toString();
+                }
+            }
+        });
+
+        child.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(child.isChecked()){
+                    adult.setChecked(false);
+                    ageBurn = child.getText().toString();
                 }
             }
         });
@@ -100,13 +125,17 @@ public class Burns extends Fragment {
         });
 
 
+        type.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+        dress.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+        inhale.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+        burn.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 
         type.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
                 bType = text.getText().toString();
-                text.toggle();
+
             }
         });
 
@@ -115,7 +144,7 @@ public class Burns extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
                 bDress = text.getText().toString();
-                text.toggle();
+
             }
         });
 
@@ -124,7 +153,7 @@ public class Burns extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
                 bInhale = text.getText().toString();
-                text.toggle();
+
             }
         });
 
@@ -133,7 +162,7 @@ public class Burns extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
                 burnDeg = text.getText().toString();
-                text.toggle();
+
             }
         });
 
@@ -143,33 +172,60 @@ public class Burns extends Fragment {
 
     public JSONObject createJson(){
         burns = new JSONObject();
-        String ageBurn = null;
 
-        if(adult.isChecked()){
-            ageBurn = adult.getText().toString();
-        }else if(child.isChecked()){
-            ageBurn = child.getText().toString();
-        }
 
-        String weigh = weight.getText().toString();
-        String surf = tsa.getText().toString();
-        String ans = score.getText().toString();
+
+
 
         try{
-            burns.put("Age", ageBurn);
-            burns.put("Burn Type", bType);
-            burns.put("Dressing", bDress);
-            burns.put("Inhalation", bInhale);
-            burns.put("Degree of Burn", burnDeg);
-            burns.put("Weight", weigh);
-            burns.put("TSA", surf);
-            burns.put("Answer", ans);
+            if(!chkNA.isChecked() && validate()) {
+                burns.put("Age", ageBurn);
+                burns.put("Burn Type", bType);
+                burns.put("Dressing", bDress);
+                burns.put("Inhalation", bInhale);
+                burns.put("Degree of Burn", burnDeg);
+                burns.put("Weight", weigh);
+                burns.put("TSA", surf);
+                burns.put("Answer", ans);
+            }else if(chkNA.isChecked()){
+                burns.put("Status","Not applicable");
+            }
 
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
         return burns;
+    }
+
+    public boolean validate(){
+        boolean valid  = false;
+        Looper.prepare();
+
+        weigh = weight.getText().toString();
+        surf = tsa.getText().toString();
+        ans = score.getText().toString();
+
+        if(weigh.isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(), "Burns:  Please enter the weight of the patient",Toast.LENGTH_SHORT).show();
+        }
+
+        if(valid){
+            if(surf.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(), "Burns:  Please enter the weight of the patient",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(ans.isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(), "Burns:  Please make sure all burn information is added and that calculate has been pressed",Toast.LENGTH_SHORT).show();
+        }
+
+
+        Looper.loop();
+        return valid;
     }
 
 }

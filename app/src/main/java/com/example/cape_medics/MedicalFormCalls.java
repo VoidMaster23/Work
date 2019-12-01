@@ -3,6 +3,7 @@ package com.example.cape_medics;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,7 +31,8 @@ public class MedicalFormCalls extends Fragment {
     private ImageView imageView9;
     private TextView textView5;
     private TextView KMs;
-    private TextView received,callreceivedTime,calldispachedTime,callEnRouteTime,callArrivedTime,calldepartTime, callHospitalArriveTime, callHandoverTime,freeTime,timeOfDeathedit ;
+    private TextView received,callreceivedTime,calldispachedTime,callEnRouteTime,callArrivedTime,calldepartTime, callHospitalArriveTime, callHandoverTime,freeTime,timeOfDeathedit;
+    String callTime,callKM,dispatchTime,dispatchKM,enrouteTime,enrouteKM,arriveTime,arriveKM,departTime,departKM,hospitalTime,hospitalKM,handoverTime,handoverKM,priority,free, freeRead;
     private EditText callreceived;
     private TextView dispached;
     private EditText calldispached;
@@ -39,7 +41,7 @@ public class MedicalFormCalls extends Fragment {
     private TextView arrived;
     private EditText callArrived;
     private TextView depart;
-    private EditText calldepart;
+    private EditText calldepart, freeKM;
     private TextView hospitalArrive;
     private EditText callHospitalArrive;
     private TextView handover;
@@ -50,7 +52,7 @@ public class MedicalFormCalls extends Fragment {
     private CheckBox checkBox10;
     private CheckBox checkBox11;
     private CheckBox checkBox12;
-    private CheckBox checkBox13;
+    private CheckBox checkBox14;
     private CheckBox checkBox3;
     List<CheckBox> checkBoxList;
     Cache cache;
@@ -58,15 +60,7 @@ public class MedicalFormCalls extends Fragment {
     JSONObject load;
 
     JSONObject callDetails;
-    /**
-     * Find the Views in the layout<br />
-     * <br />
-     * Auto-created on 2019-07-19 20:29:49 by Android Layout Finder
-     * (http://www.buzzingandroid.com/tools/android-layout-finder)
-     */
-    private void findViews() {
 
-    }
 
 
     public MedicalFormCalls(){
@@ -103,6 +97,7 @@ public class MedicalFormCalls extends Fragment {
         callHospitalArriveTime = view.findViewById( R.id.callHospitalArriveTime );
         callHandoverTime = view.findViewById( R.id.callHandoverTime );
         freeTime = view.findViewById( R.id.freeTime );
+        freeKM = view.findViewById(R.id.free_edit);
         timeOfDeathedit = view.findViewById( R.id.timeOfDeathedit );
 
         textView6 = view.findViewById( R.id.textView6 );
@@ -111,13 +106,24 @@ public class MedicalFormCalls extends Fragment {
         checkBox10 = view.findViewById( R.id.checkBox10 );
         checkBox11 = view.findViewById( R.id.checkBox11 );
         checkBox12 = view.findViewById( R.id.checkBox12 );
+        checkBox14 = view.findViewById(R.id.checkBox14);
+
+
+
         //checkBox13 = view.findViewById( R.id.checkBox13 );
         checkBox3 = view.findViewById( R.id.notApplicableCheckBox );
+        checkBox3.setOnClickListener(this::makeNa);
         callDetails = new JSONObject();
 
         TimePicker();
 
-        checkBoxList = Arrays.asList(checkBox8,checkBox9,checkBox10,checkBox11,checkBox12,checkBox13,checkBox3);
+        checkBoxList = Arrays.asList(checkBox8,checkBox9,checkBox10,checkBox11,checkBox12,checkBox14);
+        for (CheckBox c:checkBoxList){
+            c.setOnClickListener(view1 -> {
+                limitChecks(c);
+            });
+        }
+
         cache = new Cache(getContext());
         saved = cache.getStringProperty("callDetails");
         if(saved != null ){
@@ -136,6 +142,8 @@ public class MedicalFormCalls extends Fragment {
                 callHospitalArrive.setText(callDetails.getString("Hospital_Time"));
                 callHandoverTime.setText(callDetails.getString("Hospital_KM"));
                 callHandover.setText(callDetails.getString("Hospital_Time"));
+                freeTime.setText(callDetails.getString("Free_Time"));
+                freeKM.setText(callDetails.getString("Free_KM"));
                 Iterator<String> keys = load.keys();
                 while(keys.hasNext()) {
                     String key = keys.next();
@@ -227,78 +235,245 @@ public class MedicalFormCalls extends Fragment {
 
     public JSONObject createJson(){
 
-        //callRec
-        String callTime = callEnRouteTime.getText().toString();
-        String callKM = callreceived.getText().toString();
 
-        //dispach
-        String dispatchTime = calldispachedTime.getText().toString();
-        String dispatchKM = calldispached.getText().toString();
-
-        //enroute
-        String enrouteTime = callEnRouteTime.getText().toString();
-        String enrouteKM = callEnRoute.getText().toString();
-
-        //arrived
-        String arriveTime = callArrivedTime.getText().toString();
-        String arriveKM = callArrived.getText().toString();
-
-        //Depart
-        String departTime = calldepartTime.getText().toString();
-        String departKM = calldepart.getText().toString();
-
-        //arriveHosp
-        String hospitalTime = callHospitalArriveTime.getText().toString();
-        String hospitalKM = callHospitalArrive.getText().toString();
-
-        //handover
-        String handoverTime = callHandoverTime.getText().toString();
-        String handoverKM = callHandover.getText().toString();
-
-        //call priority
-        String priority;
-
-
-
-        if(checkBox8.isChecked()) {priority = checkBox8.getText().toString();}
-        else if(checkBox9.isChecked()){
-            priority = checkBox9.getText().toString();
-        } else if(checkBox10.isChecked()){
-            priority = checkBox10.getText().toString();
-        } else if(checkBox11.isChecked()){
-            priority = checkBox11.getText().toString();
-        } else if(checkBox12.isChecked()){
-            priority = checkBox12.getText().toString();
-        } else{
-            priority = checkBox13.getText().toString();
-        }
 
         callDetails = new JSONObject();
 
         try{
-            callDetails.put("Call_Received_Time",callTime);
-            callDetails.put("Call_Received_KM",callKM);
-            callDetails.put("Dispached_Time",dispatchTime);
-            callDetails.put("Dispached_KM",dispatchKM);
-            callDetails.put("En-Route_Time",enrouteTime);
-            callDetails.put("En-Route_KM",enrouteKM);
-            callDetails.put("Arrived_Time",arriveTime);
-            callDetails.put("Arrived_KM", arriveKM);
-            callDetails.put("Depart_Time",departTime);
-            callDetails.put("Depart_KM",departKM);
-            callDetails.put("Hospital_Time",hospitalTime);
-            callDetails.put("Hospital_KM",hospitalKM);
-            callDetails.put("Handover_Time",handoverTime);
-            callDetails.put("Handover_KM",handoverKM);
-            callDetails.put("Call_Priority",priority);
+            //callRec
+            callTime = callEnRouteTime.getText().toString();
+            callKM = callreceived.getText().toString();
 
+            //dispach
+            dispatchTime = calldispachedTime.getText().toString();
+            dispatchKM = calldispached.getText().toString();
+
+            //enroute
+            enrouteTime = callEnRouteTime.getText().toString();
+            enrouteKM = callEnRoute.getText().toString();
+
+            //arrived
+            arriveTime = callArrivedTime.getText().toString();
+            arriveKM = callArrived.getText().toString();
+
+            //Depart
+            departTime = calldepartTime.getText().toString();
+            departKM = calldepart.getText().toString();
+
+            //arriveHosp
+            hospitalTime = callHospitalArriveTime.getText().toString();
+            hospitalKM = callHospitalArrive.getText().toString();
+
+            //handover
+            handoverTime = callHandoverTime.getText().toString();
+            handoverKM = callHandover.getText().toString();
+
+            //free
+            free = freeTime.getText().toString();
+            freeRead=  freeKM.getText().toString();
+
+            //call priority
+            priority = "";
+
+
+
+            for(CheckBox c: checkBoxList){
+                if(c.isChecked()){
+                    priority = c.getText().toString();
+                }
+            }
+
+            if(validate() && !checkBox3.isChecked()) {
+
+                callDetails.put("Call_Received_Time", callTime);
+                callDetails.put("Call_Received_KM", callKM);
+                callDetails.put("Dispached_Time", dispatchTime);
+                callDetails.put("Dispached_KM", dispatchKM);
+                callDetails.put("En-Route_Time", enrouteTime);
+                callDetails.put("En-Route_KM", enrouteKM);
+                callDetails.put("Arrived_Time", arriveTime);
+                callDetails.put("Arrived_KM", arriveKM);
+                callDetails.put("Depart_Time", departTime);
+                callDetails.put("Depart_KM", departKM);
+                callDetails.put("Hospital_Time", hospitalTime);
+                callDetails.put("Hospital_KM", hospitalKM);
+                callDetails.put("Handover_Time", handoverTime);
+                callDetails.put("Handover_KM", handoverKM);
+                callDetails.put("Call_Priority", priority);
+                callDetails.put("Free_Time", free);
+                callDetails.put("Free_KM", freeRead);
+                callDetails.put("Time_of_Death", timeOfDeathedit.getText().toString());
+            }else if(checkBox3.isChecked()){
+                callDetails.put("Status","Not applicable");
+            }
 
 
         }catch (Exception e){
-            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+          e.printStackTrace();
         }
         cache.setStringProperty("callDetails",callDetails.toString());
         return callDetails;
+    }
+
+    public void limitChecks(View v){
+
+        for(CheckBox c: checkBoxList){
+            if(!c.equals(v)){
+                c.setChecked(false);
+            }
+        }
+
+    }
+
+    public void makeNa(View v){
+
+
+        medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current + 1);
+
+    }
+
+    public boolean validate(){
+        boolean valid = true;
+        Looper.prepare();//Call looper.prepare()
+
+
+        if(callTime.isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(),"Call Details: Please enter the time of the call",Toast.LENGTH_SHORT).show();
+        }
+
+        if(valid){
+            if(callKM.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the call km reading",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(dispatchTime.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the time of dispatch",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(dispatchKM.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the dispatch km reading",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(enrouteTime.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the time the crew was en-route",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(enrouteKM.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the en-route km reading",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(arriveTime.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the time of arrival",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(arriveKM.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the arrival km reading",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(departTime.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the time of departing the scene",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(departKM.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the departure km reading",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(hospitalTime.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the time of arrival at the hospital",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(hospitalKM.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the hospital arrival km reading",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(handoverTime.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the time of hospital handover",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(handoverKM.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the hospital handover km reading",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(free.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the time freed",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(freeRead.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the free km reading",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        //check that at least one call priority thing is checked
+        if(valid){
+            boolean nonechecked = true;
+            for(CheckBox c: checkBoxList){
+                if(c.isChecked()){
+                    nonechecked = false;
+                    break;
+                }
+            }
+
+            if(nonechecked){
+                valid = false;
+                Toast.makeText(getContext(), "Call Details: Please select the call priority/triage",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        //checks if the patient is dead
+        if(valid){
+            if(checkBox12.isChecked() && timeOfDeathedit.getText().toString().isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Call Details: Please enter the time of death",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        Looper.loop();
+
+        return valid;
     }
 
 

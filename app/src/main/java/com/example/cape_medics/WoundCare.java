@@ -3,10 +3,12 @@ package com.example.cape_medics;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -61,13 +63,18 @@ public class WoundCare extends Fragment {
         lisTreat.setAdapter(a2);
         lisBarrier.setAdapter(a3);
 
+        lisTreat.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+        lisWound.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+        lisBarrier.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+
+
         lisWound.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
 
                 woundStr = text.getText().toString();
-                text.toggle();
+
             }
         });
 
@@ -78,7 +85,7 @@ public class WoundCare extends Fragment {
 
                 barrierStr = text.getText().toString();
 
-                text.toggle();
+
             }
         });
 
@@ -88,24 +95,59 @@ public class WoundCare extends Fragment {
                 CheckedTextView text  =  view.findViewById(android.R.id.text1);
 
                 treatStr = text.getText().toString();
-                text.toggle();
+
             }
         });
         return view;
     }
 
+
+    //no need validation
     public JSONObject createJson(){
 
         woundCare = new JSONObject();
 
        try{
-           woundCare.put("Wound Type",woundStr);
-           woundCare.put("Barrier",barrierStr);
-           woundCare.put("Treated With",treatStr);
+           if(!chkNA.isChecked() && validate()) {
+               woundCare.put("Wound Type", woundStr);
+               woundCare.put("Barrier", barrierStr);
+               woundCare.put("Treated With", treatStr);
+           }else if(chkNA.isChecked()){
+               woundCare.put("Status","Not applicable");
+           }
        }catch (Exception e){
            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
        }
        return woundCare;
+    }
+
+    public boolean validate(){
+        boolean valid = true;
+        Looper.prepare();
+
+        if(woundStr.isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(),"Wound Care: Please enter all details", Toast.LENGTH_SHORT).show();
+        }
+
+        if(valid){
+            if(barrierStr.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Wound Care: Please enter all details", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(treatStr.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Wound Care: Please enter all details", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+
+        Looper.loop();
+        return valid;
     }
 
 }

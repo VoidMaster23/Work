@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,9 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 
 public class Resuscitation extends Fragment {
@@ -47,6 +50,7 @@ public class Resuscitation extends Fragment {
     private TextView edtDrugIssue;
     private CheckBox chkWitness;
 
+    List<CheckBox> provided, items, cpr;
     JSONObject resicitation;
 
     TextView textView;
@@ -54,7 +58,7 @@ public class Resuscitation extends Fragment {
     String time;
 
     Button start,stop,reset;
-
+    String providedBy, itemsUsed, cprDetails, cprStart, end, ROSC, drugTime;
     public Resuscitation() {
         // Required empty public constructor
     }
@@ -93,6 +97,52 @@ public class Resuscitation extends Fragment {
         textView30 = view.findViewById( R.id.textView30 );
         edtDrugIssue = view.findViewById( R.id.edtDrugIssue );
         chkWitness = (CheckBox)view.findViewById( R.id.chkWitness );
+
+        chkNA = view.findViewById(R.id.notApplicableCheckBox);
+        chkNA.setOnClickListener(this::makeNa);
+
+        provided = Arrays.asList(chkBystander,chkEms,chkFirst,chkOther);
+        for(CheckBox c: provided){
+            c.setOnClickListener(view1 -> {
+
+                for(CheckBox d: provided){
+                    if(!d.equals(c)){
+                        d.setChecked(false);
+                    }
+                }
+
+            });
+
+
+        }
+        items = Arrays.asList(chkPaddles, chkPads);
+        for(CheckBox c: items){
+            c.setOnClickListener(view1 -> {
+
+                for(CheckBox d: items){
+                    if(!d.equals(c)){
+                        d.setChecked(false);
+                    }
+                }
+
+            });
+
+
+        }
+        cpr = Arrays.asList(chkCPRo, chkIncAirway);
+        for(CheckBox c: items){
+            c.setOnClickListener(view1 -> {
+
+                for(CheckBox d: items){
+                    if(!d.equals(c)){
+                        d.setChecked(false);
+                    }
+                }
+
+            });
+
+
+        }
 
         TimePicker();
 
@@ -195,50 +245,122 @@ public class Resuscitation extends Fragment {
     public JSONObject createJson(){
 
         resicitation = new JSONObject();
-        String provided = null;
+        providedBy  = null;
 
         if(chkBystander.isChecked()){
-            provided = chkBystander.getText().toString();
+            providedBy = chkBystander.getText().toString();
         }else if(chkEms.isChecked()){
-            provided = chkEms.getText().toString();
+            providedBy = chkEms.getText().toString();
         }else if(chkFirst.isChecked()){
-            provided = chkFirst.getText().toString();
+            providedBy = chkFirst.getText().toString();
         }else if(chkOther.isChecked()){
-            provided = chkOther.getText().toString();
+            providedBy = chkOther.getText().toString();
         }
 
-        String items = null;
+         itemsUsed = null;
 
         if (chkPads.isChecked()){
-            items = chkPads.getText().toString();
+            itemsUsed = chkPads.getText().toString();
         }else if(chkPaddles.isChecked()){
-            items = chkPaddles.getText().toString();
+            itemsUsed = chkPaddles.getText().toString();
         }
 
 
-        String cpr = null;
+         cprDetails = null;
         if(chkCPRo.isChecked()){
-            cpr = chkCPRo.getText().toString();
+            cprDetails = chkCPRo.getText().toString();
         }else if(chkIncAirway.isChecked()){
-            cpr = chkIncAirway.getText().toString();
+            cprDetails = chkIncAirway.getText().toString();
 
         }
 
 
-        String start = edtStartCPR.getText().toString();
-        String end  = edtEndCPR.getText().toString();
+        cprStart = edtStartCPR.getText().toString();
+        end  = edtEndCPR.getText().toString();
+        ROSC = rosceditTextView.getText().toString();
+        drugTime = edtDrugIssue.getText().toString();
 
 
         try{
-            resicitation.put("Provided",provided);
-            resicitation.put("Items",items);
-            resicitation.put("CPR Details",cpr);
-            resicitation.put("Start",start);
-            resicitation.put("End",end);
+            if(!chkNA.isChecked() && validate()) {
+                resicitation.put("Provided", providedBy);
+                resicitation.put("Items", itemsUsed);
+                resicitation.put("CPR Details", cprDetails);
+                resicitation.put("CPR Start Time", cprStart);
+                resicitation.put("CPR Discontinued", end);
+                resicitation.put("ROSC", ROSC);
+                resicitation.put("Time 1st drug pushed", drugTime);
+            }else if(chkNA.isChecked()){
+                resicitation.put("Status","Not applicable");
+            }
+
+
         }catch (Exception e){
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         return resicitation;
     }
 
+
+    public void makeNa(View v){
+
+
+        medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current + 1);
+
+    }
+
+    public boolean validate(){
+        boolean valid = true;
+        Looper.prepare();
+        if(providedBy.isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(), "Resuscitation: Please enter all the details",Toast.LENGTH_SHORT).show();
+
+        }
+
+        if(valid){
+            if(itemsUsed.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Resuscitation: Please enter all the details",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(cprDetails.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Resuscitation: Please enter all the details",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(cprStart.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Resuscitation: Please enter all the details",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(end.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Resuscitation: Please enter all the details",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(ROSC.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Resuscitation: Please enter all the details",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(drugTime.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Resuscitation: Please enter all the details",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        Looper.loop();
+        return valid;
+    }
 }

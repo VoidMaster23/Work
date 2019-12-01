@@ -3,6 +3,7 @@ package com.example.cape_medics;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ import java.util.Calendar;
 public class Cannulation extends Fragment {
     private ExpandableRelativeLayout expLay1, expLay2;
     private Button button1, button2;
-    private Spinner spn, spn1,spn2;
+    private Spinner spnSize1, spnSize2, spn1,spn2;
 
 
     private CheckBox chkNA;
@@ -66,6 +67,7 @@ public class Cannulation extends Fragment {
     private Button btnAtt1, btnAtt2, btnAtt3, btnAtt4;
     String fluidType1;
     String fluidType2;
+    String size1, size2;
 
     JSONObject cannulation;
 
@@ -73,6 +75,8 @@ public class Cannulation extends Fragment {
 
     private String[] size = {"14","16","18","20","22","24"};
 
+
+    String time1, site1, rate1,volume1;
 
     public Cannulation() {
         // Required empty public constructor
@@ -95,9 +99,16 @@ public class Cannulation extends Fragment {
         btnAtt3 = view.findViewById(R.id.btnAtt3);
         btnAtt4 = view.findViewById(R.id.btnAtt4);
 
+        //make scroll to the next one on check
+        chkNA = view.findViewById(R.id.notApplicableCheckBox);
+        chkNA.setOnClickListener(view1 -> {
+            medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current + 1);
+        });
+
         Init();
 
-        spn = view.findViewById(R.id.sizeSpin1);
+        spnSize1 = view.findViewById(R.id.sizeSpin1);
+       // spnSize2 = view.findViewById(R.id.sizeS)
         spn1 = view.findViewById(R.id.canSpin1);
         spn2 = view.findViewById(R.id.canSpin2);
 
@@ -109,14 +120,14 @@ public class Cannulation extends Fragment {
         a1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         a2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spn.setAdapter(a);
+        spnSize1.setAdapter(a);
         spn1.setAdapter(a1);
         spn2.setAdapter(a2);
 
-        spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spnSize1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                fluidType2 = size[i];
+                size1 = size[i];
             }
 
             @Override
@@ -127,7 +138,7 @@ public class Cannulation extends Fragment {
         spn1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                fluidType2 = fluid[i];
+                fluidType1 = fluid[i];
             }
 
             @Override
@@ -216,7 +227,7 @@ public class Cannulation extends Fragment {
             btnAtt3.setBackgroundResource(R.drawable.whiteshape);
             btnAtt4.setBackgroundResource(R.drawable.whiteshape);
 
-            attemps = 1;
+            attempts1 = 1;
         });
 
         btnAtt2.setOnClickListener(v -> {
@@ -225,7 +236,7 @@ public class Cannulation extends Fragment {
             btnAtt3.setBackgroundResource(R.drawable.whiteshape);
             btnAtt4.setBackgroundResource(R.drawable.whiteshape);
 
-            attemps = 2;
+            attempts1 = 2;
         });
 
         btnAtt3.setOnClickListener(v -> {
@@ -234,7 +245,7 @@ public class Cannulation extends Fragment {
             btnAtt3.setBackgroundResource(R.drawable.orangeshape);
             btnAtt4.setBackgroundResource(R.drawable.whiteshape);
 
-            attemps = 3;
+            attempts1 = 3;
         });
 
         btnAtt4.setOnClickListener(v -> {
@@ -243,61 +254,106 @@ public class Cannulation extends Fragment {
             btnAtt3.setBackgroundResource(R.drawable.whiteshape);
             btnAtt4.setBackgroundResource(R.drawable.orangeshape);
 
-            attemps = 4;
+            attempts1 = 4;
         });
     }
 
-    int attemps = 1;
+    int attempts1 = 1;
 
     public JSONObject createJson(){
 
         cannulation = new JSONObject();
 
-        String time1 = edtTim1.getText().toString();
-        String site1 = edtSite1.getText().toString();
-        String rate1 = edtRate1.getText().toString();
-        String volume1 = edtVol1.getText().toString();
+
+
+        time1 = edtTim1.getText().toString();
+        size1 = edtSize1.getText().toString();
+         site1 = edtSite1.getText().toString();
+        rate1 = edtRate1.getText().toString();
+        volume1 = edtVol1.getText().toString();
 
 
 
         try{
-
-            cannulation.put("Time1",time1);
-            cannulation.put("Attempt1",attemps);
-            cannulation.put("Site1",site1);
-            cannulation.put("Rate1",rate1);
-            cannulation.put("Volume1",volume1);
-
+            if(!chkNA.isChecked()) {
+                cannulation.put("Time1", time1);
+                cannulation.put("Size1", size1);
+                cannulation.put("Attempt1", attempts1);
+                cannulation.put("Site1", site1);
+                cannulation.put("Rate1", rate1);
+                cannulation.put("Volume1", volume1);
+                cannulation.put("Fluid type1", fluidType1);
+            }else if(chkNA.isChecked()){
+                cannulation
+                        .put("Status","Not applicable");
+            }
 
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
-        String time2 = edtTim2.getText().toString();
-        String size2 = edtSize2.getText().toString();
-        String attempt2 = edtAtt2.getText().toString();
-        String site2 = edtSite2.getText().toString();
-        String rate2 = edtRate2.getText().toString();
-        String volume2 = edtVol2.getText().toString();
-
-
-
-        try{
-
-            cannulation.put("Time2",time2);
-            cannulation.put("Size2",size2);
-            cannulation.put("Attempt2",attempt2);
-            cannulation.put("Site2",site2);
-            cannulation.put("Rate2",rate2);
-            cannulation.put("Volume2",volume2);
-
-
-        }catch (Exception e){
-            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
-        }
+        //make these global like the ones above
+//        String time2 = edtTim2.getText().toString();
+//        String size2 = edtSize2.getText().toString();
+//        String attempt2 = edtAtt2.getText().toString();
+//        String site2 = edtSite2.getText().toString();
+//        String rate2 = edtRate2.getText().toString();
+//        String volume2 = edtVol2.getText().toString();
+//
+//
+//       this should be like what I did before
+//        try{
+//
+//            cannulation.put("Time2",time2);
+//            cannulation.put("Size2",size2);
+//            cannulation.put("Attempt2",attempt2);
+//            cannulation.put("Site2",site2);
+//            cannulation.put("Rate2",rate2);
+//            cannulation.put("Volume2",volume2);
+//
+//
+//        }catch (Exception e){
+//            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+//        }
 
         return cannulation;
     }
+
+
+    // Need to speak to vally about what is required for this
+  /*  public boolean validate(){
+        boolean valid = true;
+        Looper.prepare();
+
+        if(time1.isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(),"Cannulation: Please fill in all the details",Toast.LENGTH_SHORT).show();
+        }
+
+        if(valid){
+            if(site1.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Cannulation: please fill in all the details", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(rate1.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Cannulation: please fill in all the details", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(volume1.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Cannulation: please fill in all the details", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        Looper.loop();
+        return valid;
+    }*/
 
 
 }

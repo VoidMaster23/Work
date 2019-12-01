@@ -188,10 +188,9 @@ public class VitalSigns extends Fragment {
         button4.setOnClickListener(view14 -> expandableRelativeLayout4.toggle());
 
         imageView15 = view.findViewById( R.id.imageView12 );
-        chkNA = view.findViewById( R.id.chkNA );
-        expBut1 = view.findViewById( R.id.expBut1 );
+        chkNA = view.findViewById( R.id.notApplicableCheckBox );
+        chkNA.setOnClickListener(this::makeNa);
         scrl1 = view.findViewById( R.id.scrl1 );
-        expLay1 = view.findViewById( R.id.expLay1 );
         lblTime1 = view.findViewById( R.id.lblTime1 );
         edtTime1 = view.findViewById( R.id.edtTime1 );
         lblPulse1 = view.findViewById( R.id.lblPulse1 );
@@ -209,16 +208,12 @@ public class VitalSigns extends Fragment {
         lblFlow1 = view.findViewById( R.id.lblFlow1 );
         edtFlow1 = view.findViewById( R.id.edtFlow1 );
         lblPearl1 = view.findViewById( R.id.lblPearl1 );
-        //chkLeft1 = view.findViewById( R.id.chkLeft1 );
-        //chkRight1 = view.findViewById( R.id.chkRight1 );
         lblPupSize1 = view.findViewById( R.id.lblPupSize1 );
         lblPupLeft1 = view.findViewById( R.id.lblPupLeft1 );
         lblPupRight1 = view.findViewById( R.id.lblPupRight1 );
         spnLeftSize1 = view.findViewById( R.id.spnLeftSize1 );
         spnRightSize1 = view.findViewById( R.id.spnRightSize1 );
-        expBut2 = view.findViewById( R.id.expBut2 );
         scrl2 = view.findViewById( R.id.scrl2 );
-        expLay2 = view.findViewById( R.id.expLay2 );
         lblTime2 = view.findViewById( R.id.lblTime2 );
         edtTime2 = view.findViewById( R.id.edtTime2 );
         lblPulse2 = view.findViewById( R.id.lblPulse2 );
@@ -243,9 +238,7 @@ public class VitalSigns extends Fragment {
         lblPupRight2 = view.findViewById( R.id.lblPupRight2 );
         spnLeftSize2 = view.findViewById( R.id.spnLeftSize2 );
         spnRightSize2 = view.findViewById( R.id.spnRightSize2 );
-        expBut3 = view.findViewById( R.id.expBut3 );
         scrl3 = view.findViewById( R.id.scrl3 );
-        expLay3 = view.findViewById( R.id.expLay3 );
         lblTime3 = view.findViewById( R.id.lblTime3 );
         edtTime3 = view.findViewById( R.id.edtTime3 );
         lblPulse3 = view.findViewById( R.id.lblPulse3 );
@@ -270,8 +263,6 @@ public class VitalSigns extends Fragment {
         lblPupRight3 = view.findViewById( R.id.lblPupRight3 );
         spnLeftSize3 = view.findViewById( R.id.spnLeftSize3 );
         spnRightSize3 = view.findViewById( R.id.spnRightSize3 );
-        expBut4 = view.findViewById( R.id.expBut4 );
-        expLay4 = view.findViewById( R.id.expLay4 );
         lblTime4 = view.findViewById( R.id.lblTime4 );
         edtTime4 = view.findViewById( R.id.edtTime4 );
         lblPulse4 = view.findViewById( R.id.lblPulse4 );
@@ -463,8 +454,8 @@ public class VitalSigns extends Fragment {
             vitalSigns.put("hgt1",hgt1);
             vitalSigns.put("co21",co21);
             vitalSigns.put("peak1",peak1);
-            vitalSigns.put("leftEyes",leftEyes);
-            vitalSigns.put("rightEyes",rightEyes);
+            vitalSigns.put("leftEyes",leftEyes[0]);
+            vitalSigns.put("rightEyes",rightEyes[0]);
 
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
@@ -573,5 +564,11 @@ public class VitalSigns extends Fragment {
     }
 
 
+    public void makeNa(View v){
+
+
+        medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current + 1);
+
+    }
 
 }

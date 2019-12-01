@@ -62,6 +62,8 @@ public class medicalTabbedView extends AppCompatActivity {
     public static int current;
     Cache cache;
     static String code, authorisation;
+    //JSON for category type
+    public static JSONObject category;
 
 
     static HashMap<String,JSONObject> map;
@@ -77,6 +79,9 @@ public class medicalTabbedView extends AppCompatActivity {
        // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
       //  setSupportActionBar(toolbar);
 
+        //instantiate the categoty for later
+        category = categoryType.CategoryType;
+
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
 
@@ -88,12 +93,7 @@ public class medicalTabbedView extends AppCompatActivity {
 
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
 
-        tabLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                tabLayout.setupWithViewPager(viewPager);
-            }
-        });
+        tabLayout.post(() -> tabLayout.setupWithViewPager(viewPager));
 
         medicalFormCalls = new MedicalFormCalls();
         patientDetails = new PatientDetails();

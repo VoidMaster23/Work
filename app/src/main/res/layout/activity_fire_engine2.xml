@@ -134,13 +134,13 @@
                     android:id="@+id/fireSkid"
                     android:layout_width="150dp"
                     android:layout_height="42dp"
-                    android:text="Fire Skid"
+                    android:layout_below="@+id/dateView"
+                    android:text="Fire Engine"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@id/vehicleNumberSpinner"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_below="@+id/dateView" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <Spinner
                     android:id="@+id/vehicleNumberSpinner"

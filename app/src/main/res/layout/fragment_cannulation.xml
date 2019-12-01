@@ -84,7 +84,7 @@
                             android:isScrollContainer="true"
                             android:padding="15dp"
                             app:ael_duration="400"
-                            app:ael_expanded="false"
+                            app:ael_expanded="true"
                             app:ael_interpolator="accelerateDecelerate"
                             app:ael_orientation="vertical">
 
@@ -106,9 +106,9 @@
                                 android:ems="10"
                                 android:gravity="top"
                                 android:hint="Pick Time"
+                                android:textAlignment="center"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"
-                                android:textAlignment="center"/>
+                                android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/lblSize1"
@@ -141,49 +141,49 @@
                                 android:id="@+id/edtAtt1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="20dp"
-                                android:orientation="horizontal"
                                 android:layout_below="@+id/sizeSpin1"
+                                android:layout_alignStart="@+id/edtTim1"
                                 android:layout_alignLeft="@+id/edtTim1"
                                 android:layout_marginTop="10dp"
-                                android:layout_toRightOf="@id/lblTim1"
                                 android:layout_toEndOf="@id/lblTim1"
-                                android:layout_alignStart="@+id/edtTim1">
+                                android:layout_toRightOf="@id/lblTim1"
+                                android:orientation="horizontal">
 
                                 <Button
                                     android:id="@+id/btnAtt1"
                                     android:layout_width="40dp"
                                     android:layout_height="20dp"
-                                    android:text="1"
-                                    android:background="@drawable/orangeshape"
                                     android:layout_alignParentStart="true"
-                                    android:layout_alignParentLeft="true" />
+                                    android:layout_alignParentLeft="true"
+                                    android:background="@drawable/orangeshape"
+                                    android:text="1" />
 
                                 <Button
                                     android:id="@+id/btnAtt2"
                                     android:layout_width="40dp"
                                     android:layout_height="20dp"
-                                    android:text="2"
-                                    android:background="@drawable/whiteshape"
                                     android:layout_toEndOf="@id/btnAtt1"
-                                    android:layout_toRightOf="@id/btnAtt1"/>
+                                    android:layout_toRightOf="@id/btnAtt1"
+                                    android:background="@drawable/whiteshape"
+                                    android:text="2" />
 
                                 <Button
                                     android:id="@+id/btnAtt3"
                                     android:layout_width="40dp"
                                     android:layout_height="20dp"
-                                    android:text="3"
-                                    android:background="@drawable/whiteshape"
                                     android:layout_toEndOf="@id/btnAtt2"
-                                    android:layout_toRightOf="@id/btnAtt2"/>
+                                    android:layout_toRightOf="@id/btnAtt2"
+                                    android:background="@drawable/whiteshape"
+                                    android:text="3" />
 
                                 <Button
                                     android:id="@+id/btnAtt4"
                                     android:layout_width="40dp"
                                     android:layout_height="20dp"
-                                    android:text="4"
-                                    android:background="@drawable/whiteshape"
                                     android:layout_toEndOf="@id/btnAtt3"
-                                    android:layout_toRightOf="@id/btnAtt3"/>
+                                    android:layout_toRightOf="@id/btnAtt3"
+                                    android:background="@drawable/whiteshape"
+                                    android:text="4" />
 
                             </RelativeLayout>
 
@@ -357,9 +357,9 @@
                                 android:ems="10"
                                 android:gravity="top"
                                 android:hint="Pick Time"
+                                android:textAlignment="center"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"
-                                android:textAlignment="center"/>
+                                android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/lblSize2"

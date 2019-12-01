@@ -102,8 +102,6 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\test\.grad
 		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:24:7-38
 	android:usesCleartextTraffic
 		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:18:7-42
-	android:name
-		ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:16:7-43
 uses-library#org.apache.http.legacy
 ADDED from C:\Users\test\Downloads\Merged1\Cape_Medics\app\src\main\AndroidManifest.xml:25:5-83
 	android:required

@@ -150,7 +150,7 @@ public class DrugsAdministered extends Fragment {
         drugspn6 = view.findViewById(R.id.drugNameSpn6);
 
         imageView18 = (ImageView)view.findViewById( R.id.imageView18 );
-        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
+        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox );
         drugScrl1 = (ScrollView)view.findViewById( R.id.drugScrl1 );
         drugTime1 = (TextView)view.findViewById( R.id.drugTime1 );
         edtDrugTime1 = view.findViewById( R.id.edtDrugTime1 );
@@ -254,7 +254,6 @@ public class DrugsAdministered extends Fragment {
 
                 }
             });
-
             drugspn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -287,7 +286,8 @@ public class DrugsAdministered extends Fragment {
                 public void onNothingSelected(AdapterView<?> adapterView) {
 
                 }
-            }); drugspn5.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            });
+            drugspn5.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     drugStr5 = drugs[i];
@@ -316,45 +316,22 @@ public class DrugsAdministered extends Fragment {
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
-        but1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drug1.toggle();
-            }
-        });
+        but1.setOnClickListener(view1 -> drug1.toggle());
 
-        but2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drug2.toggle();
-            }
-        });
+        but2.setOnClickListener(view12 -> drug2.toggle());
 
-        but3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drug3.toggle();
-            }
-        });
+        but3.setOnClickListener(view13 -> drug3.toggle());
 
-        but4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drug4.toggle();
-            }
-        });
+        but4.setOnClickListener(view14 -> drug4.toggle());
 
-        but5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drug5.toggle();
-            }
-        });
+        but5.setOnClickListener(view15 -> drug5.toggle());
 
-        but6.setOnClickListener(new View.OnClickListener() {
+        but6.setOnClickListener(view16 -> drug6.toggle());
+
+        chkNA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                drug6.toggle();
+                medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current + 1);
             }
         });
 
@@ -430,98 +407,108 @@ public class DrugsAdministered extends Fragment {
 
         drugsAdministered = new JSONObject();
 
-        String time1 = edtDrugTime1.getText().toString();
-        String dosage1 = edtDrugDose1.getText().toString();
-        String route1 = edtDrugRoute1.getText().toString();
-        String givenBy1 = edtDrugGiven1.getText().toString();
+        if(!chkNA.isChecked()) {
 
-        try{
-            drugsAdministered.put("Time1",time1);
-            drugsAdministered.put("Drug Name1",drugStr1);
-            drugsAdministered.put("Dosage1",dosage1);
-            drugsAdministered.put("Route1",route1);
-            drugsAdministered.put("Given By1",givenBy1);
+            String time1 = edtDrugTime1.getText().toString();
+            String dosage1 = edtDrugDose1.getText().toString();
+            String route1 = edtDrugRoute1.getText().toString();
+            String givenBy1 = edtDrugGiven1.getText().toString();
 
-        }catch (Exception e){
-            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+            try {
+                drugsAdministered.put("Time1", time1);
+                drugsAdministered.put("Drug Name1", drugStr1);
+                drugsAdministered.put("Dosage1", dosage1);
+                drugsAdministered.put("Route1", route1);
+                drugsAdministered.put("Given By1", givenBy1);
+
+            } catch (Exception e) {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            String time2 = edtDrugTime2.getText().toString();
+            String dosage2 = edtDrugDose2.getText().toString();
+            String route2 = edtDrugRoute2.getText().toString();
+            String givenBy2 = edtDrugGiven2.getText().toString();
+
+            try {
+                drugsAdministered.put("Time2", time2);
+                drugsAdministered.put("Drug Name2", drugStr2);
+                drugsAdministered.put("Dosage2", dosage2);
+                drugsAdministered.put("Route2", route2);
+                drugsAdministered.put("Given By2", givenBy2);
+
+            } catch (Exception e) {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            String time3 = edtDrugTime3.getText().toString();
+            String dosage3 = edtDrugDose3.getText().toString();
+            String route3 = edtDrugRoute3.getText().toString();
+            String givenBy3 = edtDrugGiven3.getText().toString();
+
+            try {
+                drugsAdministered.put("Time3", time3);
+                drugsAdministered.put("Drug Name3", drugStr3);
+                drugsAdministered.put("Dosage3", dosage3);
+                drugsAdministered.put("Route3", route3);
+                drugsAdministered.put("Given By3", givenBy3);
+
+            } catch (Exception e) {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            String time4 = edtDrugTime4.getText().toString();
+            String dosage4 = edtDrugDose4.getText().toString();
+            String route4 = edtDrugRoute4.getText().toString();
+            String givenBy4 = edtDrugGiven4.getText().toString();
+
+            try {
+                drugsAdministered.put("Time4", time4);
+                drugsAdministered.put("Drug Name4", drugStr4);
+                drugsAdministered.put("Dosage4", dosage4);
+                drugsAdministered.put("Route4", route4);
+                drugsAdministered.put("Given By4", givenBy4);
+
+            } catch (Exception e) {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            String time5 = edtDrugTime5.getText().toString();
+            String dosage5 = edtDrugDose5.getText().toString();
+            String route5 = edtDrugRoute5.getText().toString();
+            String givenBy5 = edtDrugGiven5.getText().toString();
+
+            try {
+                drugsAdministered.put("Time5", time5);
+                drugsAdministered.put("Drug Name5", drugStr5);
+                drugsAdministered.put("Dosage5", dosage5);
+                drugsAdministered.put("Route5", route5);
+                drugsAdministered.put("Given By5", givenBy5);
+
+            } catch (Exception e) {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            String time6 = edtDrugTime6.getText().toString();
+            String dosage6 = edtDrugDose6.getText().toString();
+            String route6 = edtDrugRoute6.getText().toString();
+            String givenBy6 = edtDrugGiven6.getText().toString();
+
+            try {
+                drugsAdministered.put("Time6", time6);
+                drugsAdministered.put("Drug Name6", drugStr6);
+                drugsAdministered.put("Dosage6", dosage6);
+                drugsAdministered.put("Route6", route6);
+                drugsAdministered.put("Given By6", givenBy6);
+
+            } catch (Exception e) {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            try {
+                drugsAdministered.put("Status", "Not Applicable");
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
-
-        String time2 = edtDrugTime2.getText().toString();
-        String dosage2 = edtDrugDose2.getText().toString();
-        String route2 = edtDrugRoute2.getText().toString();
-        String givenBy2 = edtDrugGiven2.getText().toString();
-
-        try{
-            drugsAdministered.put("Time2",time2);
-            drugsAdministered.put("Drug Name2",drugStr2);
-            drugsAdministered.put("Dosage2",dosage2);
-            drugsAdministered.put("Route2",route2);
-            drugsAdministered.put("Given By2",givenBy2);
-
-        }catch (Exception e){
-            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
-        }
-        String time3 = edtDrugTime3.getText().toString();
-        String dosage3 = edtDrugDose3.getText().toString();
-        String route3 = edtDrugRoute3.getText().toString();
-        String givenBy3 = edtDrugGiven3.getText().toString();
-
-        try{
-            drugsAdministered.put("Time3",time3);
-            drugsAdministered.put("Drug Name3",drugStr3);
-            drugsAdministered.put("Dosage3",dosage3);
-            drugsAdministered.put("Route3",route3);
-            drugsAdministered.put("Given By3",givenBy3);
-
-        }catch (Exception e){
-            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
-        }
-        String time4 = edtDrugTime4.getText().toString();
-        String dosage4 = edtDrugDose4.getText().toString();
-        String route4 = edtDrugRoute4.getText().toString();
-        String givenBy4 = edtDrugGiven4.getText().toString();
-
-        try{
-            drugsAdministered.put("Time4",time4);
-            drugsAdministered.put("Drug Name4",drugStr4);
-            drugsAdministered.put("Dosage4",dosage4);
-            drugsAdministered.put("Route4",route4);
-            drugsAdministered.put("Given By4",givenBy4);
-
-        }catch (Exception e){
-            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
-        }
-        String time5 = edtDrugTime5.getText().toString();
-        String dosage5 = edtDrugDose5.getText().toString();
-        String route5 = edtDrugRoute5.getText().toString();
-        String givenBy5 = edtDrugGiven5.getText().toString();
-
-        try{
-            drugsAdministered.put("Time5",time5);
-            drugsAdministered.put("Drug Name5",drugStr5);
-            drugsAdministered.put("Dosage5",dosage5);
-            drugsAdministered.put("Route5",route5);
-            drugsAdministered.put("Given By5",givenBy5);
-
-        }catch (Exception e){
-            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
-        }
-        String time6 = edtDrugTime6.getText().toString();
-        String dosage6 = edtDrugDose6.getText().toString();
-        String route6 = edtDrugRoute6.getText().toString();
-        String givenBy6 = edtDrugGiven6.getText().toString();
-
-        try{
-            drugsAdministered.put("Time6",time6);
-            drugsAdministered.put("Drug Name6",drugStr6);
-            drugsAdministered.put("Dosage6",dosage6);
-            drugsAdministered.put("Route6",route6);
-            drugsAdministered.put("Given By6",givenBy6);
-
-        }catch (Exception e){
-            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
-        }
-
         return drugsAdministered;
     }
+
+    //add validation depending on the outcome of asking vally
 }

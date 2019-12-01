@@ -22,18 +22,19 @@ public class ComaScore extends Fragment {
     String[] eyeResp = {"No Eye Opening","Open To Pain","Open To Verbal Command","Open Spontaneously"};
     String[] verbResp = {"No Verbal Response","Incomprehensible Sounds","Inappropriate Words","Confused","Orientated"};
     String[] motorResp = {"No Motor Response","Extension To Pain","Flexion To Pain","Withdraws From Pain","Localises Pain","Obeys Commands"};
-
+    String[] bloodPress = {"0","1-49","50-75","76-89",">89"};
+    String[] rate = {"0","1-5","6-9",">29","10-29"};
     TextView gcs, trauma;
 
-    Spinner eye, verb, motor;
+    Spinner eye, verb, motor, blood, respiration;
 
-    ArrayAdapter eyeAdapter, verbAdapter, motorAdapter;
+    ArrayAdapter eyeAdapter, verbAdapter, motorAdapter, bloodAdapter, respAdapter;
 
     String gScore, tScore;
 
     JSONObject comaScore;
 
-    String eyeStr, verbStr, motorStr;
+    String eyeStr, verbStr, motorStr,bloodStr, respStr;
     CheckBox chkNA;
 
     public ComaScore() {
@@ -76,6 +77,23 @@ public class ComaScore extends Fragment {
         eye.setAdapter(eyeAdapter);
         verb.setAdapter(verbAdapter);
         motor.setAdapter(motorAdapter);
+
+        //for rts
+        blood = view.findViewById(R.id.spnsbp);
+        respiration = view.findViewById(R.id.spnrr);
+
+        bloodAdapter = new ArrayAdapter(getContext(),R.layout.custom_spinner,bloodPress);
+        respAdapter = new ArrayAdapter(getContext(),R.layout.custom_spinner,rate);
+
+        bloodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        respAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        blood.setAdapter(bloodAdapter);
+        respiration.setAdapter(respAdapter);
+
+
+
+
 
         gScore = "Glasgow Coma Score: "+gcsScore()+"/15";
         gcs.setText(gScore);
@@ -137,6 +155,34 @@ public class ComaScore extends Fragment {
             }
         });
 
+        blood.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                tScore = "Revised Trauma Score: "+traumaScore()+"/12";
+                trauma.setText(tScore);
+                bloodStr = bloodPress[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        respiration.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                tScore = "Revised Trauma Score: "+traumaScore()+"/12";
+                trauma.setText(tScore);
+                respStr = rate[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
 
 
@@ -153,29 +199,43 @@ public class ComaScore extends Fragment {
     }
 
     public int traumaScore(){
+        int trauma = 0;
+
+        //bsed on the coma score
         if(gcsScore() >= 13){
-            return 4;
+            trauma += 4;
         }else if(gcsScore() >= 9){
-            return 3;
+            trauma += 3;
         } else if( gcsScore() >= 6 ){
-            return 2;
+            trauma += 2;
         }else if(gcsScore() >= 4){
-            return 1;
+            trauma += 1;
         }else{
-            return 0;
+            trauma += 0;
         }
 
+        int bloodVal = blood.getSelectedItemPosition();
+        int rateVal = respiration.getSelectedItemPosition();
+
+        trauma  = trauma + bloodVal + rateVal;
+
+
+        return trauma;
     }
 
     public JSONObject  createJson(){
         comaScore = new JSONObject();
         try{
-            comaScore.put("Eye Response",eyeStr);
-            comaScore.put("Verbal Response",verbStr);
-            comaScore.put("Motor Response",motorStr);
+            if(!chkNA.isChecked()) {
+                comaScore.put("Eye Response", eyeStr);
+                comaScore.put("Verbal Response", verbStr);
+                comaScore.put("Motor Response", motorStr);
 
-            comaScore.put("GCS",gcs.getText().toString());
-            comaScore.put("RTS",trauma.getText().toString());
+                comaScore.put("GCS", gcs.getText().toString());
+                comaScore.put("RTS", trauma.getText().toString());
+            }else{
+                comaScore.put("Status","Not Applicable");
+            }
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }

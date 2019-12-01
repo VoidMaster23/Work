@@ -316,7 +316,7 @@ public class Home_Screen_Crew extends AppCompatActivity {
     }
 
 
-    //to do
+    //works and is done
     public void vehicle(View v){
 
         Intent i = new Intent(getApplicationContext(),VehicleCheckList.class);

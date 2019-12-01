@@ -148,12 +148,17 @@ public class InjuryMatrix extends Fragment {
         return view;
     }
 
+    //no validation neccesary
     public JSONObject createJson(){
         injuryMatrix = new JSONObject();
 
         try{
-            injuryMatrix.put("Injury",injury+", "+part);
-            injuryMatrix.put("Cause",cause);
+            if(!chkNA.isChecked()) {
+                injuryMatrix.put("Injury", part + ", " + injury);
+                injuryMatrix.put("Cause", cause);
+            }else{
+                injuryMatrix.put("Status","Not Applicable");
+            }
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }

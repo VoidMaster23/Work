@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -66,6 +67,10 @@ public class PatientDetails extends Fragment {
     Cache cache;
     String saved;
 
+    private CheckBox chkNa;
+
+    String fullName, surName, birth, idNo, emailAdd, phoneNo, altPhone, address, ageGroup, race, sex, ref;
+
 
     public PatientDetails() {
         // Required empty public constructor
@@ -109,7 +114,49 @@ public class PatientDetails extends Fragment {
         chkFemale = (CheckBox) view.findViewById(R.id.chkFemale);
         lblRef = (TextView) view.findViewById(R.id.lblRef);
         edtRef = (EditText) view.findViewById(R.id.edtRef);
+        chkNa = view.findViewById(R.id.notApplicableCheckBox);
+        chkNa.setOnClickListener(this::makeNa);
         checkBoxList = Arrays.asList(chkAdult, chkChild, chkBaby, chkAsian, chkBlack, chkWhite, chkMale, chkFemale, chkColored);
+
+        for(CheckBox c : checkBoxList){
+            c.setOnClickListener(view1 -> {
+                if(c.equals(chkAdult) && c.isChecked()){
+                    chkChild.setChecked(false);
+                    chkBaby.setChecked(false);
+                }else if(c.equals(chkChild) && c.isChecked()){
+                    chkAdult.setChecked(false);
+                    chkBaby.setChecked(false);
+                }else if(c.equals(chkBaby) && c.isChecked()){
+                    chkChild.setChecked(false);
+                    chkAdult.setChecked(false);
+                }
+
+                if(c.equals(chkBlack) && c.isChecked()){
+                    chkColored.setChecked(false);
+                    chkWhite.setChecked(false);
+                    chkAsian.setChecked(false);
+                }else if(c.equals(chkColored) && c.isChecked()){
+                    chkBlack.setChecked(false);
+                    chkWhite.setChecked(false);
+                    chkAsian.setChecked(false);
+                }else if(c.equals(chkAsian) && c.isChecked()){
+                    chkBlack.setChecked(false);
+                    chkWhite.setChecked(false);
+                    chkColored.setChecked(false);
+                }else if(c.equals(chkWhite) && c.isChecked()){
+                    chkBlack.setChecked(false);
+                    chkAsian.setChecked(false);
+                    chkColored.setChecked(false);
+                }
+
+                if(c.equals(chkMale) && c.isChecked()){
+                    chkFemale.setChecked(false);
+                }else if(c.equals(chkFemale) && c.isChecked()){
+                    chkMale.setChecked(false);
+                }
+
+            });
+        }
 
         DatePicker();
 
@@ -188,18 +235,18 @@ public class PatientDetails extends Fragment {
     public JSONObject createJson(){
 
         //details
-        String name = edtName.getText().toString();
-        String surname =edtSurname.getText().toString();
-        String DOB = edtDOB.getText().toString();
-        String ID = edtID.getText().toString();
-        String email = edtEmail.getText().toString();
-        String contact = edtPhone.getText().toString();
-        String alt = edtAlt.getText().toString();
-        String address = edtAddress1.getText().toString() +"\n"+edtAddress2.getText().toString() +"\n"+edtAddress3.getText().toString();
+         fullName = edtName.getText().toString();
+        surName =edtSurname.getText().toString();
+        birth = edtDOB.getText().toString();
+        idNo = edtID.getText().toString();
+        emailAdd = edtEmail.getText().toString();
+        phoneNo = edtPhone.getText().toString();
+        altPhone = edtAlt.getText().toString();
+        address = edtAddress1.getText().toString() +"\n"+edtAddress2.getText().toString() +"\n"+edtAddress3.getText().toString();
 
 
         //Age group
-        String ageGroup  = null;
+         ageGroup  = null;
 
         if(chkAdult.isChecked()){
             ageGroup = chkAdult.getText().toString();
@@ -210,7 +257,7 @@ public class PatientDetails extends Fragment {
         }
 
         //race
-        String race = null;
+         race = null;
         if(chkBlack.isChecked()){
             race = chkBlack.getText().toString();
         }else if(chkColored.isChecked()){
@@ -222,7 +269,7 @@ public class PatientDetails extends Fragment {
         }
 
         //sex
-        String sex = null;
+         sex = null;
         if(chkMale.isChecked()){
             sex = chkMale.getText().toString();
         }else if(chkFemale.isChecked()){
@@ -230,24 +277,29 @@ public class PatientDetails extends Fragment {
         }
 
         //ref
-        String ref = edtRef.getText().toString();
+         ref = edtRef.getText().toString();
 
 
         //json
         patientDetails = new JSONObject();
         try{
-            patientDetails.put("Full_name",name);
-            patientDetails.put("Surname",surname);
-            patientDetails.put("DOB",DOB);
-            patientDetails.put("ID",ID);
-            patientDetails.put("Email",email);
-            patientDetails.put("Contact",contact);
-            patientDetails.put("Alt",alt);
-            patientDetails.put("Address",address);
-            patientDetails.put("Age_Group",ageGroup);
-            patientDetails.put("Race",race);
-            patientDetails.put("Sex",sex);
-            patientDetails.put("Reference_Number",ref);
+
+            if(!chkNa.isChecked()&&validate() ) {
+                patientDetails.put("Full_name", fullName);
+                patientDetails.put("Surname", surName);
+                patientDetails.put("DOB", birth);
+                patientDetails.put("ID", idNo);
+                patientDetails.put("Email", emailAdd);
+                patientDetails.put("Contact", phoneNo);
+                patientDetails.put("Alt", altPhone);
+                patientDetails.put("Address", address);
+                patientDetails.put("Age_Group", ageGroup);
+                patientDetails.put("Race", race);
+                patientDetails.put("Sex", sex);
+                patientDetails.put("Reference_Number", ref);
+            }else if(chkNa.isChecked()){
+                patientDetails.put("Status","Not applicable");
+            }
 
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
@@ -258,6 +310,106 @@ public class PatientDetails extends Fragment {
 
     }
 
+    public void makeNa(View v){
+
+
+        medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current + 1);
+
+    }
+
+
+    //validation
+    public boolean validate(){
+        boolean valid = true;
+        Looper.prepare();
+
+        if(fullName.isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(), "Patient Details: Please enter the name of the patient",Toast.LENGTH_SHORT).show();
+
+        }
+
+        if(valid){
+            if(surName.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Patient Details: Please enter surname of the patient",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(birth.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Patient Details: Please enter the birth date of the patient",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(surName.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Patient Details: Please enter surname of the patient",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(emailAdd.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Patient Details: Please enter email address of patient",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(phoneNo.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Patient Details: Please enter phone number of the patient",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(altPhone.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Patient Details: Please enter an alternate contact number for the patient",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(address.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Patient Details: Please enter the patient's physical address",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(ageGroup.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Patient Details: Please indicate which age group the patient is in",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(race.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Patient Details: Please enter the patient's race",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(sex.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Patient Details: Please enter the patient's sex",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(ref.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Patient Details: Please enter the case number",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+        Looper.loop();
+        return valid;
+    }
 }
 
 

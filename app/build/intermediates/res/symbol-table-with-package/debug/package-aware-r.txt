@@ -1630,7 +1630,6 @@ id fuel
 id fuelSpinner
 id gccChk
 id gccStaffChk
-id gcs
 id ghost_view
 id gone
 id gopChk
@@ -1953,7 +1952,6 @@ id right_side
 id roscTextView
 id rosceditTextView
 id rr
-id rtsValue
 id rvbtn
 id s_o_a_p
 id save
@@ -2041,9 +2039,7 @@ id spnRightSize2
 id spnRightSize3
 id spnRightSize4
 id spnVerbalResponse
-id spngcs
 id spnrr
-id spnrtsValue
 id spnsbp
 id spontaneous
 id spontaneousEdit

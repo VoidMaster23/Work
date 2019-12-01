@@ -4,6 +4,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -49,7 +51,8 @@ public class PrimarySurvey extends Fragment {
     private TextView textView18;
     private CheckBox chkTwoPlus;
     private CheckBox chkTwoMinus;
-    List<CheckBox> checkBoxList;
+    List<CheckBox> checkBoxList, airwayList, respirationList, pulseList, descriptiveList, capRefill;
+    String time, airway, respiration, pulse, rate,Refil;
     JSONObject load;
     Cache cache;
     String saved;
@@ -71,7 +74,8 @@ public class PrimarySurvey extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_primary_survey, container, false);
-        chkNA = (CheckBox)view.findViewById( R.id.chkNA );
+        chkNA = (CheckBox)view.findViewById( R.id.notApplicableCheckBox );
+        chkNA.setOnClickListener(this::makeNa);
         lblTime = (TextView)view.findViewById( R.id.lblTime );
         edtTime = view.findViewById( R.id.edtTime );
         textView14 = (TextView)view.findViewById( R.id.textView14 );
@@ -97,7 +101,83 @@ public class PrimarySurvey extends Fragment {
         textView18 = (TextView)view.findViewById( R.id.textView18 );
         chkTwoPlus = (CheckBox)view.findViewById( R.id.chkTwoPlus );
         chkTwoMinus = (CheckBox)view.findViewById( R.id.chkTwoMinus );
-        checkBoxList = Arrays.asList(chkNA,chkAbnormal,chkAbsent,chkClear,chkOcc,chkNoisy,chkSpine,chkRadial,chkBrachial,chkCarotid,chkFemoral,chkHigh,chkLow,chkMed,chSix,chkZero,chkNormal,chkTwoMinus,chkTwoPlus);
+        checkBoxList = Arrays.asList(chkAbnormal,chkAbsent,chkClear,chkOcc,chkNoisy,chkSpine,chkRadial,chkBrachial,chkCarotid,chkFemoral,chkHigh,chkLow,chkMed,chSix,chkZero,chkNormal,chkTwoMinus,chkTwoPlus);
+        airwayList = Arrays.asList(chkClear,chkOcc,chkNoisy,chkSpine);
+
+
+        //prevent multiple checkboxes from being checked
+        for(CheckBox c: airwayList){
+            c.setOnClickListener(view1 -> {
+
+                for(CheckBox d: airwayList){
+                    if(!d.equals(c)){
+                        d.setChecked(false);
+                    }
+                }
+
+            });
+
+
+        }
+
+        respirationList = Arrays.asList(chkHigh,chkLow,chkMed,chSix,chkZero);
+        for(CheckBox c: respirationList){
+            c.setOnClickListener(view1 -> {
+
+                for(CheckBox d: respirationList){
+                    if(!d.equals(c)){
+                        d.setChecked(false);
+                    }
+                }
+
+            });
+
+
+        }
+
+        pulseList = Arrays.asList(chkRadial,chkBrachial,chkCarotid,chkFemoral,chkAbsent);
+        for(CheckBox c: pulseList){
+            c.setOnClickListener(view1 -> {
+
+                for(CheckBox d: pulseList){
+                    if(!d.equals(c)){
+                        d.setChecked(false);
+                    }
+                }
+
+            });
+
+
+        }
+        descriptiveList = Arrays.asList(chkAbnormal,chkAbsent);
+        for(CheckBox c: descriptiveList){
+            c.setOnClickListener(view1 -> {
+
+                for(CheckBox d: descriptiveList){
+                    if(!d.equals(c)){
+                        d.setChecked(false);
+                    }
+                }
+
+            });
+
+
+        }
+        capRefill = Arrays.asList(chkTwoMinus,chkTwoPlus);
+        for(CheckBox c: capRefill){
+            c.setOnClickListener(view1 -> {
+
+                for(CheckBox d: capRefill){
+                    if(!d.equals(c)){
+                        d.setChecked(false);
+                    }
+                }
+
+            });
+
+
+        }
+        // end of checkbox stuff
 
         TimePicker();
 
@@ -146,10 +226,10 @@ public class PrimarySurvey extends Fragment {
     public JSONObject createJson(){
 
         //Time
-        String time = edtTime.getText().toString();
+         time = edtTime.getText().toString();
 
         //
-        String airway = null;
+         airway = null;
 
         if(chkClear.isChecked()){
             airway = chkClear.getText().toString();
@@ -162,7 +242,7 @@ public class PrimarySurvey extends Fragment {
         }
 
         //Respiration Rate
-        String respiration = null;
+        respiration = null;
         if(chkHigh.isChecked()){
             respiration = chkHigh.getText().toString();
         }else if(chkMed.isChecked()){
@@ -176,7 +256,7 @@ public class PrimarySurvey extends Fragment {
         }
 
         //Pulse
-        String pulse = null;
+         pulse = null;
 
         if(chkRadial.isChecked()){
             pulse = chkRadial.getText().toString();
@@ -191,7 +271,7 @@ public class PrimarySurvey extends Fragment {
         }
 
         //Rate
-        String rate = null;
+         rate = null;
         if(chkNormal.isChecked()){
             rate = chkNormal.getText().toString();
         }else if(chkAbnormal.isChecked()){
@@ -199,7 +279,7 @@ public class PrimarySurvey extends Fragment {
         }
 
         //Refil
-        String Refil = null;
+         Refil = null;
 
         if(chkTwoPlus.isChecked()){
             Refil = chkTwoPlus.getText().toString();
@@ -210,12 +290,16 @@ public class PrimarySurvey extends Fragment {
         //Create JSOn
         primarySurvery = new JSONObject();
         try{
-            primarySurvery.put("Time", time);
-            primarySurvery.put("Airway", airway);
-            primarySurvery.put("Respiration", respiration);
-            primarySurvery.put("Pulse", pulse);
-            primarySurvery.put("Rate", rate);
-            primarySurvery.put("Refill", Refil);
+            if(!chkNA.isChecked() && validate()) {
+                primarySurvery.put("Time", time);
+                primarySurvery.put("Airway", airway);
+                primarySurvery.put("Respiration", respiration);
+                primarySurvery.put("Pulse", pulse);
+                primarySurvery.put("Rate", rate);
+                primarySurvery.put("Refill", Refil);
+            }else if(chkNA.isChecked()){
+                primarySurvery.put("Status","Not applicable");
+            }
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
@@ -223,6 +307,68 @@ public class PrimarySurvey extends Fragment {
 
         return primarySurvery;
     }
+
+    public void makeNa(View v){
+
+
+        medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current + 1);
+
+    }
+
+    public boolean validate(){
+        boolean valid = true;
+        Looper.prepare();
+
+        if(time.isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(), "Primary Survey: Please enter the time of survey",Toast.LENGTH_SHORT).show();
+
+        }
+
+        if(valid){
+            if(airway.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Primary Survey: Please ensure all information has been entered",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(respiration.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Primary Survey: Please ensure all information has been entered",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(pulse.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Primary Survey: Please ensure all information has been entered",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(rate.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Primary Survey: Please ensure all information has been entered",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(Refil.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Primary Survey: Please ensure all information has been entered",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+
+
+
+
+        Looper.loop();
+        return valid;
+    }
+
 
 
 }
