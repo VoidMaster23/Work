@@ -45,7 +45,7 @@ public class Resuscitation extends Fragment {
     private TextView edtEndCPR,rosceditTextView;
     private TextView textView30;
     private TextView edtDrugIssue;
-    private CheckBox chkWitness;
+    //private CheckBox chkWitness;
 
     JSONObject resicitation;
 
@@ -92,7 +92,7 @@ public class Resuscitation extends Fragment {
         rosceditTextView = view.findViewById( R.id.rosceditTextView );
         textView30 = view.findViewById( R.id.textView30 );
         edtDrugIssue = view.findViewById( R.id.edtDrugIssue );
-        chkWitness = (CheckBox)view.findViewById( R.id.chkWitness );
+        //chkWitness = (CheckBox)view.findViewById( R.id.chkWitness );
 
         TimePicker();
 

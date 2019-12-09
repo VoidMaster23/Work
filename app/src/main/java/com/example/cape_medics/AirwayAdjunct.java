@@ -24,7 +24,7 @@ public class AirwayAdjunct extends Fragment {
 
 ArrayList<String> myList1;
 ListView list;
-CheckBox checkBox;
+//CheckBox checkBox;
 Spinner attempts;
 Spinner check;
 JSONObject airwayAdjunct;
@@ -55,7 +55,7 @@ String[] pos = {"Auscultation","ETCO2"};
         myList1.add("S-CRICH");
 
         list = view.findViewById(R.id.airway);
-        checkBox = view.findViewById(R.id.chkAchieved);
+        //checkBox = view.findViewById(R.id.chkAchieved);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),R.layout.custom_checked_list,myList1);
 
         list.setAdapter(adapter);
@@ -119,7 +119,7 @@ String[] pos = {"Auscultation","ETCO2"};
         try{
 
             airwayAdjunct.put("Category",category);
-            airwayAdjunct.put("Achieved",checkBox.getText().toString());
+            //airwayAdjunct.put("Achieved",checkBox.getText().toString());
             airwayAdjunct.put("Attempts",numAttempt);
             airwayAdjunct.put("Position Check", posChk);
 

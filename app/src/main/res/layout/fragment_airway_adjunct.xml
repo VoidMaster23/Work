@@ -63,22 +63,66 @@
 
                 </ListView>
 
-                <CheckBox
-                    android:id="@+id/chkAchieved"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/chkAchievedContainer"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="43dp"
-                    android:text="Achieved"
-                    android:textColor="@color/white"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@id/airway"/>
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/airway">
+
+                    <TextView
+                        android:id="@+id/chkAchieved"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="28dp"
+                        android:text="Achieved"
+                        android:textColor="@color/white"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"/>
+
+                    <RelativeLayout
+                        android:id="@+id/edtAtt7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_alignTop="@id/chkAchieved"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="-12dp"
+                        android:layout_toRightOf="@id/chkAchieved"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/Achieved_yes"
+                            android:layout_width="40dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:background="@drawable/whiteshape"
+                            android:text="Y" />
+
+                        <Button
+                            android:id="@+id/Achieved_no"
+                            android:layout_width="40dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/orangeshape"
+                            android:layout_toEndOf="@id/Achieved_yes"
+                            android:text="N"
+                            android:layout_toRightOf="@id/Achieved_yes" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
 
                 <RelativeLayout
                     android:id="@+id/attemptContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_below="@+id/chkAchieved">
+                    android:layout_below="@+id/chkAchievedContainer">
 
                     <TextView
                         android:id="@+id/textView20"

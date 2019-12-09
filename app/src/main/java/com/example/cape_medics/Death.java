@@ -33,7 +33,7 @@ public class Death extends Fragment {
     JSONObject death;
     TextView time, date, time2;
     EditText location, place, name, post;
-    CheckBox carotidPulseYes, carotidPulseNo, breathingYes, breathingNo, eyeYes, eyeNo, ecgYes, ecgNo, pupilsYes, pupilsNo;
+    //CheckBox carotidPulseYes, carotidPulseNo, breathingYes, breathingNo, eyeYes, eyeNo, ecgYes, ecgNo, pupilsYes, pupilsNo;
     String carotidPulse, breathing, dollEyeMovements, ecgStraightLine, bilateralFixedDilatedPupils;
     private static final String IMAGE_DIRECTORY = "/Pictures";
 
@@ -58,16 +58,16 @@ public class Death extends Fragment {
         post = view.findViewById(R.id.postEdit);
         time2 = view.findViewById(R.id.timeEdit2);
 
-        carotidPulseYes = view.findViewById(R.id.leftChk);
-        carotidPulseNo = view.findViewById(R.id.rightChk);
-        breathingYes = view.findViewById(R.id.breathingChkYes);
-        breathingNo = view.findViewById(R.id.breathingChkNo);
-        eyeYes = view.findViewById(R.id.dollChkYes);
-        eyeNo = view.findViewById(R.id.dollChkNo);
-        ecgYes = view.findViewById(R.id.ecgChkYes);
-        ecgNo = view.findViewById(R.id.ecgChkNo);
-        pupilsYes = view.findViewById(R.id.dilatedChkYes);
-        pupilsNo = view.findViewById(R.id.dilatedChkNo);
+        //carotidPulseYes = view.findViewById(R.id.leftChk);
+        //carotidPulseNo = view.findViewById(R.id.rightChk);
+        //breathingYes = view.findViewById(R.id.breathingChkYes);
+        //breathingNo = view.findViewById(R.id.breathingChkNo);
+        //eyeYes = view.findViewById(R.id.dollChkYes);
+        //eyeNo = view.findViewById(R.id.dollChkNo);
+        //ecgYes = view.findViewById(R.id.ecgChkYes);
+        //ecgNo = view.findViewById(R.id.ecgChkNo);
+        //pupilsYes = view.findViewById(R.id.dilatedChkYes);
+        //pupilsNo = view.findViewById(R.id.dilatedChkNo);
 
         TimePicker();
         DatePicker();
@@ -199,7 +199,7 @@ public class Death extends Fragment {
 
     public JSONObject createJson (){
 
-        //carotid pulse
+        /*//carotid pulse
         if(carotidPulseYes.isChecked()) carotidPulse = carotidPulseYes.getText().toString();
         if(carotidPulseNo.isChecked()) carotidPulse = carotidPulseNo.getText().toString();
 
@@ -217,7 +217,7 @@ public class Death extends Fragment {
 
         //bilateral fixed dilated pupils
         if(pupilsNo.isChecked()) bilateralFixedDilatedPupils = pupilsNo.getText().toString();
-        if(pupilsYes.isChecked()) bilateralFixedDilatedPupils = pupilsYes.getText().toString();
+        if(pupilsYes.isChecked()) bilateralFixedDilatedPupils = pupilsYes.getText().toString();*/
 
         try{
             death.put("Commissioner of Oaths",loadImage());

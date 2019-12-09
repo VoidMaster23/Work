@@ -260,7 +260,39 @@
             android:layout_below="@+id/findings"
             android:layout_alignParentLeft="true" />
 
-        <CheckBox
+        <RelativeLayout
+            android:id="@+id/pulseContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@id/findings"
+            android:layout_alignTop="@id/pulse"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/ecgLbl"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp" >
+
+            <Button
+                android:id="@+id/pulse_yes"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/whiteshape"
+                android:text="Y" />
+
+            <Button
+                android:id="@+id/pulse_no"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:background="@drawable/orangeshape"
+                android:layout_toEndOf="@id/pulse_yes"
+                android:text="N"
+                android:layout_toRightOf="@id/pulse_yes" />
+
+        </RelativeLayout>
+
+        <!--CheckBox
             android:id="@+id/leftChk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -278,7 +310,7 @@
             android:text="No"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/findings"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true" /-->
 
 
         <TextView
@@ -292,9 +324,40 @@
             android:textStyle="bold"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_below="@id/pulse" />
+            android:layout_below="@id/pulseContainer" />
 
-        <CheckBox
+        <RelativeLayout
+            android:id="@+id/breathingontainer"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignTop="@id/breathing"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/ecgLbl"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp" >
+
+            <Button
+                android:id="@+id/breathing_yes"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/whiteshape"
+                android:text="Y" />
+
+            <Button
+                android:id="@+id/breathing_no"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:background="@drawable/orangeshape"
+                android:layout_toEndOf="@id/breathing_yes"
+                android:text="N"
+                android:layout_toRightOf="@id/breathing_yes" />
+
+        </RelativeLayout>
+
+        <!--CheckBox
             android:id="@+id/breathingChkYes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -310,7 +373,7 @@
             android:text="No"
             android:layout_below="@+id/rightChk"
             android:layout_alignStart="@id/rightChk"
-            android:layout_alignLeft="@id/rightChk" />
+            android:layout_alignLeft="@id/rightChk" /-->
 
 
         <TextView
@@ -324,9 +387,40 @@
             android:textStyle="bold"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/breathing" />
+            android:layout_below="@+id/breathingontainer" />
 
-        <CheckBox
+        <RelativeLayout
+            android:id="@+id/dollContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignTop="@id/doll"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/ecgLbl"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp" >
+
+            <Button
+                android:id="@+id/doll_yes"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/whiteshape"
+                android:text="Y" />
+
+            <Button
+                android:id="@+id/doll_no"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:background="@drawable/orangeshape"
+                android:layout_toEndOf="@id/doll_yes"
+                android:text="N"
+                android:layout_toRightOf="@id/doll_yes" />
+
+        </RelativeLayout>
+
+        <!--CheckBox
             android:id="@+id/dollChkYes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -342,7 +436,7 @@
             android:text="No"
             android:layout_alignStart="@id/rightChk"
             android:layout_alignLeft="@id/rightChk"
-            android:layout_below="@id/breathingChkNo" />
+            android:layout_below="@id/breathingChkNo" /-->
 
         <TextView
             android:id="@+id/ecgLbl"
@@ -355,9 +449,40 @@
             android:textStyle="bold"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/doll" />
+            android:layout_below="@+id/dollContainer" />
 
-        <CheckBox
+        <RelativeLayout
+            android:id="@+id/ecgLblContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignTop="@id/ecgLbl"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/ecgLbl"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp" >
+
+            <Button
+                android:id="@+id/ecgLbl_yes"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/whiteshape"
+                android:text="Y" />
+
+            <Button
+                android:id="@+id/ecgLbl_no"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:background="@drawable/orangeshape"
+                android:layout_toEndOf="@id/ecgLbl_yes"
+                android:text="N"
+                android:layout_toRightOf="@id/ecgLbl_yes" />
+
+        </RelativeLayout>
+
+        <!--CheckBox
             android:id="@+id/ecgChkYes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -373,7 +498,7 @@
             android:text="No"
             android:layout_alignStart="@id/rightChk"
             android:layout_alignLeft="@id/rightChk"
-            android:layout_below="@id/dollChkNo"  />
+            android:layout_below="@id/dollChkNo"  /-->
 
         <TextView
             android:id="@+id/dilated"
@@ -384,11 +509,42 @@
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_below="@+id/ecgLbl"
+            android:layout_below="@+id/ecgLblContainer"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true" />
 
-        <CheckBox
+        <RelativeLayout
+            android:id="@+id/dilatedContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignTop="@id/dilated"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/ecgLbl"
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp" >
+
+            <Button
+                android:id="@+id/dilated_yes"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/whiteshape"
+                android:text="Y" />
+
+            <Button
+                android:id="@+id/dilated_no"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:background="@drawable/orangeshape"
+                android:layout_toEndOf="@id/dilated_yes"
+                android:text="N"
+                android:layout_toRightOf="@id/dilated_yes" />
+
+        </RelativeLayout>
+
+        <!--CheckBox
             android:id="@+id/dilatedChkYes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -404,7 +560,7 @@
             android:text="No"
             android:layout_alignStart="@id/rightChk"
             android:layout_alignLeft="@id/rightChk"
-            android:layout_below="@id/ecgChkNo" />
+            android:layout_below="@id/ecgChkNo" /-->
 
         <TextView
             android:id="@+id/statement1"

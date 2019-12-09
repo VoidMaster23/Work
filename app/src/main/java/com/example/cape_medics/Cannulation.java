@@ -167,7 +167,7 @@ public class Cannulation extends Fragment {
         lblTim2 = view.findViewById( R.id.lblTim2 );
         edtTim2 = view.findViewById( R.id.edtTim2 );
         lblSize2 = view.findViewById( R.id.lblSize2 );
-        edtSize2 = view.findViewById( R.id.edtSize2 );
+        //edtSize2 = view.findViewById( R.id.edtSize2 );
         lblAtt2 = view.findViewById( R.id.lblAtt2 );
         edtAtt2 = view.findViewById( R.id.edtAtt2 );
         lblSite2 = view.findViewById( R.id.lblSite2 );

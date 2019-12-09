@@ -55,8 +55,8 @@ public class VitalSigns extends Fragment {
     private TextView lblFlow1;
     private EditText edtFlow1;
     private TextView lblPearl1;
-    private CheckBox chkLeft1;
-    private CheckBox chkRight1;
+    //private CheckBox chkLeft1;
+    //private CheckBox chkRight1;
     private TextView lblPupSize1;
     private TextView lblPupLeft1;
     private TextView lblPupRight1;
@@ -82,8 +82,8 @@ public class VitalSigns extends Fragment {
     private TextView lblFlow2;
     private EditText edtFlow2;
     private TextView lblPearl2;
-    private CheckBox chkLeft2;
-    private CheckBox chkRight2;
+    //private CheckBox chkLeft2;
+    //private CheckBox chkRight2;
     private TextView lblPupSize2;
     private TextView lblPupLeft2;
     private TextView lblPupRight2;
@@ -109,8 +109,8 @@ public class VitalSigns extends Fragment {
     private TextView lblFlow3;
     private EditText edtFlow3;
     private TextView lblPearl3;
-    private CheckBox chkLeft3;
-    private CheckBox chkRight3;
+    //private CheckBox chkLeft3;
+    //private CheckBox chkRight3;
     private TextView lblPupSize3;
     private TextView lblPupLeft3;
     private TextView lblPupRight3;
@@ -135,8 +135,8 @@ public class VitalSigns extends Fragment {
     private TextView lblFlow4;
     private EditText edtFlow4;
     private TextView lblPearl4;
-    private CheckBox chkLeft4;
-    private CheckBox chkRight4;
+    //private CheckBox chkLeft4;
+    //private CheckBox chkRight4;
     private TextView lblPupSize4;
     private TextView lblPupLeft4;
     private TextView lblPupRight4;
@@ -236,8 +236,8 @@ public class VitalSigns extends Fragment {
         lblFlow2 = view.findViewById( R.id.lblFlow2 );
         edtFlow2 = view.findViewById( R.id.edtFlow2 );
         lblPearl2 = view.findViewById( R.id.lblPearl2 );
-        chkLeft2 = view.findViewById( R.id.chkLeft2 );
-        chkRight2 = view.findViewById( R.id.chkRight2 );
+        //chkLeft2 = view.findViewById( R.id.chkLeft2 );
+        //chkRight2 = view.findViewById( R.id.chkRight2 );
         lblPupSize2 = view.findViewById( R.id.lblPupSize2 );
         lblPupLeft2 = view.findViewById( R.id.lblPupLeft2 );
         lblPupRight2 = view.findViewById( R.id.lblPupRight2 );
@@ -263,8 +263,8 @@ public class VitalSigns extends Fragment {
         lblFlow3 = view.findViewById( R.id.lblFlow3 );
         edtFlow3 = view.findViewById( R.id.edtFlow3 );
         lblPearl3 = view.findViewById( R.id.lblPearl3 );
-        chkLeft3 = view.findViewById( R.id.chkLeft3 );
-        chkRight3 = view.findViewById( R.id.chkRight3 );
+        //chkLeft3 = view.findViewById( R.id.chkLeft3 );
+        //chkRight3 = view.findViewById( R.id.chkRight3 );
         lblPupSize3 = view.findViewById( R.id.lblPupSize3 );
         lblPupLeft3 = view.findViewById( R.id.lblPupLeft3 );
         lblPupRight3 = view.findViewById( R.id.lblPupRight3 );
@@ -289,8 +289,8 @@ public class VitalSigns extends Fragment {
         lblFlow4 = view.findViewById( R.id.lblFlow4 );
         edtFlow4 = view.findViewById( R.id.edtFlow4 );
         lblPearl4 = view.findViewById( R.id.lblPearl4 );
-        chkLeft4 = view.findViewById( R.id.chkLeft4 );
-        chkRight4 = view.findViewById( R.id.chkRight4 );
+        //chkLeft4 = view.findViewById( R.id.chkLeft4 );
+       // chkRight4 = view.findViewById( R.id.chkRight4 );
         lblPupSize4 = view.findViewById( R.id.lblPupSize4 );
         lblPupLeft4 = view.findViewById( R.id.lblPupLeft4 );
         lblPupRight4 = view.findViewById( R.id.lblPupRight4 );
@@ -327,7 +327,7 @@ public class VitalSigns extends Fragment {
 
         TimePicker();
 
-        checkBoxList = Arrays.asList(chkLeft1,chkLeft2,chkLeft3,chkLeft4,chkRight1,chkRight2,chkRight3,chkRight4);
+        //checkBoxList = Arrays.asList(chkLeft1,chkLeft2,chkLeft3,chkLeft4,chkRight1,chkRight2,chkRight3,chkRight4);
         cache = new Cache(getContext());
         saved = cache.getStringProperty("vitalSigns");
         if(saved != null ){
@@ -479,7 +479,7 @@ public class VitalSigns extends Fragment {
         String co22 = edtCO22.getText().toString();
         String peak2 = edtFlow2.getText().toString();
 
-        String checkedLeft2 = null;
+        /*String checkedLeft2 = null;
         if (chkLeft2.isChecked()){
             checkedLeft2 = chkLeft2.getText().toString();
         }
@@ -487,7 +487,7 @@ public class VitalSigns extends Fragment {
         String checkedRight2 = null;
         if(chkRight2.isChecked()){
             checkedRight2 = chkRight2.getText().toString();
-        }
+        }*/
 
         try{
             vitalSigns.put("Time2",time2);
@@ -512,7 +512,7 @@ public class VitalSigns extends Fragment {
         String co23 = edtCO23.getText().toString();
         String peak3 = edtFlow3.getText().toString();
 
-        String checkedLeft3 = null;
+        /*String checkedLeft3 = null;
         if (chkLeft3.isChecked()){
             checkedLeft3 = chkLeft3.getText().toString();
         }
@@ -520,7 +520,7 @@ public class VitalSigns extends Fragment {
         String checkedRight3 = null;
         if(chkRight1.isChecked()){
             checkedRight3 = chkRight3.getText().toString();
-        }
+        }*/
 
         try{
             vitalSigns.put("Time3",time3);
@@ -545,7 +545,7 @@ public class VitalSigns extends Fragment {
         String co24 = edtCO24.getText().toString();
         String peak4 = edtFlow4.getText().toString();
 
-        String checkedLeft4 = null;
+        /*String checkedLeft4 = null;
         if (chkLeft4.isChecked()){
             checkedLeft4 = chkLeft4.getText().toString();
         }
@@ -553,7 +553,7 @@ public class VitalSigns extends Fragment {
         String checkedRight4 = null;
         if(chkRight4.isChecked()){
             checkedRight4 = chkRight4.getText().toString();
-        }
+        }*/
 
         try{
             vitalSigns.put("Time4",time4);
