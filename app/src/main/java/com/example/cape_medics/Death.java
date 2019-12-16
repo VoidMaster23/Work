@@ -53,7 +53,7 @@ public class Death extends Fragment {
     JSONObject death, response;
     EditText location,  place, name, post;
     TextView time,time2,date;
-    CheckBox carotidPulseLeft, carotidPulseRight, breathingYes, breathingNo, eyeYes, eyeNo, ecgYes, ecgNo, pupilsYes, pupilsNo;
+    CheckBox chkNA, carotidPulseLeft, carotidPulseRight, breathingYes, breathingNo, eyeYes, eyeNo, ecgYes, ecgNo, pupilsYes, pupilsNo;
     String carotidPulse, breathing, dollEyeMovements, ecgStraightLine, bilateralFixedDilatedPupils, responseServer;
     private static final String IMAGE_DIRECTORY = "/Pictures";
     String url;
@@ -95,6 +95,8 @@ public class Death extends Fragment {
         pupilsNo = view.findViewById(R.id.dilatedChkNo);
         CategoryType = new JSONArray();
 
+        chkNA = view.findViewById(R.id.notApplicableCheckBox);
+
         TimePicker();
         DatePicker();
 
@@ -111,10 +113,7 @@ public class Death extends Fragment {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // boolean flag = medicalTabbedView.medicalFormCalls.validate() && medicalTabbedView.patientDetails.validate() && medicalTabbedView.primarySurvey.validate() && medicalTabbedView.presentingCondition.validate()
-                      //  && medicalTabbedView.presentingCondition.validate() && medicalTabbedView.sampleHistory.validate() &&  medicalTabbedView.resuscitation.validate() && medicalTabbedView.score.validate()
-                     //   && medicalTabbedView.apgarScore.validate() && medicalTabbedView.employerDetails.validate() && medicalTabbedView.paymentMethod.validate() && medicalTabbedView.payment.validate();
-             //Add this later
+
 
                 ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
                 if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
@@ -223,20 +222,23 @@ public class Death extends Fragment {
         if(pupilsYes.isChecked()) bilateralFixedDilatedPupils = pupilsYes.getText().toString();
 
         try{
-            death.put("Commissioner of Oaths",loadImage());
-            death.put("Carotid Pulse",carotidPulse);
-            death.put("Breathing",breathing);
-            death.put("Doll Eye Movements",dollEyeMovements);
-            death.put("ECG Straight Line",ecgStraightLine);
-            death.put("Bilateral Fixed Dilated Pupils",bilateralFixedDilatedPupils);
-            death.put("Location of Deceased",location.toString());
-            death.put("Time of Examination",time.toString());
-            death.put("Place",place.toString());
-            death.put("Date",date.toString());
-            death.put("Full Name",name.toString());
-            death.put("Post",post.toString());
-            death.put("Time",time2.toString());
-
+            if(!chkNA.isChecked()) {
+                death.put("Commissioner of Oaths", loadImage());
+                death.put("Carotid Pulse", carotidPulse);
+                death.put("Breathing", breathing);
+                death.put("Doll Eye Movements", dollEyeMovements);
+                death.put("ECG Straight Line", ecgStraightLine);
+                death.put("Bilateral Fixed Dilated Pupils", bilateralFixedDilatedPupils);
+                death.put("Location of Deceased", location.getText().toString());
+                death.put("Time of Examination", time.getText().toString());
+                death.put("Place", place.getText().toString());
+                death.put("Date", date.getText().toString());
+                death.put("Full Name", name.getText().toString());
+                death.put("Post", post.getText().toString());
+                death.put("Time", time2.getText().toString());
+            }else if(chkNA.isChecked()){
+                death.put("Status","Not applicable");
+            }
         }catch (Exception e){}
 
         return death;
@@ -275,7 +277,7 @@ public class Death extends Fragment {
                    medicalTabbedView.map.put("Presenting Condition", medicalTabbedView.presentingCondition.createJson());
                     medicalTabbedView.map.put("Sample History", medicalTabbedView.sampleHistory.createJson());
                     //vital signs needs validation maybe
-//                    medicalTabbedView.map.put("Vital Signs", medicalTabbedView.vitalSigns.createJson());
+                    medicalTabbedView.map.put("Vital Signs", medicalTabbedView.vitalSigns.createJson());
                     medicalTabbedView.map.put("Airway & Breathing Management", medicalTabbedView.airwayBreathing.createJson());
                    medicalTabbedView.map.put("Airway Adjunct", medicalTabbedView.airwayAdjunct.createJson());
                       medicalTabbedView.map.put("Resuscitation", medicalTabbedView.resuscitation.createJson());
@@ -290,23 +292,23 @@ public class Death extends Fragment {
                   medicalTabbedView.map.put("Glasgow Coma Score", medicalTabbedView.comaScore.createJson());
                    medicalTabbedView.map.put("Wound Care", medicalTabbedView.woundCare.createJson());
                     medicalTabbedView.map.put("Burns", medicalTabbedView.burns.createJson());
-//                    medicalTabbedView.map.put("Pain Score", medicalTabbedView.score.createJson());
-//                    medicalTabbedView.map.put("Stroke", medicalTabbedView.stroke.createJson());
-//                    medicalTabbedView.map.put("APGAR Score", medicalTabbedView.apgarScore.createJson());
-//                    medicalTabbedView.map.put("BLS/ILS Aid", medicalTabbedView.blsAid.createJson());
-//                    medicalTabbedView.map.put("Treatment", medicalTabbedView.treatment.createJson());
-//                    medicalTabbedView.map.put("Ventilator Settings", medicalTabbedView.ventilatorSettings.createJson());
-//                    medicalTabbedView.map.put("Employers Details", medicalTabbedView.employerDetails.createJson());
-//                    medicalTabbedView.map.put("Payment Method", medicalTabbedView.paymentMethod.createJson());
-//                    medicalTabbedView.map.put("Guarantee of payment", medicalTabbedView.payment.createJson());
-//                    medicalTabbedView.map.put("Refusal of care", medicalTabbedView.refusalofCare.createJson());
-//                    medicalTabbedView.map.put("Mobility", medicalTabbedView.mobility.createJson());
-//                    medicalTabbedView.map.put("Disposal", medicalTabbedView.disposal.createJson());
-//                    medicalTabbedView.map.put("Crew Details", medicalTabbedView.crewDetails.createJson());
-//                    medicalTabbedView.map.put("Accompanying Practitioner", medicalTabbedView.acompPrac.createJson());
-//                    medicalTabbedView.map.put("Handover/disposal", medicalTabbedView.handoff_frag.createJson());
-//                    medicalTabbedView.map.put("Notes", medicalTabbedView.notes.createJson());
-//                    medicalTabbedView.map.put("Death", createJson());
+                   medicalTabbedView.map.put("Pain Score", medicalTabbedView.score.createJson());
+                    medicalTabbedView.map.put("Stroke", medicalTabbedView.stroke.createJson());
+                    medicalTabbedView.map.put("APGAR Score", medicalTabbedView.apgarScore.createJson());
+                    medicalTabbedView.map.put("BLS/ILS Aid", medicalTabbedView.blsAid.createJson());
+                    medicalTabbedView.map.put("Treatment", medicalTabbedView.treatment.createJson());
+                 medicalTabbedView.map.put("Ventilator Settings", medicalTabbedView.ventilatorSettings.createJson());
+                   medicalTabbedView.map.put("Employers Details", medicalTabbedView.employerDetails.createJson());
+                   medicalTabbedView.map.put("Payment Method", medicalTabbedView.paymentMethod.createJson());
+                    medicalTabbedView.map.put("Guarantee of payment", medicalTabbedView.payment.createJson());
+                 medicalTabbedView.map.put("Refusal of care", medicalTabbedView.refusalofCare.createJson());
+                   medicalTabbedView.map.put("Mobility", medicalTabbedView.mobility.createJson());
+                   medicalTabbedView.map.put("Disposal", medicalTabbedView.disposal.createJson());
+                   medicalTabbedView.map.put("Crew Details", medicalTabbedView.crewDetails.createJson());
+                   medicalTabbedView.map.put("Accompanying Practitioner", medicalTabbedView.acompPrac.createJson());
+                    medicalTabbedView.map.put("Handover/disposal", medicalTabbedView.handoff_frag.createJson());
+                 medicalTabbedView.map.put("Notes", medicalTabbedView.notes.createJson());
+                   medicalTabbedView.map.put("Death", createJson());
 //                    Log.e("MEDICAL DATA", medicalTabbedView.map.toString());
 
                     List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();

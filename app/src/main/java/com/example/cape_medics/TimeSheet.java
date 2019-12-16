@@ -51,7 +51,8 @@ public class TimeSheet extends AppCompatActivity {
     Spinner serviceProvided;
     TextView callTime;
     EditText jobName;
-    EditText Location;
+    TextView Location;
+    EditText fullName, qualification, notes;
     JSONObject timeSheet, response;
     String responseServer,url,code,authorisation;
     String jobN, loc, callT, jobT, unit, service;
@@ -65,12 +66,17 @@ public class TimeSheet extends AppCompatActivity {
         code = bundle.getString("code");
         authorisation = bundle.getString("Authorisation");
 
+
+        //fix this stuff
         timeSheet = new JSONObject();
         jobName = findViewById(R.id.editText);
         Location = findViewById(R.id.editText2);
         callTime = findViewById(R.id.editText3);
         jobType = findViewById(R.id.spinner4);
         unitType = findViewById(R.id.spinner5);
+        fullName = findViewById(R.id.edtFullName);
+        qualification = findViewById(R.id.edtQualification);
+        notes = findViewById(R.id.edtNotes);
         serviceProvided = findViewById(R.id.spinner6);
         url = "http://capemedicstestserver-com.stackstaging.com/apktest/timeSheet.php";
 

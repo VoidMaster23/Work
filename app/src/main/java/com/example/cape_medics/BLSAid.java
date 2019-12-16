@@ -82,34 +82,78 @@ public class BLSAid extends Fragment {
 
         BLS_ILSAidtoPatient = new JSONObject();
 
-        if(oralAirway.isChecked()) try{BLS_ILSAidtoPatient.put(oralAirway.getText().toString(),oralAirwayEdit.toString());}catch(Exception e){}
-        if(needleCrich.isChecked()) try{BLS_ILSAidtoPatient.put(needleCrich.getText().toString(),needleCrichEdit.toString());}catch(Exception e){}
-        if(O2Mask.isChecked()) try{BLS_ILSAidtoPatient.put(O2Mask.getText().toString(),O2MaskEdit.toString());}catch(Exception e){}
-        if(eti.isChecked()) try{BLS_ILSAidtoPatient.put(eti.getText().toString(),etiEdit.toString());}catch(Exception e){}
-        if(sga.isChecked()) try{BLS_ILSAidtoPatient.put(sga.getText().toString(),sgaEdit.toString());}catch(Exception e){}
-        if(nasalInt.isChecked()) try{BLS_ILSAidtoPatient.put(nasalInt.getText().toString(),nasalIntEdit.toString());}catch(Exception e){}
-        if(manuelDefib.isChecked()) try{BLS_ILSAidtoPatient.put(manuelDefib.getText().toString(),manuelDefibEdit.toString());}catch(Exception e){}
-        if(ioTherapy.isChecked()) try{BLS_ILSAidtoPatient.put(ioTherapy.getText().toString(),ioTherapyEdit.toString());}catch(Exception e){}
+        if(!chkNA.isChecked()) {
 
-
-
-        for (int i = 0; i < items.getChildCount(); i++) {
-
-            if (items.isItemChecked(i)){
-                try{
-                    BLS_ILSAidtoPatient.put(items.getItemAtPosition(i).toString(),items.getItemAtPosition(i).toString());
-
-                }catch (Exception e){}
+            if (oralAirway.isChecked()) try {
+                BLS_ILSAidtoPatient.put(oralAirway.getText().toString(), oralAirwayEdit.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }
+            if (needleCrich.isChecked()) try {
+                BLS_ILSAidtoPatient.put(needleCrich.getText().toString(), needleCrichEdit.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (O2Mask.isChecked()) try {
+                BLS_ILSAidtoPatient.put(O2Mask.getText().toString(), O2MaskEdit.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (eti.isChecked()) try {
+                BLS_ILSAidtoPatient.put(eti.getText().toString(), etiEdit.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (sga.isChecked()) try {
+                BLS_ILSAidtoPatient.put(sga.getText().toString(), sgaEdit.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (nasalInt.isChecked()) try {
+                BLS_ILSAidtoPatient.put(nasalInt.getText().toString(), nasalIntEdit.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (manuelDefib.isChecked()) try {
+                BLS_ILSAidtoPatient.put(manuelDefib.getText().toString(), manuelDefibEdit.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (ioTherapy.isChecked()) try {
+                BLS_ILSAidtoPatient.put(ioTherapy.getText().toString(), ioTherapyEdit.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        for (int i = 0; i < items2.getChildCount(); i++) {
 
-            if (items2.isItemChecked(i)){
-                try{
-                    BLS_ILSAidtoPatient.put(items2.getItemAtPosition(i).toString(),items2.getItemAtPosition(i).toString());
+            for (int i = 0; i < items.getChildCount(); i++) {
 
-                }catch (Exception e){}
+                if (items.isItemChecked(i)) {
+                    try {
+                        BLS_ILSAidtoPatient.put(items.getItemAtPosition(i).toString(), items.getItemAtPosition(i).toString());
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            for (int i = 0; i < items2.getChildCount(); i++) {
+
+                if (items2.isItemChecked(i)) {
+                    try {
+                        BLS_ILSAidtoPatient.put(items2.getItemAtPosition(i).toString(), items2.getItemAtPosition(i).toString());
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }else if(chkNA.isChecked()){
+            try {
+                BLS_ILSAidtoPatient.put("Status", "Not applicable");
+            }catch (Exception e){
+                e.printStackTrace();
             }
         }
 

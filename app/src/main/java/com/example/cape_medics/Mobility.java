@@ -38,6 +38,8 @@ public class Mobility extends Fragment {
         spinal = view.findViewById(R.id.spinalChk);
         vacuum = view.findViewById(R.id.vacuumChk);
 
+        supportDevice = "";
+
         chkNA = view.findViewById( R.id.notApplicableCheckBox);
         chkNA.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,16 +120,22 @@ public class Mobility extends Fragment {
         if (walking.isChecked()) transportMethod = walking.getText().toString();
         if (crutches.isChecked()) transportMethod = crutches.getText().toString();
 
-        if (neck.isChecked()) supportDevice = neck.getText().toString();
-        if (scoop.isChecked()) supportDevice = scoop.getText().toString();
-        if (spinal.isChecked()) supportDevice = spinal.getText().toString();
-        if (vacuum.isChecked()) supportDevice = vacuum.getText().toString();
+        if (neck.isChecked()) supportDevice += neck.getText().toString()+", ";
+        if (scoop.isChecked()) supportDevice += scoop.getText().toString()+", ";
+        if (spinal.isChecked()) supportDevice += spinal.getText().toString()+", ";
+        if (vacuum.isChecked()) supportDevice += vacuum.getText().toString();
+
+
 
         try {
-            mobility.put("Support Device", supportDevice);
-            mobility.put("Transport Method", transportMethod);
+            if(!chkNA.isChecked()) {
+                mobility.put("Support Device", supportDevice);
+                mobility.put("Transport Method", transportMethod);
+            }else if(chkNA.isChecked()){
+                mobility.put("Status","Not applicable");
+            }
         } catch (Exception e) {
-            return mobility;
+           e.printStackTrace();
         }
         return mobility;
     }

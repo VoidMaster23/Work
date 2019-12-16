@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import org.json.JSONObject;
@@ -15,6 +16,7 @@ public class Notes extends Fragment {
 
     EditText challenges,delays,comments,QAcomments;
     JSONObject notes;
+    CheckBox chkNA;
 
     public Notes(){}
 
@@ -30,17 +32,25 @@ public class Notes extends Fragment {
         comments = view.findViewById(R.id.otherEdit);
         QAcomments = view.findViewById(R.id.commentsEdit);
 
+        chkNA = view.findViewById(R.id.notApplicableCheckBox);
+        chkNA.setOnClickListener(view1 -> {
+            medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current + 1);
+        });
+
         return view;
     }
 
     public JSONObject createJson (){
         notes = new JSONObject();
         try{
-            notes.put("Challenges", challenges.toString());
-            notes.put("Delays", delays.toString());
-            notes.put("Other Comments", comments.toString());
-            notes.put("QA Comments", QAcomments.toString());
-
+            if(!chkNA.isChecked()) {
+                notes.put("Challenges", challenges.getText().toString());
+                notes.put("Delays", delays.getText().toString());
+                notes.put("Other Comments", comments.getText().toString());
+                notes.put("QA Comments", QAcomments.getText().toString());
+            }else if(chkNA.isChecked()){
+                notes.put("Status","Not applicable");
+            }
         }catch(Exception e){}
 
        // Intent i = new Intent(getContext(), Home_Screen_Crew.class);

@@ -3,6 +3,7 @@ package com.example.cape_medics;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ public class PainScore extends Fragment {
     Button show;
 
     TextView textView1, textView2, textView3, textView4;;
-
+    String preStr, post5Str, post10Str, hospStr;
     JSONObject painScore;
 
     String sizeType;
@@ -175,16 +176,21 @@ public class PainScore extends Fragment {
 
         painScore = new JSONObject();
 
-        String preStr = pre.getText().toString();
-        String post5Str = post1.getText().toString();
-        String post10Str = post2.getText().toString();
-        String hospStr = hosp.getText().toString();
+        preStr = spnPre.getSelectedItem().toString();
+        post5Str = spnPost1.getSelectedItem().toString();
+        post10Str = spnPost2.getSelectedItem().toString();
+        hospStr = spnHosp.getSelectedItem().toString();
 
         try{
-            painScore.put("Pre-Analgesia",preStr);
-            painScore.put("Post 5",post5Str);
-            painScore.put("Post 10",post10Str);
-            painScore.put("Hospital",hospStr);
+
+            if(!chkNA.isChecked() && validate()) {
+                painScore.put("Pre-Analgesia", preStr);
+                painScore.put("Post 5", post5Str);
+                painScore.put("Post 10", post10Str);
+                painScore.put("Hospital", hospStr);
+            }else if(chkNA.isChecked()){
+                painScore.put("Status","Not applicable");
+            }
 
 
         }catch (Exception e){
@@ -196,17 +202,16 @@ public class PainScore extends Fragment {
     
     public boolean validate() {
         boolean valid = true;
+        Looper.prepare();
 
-        String preStr = spnPre.getSelectedItem().toString();
-        String post5Str = spnPost1.getSelectedItem().toString();
-        String post10Str = spnPost2.getSelectedItem().toString();
-        String hospStr = spnHosp.getSelectedItem().toString();
+
 
         if (preStr.isEmpty() || post5Str.isEmpty() || post10Str.isEmpty() || hospStr.isEmpty()) {
             valid = false;
-            Toast.makeText(getContext(), "Please record pain scores", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Pain Score: Please record enter all the details", Toast.LENGTH_SHORT).show();
         }
 
+        Looper.loop();
         return valid;
     }
 

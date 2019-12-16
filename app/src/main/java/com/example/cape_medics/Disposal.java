@@ -131,6 +131,16 @@ public class Disposal extends Fragment {
                 if(Return.isChecked()){
                     Return.setChecked(false);
                 }
+                if (car.isChecked()){
+                    car.setChecked(false);
+                }
+                if(ambulance.isChecked()){
+                    ambulance.setChecked(false);
+                }
+                if(own.isChecked()){
+                    own.setChecked(false);
+                }
+
             }
         });
 
@@ -145,6 +155,15 @@ public class Disposal extends Fragment {
                 }
                 if(Return.isChecked()){
                     Return.setChecked(false);
+                }
+                if (car.isChecked()){
+                    car.setChecked(false);
+                }
+                if(ambulance.isChecked()){
+                    ambulance.setChecked(false);
+                }
+                if(own.isChecked()){
+                    own.setChecked(false);
                 }
             }
         });
@@ -161,6 +180,16 @@ public class Disposal extends Fragment {
                 if(Return.isChecked()){
                     Return.setChecked(false);
                 }
+                //can be removed below
+                if (car.isChecked()){
+                    car.setChecked(false);
+                }
+                if(ambulance.isChecked()){
+                    ambulance.setChecked(false);
+                }
+                if(own.isChecked()){
+                    own.setChecked(false);
+                }
             }
         });
 
@@ -175,6 +204,15 @@ public class Disposal extends Fragment {
                 }
                 if(advice.isChecked()){
                     advice.setChecked(false);
+                }
+                if (car.isChecked()){
+                    car.setChecked(false);
+                }
+                if(ambulance.isChecked()){
+                    ambulance.setChecked(false);
+                }
+                if(own.isChecked()){
+                    own.setChecked(false);
                 }
             }
         });
@@ -199,14 +237,18 @@ public class Disposal extends Fragment {
         if(sign.isChecked()) advice_refusedHelp_refusedSign_returnedToWork = sign.getText().toString();
 
         try{
-            disposal.put("Hospital/Home/Family GP", hospital_home_familyGP);
-            disposal.put("Ambulance/Car/Own Transport", ambulance_car_ownTransport);
-            disposal.put("Advice Only/Refused Help/Refused to Sign/Return to Work/Venue", advice_refusedHelp_refusedSign_returnedToWork);
-        }catch(Exception e){}
+            if(!chkNA.isChecked()) {
+
+
+                disposal.put("Hospital/Home/Family GP", hospital_home_familyGP);
+                disposal.put("Ambulance/Car/Own Transport", ambulance_car_ownTransport);
+                disposal.put("Advice Only/Refused Help/Refused to Sign/Return to Work/Venue", advice_refusedHelp_refusedSign_returnedToWork);
+            }else if(chkNA.isChecked()){
+                disposal.put("Status","Not applicable");
+            }
+            }catch(Exception e){}
         return disposal;
     }
 
-    public void skip(View v){
 
-    }
 }

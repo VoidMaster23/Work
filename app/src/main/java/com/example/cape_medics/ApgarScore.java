@@ -3,6 +3,7 @@ package com.example.cape_medics;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,7 +63,9 @@ public class ApgarScore extends Fragment {
                     String answer = "APGAR Score: "+score;
                     textView.setText(answer);
                 }else{
+                    Looper.prepare();
                     Toast.makeText(getContext(),"Please Fill In All the Fields", Toast.LENGTH_SHORT).show();
+                    Looper.loop();
                 }
             }
         });
@@ -74,9 +77,13 @@ public class ApgarScore extends Fragment {
     public JSONObject createJson(){
         apgarScore = new JSONObject();
         try{
-            apgarScore.put("Apgar Score",textView.getText().toString());
+            if(!chkNA.isChecked() && validate()) {
+                apgarScore.put("Apgar Score", textView.getText().toString());
+            }else if(chkNA.isChecked()){
+                apgarScore.put("Status","Not applicable");
+            }
         }catch (Exception e){
-            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
         return apgarScore;
     }
@@ -84,7 +91,12 @@ public class ApgarScore extends Fragment {
 
     public boolean validate(){
         boolean valid = true;
-
+        Looper.prepare();
+        if(textView.getText().toString().isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(),"APGAR Score: Please ensure that calculate has been pressed", Toast.LENGTH_SHORT).show();
+        }
+        Looper.loop();
         return valid;
 
     }

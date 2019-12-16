@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Handoff_frag extends Fragment {
@@ -60,32 +61,35 @@ public class Handoff_frag extends Fragment {
 
     public JSONObject createJson (){
         items = new JSONObject();
-        items = new JSONObject();
-        try{
-            items.put("Destination", destination.toString());
-            items.put("Name", name.toString());
-            items.put("Quality and Reg No.", quality.toString());
-            items.put("Service", service.toString());
-        }catch(Exception e){}
 
-        for (int i = 0; i < itemsHanded.getChildCount(); i++) {
+        if(!chkNA.isChecked()) {
+            try {
+                items.put("Destination", destination.toString());
+                items.put("Name", name.toString());
+                items.put("Quality and Reg No.", quality.toString());
+                items.put("Service", service.toString());
+            } catch (Exception e) {
+            }
 
-            if (itemsHanded.isItemChecked(i)){
-                try{
-                    items.put(itemsHanded.getItemAtPosition(i).toString(),itemsHanded.getItemAtPosition(i).toString());
+            for (int i = 0; i < itemsHanded.getChildCount(); i++) {
 
-                }catch (Exception e){}
+                if (itemsHanded.isItemChecked(i)) {
+                    try {
+                        items.put(itemsHanded.getItemAtPosition(i).toString(), itemsHanded.getItemAtPosition(i).toString());
+
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        }else if(chkNA.isChecked()){
+            try {
+                items.put("Status","Not applicable");
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
-
         return items;
     }
 
-    public void Go (View v){
 
-    }
-
-    public void skip (View v){
-        //skip this one
-    }
 }

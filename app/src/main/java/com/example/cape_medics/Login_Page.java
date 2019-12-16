@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -70,6 +71,8 @@ public class Login_Page extends AppCompatActivity {
     String responseServer;
     String url;
     String auhtorisation, name;
+    String usserN, pass;
+    CheckBox terms;
     boolean connected;
     int times = 0;
     Cache cache;
@@ -87,24 +90,50 @@ public class Login_Page extends AppCompatActivity {
         login = findViewById(R.id.LoginButton);
         username = findViewById(R.id.Username);
         password = findViewById(R.id.Password);
+        terms = findViewById(R.id.chlTerms);
         username.setPaintFlags(0);
         password.setPaintFlags(0);
-        url = "http://capemedicstestserver-com.stackstaging.com/apktest/loginPage.php";
+        url = "capemedics.co.za/zaio/main.php";
 
 
     }
 
     public void Login (View v) throws JSONException {
+        usserN = username.getText().toString().trim();
+        pass = password.getText().toString().trim();
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        else connected = false;
 
-        Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
+        if(connected  && terms.isChecked()) {
+            AsyncT send = new AsyncT();
+            send.execute();
 
+        }else if(!terms.isChecked()){
+            Toast.makeText(getApplicationContext(),"Please accept the Ts and Cs",Toast.LENGTH_SHORT).show();
+        }
 
-                broadcasts  = "new first aid kits now available";
-                jobs = "job 1, job 2";
-                name = "Bob";
-                auhtorisation = "Manager";
+        else{
+            String value = cache.getStringProperty(password.getText().toString().trim()+username.getText().toString().trim());
+            if (value == null){
+                Toast.makeText(getApplicationContext(), "no internet connection", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                response = new JSONObject(value);
 
+                name = response.getString("Crew Name");
+                auhtorisation = response.getString("Authorisation Level");
+                broadcasts = response.getString("Broadcasts");
+                jobs = response.getString("Job ID's");
+                id = response.getInt("Crew ID");
 
+                Toast.makeText(getApplicationContext(),"Welcome "+ name, Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
                 i.putExtra("broadcasts",broadcasts);
                 i.putExtra("jobs",jobs);
                 i.putExtra("Crew ID",id);
@@ -113,48 +142,8 @@ public class Login_Page extends AppCompatActivity {
                 i.putExtra("first", "true");
                 i.putExtra("code",password.getText().toString().trim()+username.getText().toString().trim());
                 startActivity(i);
-
-//        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-//        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-//                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-//            //we are connected to a network
-//            connected = true;
-//        }
-//        else connected = false;
-//
-//        if(connected) {
-//            AsyncT send = new AsyncT();
-//            send.execute();
-//
-//        }
-//
-//        else{
-//            String value = cache.getStringProperty(password.getText().toString().trim()+username.getText().toString().trim());
-//            if (value == null){
-//                Toast.makeText(getApplicationContext(), "no internet connection", Toast.LENGTH_SHORT).show();
-//            }
-//            else{
-//                response = new JSONObject(value);
-//
-//                name = response.getString("Crew Name");
-//                auhtorisation = response.getString("Authorisation Level");
-//                broadcasts = response.getString("Broadcasts");
-//                jobs = response.getString("Job ID's");
-//                id = response.getInt("Crew ID");
-//
-//                Toast.makeText(getApplicationContext(),"Welcome "+ name, Toast.LENGTH_SHORT).show();
-//
-//                Intent i = new Intent(getApplicationContext(), Home_Screen_Crew.class);
-//                i.putExtra("broadcasts",broadcasts);
-//                i.putExtra("jobs",jobs);
-//                i.putExtra("Crew ID",id);
-//                i.putExtra("Crew name",name);
-//                i.putExtra("Authorisation",auhtorisation);
-//                i.putExtra("first", "true");
-//                i.putExtra("code",password.getText().toString().trim()+username.getText().toString().trim());
-//                startActivity(i);
-//            }
-//        }
+            }
+        }
     }
 
     @Override
@@ -171,8 +160,8 @@ public class Login_Page extends AppCompatActivity {
 
             try {
 
-                loginPage.put("Username",username.getText().toString().trim());
-                loginPage.put("Password",password.getText().toString().trim());
+                loginPage.put("Username",usserN);
+                loginPage.put("Password",pass);
 
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
                 nameValuePairs.add(new BasicNameValuePair("req", loginPage.toString()));

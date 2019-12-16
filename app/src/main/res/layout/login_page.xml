@@ -77,6 +77,16 @@
                 android:shadowColor="@android:color/transparent"
                 android:text="Log In"
                 android:textColor="@android:color/black" />
+
+            <CheckBox
+                android:id="@+id/chlTerms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="15px"
+                android:text="By clicking this you here by accept out terms and conditions"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
         </LinearLayout>
     </ScrollView>
 

@@ -93,11 +93,14 @@ public class RefusalofCare extends Fragment {
         }
 
         try{
-            refusalOfCare.put("Observation Method", observationType);
-            refusalOfCare.put(option, statement);
-            refusalOfCare.put("Patient Name", name);
-            refusalOfCare.put("Contact Number", contactNumber);
-
+            if(!chkNA.isChecked()) {
+                refusalOfCare.put("Observation Method", observationType);
+                refusalOfCare.put(option, statement);
+                refusalOfCare.put("Patient Name", name);
+                refusalOfCare.put("Contact Number", contactNumber);
+            }else if(chkNA.isChecked()){
+                refusalOfCare.put("Status","Not applicable");
+            }
         }catch (Exception e){}
 
         return refusalOfCare;

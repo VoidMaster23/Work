@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class GuaranteeOfPayment extends Fragment {
@@ -51,6 +52,7 @@ public class GuaranteeOfPayment extends Fragment {
     public JSONObject createJson(){
         guaranteeOfPayment = new JSONObject();
 
+        if(!chkNA.isChecked() && validate()){
         if(staff.isChecked()) authorisedPerson = "Staff";
         if(passenger.isChecked()) authorisedPerson = "Passenger";
         if(person.isChecked()) authorisedPerson = "Person";
@@ -62,7 +64,14 @@ public class GuaranteeOfPayment extends Fragment {
             guaranteeOfPayment.put("Company Name", company1.getText().toString());
             guaranteeOfPayment.put("Authorised Person", authorisedPerson);
 
-        }catch(Exception e){}
+        }catch(Exception e){e.printStackTrace();}
+        }else if(chkNA.isChecked()){
+            try {
+                guaranteeOfPayment.put("Status","Not applicable");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
         return guaranteeOfPayment;
     }

@@ -4,6 +4,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ public class Stroke extends Fragment {
     private TextView editDoorDrug;
     private TextView textView56;
     private EditText editStrokeUnit;
-
+    String door , strokeStr;
     private Button fd_btnYes, fd_btnNo, aw_btnYes, aw_btnNo, sd_btnYes, sd_btnNo, Casualty_btnNo, Casualty_btnYes;
 
     JSONObject stroke;
@@ -49,7 +50,10 @@ public class Stroke extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_stroke, container, false);
 
         imageView18 = view.findViewById( R.id.imageView18 );
-        chkNA = view.findViewById( R.id.chkNA );
+        chkNA = view.findViewById( R.id.notApplicableCheckBox);
+        chkNA.setOnClickListener(view1 -> {
+            medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current + 1);
+        });
         //checkBox4 = view.findViewById( R.id.checkBox4 );
         //checkBox5 = view.findViewById( R.id.checkBox5 );
         //checkBox6 = view.findViewById( R.id.checkBox6 );
@@ -154,33 +158,82 @@ public class Stroke extends Fragment {
 
     public JSONObject createJson(){
 
-        stroke = new JSONObject();
+        stroke = new JSONObject();;
 
-        //String facial = null;
-        //String arm = null;
-        //String speech = null;
-        //if(checkBox4.isChecked()) facial = checkBox4.getText().toString();
-        //if(checkBox5.isChecked()) arm = checkBox5.getText().toString();
-        //if(checkBox6.isChecked()) speech = checkBox6.getText().toString();
 
-        String door = editDoorDrug.getText().toString();
-        String strokeStr = editStrokeUnit.getText().toString();
+         door = editDoorDrug.getText().toString();
+         strokeStr = editStrokeUnit.getText().toString();
 
         try{
-
+        if(!chkNA.isChecked() && validate()) {
             stroke.put("Facial", facial);
             stroke.put("Arm", arm);
             stroke.put("Speech", speech);
             stroke.put("Casualty", casualty);
             stroke.put("Door", door);
             stroke.put("Stroke", strokeStr);
-
+        }else if(chkNA.isChecked()){
+            stroke.put("Status","Not applicable");
+        }
 
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
         return stroke;
+    }
+
+    public boolean validate(){
+        boolean valid = true;
+        Looper.prepare();
+
+        if(door.isEmpty()){
+            valid = false;
+            Toast.makeText(getContext(),"Stroke: Please enter all details", Toast.LENGTH_SHORT).show();
+        }
+
+
+        if(valid){
+            if(strokeStr.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Stroke: Please enter all details", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(facial.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Stroke: Please enter all details", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(arm.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Stroke: Please enter all details", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(speech.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Stroke: Please enter all details", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(valid){
+            if(casualty.isEmpty()){
+                valid = false;
+                Toast.makeText(getContext(),"Stroke: Please enter all details", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+
+
+
+        Looper.loop();
+        return valid;
     }
 
 }

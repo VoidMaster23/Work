@@ -1329,6 +1329,7 @@ id chkWhite
 id chkWitness
 id chkZero
 id chkphy
+id chlTerms
 id chronometer
 id clear
 id clip_horizontal
@@ -1524,6 +1525,7 @@ id edtFlow1
 id edtFlow2
 id edtFlow3
 id edtFlow4
+id edtFullName
 id edtHgt1
 id edtHgt2
 id edtHgt3
@@ -1534,6 +1536,7 @@ id edtLoc2
 id edtLoc4
 id edtMedication
 id edtName
+id edtNotes
 id edtOrganiser
 id edtPast
 id edtPhone
@@ -1542,6 +1545,7 @@ id edtPulse1
 id edtPulse2
 id edtPulse3
 id edtPulse4
+id edtQualification
 id edtRate1
 id edtRate2
 id edtRef

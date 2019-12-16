@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -20,6 +21,7 @@ public class AcompPrac extends Fragment {
     Button go;
     JSONObject accompanyingPractitioner;
     EditText healthRegistration, name;
+    CheckBox chkNA;
 
     public AcompPrac(){}
 
@@ -50,6 +52,10 @@ public class AcompPrac extends Fragment {
             }
         });
 
+        chkNA.setOnClickListener(view1 -> {
+            medicalTabbedView.viewPager.setCurrentItem(medicalTabbedView.current + 1);
+        });
+
         //add recording mechanism
         return view;
     }
@@ -67,9 +73,13 @@ public class AcompPrac extends Fragment {
             }
 
             try{
-                accompanyingPractitioner.put("Name", name);
-                accompanyingPractitioner.put("Health and Registration Number", healthRegistration);
-            }catch (Exception e){}
+                if(!chkNA.isChecked()) {
+                    accompanyingPractitioner.put("Name", name);
+                    accompanyingPractitioner.put("Health and Registration Number", healthRegistration);
+                }else if(chkNA.isChecked()){
+                    accompanyingPractitioner.put("Status","Not applicable");
+                }
+            }catch (Exception e){e.printStackTrace();}
         }
         return accompanyingPractitioner;
     }

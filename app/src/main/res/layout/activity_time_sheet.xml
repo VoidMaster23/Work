@@ -8,157 +8,220 @@
     android:orientation="vertical"
     android:padding="15dp">
 
-    <Space
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="54dp" />
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="106dp"
-        app:srcCompat="@drawable/logo" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:backgroundTint="@android:color/black"
-        android:foregroundTint="@android:color/white"
-        android:gravity="center_horizontal"
-        android:hint="Job Name"
-        android:textColor="@color/white" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:backgroundTint="@android:color/black"
-        android:foregroundTint="@android:color/white"
-        android:gravity="center_horizontal"
-        android:hint="Enter Location"
-        android:textColor="@color/white" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Job Type"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
-
-    <Spinner
-        android:id="@+id/spinner4"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:backgroundTint="@android:color/black"
-        android:foregroundTint="@android:color/white" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Unit Type"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
-
-    <Spinner
-        android:id="@+id/spinner5"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:backgroundTint="@android:color/black"
-        android:foregroundTint="@android:color/white" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Service Provided"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
-
-    <Spinner
-        android:id="@+id/spinner6"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:backgroundTint="@android:color/black"
-        android:foregroundTint="@android:color/white" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
-
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Select Date"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:background="@drawable/round_shape"
-            android:padding="10dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="and"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginEnd="20dp"
-            android:textColor="@color/white"/>
-
-
-        <TextView
-            android:id="@+id/editText3"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center_horizontal"
-            android:hint="Pick Time"
-            android:textColor="@color/white"
-            android:background="@drawable/round_shape"
-            android:padding="10dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-
-        <Button
-            android:id="@+id/button10"
-            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/loginshape"
-            android:onClick="Cancel"
-            android:padding="15dp"
-            android:shadowColor="@android:color/transparent"
+            android:orientation="vertical" >
 
-            android:text="Cancel"
-            android:textColor="@android:color/black" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="54dp" />
 
-        <Space
-            android:layout_width="15dp"
-            android:layout_height="42dp" />
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="106dp"
+                app:srcCompat="@drawable/logo" />
 
-        <Button
-            android:id="@+id/button11"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/loginshape"
-            android:onClick="StartShift"
-            android:padding="15dp"
-            android:shadowColor="@android:color/transparent"
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:backgroundTint="@android:color/black"
+                android:foregroundTint="@android:color/white"
+                android:gravity="center_horizontal"
+                android:hint="Job Name"
+                android:textColor="@color/white" />
 
-            android:text="Start Shift"
-            android:textColor="@android:color/black" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/round_shape"
+                android:backgroundTint="@android:color/black"
+                android:foregroundTint="@android:color/white"
+                android:gravity="center_horizontal"
+                android:hint="Enter Location"
+                android:text="Location"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Job Type"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinner4"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:backgroundTint="@android:color/black"
+                android:foregroundTint="@android:color/white" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Unit Type"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinner5"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:backgroundTint="@android:color/black"
+                android:foregroundTint="@android:color/white" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Service Provided"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinner6"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:backgroundTint="@android:color/black"
+                android:foregroundTint="@android:color/white" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:gravity="center|center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_shape"
+                    android:hint="Select Date"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="and"
+                    android:textColor="@color/white" />
+
+
+                <TextView
+                    android:id="@+id/editText3"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/round_shape"
+                    android:gravity="center_horizontal"
+                    android:hint="Pick Time"
+                    android:padding="10dp"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edtFullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_shape"
+                    android:ems="10"
+                    android:gravity="center_horizontal"
+                    android:hint="Enter your full name here "
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/edtQualification "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15px"
+                    android:background="@drawable/round_shape"
+                    android:ems="10"
+                    android:gravity="center_horizontal"
+                    android:hint="Enter you qualification"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/edtNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="15px"
+                    android:background="@drawable/round_shape"
+                    android:ems="10"
+                    android:gravity="start"
+                    android:hint="Crew to note all travel times, overtime, technical wrap and other circumstances that effects their work hours."
+                    android:inputType="textPersonName"
+                    android:singleLine="false"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button10"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/loginshape"
+                    android:onClick="Cancel"
+                    android:padding="15dp"
+                    android:shadowColor="@android:color/transparent"
+
+                    android:text="Cancel"
+                    android:textColor="@android:color/black" />
+
+                <Space
+                    android:layout_width="15dp"
+                    android:layout_height="42dp" />
+
+                <Button
+                    android:id="@+id/button11"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/loginshape"
+                    android:onClick="StartShift"
+                    android:padding="15dp"
+                    android:shadowColor="@android:color/transparent"
+
+                    android:text="Start Shift"
+                    android:textColor="@android:color/black" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
