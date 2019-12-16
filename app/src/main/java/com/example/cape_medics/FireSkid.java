@@ -476,6 +476,296 @@ public class FireSkid extends AppCompatActivity {
         root2.addView(table2);
     }
 
+    private View getVehicleTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("Response Car M05");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"AIRCONDITIONER","ANTENNAE\'S","BATTERY SECURED","BODY WORK","BRAKE LIGHTS","BRANDING","DASHBOARD LIGHTS",
+                "EMERGENCY LIGHTS","EXHAUST","FUEL LEVEL","HEADLIGHTS","INDICATORS LEFT","INDICATORS RIGHT","INTERIOR LIGHT BACK","INTERIOR LIGHT FRONT",
+                "JACK AND TOOLS","LED'S","LICENSE DISK X2 & EXP DATE","NUMBER PLATES","RADIO CD","REAR VIEW MIRROR","REVERSE LIGHTS","SIDE MIRRORS","SIREN",
+                "SPARE WHEEL","TYRE THREAD","TYRE PRESSURE","WINDOWS","WINDSCREEN"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Need Repair","Resupply"};
+        String[] fuelLevelSpinnerOptions = new String[]{"Full", "3/4", "1/2", "1/4", "Empty"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            Row item = new Row(this, st, "1", i == 9? fuelLevelSpinnerOptions : qtySpinnerOptions, "OKAY", i == 9? "FULL   3/4   1/2   1/4": i == 17? "dd/mm/yyyy": i == 18? "CA 757-267":"No COMMENT","Comment here" , i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
+
+    private View getEquipmentTable(){
+
+        // create table
+        TableLayout table = new TableLayout(this);
+
+        int parentWidth = Row.getDisplayMatrix(this).widthPixels;
+
+        //int widthSpec = View.MeasureSpec.makeMeasureSpec(parentWidth, View.MeasureSpec.EXACTLY);
+        //int heightSpec = View.MeasureSpec.makeMeasureSpec(parentHeight, View.MeasureSpec.EXACTLY);
+
+        //root.measure(widthSpec, heightSpec);
+
+        //parentWidth = root.getMeasuredWidth();
+        //parentHeight = root.getMeasuredHeight();
+
+        // create table LayoutParams
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MatchParent, WrapContent);
+        table.setLayoutParams(tableParams);
+        table.setWeightSum(50);
+
+        //table.setBackgroundColor(Color.WHITE);
+
+        // create the heading row
+        TableRow headingRow = new TableRow(this);
+
+        // create heading LayoutParams
+        TableRow.LayoutParams headingParams = new TableRow.LayoutParams();
+        headingParams.weight = 2;
+
+        headingRow.setLayoutParams(headingParams);
+        headingRow.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        //headingRow.setWeightSum(10);
+        //headingRow.setBackground(getResources().getDrawable(R.drawable.cell_shape));
+
+        headingRow.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+
+        //heading 1
+        TextView heading1 = new TextView(this);
+        heading1.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading1Params = new TableRow.LayoutParams(parentWidth * 7/20, Row.dpToPixels(50,this));
+        int px5 = Row.dpToPixels(15,this);
+        //heading1Params.setMargins(px5,px5,px5,0);
+        //heading1Params.column = 0;
+        //heading1.setLayoutParams(new ViewGroup.LayoutParams(heading1Params));
+        heading1.setText("DESCRIPTION");
+        heading1.setTextColor(Color.WHITE);
+        heading1.setAllCaps(true);
+        heading1.setBackgroundResource(R.drawable.cell_shape);
+        //heading1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        heading1.setTypeface(Typeface.DEFAULT_BOLD);
+        headingRow.addView(heading1, heading1Params);
+
+        //heading 2
+        TextView heading2 = new TextView(this);
+        heading2.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading2Params = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
+        //heading2Params.setMargins(px5,px5,px5,0);
+        //heading2Params.column = 1;
+        //heading2.setLayoutParams(new ViewGroup.LayoutParams(heading2Params));
+        heading2.setText("QTY");
+        heading2.setTextColor(Color.WHITE);
+        heading2.setAllCaps(true);
+        //heading2.TextAlignment = TextAlignment.Center;
+        heading2.setBackgroundResource(R.drawable.cell_shape);
+        heading2.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading2,heading2Params);
+
+        //heading 2
+        TextView heading3 = new TextView(this);
+        heading3.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading3Params = new TableRow.LayoutParams(parentWidth * 4/20, MatchParent);
+        //heading3Params.setMargins(px5,px5,px5,0);
+        //heading3Params.column = 2;
+        //heading3.setLayoutParams(new ViewGroup.LayoutParams(heading3Params));
+        heading3.setText("Checked");
+        heading3.setTextColor(Color.WHITE);
+        heading3.setAllCaps(true);
+        //heading3.TextAlignment = TextAlignment.Center;
+        heading3.setBackgroundResource(R.drawable.cell_shape);
+        heading3.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading3, heading3Params);
+
+
+        //heading 2
+        TextView heading4 = new TextView(this);
+        heading4.setGravity(Gravity.CENTER_VERTICAL);
+        TableRow.LayoutParams heading4Params = new TableRow.LayoutParams(parentWidth * 7/20, MatchParent);
+        //heading4Params.setMargins(px5,px5,px5,0);
+        heading4Params.column = 3;
+        //heading4.setLayoutParams(new ViewGroup.LayoutParams(heading4Params));
+        heading4.setText("Comments");
+        heading4.setTextColor(Color.WHITE);
+        heading4.setAllCaps(true);
+        //heading4.TextAlignment = TextAlignment.Center;
+        heading4.setBackgroundResource(R.drawable.cell_shape);
+        heading4.setTypeface(Typeface.DEFAULT_BOLD);
+
+        headingRow.addView(heading4, heading4Params);
+
+        table.addView(headingRow);
+
+        NestedScrollView nestedScrollView = new NestedScrollView(this);
+        NestedScrollView.LayoutParams scrollParams = new NestedScrollView.LayoutParams(MatchParent, MatchParent);
+        nestedScrollView.setLayoutParams(scrollParams);
+
+        LinearLayout tableContent = new LinearLayout(this);
+        LinearLayout.LayoutParams tableContentParams = new LinearLayout.LayoutParams(MatchParent, WrapContent);
+        tableContent.setLayoutParams(tableContentParams);
+        tableContent.setOrientation(LinearLayout.VERTICAL);
+
+        String[] _list = new String[]{"Water Spritzers","Co2 Extingushers","DCP Extingushers","Fuel Funnel","Gekka AWG Pencil Nozzel","False Spindles (1 med and 1 Lg)",
+                "25mm Layflat (30 Meters)","65mmShort Length","65mm Duraflex 30m","5L AFFF","Bolt Cutter","Wire Cutter",
+                "Crowbar","Honda Pump Key","Pump Honda/Davey","Pump High Pressure","Rake Hoe","Bush Beater","5L Jerry Can",
+                "Soft Suction Hose 5m","Strainer","Tow Rope","Meter Standpipe ","Standpipe Key and Bar","65mm Blank coupling",
+                "25mm gekka blank coupling","Traffic Cones","Bobejaan Spanner","Toolbox","Shovel"
+        };
+
+        String[] _qtylist = new String[]{"2","2","2","1","2","2","2","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","4","1","1","1"
+        };
+
+        String[] qtySpinnerOptions = new String[]{"Okay", "No check", "Need Repair", "Resupply"};
+
+        for(int i = 0; i < _list.length; i++)
+        {
+            String st = _list[i];
+            String qtyst = _qtylist[i];
+            Row item = new Row(this, st, qtyst, qtySpinnerOptions, "OKAY","No COMMENT", "Comment here", i, parentWidth);
+
+            //headingRow.setBackgroundResource(R.drawable.cell_shape);
+            //table.addView(item.getRow());
+            tableContent.addView(item.getRow());
+
+        }
+    private static final int WrapContent = ViewGroup.LayoutParams.WRAP_CONTENT;
+    private static final int MatchParent = ViewGroup.LayoutParams.MATCH_PARENT;
+    private RelativeLayout root,root2;
+
+
+    private void TableSync()
+    {
+        root = findViewById(R.id.content);
+        root2 = findViewById(R.id.content2);
+
+        View table = getVehicleTable();
+        View table2 = getEquipmentTable();
+
+        root.addView(table);
+        root2.addView(table2);
+    }
+
     //Accessing the Table Data
     ArrayList<Row> vehicleTableArrayList = new ArrayList<>();
     private View getVehicleTable(){
@@ -614,6 +904,11 @@ public class FireSkid extends AppCompatActivity {
 
         nestedScrollView.addView(tableContent);
         table.addView(nestedScrollView);
+        nestedScrollView.addView(tableContent);
+        table.addView(nestedScrollView);
+
+        return table;
+    }
 
         return table;
     }

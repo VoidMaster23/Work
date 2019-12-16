@@ -252,6 +252,8 @@ public class categoryType extends AppCompatActivity{
         cache.setStringProperty("categoryType"+code, CategoryType.toString());
 
         //sends JSONArray to
+        Intent intent= new Intent(getApplicationContext(), Death.class);
+        intent.putExtra("Category Type", CategoryType.toString());
 
         Intent i = new Intent(getApplicationContext(), medicalTabbedView.class);
         i.putExtra("code",code);
@@ -259,5 +261,6 @@ public class categoryType extends AppCompatActivity{
         i.putExtra("Category Type", CategoryType.toString());
         startActivity(i);
     }
+
 
 }

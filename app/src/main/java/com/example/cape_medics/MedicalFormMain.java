@@ -21,13 +21,10 @@ public class MedicalFormMain extends AppCompatActivity {
         ArrayAdapter<String> categories = new ArrayAdapter<String>(this, R.layout.list_row,categoryarray);
         Categories.setAdapter(categories);
 
-        Categories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                Intent i = new Intent(getApplicationContext(), MedicalFormCalls.class);
-                i.putExtra("job", String.valueOf(Categories.getItemAtPosition(position)));
-                startActivity(i);
-            }
+        Categories.setOnItemClickListener((parent, view, position, id) -> {
+            Intent i = new Intent(getApplicationContext(), MedicalFormCalls.class);
+            i.putExtra("job", String.valueOf(Categories.getItemAtPosition(position)));
+            startActivity(i);
         });
     }
 }

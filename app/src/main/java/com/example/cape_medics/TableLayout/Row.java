@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -122,8 +124,8 @@ public class Row implements AdapterView.OnItemSelectedListener {
 
         // create qty TextView
 
-        //EditText qty = new EditText(context);
-        TextView qty = new TextView(context);
+        EditText qty = new EditText(context);
+        //TextView qty = new TextView(context);
         qty.setGravity(Gravity.CENTER_VERTICAL);
 
         TableRow.LayoutParams qtyParams = new TableRow.LayoutParams(parentWidth * 2/20, MatchParent);
@@ -135,7 +137,8 @@ public class Row implements AdapterView.OnItemSelectedListener {
         qty.setGravity(Gravity.CENTER);
         qty.setBackgroundResource(R.drawable.cell_shape);
         qty.setTypeface(Typeface.DEFAULT_BOLD);
-        /*qty.addTextChangedListener(new TextWatcher() {
+        qty.setFocusable(true);
+        qty.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -150,7 +153,7 @@ public class Row implements AdapterView.OnItemSelectedListener {
             public void afterTextChanged(Editable s) {
 
             }
-        });*/
+        });
         row.addView(qty,qtyParams);
 
         // create checked Spinner
@@ -181,6 +184,7 @@ public class Row implements AdapterView.OnItemSelectedListener {
         comment.setAllCaps(true);
         comment.setEllipsize(TextUtils.TruncateAt.END);
         comment.setBackgroundResource(R.drawable.cell_shape);
+        comment.setFocusable(true);
         //comment.setPadding(3,0,3,0);
         comment.setTypeface(Typeface.DEFAULT_BOLD);
 
@@ -222,7 +226,7 @@ public class Row implements AdapterView.OnItemSelectedListener {
 
     public static int dpToPixels(float dp, Context context)
     {
-        DisplayMetrics DisplayMetrics = context.getResources().getDisplayMetrics();
+         DisplayMetrics DisplayMetrics = context.getResources().getDisplayMetrics();
 
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, DisplayMetrics);
     }

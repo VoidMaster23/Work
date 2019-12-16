@@ -54,6 +54,8 @@ public class PresentingCondition extends Fragment{
     private CheckBox chkMusc;
     private CheckBox chkObs;
     private CheckBox chkDeliver;
+    private CheckBox chkPhy;
+    private CheckBox chkOthers;
     List<CheckBox> checkBoxList;
     Cache cache;
     String saved;
@@ -104,6 +106,8 @@ public class PresentingCondition extends Fragment{
         chkMusc = (CheckBox)view.findViewById( R.id.chkMusc );
         chkObs = (CheckBox)view.findViewById( R.id.chkObs );
         chkDeliver = (CheckBox)view.findViewById( R.id.chkDeliver );
+        chkPhy = (CheckBox)view.findViewById( R.id.chkphy );
+        chkOthers = (CheckBox)view.findViewById( R.id.chkOthers);
 
 
         checkBoxList = Arrays.asList(chkCardiac,chkAssault,chkChest,chkLessTwo,chkMoreTwo,chkAst,chkCopd,chkHead,chkAb,chkPen,chkVomit,chkFract,chkConvulse,chkMva,chkStroke,chkDrown,chkDiabetes,chkBurn,chkHypo,chkGun,chkHyper,chkInhale,chkAlcohol,chkMusc,chkDrugs,chkObs,chkFirstAid,chkDeliver);
@@ -203,6 +207,10 @@ public class PresentingCondition extends Fragment{
             condition = chkFirstAid.getText().toString();
         }else  if(chkDeliver.isChecked()){
             condition = chkDeliver.getText().toString();
+        }else  if(chkPhy.isChecked()){
+            condition = chkPhy.getText().toString();
+        }else  if(chkOthers.isChecked()){
+            condition = chkOthers.getText().toString();
         }
 
         presentingConditon = new JSONObject();

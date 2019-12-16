@@ -84,7 +84,7 @@
                             android:isScrollContainer="true"
                             android:padding="15dp"
                             app:ael_duration="400"
-                            app:ael_expanded="true"
+                            app:ael_expanded="false"
                             app:ael_interpolator="accelerateDecelerate"
                             app:ael_orientation="vertical">
 
@@ -106,9 +106,9 @@
                                 android:ems="10"
                                 android:gravity="top"
                                 android:hint="Pick Time"
-                                android:textAlignment="center"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:textAlignment="center"/>
 
                             <TextView
                                 android:id="@+id/lblSize1"
@@ -141,49 +141,49 @@
                                 android:id="@+id/edtAtt1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="20dp"
+                                android:orientation="horizontal"
                                 android:layout_below="@+id/sizeSpin1"
-                                android:layout_alignStart="@+id/edtTim1"
                                 android:layout_alignLeft="@+id/edtTim1"
                                 android:layout_marginTop="10dp"
-                                android:layout_toEndOf="@id/lblTim1"
                                 android:layout_toRightOf="@id/lblTim1"
-                                android:orientation="horizontal">
+                                android:layout_toEndOf="@id/lblTim1"
+                                android:layout_alignStart="@+id/edtTim1">
 
                                 <Button
                                     android:id="@+id/btnAtt1"
                                     android:layout_width="40dp"
                                     android:layout_height="20dp"
-                                    android:layout_alignParentStart="true"
-                                    android:layout_alignParentLeft="true"
+                                    android:text="1"
                                     android:background="@drawable/orangeshape"
-                                    android:text="1" />
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true" />
 
                                 <Button
                                     android:id="@+id/btnAtt2"
                                     android:layout_width="40dp"
                                     android:layout_height="20dp"
-                                    android:layout_toEndOf="@id/btnAtt1"
-                                    android:layout_toRightOf="@id/btnAtt1"
+                                    android:text="2"
                                     android:background="@drawable/whiteshape"
-                                    android:text="2" />
+                                    android:layout_toEndOf="@id/btnAtt1"
+                                    android:layout_toRightOf="@id/btnAtt1"/>
 
                                 <Button
                                     android:id="@+id/btnAtt3"
                                     android:layout_width="40dp"
                                     android:layout_height="20dp"
-                                    android:layout_toEndOf="@id/btnAtt2"
-                                    android:layout_toRightOf="@id/btnAtt2"
+                                    android:text="3"
                                     android:background="@drawable/whiteshape"
-                                    android:text="3" />
+                                    android:layout_toEndOf="@id/btnAtt2"
+                                    android:layout_toRightOf="@id/btnAtt2"/>
 
                                 <Button
                                     android:id="@+id/btnAtt4"
                                     android:layout_width="40dp"
                                     android:layout_height="20dp"
-                                    android:layout_toEndOf="@id/btnAtt3"
-                                    android:layout_toRightOf="@id/btnAtt3"
+                                    android:text="4"
                                     android:background="@drawable/whiteshape"
-                                    android:text="4" />
+                                    android:layout_toEndOf="@id/btnAtt3"
+                                    android:layout_toRightOf="@id/btnAtt3"/>
 
                             </RelativeLayout>
 
@@ -331,7 +331,7 @@
                             android:id="@+id/canLay2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#CE066DA1"
+                            android:background="#90ba1f04"
                             android:isScrollContainer="true"
                             android:padding="15dp"
                             app:ael_duration="400"
@@ -357,9 +357,9 @@
                                 android:ems="10"
                                 android:gravity="top"
                                 android:hint="Pick Time"
-                                android:textAlignment="center"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:textAlignment="center"/>
 
                             <TextView
                                 android:id="@+id/lblSize2"
@@ -370,52 +370,95 @@
                                 android:text="Size"
                                 android:textColor="@color/white" />
 
-                            <EditText
-                                android:id="@+id/edtSize2"
-                                android:layout_width="wrap_content"
+                            <Spinner
+                                android:id="@+id/sizeSpin2"
+                                android:layout_width="200dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/edtTim2"
                                 android:layout_alignLeft="@+id/edtTim2"
                                 android:layout_marginTop="10dp"
-                                android:layout_toRightOf="@id/lblTim2"
-                                android:background="@null"
-                                android:ems="10"
-                                android:gravity="top"
-                                android:hint="size"
-                                android:inputType="textPersonName"
-                                android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:layout_toRightOf="@id/lblTim2" />
 
                             <TextView
                                 android:id="@+id/lblAtt2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/lblSize2"
+                                android:layout_below="@+id/sizeSpin2"
                                 android:layout_marginTop="10dp"
                                 android:text="Attempts"
                                 android:textColor="@color/white" />
 
-                            <EditText
+                            <RelativeLayout
                                 android:id="@+id/edtAtt2"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/edtSize2"
+                                android:layout_height="20dp"
+                                android:orientation="horizontal"
+                                android:layout_below="@+id/sizeSpin2"
                                 android:layout_alignLeft="@+id/edtTim2"
                                 android:layout_marginTop="10dp"
                                 android:layout_toRightOf="@id/lblTim2"
+                                android:layout_toEndOf="@id/lblTim2"
+                                android:layout_alignStart="@+id/edtTim2">
+
+                                <Button
+                                    android:id="@+id/btnAtt11"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:text="1"
+                                    android:background="@drawable/orangeshape"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true" />
+
+                                <Button
+                                    android:id="@+id/btnAtt22"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:text="2"
+                                    android:background="@drawable/whiteshape"
+                                    android:layout_toEndOf="@id/btnAtt11"
+                                    android:layout_toRightOf="@id/btnAtt11"/>
+
+                                <Button
+                                    android:id="@+id/btnAtt33"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:text="3"
+                                    android:background="@drawable/whiteshape"
+                                    android:layout_toEndOf="@id/btnAtt22"
+                                    android:layout_toRightOf="@id/btnAtt22"/>
+
+                                <Button
+                                    android:id="@+id/btnAtt44"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:text="4"
+                                    android:background="@drawable/whiteshape"
+                                    android:layout_toEndOf="@id/btnAtt33"
+                                    android:layout_toRightOf="@id/btnAtt33"/>
+
+                            </RelativeLayout>
+
+                            <!--EditText
+                                android:id="@+id/edtAtt1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/edtSize1"
+                                android:layout_alignLeft="@+id/edtTim1"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@id/lblTim1"
                                 android:background="@null"
                                 android:ems="10"
                                 android:gravity="top"
                                 android:hint="e.g 1"
                                 android:inputType="textPersonName"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="14sp" /-->
 
                             <TextView
                                 android:id="@+id/lblSite2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/lblAtt2"
+                                android:layout_below="@+id/edtAtt2"
                                 android:layout_marginTop="10dp"
                                 android:text="Site"
                                 android:textColor="@color/white" />
@@ -440,7 +483,7 @@
                                 android:id="@+id/lblRate2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/lblSite2"
+                                android:layout_below="@+id/edtSite2"
                                 android:layout_marginTop="10dp"
                                 android:text="Rate"
                                 android:textColor="@color/white" />
@@ -465,7 +508,7 @@
                                 android:id="@+id/lblVol2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/lblRate2"
+                                android:layout_below="@+id/edtRate2"
                                 android:layout_marginTop="10dp"
                                 android:text="Volume Infused"
                                 android:textColor="@color/white" />
@@ -490,7 +533,7 @@
                                 android:id="@+id/lblFluid2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/lblVol2"
+                                android:layout_below="@+id/edtVol2"
                                 android:layout_marginTop="10dp"
                                 android:text="Fluid Type Used"
                                 android:textColor="@color/white" />

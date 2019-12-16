@@ -105,15 +105,15 @@
                                 android:id="@+id/edtTime1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="35dp"
-                                android:layout_alignLeft="@id/edtPulse1"
                                 android:background="@drawable/round_shape"
                                 android:gravity="top"
                                 android:hint="Pick Time"
-                                android:paddingLeft="10dp"
                                 android:paddingTop="5dp"
-                                android:paddingRight="10dp"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:layout_alignLeft="@id/edtPulse1"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"/>
 
                             <TextView
                                 android:id="@+id/lblPulse1"
@@ -725,7 +725,7 @@
                                 android:text="Eyes - Pearl"
                                 android:textColor="@color/white" />
 
-                            <CheckBox
+                            <!--CheckBox
                                 android:id="@+id/chkLeft2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -747,13 +747,96 @@
                                 android:layout_marginTop="-6dp"
                                 android:layout_toRightOf="@id/chkLeft2"
                                 android:text="Right"
+                                android:textColor="@color/white" /-->
+
+                            <TextView
+                                android:id="@+id/chkLeft2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow1"
+                                android:layout_alignTop="@id/lblPearl2"
+                                android:layout_marginLeft="100dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/lblPearl2"
+                                android:text="Left"
                                 android:textColor="@color/white" />
+
+                            <RelativeLayout
+                                android:id="@+id/edtAtt3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_below="@id/edtFlow1"
+                                android:layout_alignTop="@id/lblPearl2"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/chkLeft2"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/epl_yes2"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:background="@drawable/whiteshape"
+                                    android:text="Y" />
+
+                                <Button
+                                    android:id="@+id/epl_no2"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_toEndOf="@id/epl_yes2"
+                                    android:layout_toRightOf="@id/epl_yes2"
+                                    android:background="@drawable/orangeshape"
+                                    android:text="N" />
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/chkRight2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/chkLeft2"
+                                android:layout_alignStart="@id/chkLeft2"
+                                android:layout_alignLeft="@id/chkLeft2"
+                                android:layout_marginTop="16dp"
+                                android:text="Right"
+                                android:textColor="@color/white" />
+
+                            <RelativeLayout
+                                android:id="@+id/edtAtt4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_alignStart="@id/edtAtt3"
+                                android:layout_alignLeft="@id/edtAtt3"
+                                android:layout_alignTop="@id/chkRight2"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/epr_yes2"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:background="@drawable/whiteshape"
+                                    android:text="Y" />
+
+                                <Button
+                                    android:id="@+id/epr_no2"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_toEndOf="@id/epr_yes2"
+                                    android:layout_toRightOf="@id/epr_yes2"
+                                    android:background="@drawable/orangeshape"
+                                    android:text="N" />
+
+                            </RelativeLayout>
 
                             <TextView
                                 android:id="@+id/lblPupSize2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/chkLeft2"
+                                android:layout_below="@id/edtAtt4"
                                 android:layout_marginTop="10dp"
                                 android:text="Pupil Size"
                                 android:textColor="@color/white"
@@ -1071,7 +1154,7 @@
                                 android:text="Eyes - Pearl"
                                 android:textColor="@color/white" />
 
-                            <CheckBox
+                            <!--CheckBox
                                 android:id="@+id/chkLeft3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -1093,13 +1176,96 @@
                                 android:layout_marginTop="-6dp"
                                 android:layout_toRightOf="@id/chkLeft3"
                                 android:text="Right"
+                                android:textColor="@color/white" /-->
+
+                            <TextView
+                                android:id="@+id/chkLeft3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow1"
+                                android:layout_alignTop="@id/lblPearl3"
+                                android:layout_marginLeft="100dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/lblPearl3"
+                                android:text="Left"
                                 android:textColor="@color/white" />
+
+                            <RelativeLayout
+                                android:id="@+id/edtAtt5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_below="@id/edtFlow1"
+                                android:layout_alignTop="@id/lblPearl3"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/chkLeft3"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/epl_yes3"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:background="@drawable/whiteshape"
+                                    android:text="Y" />
+
+                                <Button
+                                    android:id="@+id/epl_no3"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_toEndOf="@id/epl_yes3"
+                                    android:layout_toRightOf="@id/epl_yes3"
+                                    android:background="@drawable/orangeshape"
+                                    android:text="N" />
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/chkRight3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/chkLeft3"
+                                android:layout_alignStart="@id/chkLeft3"
+                                android:layout_alignLeft="@id/chkLeft3"
+                                android:layout_marginTop="16dp"
+                                android:text="Right"
+                                android:textColor="@color/white" />
+
+                            <RelativeLayout
+                                android:id="@+id/edtAtt6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_alignStart="@id/edtAtt5"
+                                android:layout_alignLeft="@id/edtAtt5"
+                                android:layout_alignTop="@id/chkRight3"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/epr_yes3"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:background="@drawable/whiteshape"
+                                    android:text="Y" />
+
+                                <Button
+                                    android:id="@+id/epr_no3"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_toEndOf="@id/epr_yes3"
+                                    android:layout_toRightOf="@id/epr_yes3"
+                                    android:background="@drawable/orangeshape"
+                                    android:text="N" />
+
+                            </RelativeLayout>
 
                             <TextView
                                 android:id="@+id/lblPupSize3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/chkLeft3"
+                                android:layout_below="@id/edtAtt6"
                                 android:layout_marginTop="10dp"
                                 android:text="Pupil Size"
                                 android:textColor="@color/white"
@@ -1416,7 +1582,7 @@
                                 android:text="Eyes - Pearl"
                                 android:textColor="@color/white" />
 
-                            <CheckBox
+                            <!--CheckBox
                                 android:id="@+id/chkLeft4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -1438,13 +1604,96 @@
                                 android:layout_marginTop="-6dp"
                                 android:layout_toRightOf="@id/chkLeft4"
                                 android:text="Right"
+                                android:textColor="@color/white" /-->
+
+                            <TextView
+                                android:id="@+id/chkLeft4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/edtFlow4"
+                                android:layout_alignTop="@id/lblPearl4"
+                                android:layout_marginLeft="100dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/lblPearl4"
+                                android:text="Left"
                                 android:textColor="@color/white" />
+
+                            <RelativeLayout
+                                android:id="@+id/edtAtt7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_below="@id/edtFlow4"
+                                android:layout_alignTop="@id/lblPearl4"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="-6dp"
+                                android:layout_toRightOf="@id/chkLeft4"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/epl_yes4"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:background="@drawable/whiteshape"
+                                    android:text="Y" />
+
+                                <Button
+                                    android:id="@+id/epl_no4"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:background="@drawable/orangeshape"
+                                    android:layout_toEndOf="@id/epl_yes4"
+                                    android:text="N"
+                                    android:layout_toRightOf="@id/epl_yes4" />
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/chkRight4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/chkLeft4"
+                                android:layout_alignStart="@id/chkLeft4"
+                                android:layout_alignLeft="@id/chkLeft4"
+                                android:layout_marginTop="16dp"
+                                android:text="Right"
+                                android:textColor="@color/white" />
+
+                            <RelativeLayout
+                                android:id="@+id/edtAtt8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_alignStart="@id/edtAtt7"
+                                android:layout_alignLeft="@id/edtAtt7"
+                                android:layout_alignTop="@id/chkRight4"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/epr_yes4"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:background="@drawable/whiteshape"
+                                    android:text="Y" />
+
+                                <Button
+                                    android:id="@+id/epr_no4"
+                                    android:layout_width="40dp"
+                                    android:layout_height="20dp"
+                                    android:layout_toEndOf="@id/epr_yes4"
+                                    android:layout_toRightOf="@id/epr_yes4"
+                                    android:background="@drawable/orangeshape"
+                                    android:text="N" />
+
+                            </RelativeLayout>
 
                             <TextView
                                 android:id="@+id/lblPupSize4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@id/chkLeft4"
+                                android:layout_below="@id/chkRight4"
                                 android:layout_marginTop="10dp"
                                 android:text="Pupil Size"
                                 android:textColor="@color/white"

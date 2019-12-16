@@ -181,6 +181,8 @@ public class PrimarySurvey extends Fragment {
 
         TimePicker();
 
+        TimePicker();
+
         cache = new Cache(getContext());
         saved = cache.getStringProperty("primarySurvery");
         if(saved != null ){

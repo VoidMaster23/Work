@@ -112,7 +112,6 @@ public class MedicalFormCalls extends Fragment {
 
         //checkBox13 = view.findViewById( R.id.checkBox13 );
         checkBox3 = view.findViewById( R.id.notApplicableCheckBox );
-        checkBox3.setOnClickListener(this::makeNa);
         callDetails = new JSONObject();
 
         TimePicker();

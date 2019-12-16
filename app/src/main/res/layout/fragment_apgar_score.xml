@@ -60,7 +60,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
+                <!--EditText
                     android:id="@+id/editAct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -74,7 +74,19 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@id/textView61"
                     android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_marginLeft="20dp"/-->
+
+                <Spinner
+                    android:id="@+id/spnActivity"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/textView61"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp" />
 
                 <TextView
                     android:id="@+id/textView59"
@@ -84,9 +96,9 @@
                     android:text="Pulse Rate"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView58" />
+                    app:layout_constraintTop_toBottomOf="@+id/spnActivity" />
 
-                <EditText
+                <!--EditText
                     android:id="@+id/editPulseRate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -98,10 +110,22 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editAct"
+                    app:layout_constraintTop_toBottomOf="@+id/spnActivity"
                     app:layout_constraintStart_toEndOf="@id/textView61"
                     android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_marginLeft="20dp"/-->
+
+                <Spinner
+                    android:id="@+id/spnPulseRate"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textView59"
+                    app:layout_constraintStart_toEndOf="@id/textView61"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp" />
 
                 <TextView
                     android:id="@+id/textView60"
@@ -111,9 +135,9 @@
                     android:text="Grimace"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView59" />
+                    app:layout_constraintTop_toBottomOf="@+id/spnPulseRate" />
 
-                <EditText
+                <!--EditText
                     android:id="@+id/editGrim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -125,10 +149,22 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editPulseRate"
+                    app:layout_constraintTop_toBottomOf="@+id/spnPulseRate"
                     app:layout_constraintStart_toEndOf="@id/textView61"
                     android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_marginLeft="20dp"/-->
+
+                <Spinner
+                    android:id="@+id/spnGrimace"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textView60"
+                    app:layout_constraintStart_toEndOf="@id/textView61"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp" />
 
                 <TextView
                     android:id="@+id/textView61"
@@ -138,9 +174,9 @@
                     android:text="Appearance(Skin Colour)"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView60" />
+                    app:layout_constraintTop_toBottomOf="@+id/spnGrimace" />
 
-                <EditText
+                <!--EditText
                     android:id="@+id/editAppearance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -152,10 +188,22 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editGrim"
+                    app:layout_constraintTop_toBottomOf="@+id/spnGrimace"
                     app:layout_constraintStart_toEndOf="@id/textView61"
                     android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp" />
+                    android:layout_marginLeft="20dp" /-->
+
+                <Spinner
+                    android:id="@+id/spnAppearance"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textView61"
+                    app:layout_constraintStart_toEndOf="@id/textView61"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp" />
 
                 <TextView
                     android:id="@+id/textView62"
@@ -165,9 +213,9 @@
                     android:text="Respiration"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView61" />
+                    app:layout_constraintTop_toBottomOf="@+id/spnAppearance" />
 
-                <EditText
+                <!--EditText
                     android:id="@+id/editRespiration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -179,24 +227,22 @@
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editAppearance"
+                    app:layout_constraintTop_toBottomOf="@+id/spnAppearance"
                     app:layout_constraintStart_toEndOf="@id/textView61"
                     android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_marginLeft="20dp"/-->
 
-                <ImageView
-                    android:id="@+id/imageView20"
-                    android:layout_width="wrap_content"
+                <Spinner
+                    android:id="@+id/spnRespiration"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginEnd="35dp"
-                    android:layout_marginRight="35dp"
-                    android:src="@drawable/apgar"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/apgarScore" />
+                    app:layout_constraintTop_toTopOf="@id/textView62"
+                    app:layout_constraintStart_toEndOf="@id/textView61"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp" />
 
                 <TextView
                     android:id="@+id/apgarScore"
@@ -224,7 +270,21 @@
                     android:text="Calculate"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editRespiration" />
+                    app:layout_constraintTop_toBottomOf="@+id/spnRespiration" />
+
+                <ImageView
+                    android:id="@+id/imageView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="35dp"
+                    android:layout_marginRight="35dp"
+                    android:src="@drawable/apgar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/apgarScore" />
 
 
             </android.support.constraint.ConstraintLayout>

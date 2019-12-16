@@ -25,7 +25,7 @@ import java.text.DecimalFormat;
 public class Burns extends Fragment {
 
     String[] burnType = {"Thermal(Fire, Water, Oil)","Chemical(Acid, etc)","Electrical","Lightning"};
-    String[] treatment = {"IV","Burn Spray (Hydrogel)","Burn Dressing (Hydrogel)","Wed Dressing/Trauma Pad","Dry Dressing"};
+    String[] treatment = {"IV","Burn Spray (Hydrogel)","Burn Dressing (Hydrogel)","Wet Dressing/Trauma Pad","Dry Dressing"};
     String[] inhalation = {"Facial Burns","Soot In Sputum","Breathing Difficulties"};
     String[] degree = {"1st","2nd (Partial Thickness)","3rd (Full Thickness)","4th (Involving Tendons)"};
 

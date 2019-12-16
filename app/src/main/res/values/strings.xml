@@ -4,4 +4,18 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="row1">Row</string>
+
+    <!-- Table -->
+    <string name="responsecar">
+        <item>english</item>
+        <item>afrikaans</item>
+        <item>zulu</item>
+        <item>xhosa</item>
+        <item>sepedi</item>
+        <item>sesotho</item>
+        <item>french</item>
+        <item>setswana</item>
+        <item>tshivenda</item>
+    </string>
 </resources>

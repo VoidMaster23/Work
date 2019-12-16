@@ -254,6 +254,7 @@ public class DrugsAdministered extends Fragment {
 
                 }
             });
+
             drugspn2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

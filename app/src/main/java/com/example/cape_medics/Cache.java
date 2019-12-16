@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 public class Cache {
     Context context;
 
-    Cache(Context contextValue) {
+    public Cache(Context contextValue) {
         context = contextValue;
     }
 

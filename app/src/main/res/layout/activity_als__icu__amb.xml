@@ -8107,11 +8107,11 @@
                 android:id="@+id/next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/loginshape"
-                android:onClick="Send"
-                android:text="Send" />
+                android:onClick="next"
+                android:text="Send"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp" />
 
         </LinearLayout>
     </ScrollView>

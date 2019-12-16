@@ -36,7 +36,7 @@ public class PainScore extends Fragment {
     String sizeType;
 
     private String[] size = {"1","2","3","4","5","6","7","8","9","10"};
-    
+
     public CheckBox chkNA;
 
     public PainScore() {
@@ -143,29 +143,9 @@ public class PainScore extends Fragment {
 
         /* show.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (imageView.getVisibility() == View.INVISIBLE){
-                    pre.setVisibility(View.INVISIBLE);
-                    post1.setVisibility(View.INVISIBLE);
-                    post2.setVisibility(View.INVISIBLE);
-                    hosp.setVisibility(View.INVISIBLE);
-
-                    textView1.setVisibility(View.INVISIBLE);
-                    textView2.setVisibility(View.INVISIBLE);
-                    textView3.setVisibility(View.INVISIBLE);
-                    textView4.setVisibility(View.INVISIBLE);
-
-                    show.setVisibility(View.INVISIBLE);
-
-                    painLay.setBackgroundColor(getResources().getColor(android.R.color.black));
-                    imageView.setVisibility(View.VISIBLE);
-
-
-
-
-                }
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                sizeType = size[i];
             }
-        });*/
 
 
 
@@ -199,7 +179,7 @@ public class PainScore extends Fragment {
 
         return painScore;
     }
-    
+
     public boolean validate() {
         boolean valid = true;
         Looper.prepare();
@@ -214,5 +194,6 @@ public class PainScore extends Fragment {
         Looper.loop();
         return valid;
     }
+
 
 }

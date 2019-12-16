@@ -11,9 +11,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +40,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.Calendar;
+import java.util.Objects;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +54,9 @@ import static android.support.v4.content.ContextCompat.getSystemService;
 public class Death extends Fragment {
     JSONArray CategoryType;
     Button send, go;
+    JSONObject death;
+    //CheckBox carotidPulseYes, carotidPulseNo, breathingYes, breathingNo, eyeYes, eyeNo, ecgYes, ecgNo, pupilsYes, pupilsNo;
+    String carotidPulse, breathing, dollEyeMovements, ecgStraightLine, bilateralFixedDilatedPupils;
     JSONObject death, response;
     EditText location,  place, name, post;
     TextView time,time2,date;
@@ -69,6 +76,7 @@ public class Death extends Fragment {
         View view = inflater.inflate(R.layout.activity_death,container,false);
         url = "http://capemedicstestserver-com.stackstaging.com/apktest/.php";
         cache = new Cache(getContext());
+
 
 
         death = new JSONObject();

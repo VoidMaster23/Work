@@ -19,7 +19,7 @@ import org.json.JSONObject;
 
 
 public class ApgarScore extends Fragment {
-    EditText activity, pulse, grim, look, breathe;
+    //EditText activity, pulse, grim, look, breathe;
     Button calc;
     TextView textView;
     public CheckBox chkNA;
@@ -65,7 +65,7 @@ public class ApgarScore extends Fragment {
                 }else{
                     Looper.prepare();
                     Toast.makeText(getContext(),"Please Fill In All the Fields", Toast.LENGTH_SHORT).show();
-                    Looper.loop();
+                Looper.loop();
                 }
             }
         });

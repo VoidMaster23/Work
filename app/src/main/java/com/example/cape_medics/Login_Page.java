@@ -95,7 +95,6 @@ public class Login_Page extends AppCompatActivity {
         password.setPaintFlags(0);
         url = "capemedics.co.za/zaio/main.php";
 
-
     }
 
     public void Login (View v) throws JSONException {

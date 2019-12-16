@@ -98,9 +98,7 @@ public class DashBoard extends AppCompatActivity {
         Broadcasts.setAdapter(broadcasts);
 
 
-        CurrentJobs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+        CurrentJobs.setOnItemClickListener((parent, view, position, id) -> {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 builder.setTitle("Swap Shift")
